@@ -86,8 +86,7 @@ theorem LF111 (a n u k d t : ℕ) (ha : a = u + 5) (hk : k = d + 1) (hn : n = 2 
         (ListBlank.append [1, 1, 1] (ListBlank.append (([1] : List (Fin 2)) ^ (t + 1)) default)) := by
     rw [list_pow_one, rotLB (d + 1) _]
     congr 1
-    rw [show t + 3 = 2 + (t + 1) by omega, ListBlank.append_pow_add]
-    rfl
+    all_goals (rw [show t + 3 = 2 + (t + 1) by omega, ListBlank.append_pow_add]; rfl)
   have et : ListBlank.append (([0, 1] : List (Fin 2)) ^ (d + 7))
         (ListBlank.append [0] (ListBlank.append (([1] : List (Fin 2)) ^ (t + 1)) default)) =
       ListBlank.append (([0, 1] : List (Fin 2)) ^ (d + 1 + 7)) (ListBlank.append (([1] : List (Fin 2)) ^ t) default) := by
