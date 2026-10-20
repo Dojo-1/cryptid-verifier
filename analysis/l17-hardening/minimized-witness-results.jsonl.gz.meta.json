@@ -1,0 +1,10 @@
+{
+  "requests": 18,
+  "defined_transitions": 2112,
+  "executed_defined_transitions": 2112,
+  "cache_reused": false,
+  "request_sha256": "7c2becceffe7d26ebb860e13f097b7265ec0953302c369e0a4ffe5672bb41b9b",
+  "response_sha256": "f5864487ba17aa2a3c61071eac5a68ca0bafa5bad319ac020795dcbf56bdae6d",
+  "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+  "stderr": ""
+}

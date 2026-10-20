@@ -1,0 +1,10 @@
+{
+  "phase": "Bounded investigation of the remaining one-tail case",
+  "trigger": "Claude explicitly requests all tail shapes; F100 and F111 leave (10)^c110 unhandled.",
+  "input_grid": {"a_min": 5, "a_max": 12, "c_min": 1, "c_max": 8},
+  "maximum_probes": 64,
+  "maximum_raw_transitions_per_probe": 200000,
+  "stopping_event": "First return to state C with all nonzero cells at or to the right of the head, after the initial rightward sweep; or halt; or the raw-transition bound.",
+  "evidence_rule": "Exploratory endpoints are finite measurements. A fit alone is not a universal rule; closure requires a sweep derivation or formal proof.",
+  "forbidden_promotion": "Neither a long derived prefix nor bounded word shape establishes infinite non-halting or a globally closed family."
+}

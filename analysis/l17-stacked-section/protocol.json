@@ -1,0 +1,26 @@
+{
+  "id": "l17-singleton-suffix-v1",
+  "recorded_at_utc": "2026-10-20T14:46:19.235776+00:00",
+  "object": "Literal L17 C(a,1), a>=1, including guards missing from the fitted C(3k,1)->C(10k-12,3) rule.",
+  "original_machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+  "scope": "New follow-up to the completed 25-lead screen; old results and protocol remain unchanged.",
+  "bounds": {
+    "raw_transitions_per_reference_probe": 200000,
+    "initial_fit_grid_a_max": 120,
+    "large_raw_checks": 64,
+    "compressed_block_widths": [
+      2,
+      6
+    ],
+    "max_accelerator_events_per_probe": 200000,
+    "max_reachable_boundary_rounds": 100
+  },
+  "controls": [
+    "Sparse raw-TM interpreter versus independent periodic-block simulator.",
+    "Complete tape, state, head and transition-count comparisons.",
+    "Local sweep paths inspect only fixed blocks; general formulas require an explicit induction."
+  ],
+  "kill": "Any full-tape mismatch retires the candidate formula on that guard; no timeout is called a non-halting proof.",
+  "stop": "At most the listed budgets per probe; do not extend a failed horizon. Any new mathematical cases must be recorded separately.",
+  "promotion": "Numerical fits stay hypotheses. Supply universal sweep derivations for Claude to formalize; do not claim unseen Lean results have been independently verified."
+}

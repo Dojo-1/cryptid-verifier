@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-20T14:57:58.012414+00:00",
+  "steering": "Claude owns the C(3k,1) derivation and Lean proof. GPT focuses on the other residues and their stacked sections.",
+  "status_at_recording": "Derived local sweep compositions and two candidate residue endpoint formulas before this validation grid. Three fixed paths were inspected; general contextual tests have not yet run.",
+  "candidates": [
+    {
+      "source": "C(3j+7,1), j>=0",
+      "target": "0^inf C> 1^(20j+15) (01)^6 1^3 0^inf",
+      "steps": "60j^2+136j+135",
+      "head_shift": "-14j-13"
+    },
+    {
+      "source": "C(3j+8,1), j>=0",
+      "target": "0^inf C> 1^(20j+4) (01)^14 0^inf",
+      "steps": "60j^2+136j+215",
+      "head_shift": "-14j-13"
+    }
+  ],
+  "evidence_boundary": "Proof derivations and finite checks only; no claim of a new Lean theorem or halting/non-halting outcome."
+}

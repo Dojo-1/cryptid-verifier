@@ -1,0 +1,283 @@
+{
+  "cases": [
+    {
+      "defect": "F100-leading",
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": 0
+      },
+      "suffix": "",
+      "source_literal": "010101010101011",
+      "target_literal": "1101010101010101111",
+      "raw_transitions": 78,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F100-time",
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": 0
+      },
+      "suffix": "",
+      "source_literal": "010101010101011",
+      "target_literal": "1101010101010101111",
+      "raw_transitions": 78,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F100-shift",
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": 0
+      },
+      "suffix": "",
+      "source_literal": "010101010101011",
+      "target_literal": "1101010101010101111",
+      "raw_transitions": 78,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F100-context",
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": 0
+      },
+      "suffix": "1",
+      "source_literal": "010101010101011001",
+      "target_literal": "11010101010101011111",
+      "raw_transitions": 78,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F111-leading",
+      "rule": "F111",
+      "parameters": {
+        "a": 5,
+        "c": 1
+      },
+      "suffix": "",
+      "source_literal": "010101010110111",
+      "target_literal": "1101010101010101",
+      "raw_transitions": 64,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F111-pairs",
+      "rule": "F111",
+      "parameters": {
+        "a": 5,
+        "c": 1
+      },
+      "suffix": "",
+      "source_literal": "010101010110111",
+      "target_literal": "1101010101010101",
+      "raw_transitions": 64,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F111-zero",
+      "rule": "F111",
+      "parameters": {
+        "a": 5,
+        "c": 1
+      },
+      "suffix": "1",
+      "source_literal": "0101010101101111",
+      "target_literal": "110101010101010101",
+      "raw_transitions": 64,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F111-guard",
+      "case": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 0
+        },
+        "suffix": "",
+        "violated": "c"
+      },
+      "expected": "Reject outside the declared guard; not a counterexample to a broader mathematical conjecture."
+    },
+    {
+      "defect": "F1100-middle",
+      "rule": "F1100",
+      "parameters": {
+        "a": 7,
+        "c": 7
+      },
+      "suffix": "",
+      "source_literal": "010101010101011010101010101011",
+      "target_literal": "1101010101010101101010101010101111",
+      "raw_transitions": 148,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F1100-stack",
+      "rule": "F1100",
+      "parameters": {
+        "a": 7,
+        "c": 7
+      },
+      "suffix": "",
+      "source_literal": "010101010101011010101010101011",
+      "target_literal": "1101010101010101101010101010101111",
+      "raw_transitions": 148,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "F1100-time",
+      "rule": "F1100",
+      "parameters": {
+        "a": 7,
+        "c": 7
+      },
+      "suffix": "",
+      "source_literal": "010101010101011010101010101011",
+      "target_literal": "1101010101010101101010101010101111",
+      "raw_transitions": 148,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "short-c3-pairs",
+      "rule": "S3",
+      "parameters": {
+        "a": 7
+      },
+      "suffix": "",
+      "source_literal": "0101010101010110101011",
+      "target_literal": "0101010101010101010101010101111",
+      "raw_transitions": 117,
+      "head_shift": -7,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "short-c6-zero",
+      "rule": "S6",
+      "parameters": {
+        "a": 7
+      },
+      "suffix": "",
+      "source_literal": "0101010101010110101010101011",
+      "target_literal": "11010101010101001010101010101111",
+      "raw_transitions": 144,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "short-c4-middle",
+      "rule": "S4",
+      "parameters": {
+        "a": 7
+      },
+      "suffix": "",
+      "source_literal": "010101010101011010101011",
+      "target_literal": "1111111111110110101010101111",
+      "raw_transitions": 98,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "residue-leading",
+      "rule": "R1",
+      "parameters": {
+        "j": 1
+      },
+      "suffix": "",
+      "source_literal": "010101010101010101011",
+      "target_literal": "11111111111111111111111111111111111010101010101111",
+      "raw_transitions": 331,
+      "head_shift": -27,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "residue-time",
+      "rule": "R1",
+      "parameters": {
+        "j": 1
+      },
+      "suffix": "",
+      "source_literal": "010101010101010101011",
+      "target_literal": "11111111111111111111111111111111111010101010101111",
+      "raw_transitions": 331,
+      "head_shift": -27,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "residue-shift",
+      "rule": "R1",
+      "parameters": {
+        "j": 0
+      },
+      "suffix": "",
+      "source_literal": "010101010101011",
+      "target_literal": "111111111111111010101010101111",
+      "raw_transitions": 135,
+      "head_shift": -13,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "rewrite-reset",
+      "rule": "Z",
+      "parameters": {
+        "a": 0
+      },
+      "suffix": "",
+      "source_literal": "",
+      "target_literal": "1111",
+      "raw_transitions": 8,
+      "head_shift": -2,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "word-drop-one-cell",
+      "rule": "N",
+      "parameters": {
+        "a": 0,
+        "q": 1
+      },
+      "suffix": "1",
+      "source_literal": "011",
+      "target_literal": "011",
+      "raw_transitions": 0,
+      "head_shift": 0,
+      "kind": "Baseline is correct; injected live-source defect is detected."
+    },
+    {
+      "defect": "block-leading-zero-regression",
+      "word": "001",
+      "raw_transitions": 0,
+      "expected_ones": [
+        2
+      ],
+      "kind": "Initial head is at position 0; preserve leading zero cells in block encoding."
+    },
+    {
+      "defect": "critic-zero-repetition",
+      "left": [
+        [
+          "10",
+          0
+        ]
+      ],
+      "right": [],
+      "expected_equal": true,
+      "kind": "Actual new-critic bug found and fixed; original actor formulas unchanged."
+    }
+  ]
+}

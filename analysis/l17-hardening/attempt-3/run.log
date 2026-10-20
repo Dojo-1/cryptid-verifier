@@ -1,0 +1,19 @@
+Comparator compiled at O2, O0 and UBSan.
+Actor versus separately consumed specification: {'pass': 6372, 'not_applicable': 9}
+C++ complete endpoint comparisons: 6381 passed; 24325083 defined transitions.
+Arbitrary two-sided read-window contexts: 192 passed.
+Raw controls, frame changes, compiler/UBSan parity, word representations and huge counters passed.
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 205, in <module>
+    try:main(args.actor_root or default_actor())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 167, in main
+    mutants=campaign(actor_root,claims,cases,guards);write(ROOT/'mutation-results.json',{'mutants':mutants,'counts':dict(Counter(r['status'] for r in mutants))})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/mutations.py", line 105, in campaign
+    changed=alter_function((root/'words.py').read_text(),'drop','if n<0:',"n+=1\n        if n<0:")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/mutations.py", line 35, in alter_function
+    node=next(n for n in tree.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name==function)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration

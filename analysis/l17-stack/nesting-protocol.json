@@ -1,0 +1,36 @@
+{
+  "recorded_at_utc": "2026-10-20T19:05:08.276273+00:00",
+  "hypothesis": "For U=(01)^8 1 and T=(01)^7 1^3, Ccal(a;1 U^n 00 v) reaches Ccal(0;1^(2a-12) T^(n+1) v) in 4a+74n+50 transitions, head shift -2, a>=7,n>=0.",
+  "derivation": "K7+A10=K27 forward; recursive A_NEST; three C sweeps; K41 return. Base K60. New fixed read windows to be checked with arbitrary exterior data.",
+  "validation_budget": "At most original 1024 validation probes, 200000 transitions each. At most original 128 exploratory probes; 16 contextual and 3 fixed probes already consumed.",
+  "endpoint_grid": {
+    "a": [
+      7,
+      8,
+      9,
+      12,
+      31,
+      127
+    ],
+    "n": [
+      0,
+      1,
+      2,
+      3,
+      7,
+      15
+    ],
+    "suffixes": [
+      "",
+      "1",
+      "001101"
+    ]
+  },
+  "seed": 173118,
+  "seeded_random_endpoints": 96,
+  "A_NEST_cases": 64,
+  "window_tests": "K7,K27,K41,K60 and A_NEST(n=0..5), 8 exterior assignments each.",
+  "mutations": "Guard removal, wrong counts, missing layer, wrong tail shape, wrong shift/time; evaluated in memory against valid raw outputs and invalid-input controls.",
+  "stop": "Any literal endpoint, read-window, actor/critic, or mutant-survival discrepancy is retained and investigated before promotion.",
+  "promotion": "Universal status rests on the stated inductive derivation, not on finite validation; no new Lean theorem or blank-orbit unboundedness claim."
+}

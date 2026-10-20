@@ -1,0 +1,22 @@
+Comparator compiled at O2, O0 and UBSan.
+Actor versus separately consumed specification: {'pass': 6372, 'not_applicable': 9}
+C++ complete endpoint comparisons: 6381 passed; 24325083 defined transitions.
+Arbitrary two-sided read-window contexts: 192 passed.
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 195, in <module>
+    try:main(args.actor_root or default_actor())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 130, in main
+    out,provenance=execute(ROOT/('comparator-'+name),matched,ROOT/('compiler-'+name+'-results.jsonl.gz'))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/backend.py", line 21, in execute
+    result=subprocess.run([str(Path(binary).resolve())],input=payload,capture_output=True,check=False,timeout=120)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/918c55ca52eb/quest/l17-hardening/comparator-O0'

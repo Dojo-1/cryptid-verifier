@@ -1,0 +1,15 @@
+test_arithmetic_language_is_integer_only_and_has_no_calls (test_hardening.CriticChecks.test_arithmetic_language_is_integer_only_and_has_no_calls) ... ok
+test_budget_rejection_precedes_process_execution (test_hardening.CriticChecks.test_budget_rejection_precedes_process_execution) ... ok
+test_critic_modules_do_not_import_actor_dependencies (test_hardening.CriticChecks.test_critic_modules_do_not_import_actor_dependencies) ... ok
+test_cursor_prefix_and_skip_against_explicit_strings (test_hardening.CriticChecks.test_cursor_prefix_and_skip_against_explicit_strings) ... ok
+test_guard_boundaries_and_unknown_fields (test_hardening.CriticChecks.test_guard_boundaries_and_unknown_fields) ... ok
+test_minimized_historical_word_keeps_its_absolute_position (test_hardening.CriticChecks.test_minimized_historical_word_keeps_its_absolute_position) ... ok
+test_modules_import_quietly_without_working_directory_writes (test_hardening.CriticChecks.test_modules_import_quietly_without_working_directory_writes) ... ok
+test_mutator_can_find_a_method_inside_a_class (test_hardening.CriticChecks.test_mutator_can_find_a_method_inside_a_class) ... ok
+test_periodic_word_comparison_against_explicit_oracle (test_hardening.CriticChecks.test_periodic_word_comparison_against_explicit_oracle) ... ok
+test_zero_repetition_regression_and_exterior_zero_scope (test_hardening.CriticChecks.test_zero_repetition_regression_and_exterior_zero_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.111s
+
+OK

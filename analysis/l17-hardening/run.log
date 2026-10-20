@@ -1,0 +1,7 @@
+Comparator compiled at O2, O0 and UBSan.
+Actor versus separately consumed specification: {'pass': 6372, 'not_applicable': 9}
+C++ complete endpoint comparisons: 6381 passed; 24325083 defined transitions; cached literal output: True
+Arbitrary two-sided read-window contexts: 192 passed.
+Raw controls, frame changes, compiler/UBSan parity, word representations and huge counters passed.
+Mutation results: {'killed': 20}
+Complete. Cumulative executed C++ transitions: 49268238 of 80000000 budget.

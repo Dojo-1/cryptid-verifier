@@ -1,0 +1,818 @@
+{
+  "mutants": [
+    {
+      "name": "F100-leading",
+      "kind": "tape",
+      "source_sha256": "46f7f7e30e6832018c58daf039bbe93ee609aeb43b63792387bc1171c443bee8",
+      "status": "killed",
+      "first_case_index": 140,
+      "original": {
+        "rule": "F100",
+        "parameters": {
+          "a": 31,
+          "c": 10
+        },
+        "suffix": "000000011"
+      },
+      "minimized": {
+        "rule": "F100",
+        "parameters": {
+          "a": 7,
+          "c": 0
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 3,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 7,
+              "c": 10
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F100-time",
+      "kind": "time",
+      "source_sha256": "6d2e3d256dba9b060d17e56a6235721e9d8e02cc9b2d564861f919016ca97ae9",
+      "status": "killed",
+      "first_case_index": 140,
+      "original": {
+        "rule": "F100",
+        "parameters": {
+          "a": 31,
+          "c": 10
+        },
+        "suffix": "000000011"
+      },
+      "minimized": {
+        "rule": "F100",
+        "parameters": {
+          "a": 7,
+          "c": 0
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 3,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 7,
+              "c": 10
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F100-shift",
+      "kind": "head",
+      "source_sha256": "721643dfebf917168bda15dcd0bbee6b16b3b20b8e7bfb1aceb029b2786d6ccf",
+      "status": "killed",
+      "first_case_index": 140,
+      "original": {
+        "rule": "F100",
+        "parameters": {
+          "a": 31,
+          "c": 10
+        },
+        "suffix": "000000011"
+      },
+      "minimized": {
+        "rule": "F100",
+        "parameters": {
+          "a": 7,
+          "c": 0
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 3,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 7,
+              "c": 10
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F100-context",
+      "kind": "context",
+      "source_sha256": "537b5496fc8ef15c92eacd8920cac02dc67c95cca1618eb3fccf31aac4a30d4b",
+      "status": "killed",
+      "first_case_index": 140,
+      "original": {
+        "rule": "F100",
+        "parameters": {
+          "a": 31,
+          "c": 10
+        },
+        "suffix": "000000011"
+      },
+      "minimized": {
+        "rule": "F100",
+        "parameters": {
+          "a": 7,
+          "c": 0
+        },
+        "suffix": "1"
+      },
+      "shrink": {
+        "attempts": 14,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 7,
+              "c": 10
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "000000011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "00011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "011"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "11"
+          },
+          {
+            "parameters": {
+              "a": 7,
+              "c": 0
+            },
+            "suffix": "1"
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F111-leading",
+      "kind": "tape",
+      "source_sha256": "b09d173328d87592e20ea3fbef300d243aaa3e87a81203e878fea96d405d2f53",
+      "status": "killed",
+      "first_case_index": 396,
+      "original": {
+        "rule": "F111",
+        "parameters": {
+          "a": 57,
+          "c": 2
+        },
+        "suffix": "110001101101111110010001100011001"
+      },
+      "minimized": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 1
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 3,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 5,
+              "c": 2
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F111-pairs",
+      "kind": "tape",
+      "source_sha256": "78891ddd6b8b02d91198a97d680139d7a99ebd737c81cbb71593ee6074a754a4",
+      "status": "killed",
+      "first_case_index": 396,
+      "original": {
+        "rule": "F111",
+        "parameters": {
+          "a": 57,
+          "c": 2
+        },
+        "suffix": "110001101101111110010001100011001"
+      },
+      "minimized": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 1
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 3,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 5,
+              "c": 2
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F111-zero",
+      "kind": "interior-zero",
+      "source_sha256": "8e995eb5f22ed5a640f49204f48c1bda95439a183f78ae7c3579208d428642ea",
+      "status": "killed",
+      "first_case_index": 396,
+      "original": {
+        "rule": "F111",
+        "parameters": {
+          "a": 57,
+          "c": 2
+        },
+        "suffix": "110001101101111110010001100011001"
+      },
+      "minimized": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 1
+        },
+        "suffix": "1"
+      },
+      "shrink": {
+        "attempts": 13,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 5,
+              "c": 2
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "110001101101111110010001100011001"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "1100011011011111"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "11000110"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "1100"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "11"
+          },
+          {
+            "parameters": {
+              "a": 5,
+              "c": 1
+            },
+            "suffix": "1"
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F111-guard",
+      "kind": "guard-contract",
+      "source_sha256": "024c1131ca7016fb333e3f585e8ed416d640cc9123f8ee674e4d734c4ea85930",
+      "status": "killed",
+      "guard_witness": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 0
+        },
+        "suffix": "01011",
+        "violated": "c"
+      },
+      "minimized_guard_witness": {
+        "rule": "F111",
+        "parameters": {
+          "a": 5,
+          "c": 0
+        },
+        "suffix": "",
+        "violated": "c"
+      },
+      "shrink": {
+        "attempts": 1,
+        "limit": 128
+      },
+      "interpretation": "Rejection contract changed; no assertion that the relaxed mathematical statement is false."
+    },
+    {
+      "name": "F1100-middle",
+      "kind": "tape",
+      "source_sha256": "4be43ec51502da64b56caac5206af833e4e4f173d435e1171941a0de604dfcfb",
+      "status": "killed",
+      "first_case_index": 1745,
+      "original": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F1100-stack",
+      "kind": "stack-tail",
+      "source_sha256": "0c8bd8cb684543e872a3ebf9ffbda2171fed0d78d60f9aea0bdeebf2f1ff9eb2",
+      "status": "killed",
+      "first_case_index": 1745,
+      "original": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "F1100-time",
+      "kind": "time",
+      "source_sha256": "ebce89f1642175df531be8c87f2362e9250cd39458cf4489d81ba3887d0e92cb",
+      "status": "killed",
+      "first_case_index": 1745,
+      "original": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "F1100",
+        "parameters": {
+          "a": 7,
+          "c": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "short-c3-pairs",
+      "kind": "tape",
+      "source_sha256": "e3ab558f7e6741a913d054666cb91c15f46a41caf767bd0e63ccf267c16fc120",
+      "status": "killed",
+      "first_case_index": 3587,
+      "original": {
+        "rule": "S3",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "S3",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "short-c6-zero",
+      "kind": "interior-zero",
+      "source_sha256": "c82fa7636edb687ecf3d9041855c64019742747f9fb8a4ec634d1cd8d4619b05",
+      "status": "killed",
+      "first_case_index": 3590,
+      "original": {
+        "rule": "S6",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "S6",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "short-c4-middle",
+      "kind": "interior-one",
+      "source_sha256": "839f4da2d9c7b29fc982dd315ac9e5e278c5fbdefa701c2bca8408040c7c3af3",
+      "status": "killed",
+      "first_case_index": 3588,
+      "original": {
+        "rule": "S4",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "S4",
+        "parameters": {
+          "a": 7
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "residue-leading",
+      "kind": "residue-coefficient",
+      "source_sha256": "466f63aabc4c55a2a29ca4d6fb7903ae5e9af9f00bbc857c2ff8f677cfdbb456",
+      "status": "killed",
+      "first_case_index": 2,
+      "original": {
+        "rule": "R1",
+        "parameters": {
+          "j": 1
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "R1",
+        "parameters": {
+          "j": 1
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 1,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "residue-time",
+      "kind": "time",
+      "source_sha256": "caed5caec8974b38740762c84035de9b16af0b61c4155f0fcc448fae409200d0",
+      "status": "killed",
+      "first_case_index": 2,
+      "original": {
+        "rule": "R1",
+        "parameters": {
+          "j": 1
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "R1",
+        "parameters": {
+          "j": 1
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 1,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "residue-shift",
+      "kind": "head",
+      "source_sha256": "9b220e23302fb089e50ab07886baf997b26c43bc81dd0097835ca06f3f99d937",
+      "status": "killed",
+      "first_case_index": 0,
+      "original": {
+        "rule": "R1",
+        "parameters": {
+          "j": 0
+        },
+        "suffix": ""
+      },
+      "minimized": {
+        "rule": "R1",
+        "parameters": {
+          "j": 0
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 0,
+        "limit": 128,
+        "reductions": [],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "rewrite-reset",
+      "kind": "dispatch",
+      "source_sha256": "e2c70251fc11537b2c4549d6ed53cab37b036368b608c6bc54c762e115a37321",
+      "status": "killed",
+      "first_case_index": 655,
+      "original": {
+        "rule": "Z",
+        "parameters": {
+          "a": 26
+        },
+        "suffix": "01110010100110111010110100110101000001101010000101101"
+      },
+      "minimized": {
+        "rule": "Z",
+        "parameters": {
+          "a": 0
+        },
+        "suffix": ""
+      },
+      "shrink": {
+        "attempts": 2,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 0
+            },
+            "suffix": "01110010100110111010110100110101000001101010000101101"
+          },
+          {
+            "parameters": {
+              "a": 0
+            },
+            "suffix": ""
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "word-drop-one-cell",
+      "kind": "representation",
+      "source_sha256": "c85fea87af3cd24dea4a5ed836fb56a15f1b6ef7150063f906cce605dc0ffdfa",
+      "status": "killed",
+      "first_case_index": 652,
+      "original": {
+        "rule": "N",
+        "parameters": {
+          "a": 25,
+          "q": 2
+        },
+        "suffix": "1001100110000100001110011"
+      },
+      "minimized": {
+        "rule": "N",
+        "parameters": {
+          "a": 0,
+          "q": 1
+        },
+        "suffix": "1"
+      },
+      "shrink": {
+        "attempts": 11,
+        "limit": 128,
+        "reductions": [
+          {
+            "parameters": {
+              "a": 0,
+              "q": 2
+            },
+            "suffix": "1001100110000100001110011"
+          },
+          {
+            "parameters": {
+              "a": 0,
+              "q": 1
+            },
+            "suffix": "1001100110000100001110011"
+          },
+          {
+            "parameters": {
+              "a": 0,
+              "q": 1
+            },
+            "suffix": "100110011000"
+          },
+          {
+            "parameters": {
+              "a": 0,
+              "q": 1
+            },
+            "suffix": "100110"
+          },
+          {
+            "parameters": {
+              "a": 0,
+              "q": 1
+            },
+            "suffix": "100"
+          },
+          {
+            "parameters": {
+              "a": 0,
+              "q": 1
+            },
+            "suffix": "1"
+          }
+        ],
+        "minimality": "Greedy under the declared moves and budget, not globally minimal."
+      }
+    },
+    {
+      "name": "block-leading-zero-regression",
+      "kind": "historical-encoding",
+      "source_sha256": "e0456bef20be4e3ceb0af91499df359a716ba412c03f17c3c0de3bfde169e797",
+      "status": "killed",
+      "original_word": "0001011011010001010111100110001110000110111",
+      "minimized_word": "001",
+      "steps": 0,
+      "width": 2,
+      "shrink": {
+        "attempts": 17,
+        "limit": 128,
+        "minimality": "Greedy deletion, not global minimality."
+      }
+    }
+  ],
+  "counts": {
+    "killed": 20
+  }
+}

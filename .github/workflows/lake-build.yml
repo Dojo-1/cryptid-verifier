@@ -35,6 +35,12 @@ jobs:
         run: python3 -m unittest discover -s analysis/scripts -p 'test_*.py' -v
       - name: Appendix C lead screen checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/appendix-c-leads -p 'test_pipeline.py' -v
+      - name: L17 stacked-section checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-stacked-section -p 'test_stacked.py' -v
+      - name: L17 hardening harness checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-hardening -p 'test_hardening.py' -v
+      - name: L17 stack checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-stack -p 'test_stack.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

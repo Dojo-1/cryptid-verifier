@@ -1,0 +1,10 @@
+{
+  "recorded_at_utc": "2026-10-20T15:12:00.975574+00:00",
+  "trigger": "User supplied Claude's explicit brief: run the symbolic orbit to the next unsupported case or halt and inspect the tail family.",
+  "previous_phase": "The original 100-rewrite trace and its results remain unchanged in validation-results.json.",
+  "new_phase": "Separate extension using the identical derived contextual rules; no new rule or raw-simulation horizon.",
+  "source": "C(6575648756,1)",
+  "maximum_contextual_rewrites": 2000,
+  "stop": "First unsupported case, a halt if a proved rule detects one, or the fixed 2000-rewrite budget.",
+  "forbidden_promotion": "A long finite prefix does not prove infinite continuation, unbounded stack depth, or finite-family closure."
+}

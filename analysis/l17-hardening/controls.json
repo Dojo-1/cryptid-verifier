@@ -1,0 +1,114 @@
+{
+  "random_raw": 300,
+  "analytic_known_answers": 8,
+  "frame_variants": 192,
+  "raw_provenance": {
+    "requests": 308,
+    "defined_transitions": 142704,
+    "request_sha256": "7b43dfb8118e0bc16ff5d07b69f71777dc4e718e35b09803b1eeb5266bab4f0d",
+    "response_sha256": "74e4fb56e6e0714d0244caa506d21328ad0dbe6cd408ba3fdd9f3be63bd21f54",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": "",
+    "cache_reused": true,
+    "executed_defined_transitions": 0
+  },
+  "frame_provenance": {
+    "requests": 192,
+    "defined_transitions": 93792,
+    "request_sha256": "691345d5cdbb0a1062e0024ebca52c87970a687b64ff77c35c2c7edfbcb5a57c",
+    "response_sha256": "3f3280ef2b17e94f7a0a4394bb981ba124fd5245ab8873fd74a7ff8f9b907599",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": "",
+    "cache_reused": true,
+    "executed_defined_transitions": 0
+  },
+  "matched_compiler_variants": {
+    "O2": {
+      "requests": 84,
+      "defined_transitions": 31310,
+      "request_sha256": "0a5844e5fbfc8188be51a76443bfc67849915bbbf90393f6c72249e286151cda",
+      "response_sha256": "1401c2c2178c540735ab6765494d87a0568754e90440aa3b5a8f5f08643628bf",
+      "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+      "stderr": "",
+      "cache_reused": true,
+      "executed_defined_transitions": 0
+    },
+    "O0": {
+      "requests": 84,
+      "defined_transitions": 31310,
+      "request_sha256": "0a5844e5fbfc8188be51a76443bfc67849915bbbf90393f6c72249e286151cda",
+      "response_sha256": "1401c2c2178c540735ab6765494d87a0568754e90440aa3b5a8f5f08643628bf",
+      "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8",
+      "stderr": "",
+      "cache_reused": true,
+      "executed_defined_transitions": 0
+    },
+    "UBSan": {
+      "requests": 84,
+      "defined_transitions": 31310,
+      "request_sha256": "0a5844e5fbfc8188be51a76443bfc67849915bbbf90393f6c72249e286151cda",
+      "response_sha256": "1401c2c2178c540735ab6765494d87a0568754e90440aa3b5a8f5f08643628bf",
+      "binary_sha256": "b140ed41033074e7b3ede860bb00ff0f3910c5e10b913f7629f1ceccd0142a98",
+      "stderr": "",
+      "cache_reused": true,
+      "executed_defined_transitions": 0
+    }
+  },
+  "malformed_requests_rejected": [
+    {
+      "name": "empty",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: empty request"
+    },
+    {
+      "name": "machine",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: machine must have six 6-character rows"
+    },
+    {
+      "name": "state",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: request outside declared domain"
+    },
+    {
+      "name": "negative-budget",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: request outside declared domain"
+    },
+    {
+      "name": "oversized-budget",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: request outside declared domain"
+    },
+    {
+      "name": "duplicate-cell",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: invalid cell list"
+    },
+    {
+      "name": "coordinate-domain",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: request outside declared domain"
+    },
+    {
+      "name": "trace-limit",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: trace request exceeds fixed path limit"
+    },
+    {
+      "name": "trailing-input",
+      "exit_code": 2,
+      "diagnostic": "Comparator rejected input: unexpected trailing input"
+    }
+  ],
+  "semantic_changes_rejected": {
+    "requests": 2,
+    "defined_transitions": 4,
+    "executed_defined_transitions": 4,
+    "cache_reused": false,
+    "request_sha256": "b42f5766ecfa0248b4ae96aff0ff0bd656e0724d96a2476b2b2f3c4604c4a606",
+    "response_sha256": "e550034c3af3f65aafcf0c3270c112a37cfc3bb8dc8c3770522bed56a808139c",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  }
+}

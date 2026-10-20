@@ -1,0 +1,386 @@
+[
+  {
+    "a_bits": 257,
+    "n_bits": 257,
+    "suffix_repetitions_bits": 1,
+    "passed": true
+  },
+  {
+    "a_bits": 274,
+    "n_bits": 268,
+    "suffix_repetitions_bits": 2,
+    "passed": true
+  },
+  {
+    "a_bits": 291,
+    "n_bits": 279,
+    "suffix_repetitions_bits": 3,
+    "passed": true
+  },
+  {
+    "a_bits": 308,
+    "n_bits": 290,
+    "suffix_repetitions_bits": 4,
+    "passed": true
+  },
+  {
+    "a_bits": 325,
+    "n_bits": 301,
+    "suffix_repetitions_bits": 5,
+    "passed": true
+  },
+  {
+    "a_bits": 342,
+    "n_bits": 312,
+    "suffix_repetitions_bits": 6,
+    "passed": true
+  },
+  {
+    "a_bits": 359,
+    "n_bits": 323,
+    "suffix_repetitions_bits": 7,
+    "passed": true
+  },
+  {
+    "a_bits": 376,
+    "n_bits": 334,
+    "suffix_repetitions_bits": 8,
+    "passed": true
+  },
+  {
+    "a_bits": 393,
+    "n_bits": 345,
+    "suffix_repetitions_bits": 9,
+    "passed": true
+  },
+  {
+    "a_bits": 410,
+    "n_bits": 356,
+    "suffix_repetitions_bits": 10,
+    "passed": true
+  },
+  {
+    "a_bits": 427,
+    "n_bits": 367,
+    "suffix_repetitions_bits": 11,
+    "passed": true
+  },
+  {
+    "a_bits": 444,
+    "n_bits": 378,
+    "suffix_repetitions_bits": 12,
+    "passed": true
+  },
+  {
+    "a_bits": 461,
+    "n_bits": 389,
+    "suffix_repetitions_bits": 13,
+    "passed": true
+  },
+  {
+    "a_bits": 478,
+    "n_bits": 400,
+    "suffix_repetitions_bits": 14,
+    "passed": true
+  },
+  {
+    "a_bits": 495,
+    "n_bits": 411,
+    "suffix_repetitions_bits": 15,
+    "passed": true
+  },
+  {
+    "a_bits": 512,
+    "n_bits": 422,
+    "suffix_repetitions_bits": 16,
+    "passed": true
+  },
+  {
+    "a_bits": 529,
+    "n_bits": 433,
+    "suffix_repetitions_bits": 17,
+    "passed": true
+  },
+  {
+    "a_bits": 546,
+    "n_bits": 444,
+    "suffix_repetitions_bits": 18,
+    "passed": true
+  },
+  {
+    "a_bits": 563,
+    "n_bits": 455,
+    "suffix_repetitions_bits": 19,
+    "passed": true
+  },
+  {
+    "a_bits": 580,
+    "n_bits": 466,
+    "suffix_repetitions_bits": 20,
+    "passed": true
+  },
+  {
+    "a_bits": 597,
+    "n_bits": 477,
+    "suffix_repetitions_bits": 21,
+    "passed": true
+  },
+  {
+    "a_bits": 614,
+    "n_bits": 488,
+    "suffix_repetitions_bits": 22,
+    "passed": true
+  },
+  {
+    "a_bits": 631,
+    "n_bits": 499,
+    "suffix_repetitions_bits": 23,
+    "passed": true
+  },
+  {
+    "a_bits": 648,
+    "n_bits": 510,
+    "suffix_repetitions_bits": 24,
+    "passed": true
+  },
+  {
+    "a_bits": 665,
+    "n_bits": 521,
+    "suffix_repetitions_bits": 25,
+    "passed": true
+  },
+  {
+    "a_bits": 682,
+    "n_bits": 532,
+    "suffix_repetitions_bits": 26,
+    "passed": true
+  },
+  {
+    "a_bits": 699,
+    "n_bits": 543,
+    "suffix_repetitions_bits": 27,
+    "passed": true
+  },
+  {
+    "a_bits": 716,
+    "n_bits": 554,
+    "suffix_repetitions_bits": 28,
+    "passed": true
+  },
+  {
+    "a_bits": 733,
+    "n_bits": 565,
+    "suffix_repetitions_bits": 29,
+    "passed": true
+  },
+  {
+    "a_bits": 750,
+    "n_bits": 576,
+    "suffix_repetitions_bits": 30,
+    "passed": true
+  },
+  {
+    "a_bits": 767,
+    "n_bits": 587,
+    "suffix_repetitions_bits": 31,
+    "passed": true
+  },
+  {
+    "a_bits": 784,
+    "n_bits": 598,
+    "suffix_repetitions_bits": 32,
+    "passed": true
+  },
+  {
+    "a_bits": 801,
+    "n_bits": 609,
+    "suffix_repetitions_bits": 33,
+    "passed": true
+  },
+  {
+    "a_bits": 818,
+    "n_bits": 620,
+    "suffix_repetitions_bits": 34,
+    "passed": true
+  },
+  {
+    "a_bits": 835,
+    "n_bits": 631,
+    "suffix_repetitions_bits": 35,
+    "passed": true
+  },
+  {
+    "a_bits": 852,
+    "n_bits": 642,
+    "suffix_repetitions_bits": 36,
+    "passed": true
+  },
+  {
+    "a_bits": 869,
+    "n_bits": 653,
+    "suffix_repetitions_bits": 37,
+    "passed": true
+  },
+  {
+    "a_bits": 886,
+    "n_bits": 664,
+    "suffix_repetitions_bits": 38,
+    "passed": true
+  },
+  {
+    "a_bits": 903,
+    "n_bits": 675,
+    "suffix_repetitions_bits": 39,
+    "passed": true
+  },
+  {
+    "a_bits": 920,
+    "n_bits": 686,
+    "suffix_repetitions_bits": 40,
+    "passed": true
+  },
+  {
+    "a_bits": 937,
+    "n_bits": 697,
+    "suffix_repetitions_bits": 41,
+    "passed": true
+  },
+  {
+    "a_bits": 954,
+    "n_bits": 708,
+    "suffix_repetitions_bits": 42,
+    "passed": true
+  },
+  {
+    "a_bits": 971,
+    "n_bits": 719,
+    "suffix_repetitions_bits": 43,
+    "passed": true
+  },
+  {
+    "a_bits": 988,
+    "n_bits": 730,
+    "suffix_repetitions_bits": 44,
+    "passed": true
+  },
+  {
+    "a_bits": 1005,
+    "n_bits": 741,
+    "suffix_repetitions_bits": 45,
+    "passed": true
+  },
+  {
+    "a_bits": 1022,
+    "n_bits": 752,
+    "suffix_repetitions_bits": 46,
+    "passed": true
+  },
+  {
+    "a_bits": 1039,
+    "n_bits": 763,
+    "suffix_repetitions_bits": 47,
+    "passed": true
+  },
+  {
+    "a_bits": 1056,
+    "n_bits": 774,
+    "suffix_repetitions_bits": 48,
+    "passed": true
+  },
+  {
+    "a_bits": 1073,
+    "n_bits": 785,
+    "suffix_repetitions_bits": 49,
+    "passed": true
+  },
+  {
+    "a_bits": 1090,
+    "n_bits": 796,
+    "suffix_repetitions_bits": 50,
+    "passed": true
+  },
+  {
+    "a_bits": 1107,
+    "n_bits": 807,
+    "suffix_repetitions_bits": 51,
+    "passed": true
+  },
+  {
+    "a_bits": 1124,
+    "n_bits": 818,
+    "suffix_repetitions_bits": 52,
+    "passed": true
+  },
+  {
+    "a_bits": 1141,
+    "n_bits": 829,
+    "suffix_repetitions_bits": 53,
+    "passed": true
+  },
+  {
+    "a_bits": 1158,
+    "n_bits": 840,
+    "suffix_repetitions_bits": 54,
+    "passed": true
+  },
+  {
+    "a_bits": 1175,
+    "n_bits": 851,
+    "suffix_repetitions_bits": 55,
+    "passed": true
+  },
+  {
+    "a_bits": 1192,
+    "n_bits": 862,
+    "suffix_repetitions_bits": 56,
+    "passed": true
+  },
+  {
+    "a_bits": 1209,
+    "n_bits": 873,
+    "suffix_repetitions_bits": 57,
+    "passed": true
+  },
+  {
+    "a_bits": 1226,
+    "n_bits": 884,
+    "suffix_repetitions_bits": 58,
+    "passed": true
+  },
+  {
+    "a_bits": 1243,
+    "n_bits": 895,
+    "suffix_repetitions_bits": 59,
+    "passed": true
+  },
+  {
+    "a_bits": 1260,
+    "n_bits": 906,
+    "suffix_repetitions_bits": 60,
+    "passed": true
+  },
+  {
+    "a_bits": 1277,
+    "n_bits": 917,
+    "suffix_repetitions_bits": 61,
+    "passed": true
+  },
+  {
+    "a_bits": 1294,
+    "n_bits": 928,
+    "suffix_repetitions_bits": 62,
+    "passed": true
+  },
+  {
+    "a_bits": 1311,
+    "n_bits": 939,
+    "suffix_repetitions_bits": 63,
+    "passed": true
+  },
+  {
+    "a_bits": 1328,
+    "n_bits": 950,
+    "suffix_repetitions_bits": 64,
+    "passed": true
+  }
+]

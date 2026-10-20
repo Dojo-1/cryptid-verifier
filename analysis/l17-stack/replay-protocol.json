@@ -1,0 +1,11 @@
+{
+  "recorded_at_utc": "2026-10-20T19:04:05.171804+00:00",
+  "trigger": "State-only discovery stops before first F1100 at global rewrite 226797.",
+  "discovery_sha256": "447a80c563b9267210496270f684964b8fe5f819e73cee75ed6a41efeb16ef15",
+  "start": "extension.json stop after 100000 rewrites; preserves its full relative time/head totals.",
+  "maximum_global_rewrites": 230000,
+  "maximum_counter_bits": 262144,
+  "maximum_wall_seconds": 300,
+  "validation": "Full raw-transition formulas, shifts, exact complete words, guarded separate declarative critic on every edge. First F1100 and resulting new layers retained; stop at first unsupported, four pure layers, or budgets.",
+  "not_claimed": "No raw simulation at these counters, no Lean reachability, no non-halting or unbounded blank-orbit stack."
+}

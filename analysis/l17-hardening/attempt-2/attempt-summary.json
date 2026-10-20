@@ -1,0 +1,5 @@
+{
+  "defined_cpp_transitions_before_stop": 24664369,
+  "stop": "Critic zero-repetition representation failure; no source formula failure.",
+  "continuation": "Reuse only hash-bound literal outputs with identical requests; rerun all actor/spec, arithmetic, representation and fault-injection checks."
+}

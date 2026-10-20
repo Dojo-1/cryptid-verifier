@@ -1,0 +1,267 @@
+{
+  "task_id": "l17-comparator-acaf-20261020",
+  "claim": {
+    "text": "The frozen finite L17 formulas survive a separately implemented literal comparator, ACAF boundary/context probes and specified live-source mutants; the new critic has a corrected zero-repetition regression.",
+    "scope": "6381 endpoints, 192 window contexts, finite controls, 20 specified mutants and 2100 conditional arithmetic edges. No new Lean theorem or infinite continuation.",
+    "status_before": "M",
+    "assumptions": [
+      "Literal L17 table and blank-exterior complete-tape semantics.",
+      "The separate claim transcription and all code paths are by the same author.",
+      "The incoming blank boundary is supplied by Claude and not independently built here."
+    ],
+    "forbidden_promotions": [
+      "No external independent replication or independent human transcription.",
+      "No complete stacked closure, unbounded-depth theorem, non-halting or new certified Cryptid.",
+      "Twenty selected mutant kills do not mean complete coverage.",
+      "Huge integer/trace checks are arithmetic, not raw runs at those times."
+    ]
+  },
+  "specification": {
+    "intended_object": "Exact physical endpoints, raw time, head/state/halting, locality, guard contracts, equivalent representations and the frozen symbolic chain.",
+    "invariants": [
+      "Only exterior trailing zeros are implicit; leading/interior cells retain position.",
+      "Undefined transitions halt without a successful write or move.",
+      "Critic consumes the exact hashed claims.json file and imports no actor dependencies.",
+      "Fresh raw work is bounded and cached outputs require identical request/response/binary hashes."
+    ],
+    "known_answer_cases": [
+      "Blank A reaches C with two ones after two transitions.",
+      "F reading one halts at zero defined transitions, including zero budget.",
+      "Write/erase-only tables and all-undefined table have analytic endpoints.",
+      "Zero copies of 10 equal empty; source 001 has its one at position 2."
+    ]
+  },
+  "implementation": {
+    "artifact": "claims.json; specification.py; raw_comparator.cpp; backend.py; actor_bridge.py; corpus.py; controls.py; mutations.py; trace_critic.py; run_hardening.py; export_cases.py; test_hardening.py",
+    "commit": "Additive analysis/l17-hardening directory; all 59 prior ZIP payloads remain unchanged.",
+    "environment": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; C++17; Python 3.12; standard library; no Lean build.",
+    "live_entrypoint": "README.md reproduction commands; run_hardening.py consumes claims.json and the frozen actor directory.",
+    "representation": "Separate sparse C++ tape plus declarative word chunks/exact integer AST; only actor_bridge imports frozen Python actor code."
+  },
+  "metric": {
+    "name": "Exact endpoint agreement, context locality, contract rejection, mutant sensitivity and typed finite controls.",
+    "type": "typed_tuple",
+    "units": "Probes, defined raw transitions, cells, read events, symbolic edges and specified mutant classes.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Translation, reflection and state renaming of both table and configuration.",
+      "Split periodic chunks, zero repetitions, primitive patterns and exterior zeros.",
+      "Huge exact counters without expansion; no hash-only word equality."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "6381 complete C++ endpoint matches: 4333 frozen and 2048 new; actor has 6372 direct matches and 9 explicit Q(q=0) non-applicable entries.",
+      "300 random raw controls, 8 analytic controls and 10 passing critic/harness tests."
+    ],
+    "structural": [
+      "Critic dependency isolation and quiet imports with no working-directory writes.",
+      "All 31 consumed frozen actor files verified unchanged before/after.",
+      "Literal parser rejects malformed inputs; integer expression parser has no calls or attribute access."
+    ],
+    "property_based": [
+      "1024 word representations and explicit small-string equality/slicing oracles.",
+      "64 huge-counter cases and 28 invalid guards.",
+      "Sixteen fixed kernels across twelve arbitrary outside contexts each."
+    ],
+    "metamorphic": [
+      "192 translation/reflection/state-renaming variants.",
+      "84 identical requests at O2, O0 and UBSan; full outputs agree.",
+      "Conditional arithmetic checked by a separate edge parser on 100+2000 frozen steps."
+    ],
+    "fuzzing": [
+      "2048 fixed ACAF contexts/guard-scale cases.",
+      "All 20 live implementation mutants detected: 19 physical/encoding, 1 rejection contract.",
+      "Bounded shrinking; 18 minimized in-guard rule witnesses rechecked against literal C++."
+    ],
+    "historical": [
+      "Critic zero-repetition defect retained with pre-fix source and dedicated regression.",
+      "Class-method mutator lookup fixed and regression tested.",
+      "Leading-zero block-encoding defect reintroduced as a live mutant and reduced to 001.",
+      "First empty compiler/output artifacts preserved; raw work corrected from retained metadata."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Same literal input, state, head, machine and defined-transition budget for declarative expected output and C++ raw machine.",
+      "Compiler settings share the same source and 84 matched requests."
+    ],
+    "negative_controls": [
+      "Changed transition and wrong start after state renaming are rejected as equivalences.",
+      "Nine malformed raw requests rejected.",
+      "Live-source target/time/head/context/guard/encoder defects are detected; no expected-value-only mutation is counted."
+    ],
+    "compute_parity": "No timing comparison. Cumulative actual work includes failed attempts and cache misses; fresh batches are preflight-bounded.",
+    "parameter_parity": "Identical complete source state for each comparison, or explicitly recorded frame transport.",
+    "sampling_parity": "Fixed original queues and a prospective deterministic new seed, suffix-length/density grid and explicit guards. No uniform-time or probabilistic inference.",
+    "data_access_parity": "Full support available to the comparator; actor imports stay behind the explicit adapter. Hash-bound cached literal outputs are rechecked against current expected values."
+  },
+  "preregistration": {
+    "prediction": "Local prospective protocol/claim/mutation records before their runs, not external authenticated preregistration. Preserve all corrections without changing seed or source claims.",
+    "primary_metric": "Zero mismatched physical endpoints and read windows; separately report all specified mutant outcomes.",
+    "uncertainty_method": "Exact finite checks, full traces, short-string oracles and a self-contained period-lemma derivation; no p-value or infinite-orbit inference.",
+    "kill_condition": "Any mismatch suspends that claim on its stated guard. Preserve the failing record and shrink within 128 attempts.",
+    "stop_condition": "2048 new ACAF endpoints and the fixed control counts; <=200000 defined transitions per request and <=80000000 cumulative actual C++ transitions including failed attempts. No orbit extension.",
+    "promotion_rule": "Finite agreement remains M. Actual Lean theorem statements/builds and separate reachable closure are required for stronger conclusions."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Frozen original handoff ZIP SHA256 dcddfd2b5812c189f463af0317ed4a6e23d332c67fc425786ff688b8980d5fdb.",
+      "Literal L17 machine and user-supplied Claude brief.",
+      "claims.json SHA256 d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074.",
+      "PERIOD-COMPARATOR.md contains the exact mathematical argument used; classic bibliography and abstract corroboration are named without claiming a retrieved original proof."
+    ],
+    "execution_records": [
+      "execution.json",
+      "compiler-build.json",
+      "case-queue-description.json",
+      "case-queue.jsonl.gz",
+      "rule-comparisons.json",
+      "raw-rule-results.jsonl.gz",
+      "window-comparisons.json",
+      "controls.json",
+      "trace-comparisons.json",
+      "mutation-results.json",
+      "regression-seeds.json",
+      "tests.log",
+      "raw-work-ledger.jsonl",
+      "attempt-1/attempt-summary.json",
+      "attempt-2/critic-failure.json",
+      "attempt-3/attempt-summary.json",
+      "integrity.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Separate literal C++ machine and declarative specification",
+        "origin": "Different parser, storage, arithmetic evaluator and word-comparison code paths by the same author; not external replication or fresh-author transcription.",
+        "artifact": "raw_comparator.cpp; claims.json; specification.py; PERIOD-COMPARATOR.md"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "6381 endpoints -> exact case queue, literal request digest and complete raw output.",
+      "Arbitrary outside contexts -> 192 complete traced outputs, kernel witnesses and read-window comparisons.",
+      "Specified mutation sensitivity -> live-source hashes, recorded first/minimized failures and 18 raw witness rechecks.",
+      "Huge/trace arithmetic -> huge-integer-checks.json and trace-comparisons.json; conditional only.",
+      "Critic/harness corrections -> attempt history, pre-fix source and ten tests.",
+      "Actual resource bound -> execution.json, retained stage metadata and durable raw-work-ledger.jsonl."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "specification",
+        "preserved": [
+          "Harden the existing L17 contribution while Claude formalizes."
+        ],
+        "transformed": [
+          "Research claims become bounded endpoint/context/contract obligations."
+        ],
+        "lost": [
+          "No complete global machine decision."
+        ],
+        "remainder": [
+          "Lean and reachable closure."
+        ]
+      },
+      {
+        "from": "specification",
+        "to": "implementation",
+        "preserved": [
+          "Complete tape, time, head, guards and undefined-transition semantics."
+        ],
+        "transformed": [
+          "Human-readable formulas become actual consumed declarative claims."
+        ],
+        "lost": [
+          "No independent authorship of the transcription."
+        ],
+        "remainder": [
+          "No formally verified comparator."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "validation",
+        "preserved": [
+          "Separate code paths and matched physical requests."
+        ],
+        "transformed": [
+          "ACAF supplies adversarial contexts and live mutants."
+        ],
+        "lost": [
+          "No exhaustive infinite parameter coverage."
+        ],
+        "remainder": [
+          "Unknown remaining defects."
+        ]
+      },
+      {
+        "from": "validation",
+        "to": "measurement",
+        "preserved": [
+          "Failures, counterexamples, full outputs and actual work."
+        ],
+        "transformed": [
+          "Runs become hash-bound logs and regression seeds."
+        ],
+        "lost": [
+          "First raw output artifact was empty; later full replay retained and first work charged from metadata."
+        ],
+        "remainder": [
+          "External replication."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Finite scope and authorship correlation."
+        ],
+        "transformed": [
+          "Results support stronger bounded confidence and a corrected critic."
+        ],
+        "lost": [
+          "No promotion to universal or infinite statements."
+        ],
+        "remainder": [
+          "Global stacked behavior."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "A replayable hardening handoff for Claude."
+        ],
+        "transformed": [
+          "Broad request becomes a fixed comparator/ACAF campaign and finite Lean obligations."
+        ],
+        "lost": [
+          "No new discovery-rate or non-halting claim."
+        ],
+        "remainder": [
+          "Actual formalization and independent reproduction."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "6381 raw endpoints, 192 window contexts, finite controls, 20/20 specified live mutants, 2100 conditional trace edges and 10 critic tests pass. A zero-repetition bug in the new critic was found and fixed.",
+    "effect_size": "Zero original L17 formula changes. Detection of the 20 named mutants only. 49268238 actual C++ transitions within 80 million across recorded attempts.",
+    "uncertainty": "Finite tests and same-author code paths. Nine actor macro identities explicitly not applicable. No new Lean build or closure/non-halting result. Compiler parity is 84 matched requests per setting, not the whole corpus.",
+    "status_after": "M",
+    "retired_claims": [
+      "The pre-fix critic can inspect zero-count chunks during suffix trimming.",
+      "Selected mutant detection alone establishes complete correctness or coverage."
+    ],
+    "active_remainder": [
+      "Formalize the fixed contextual kernels and sweep compositions.",
+      "Verify actual theorem statements against the handoff guards and counts.",
+      "Obtain external reproduction.",
+      "Analyze reachable stacked prefixes without treating the finite trace as non-halting."
+    ]
+  }
+}

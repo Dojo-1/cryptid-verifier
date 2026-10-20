@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-10-20T18:56:05.760386+00:00",
+  "trigger": "User relays Claude fresh replay and requests the remaining blank-orbit stack question.",
+  "external_report": {
+    "origin": "User-provided Claude message; not independently retrieved here.",
+    "reported_commit": "8ff10a9",
+    "reported_results": "6381 fresh C++ endpoints, 192 windows, 20 mutant kills, and 18 independent simulator checks agree; F1100 and six short cases still not Lean formalized."
+  },
+  "source": "C(6575648756,1), starting from the already recorded 2000-rewrite endpoint.",
+  "known_rule_source_sha256": "b14f119c067c3afbea2564c640cb7471343dc51b64a01f1c28c171c7c043d237",
+  "budgets": {
+    "maximum_total_contextual_rewrites_including_existing_prefix": 100000,
+    "maximum_counter_bits": 262144,
+    "maximum_symbolic_wall_seconds": 300,
+    "checkpoint_interval": 1000,
+    "maximum_new_raw_transitions_per_probe": 200000,
+    "maximum_exploratory_raw_probes": 128,
+    "maximum_validation_raw_probes": 1024
+  },
+  "stage_A": "Use the original guarded dispatcher plus the already derived F1100 and six short lemmas; stop and record the first use of those lemmas.",
+  "stage_B": "Continue within the same global bound to the first unsupported prefix, actual halt if certified by a rule, or four pure tail layers. Preserve the first creation and every depth change.",
+  "metrics": [
+    "Exact complete word and integer count/shift agreement with the separate declarative critic at every derived rewrite.",
+    "Pure-tail depth measured from canonical word structure, with gap shapes and P-to-Z bridge states separately typed.",
+    "No inference from a finite depth record to a global bound or unboundedness."
+  ],
+  "kill": "Any actor/critic discrepancy stops the symbolic run. New prefix rules require read-window derivations and bounded literal-machine endpoint checks.",
+  "stop": "Fixed budgets above; no extension of a failing raw horizon. Later phases must be separately recorded before validation.",
+  "promotion": "All new large orbit checkpoints are conditional arithmetic, not raw simulation, new Lean reachability or non-halting. A universal stack-depth claim requires a separate argument."
+}

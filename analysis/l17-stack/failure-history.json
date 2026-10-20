@@ -1,0 +1,19 @@
+[
+  {
+    "attempt": 1,
+    "failure": "Comparator rejected input: invalid header",
+    "cause": "New harness supplied N0 rather than integer case ID. Literal comparator rejects first header before executing any transition.",
+    "raw_defined_transitions": 0,
+    "source_before_fix_sha256": "c4444fa734c69ccdf4a74c8c24906af97ef42d8f33dc69ed6ce4992904b77c95",
+    "correction": "Use integer IDs throughout; labels remain separate descriptions.",
+    "rule_status": "No endpoint mismatch occurred; simulation did not start."
+  },
+  {
+    "attempt": "Review before new unit checks",
+    "failure": "Unexercised short-1100 branch passed an extra c parameter to declarative schemas S1..S6, which declare only a.",
+    "cause": "New full-time bridge reused F1100 parameter names for the short schemas.",
+    "raw_defined_transitions": 0,
+    "correction": "Pass only declared a for short schemas; add regression for all six branches.",
+    "scope": "No recorded orbit replay used a short-1100 branch; results unchanged."
+  }
+]

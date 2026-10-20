@@ -1,0 +1,20 @@
+{
+  "status": "Derived from the 64 exploratory probes and checked finite kernels, before this separate validation phase. Not an authenticated preregistration.",
+  "source": "Ccal(a;(10)^c1100v), a>=7, 1<=c<=6, arbitrary finite v",
+  "candidate_table": [
+    {"c":1,"target":"Ccal(0;1^(2a-2)(01)^2 1^6 v)","steps":"4a+36","shift":-2},
+    {"c":2,"target":"Ccal(0;1^(2a-10)(01)^10 v)","steps":"4a+110","shift":-2},
+    {"c":3,"target":"Ccal(a+7;1^3 v)","steps":"6a+75","shift":-7},
+    {"c":4,"target":"Ccal(0;1^(2a-2)(01)1(01)^5 1^3 v)","steps":"4a+70","shift":-2},
+    {"c":5,"target":"Ccal(0;1^(2a-12)(01)^14 v)","steps":"4a+154","shift":-2},
+    {"c":6,"target":"Ccal(0;1^(2a-12)(01)^6 0(01)^7 1^3 v)","steps":"4a+116","shift":-2}
+  ],
+  "validation": {
+    "exhaustive_grid":"a=7..120, c=1..6, v empty: 684 cases",
+    "larger_contexts":"64 seeded probes, a=1000..10000, c=1..6, suffix length 0..40",
+    "reference_limit_per_probe":200000,
+    "block_widths":[2,6],
+    "stop":"First mismatch or the fixed grid and seeded checks are complete. No extension of failed horizons."
+  },
+  "forbidden_promotion":"These lemmas complete the listed one-tail inputs at the stated guards; they do not prove closure for multiple tails or non-halting."
+}

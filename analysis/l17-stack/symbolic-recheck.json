@@ -1,0 +1,21 @@
+{
+  "start_rewrite": 100000,
+  "end_rewrite": 673467,
+  "state_edges": 573467,
+  "rule_counts": {
+    "N": 27711,
+    "Z": 101003,
+    "E": 156774,
+    "Q": 177623,
+    "F100": 34783,
+    "F111": 20986,
+    "P": 54584,
+    "F1100": 3
+  },
+  "matched_complete_checkpoints": 73,
+  "matched_choice_codes": 443467,
+  "passed": true,
+  "actor_imported": false,
+  "time_or_head_totals_recomputed": false,
+  "elapsed_seconds": 104.28325604100064
+}

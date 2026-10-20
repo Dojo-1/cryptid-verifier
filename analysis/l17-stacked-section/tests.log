@@ -1,0 +1,19 @@
+test_halt_and_event_budget_are_not_nonhalting_claims (test_stacked.BlockChecks.test_halt_and_event_budget_are_not_nonhalting_claims) ... ok
+test_leading_zero_alignment_regression (test_stacked.BlockChecks.test_leading_zero_alignment_regression) ... ok
+test_random_full_state_agreement (test_stacked.BlockChecks.test_random_full_state_agreement) ... ok
+test_restart_partition_preserves_complete_state (test_stacked.BlockChecks.test_restart_partition_preserves_complete_state) ... ok
+test_derived_trajectory_respects_event_limit (test_stacked.RuleChecks.test_derived_trajectory_respects_event_limit) ... ok
+test_fixed_paths_read_only_their_declared_context (test_stacked.RuleChecks.test_fixed_paths_read_only_their_declared_context) ... ok
+test_new_core_guards_and_arbitrary_right_context (test_stacked.RuleChecks.test_new_core_guards_and_arbitrary_right_context) ... ok
+test_one_tail_family_is_not_closed_counterexample (test_stacked.RuleChecks.test_one_tail_family_is_not_closed_counterexample) ... ok
+test_residue_guard_boundaries_and_raw_endpoints (test_stacked.RuleChecks.test_residue_guard_boundaries_and_raw_endpoints) ... ok
+test_short_tail_fixed_windows_and_boundaries (test_stacked.RuleChecks.test_short_tail_fixed_windows_and_boundaries) ... ok
+test_small_cases_stay_explicitly_unsupported (test_stacked.RuleChecks.test_small_cases_stay_explicitly_unsupported) ... ok
+test_stack_producing_core_guards_and_context (test_stacked.RuleChecks.test_stack_producing_core_guards_and_context) ... ok
+test_exact_huge_word_identity_and_negative_control (test_stacked.WordChecks.test_exact_huge_word_identity_and_negative_control) ... ok
+test_expansion_slicing_and_periodic_prefix_oracles (test_stacked.WordChecks.test_expansion_slicing_and_periodic_prefix_oracles) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.141s
+
+OK

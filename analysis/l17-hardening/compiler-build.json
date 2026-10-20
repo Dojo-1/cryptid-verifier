@@ -1,0 +1,49 @@
+{
+  "O2": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "flags": [
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-pedantic",
+      "-Werror"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "O0": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "flags": [
+      "-std=c++17",
+      "-O0",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-pedantic",
+      "-Werror"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8",
+    "stderr": ""
+  },
+  "UBSan": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "flags": [
+      "-std=c++17",
+      "-O1",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-Wall",
+      "-Wextra",
+      "-Wconversion",
+      "-pedantic",
+      "-Werror"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "b140ed41033074e7b3ede860bb00ff0f3910c5e10b913f7629f1ceccd0142a98",
+    "stderr": ""
+  }
+}

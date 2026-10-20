@@ -1,0 +1,35 @@
+{
+  "frozen": 4333,
+  "new_acaf": 2048,
+  "by_claim": {
+    "R1": 176,
+    "R2": 180,
+    "F100": 587,
+    "F111": 854,
+    "N": 365,
+    "P": 214,
+    "Z": 351,
+    "Q": 225,
+    "E": 115,
+    "T0": 683,
+    "T2": 683,
+    "F1100": 444,
+    "S1": 229,
+    "S2": 235,
+    "S3": 232,
+    "S4": 231,
+    "S5": 231,
+    "S6": 238,
+    "D": 108
+  },
+  "provenance": {
+    "requests": 6381,
+    "defined_transitions": 24325083,
+    "request_sha256": "c8f2dadb7461cf3f02e89a78bc4ef8a3dcb0de0fd60e18998a4c877dce202105",
+    "response_sha256": "ce1a621453e32f42390ed5770531607e627c4167601d7d55109e5cd85e0f6eec",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "failures": [],
+  "scope": "Separate C++ literal TM against claims.json, including exact physical support."
+}

@@ -1,0 +1,139 @@
+{
+  "started_at_utc": "2026-10-20T18:09:51.366807+00:00",
+  "completed_at_utc": "2026-10-20T18:09:55.696943+00:00",
+  "claims_consumed": {
+    "path": "claims.json",
+    "sha256": "d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074"
+  },
+  "frozen_actor_files": {
+    "analysis/l17-stacked-section/CLAUDE-BRIEF.md": "a95f0c482f50125d650ef55d51ac0325900c479b9d556e10b887f37b20685e02",
+    "analysis/l17-stacked-section/DERIVATION.md": "9742ce935ad2bcaa37acc181dc26cf97c590682c10f042073ad5ac4cbf39b191",
+    "analysis/l17-stacked-section/README.md": "0e2638a5733710a0ea888def70951efabcf73bbb6cc4732022448a1408f4efc7",
+    "analysis/l17-stacked-section/audit-manifest.json": "945d93ffc96f0d18e04e61c7702a9ac390d3dc4d254acd50d32e1ab814f4e88c",
+    "analysis/l17-stacked-section/audit-validation.log": "16c6fa7469ac19dfe2f35940390f804f21461dd1e0daeb16904826221e596fdc",
+    "analysis/l17-stacked-section/block_sim.py": "7125324e0ab57602ea7fe054380e1e3ce8be58858f6f17e34bc108234bbe96ae",
+    "analysis/l17-stacked-section/integrity.json": "46b58adca30c9283c9adc573eb06d2522abd7ed81bc27c56089b3f682227c207",
+    "analysis/l17-stacked-section/probe_remaining.py": "defc0403f2007e5d33aeb84b2235ff7dd0a80d5348140425fcc95e9f0cd0fa79",
+    "analysis/l17-stacked-section/protocol.json": "02639006ea2041db9875b9ad402096bea6c8c737a5d3b376bfb57b3280fdcaa0",
+    "analysis/l17-stacked-section/reference.py": "0d4a7905b28fcf96b685a66b846a5604d049ed405b3a123937ac2c5e25b9c200",
+    "analysis/l17-stacked-section/remaining-tail-predictions.json": "d296881f9d7d04aed1ad436a119a29b59d7cbd3bc5b8e36c828242022420980f",
+    "analysis/l17-stacked-section/remaining-tail-probes.json": "395b07b76c9ce851ff2b801b910d752ce37f31d9fdbc4b7120885a6c633fef96",
+    "analysis/l17-stacked-section/remaining-tail-protocol.json": "c94c1c1470ab495d3f4e1f9062c71a86ada165aed59a49f48319e0cddaf27937",
+    "analysis/l17-stacked-section/rules.py": "b14f119c067c3afbea2564c640cb7471343dc51b64a01f1c28c171c7c043d237",
+    "analysis/l17-stacked-section/small-tail-checks.json": "92e19a97cc7cd73b479062025139d8e178ab824d4db1fe4c77c8b8ae641979a5",
+    "analysis/l17-stacked-section/small-tail-predictions.json": "f620e85f00472c183c3fcd804329010877a3c00bbaa59e09592e8e53c14b84b5",
+    "analysis/l17-stacked-section/small-tail-validation.log": "ab994007386ce5805473abc9ee48332993ed1c7b1d76b24d74387a5a95430ffe",
+    "analysis/l17-stacked-section/steering-and-predictions.json": "1687909917bf0454bc31b0a7bd69a0b90332733fb28bc66470f4fcc7d3e08b13",
+    "analysis/l17-stacked-section/symbolic-extension-protocol.json": "94ef846b4074810e4a1af6bddd33bf46bf08f224b345958e815ab046273b4931",
+    "analysis/l17-stacked-section/symbolic-extension.json": "a31b550580de6ca880ee11f43a50481883cc6efb7b9c482dabf86fcde5424c97",
+    "analysis/l17-stacked-section/tail-family-checks.json": "c175af0b6543f009b814d67f9f14a246338cbaf5ab2bcdc501d5b63e3687a4f3",
+    "analysis/l17-stacked-section/tail-validation.log": "9feb878f1ed7009127efd63a697e0849237eedbc5e24791740459df65bdfc6cb",
+    "analysis/l17-stacked-section/test_stacked.py": "328f2ac0765fb44f825f9691dc97bd6be1633ac325de7176c51759144a005d7d",
+    "analysis/l17-stacked-section/tests.log": "bc840224f6c9b4b2583b759f7062c7d662a5fab420562a2227f9779e886a771b",
+    "analysis/l17-stacked-section/trace_symbolic.py": "4a5aec6b5dd03eb6a99f8cb386111e9f621f7855173ddee8d82ef1db28e11159",
+    "analysis/l17-stacked-section/validate.py": "44e344fe770b0b3bd0ec6488e688088b6a6b85784cd234d966176be70f188479",
+    "analysis/l17-stacked-section/validate_small_tails.py": "e3d30e09e460c115471bafee8a65fd025a4fb6899eedc44e64a1a087a9475574",
+    "analysis/l17-stacked-section/validate_tail_family.py": "05ef0add49cf923389127946b7bf7d567718a3a2c3b1d4bb9474f602f22ba138",
+    "analysis/l17-stacked-section/validation-results.json": "76d5e86eb8a497ddc92d6ed587d159907d4f03b83378f8867893fbabfe692867",
+    "analysis/l17-stacked-section/validation.log": "fa686380e99d5a0628520034ccee3d0e2f58327a0822216ff2700980f879e52f",
+    "analysis/l17-stacked-section/words.py": "3b793547a7d7279b2a8f4909d1e2dafdc251a84e20cdde7947fc76fdd2988c86"
+  },
+  "protocol_sha256": "5689c4fd569de033fc5a5b73f34d74873cd44ef724b58951996161b678b0fa13",
+  "mutation_plan_sha256": "24a66178b149c5b7d2288e34e6b412efcf7ae61b3c32ff83b514259dc96a82dd",
+  "compiler": {
+    "O2": {
+      "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+      "flags": [
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wconversion",
+        "-pedantic",
+        "-Werror"
+      ],
+      "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+      "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+      "stderr": ""
+    },
+    "O0": {
+      "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+      "flags": [
+        "-std=c++17",
+        "-O0",
+        "-Wall",
+        "-Wextra",
+        "-Wconversion",
+        "-pedantic",
+        "-Werror"
+      ],
+      "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+      "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8",
+      "stderr": ""
+    },
+    "UBSan": {
+      "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+      "flags": [
+        "-std=c++17",
+        "-O1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=all",
+        "-Wall",
+        "-Wextra",
+        "-Wconversion",
+        "-pedantic",
+        "-Werror"
+      ],
+      "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+      "binary_sha256": "b140ed41033074e7b3ede860bb00ff0f3910c5e10b913f7629f1ceccd0142a98",
+      "stderr": ""
+    }
+  },
+  "counts": {
+    "frozen_rule_checks": 4333,
+    "new_acaf_rule_checks": 2048,
+    "actor": {
+      "pass": 6372,
+      "not_applicable": 9
+    },
+    "window_contexts": 192,
+    "random_raw_controls": 300,
+    "analytic_controls": 8,
+    "frame_variants": 192,
+    "word_representation_cases": 1024,
+    "huge_integer_cases": 64,
+    "guard_rejections": 28,
+    "trace_edges": 2100,
+    "mutants": 20,
+    "mutant_results": {
+      "killed": 20
+    },
+    "minimized_witnesses_rechecked": 18,
+    "defined_transitions_in_consumed_traces": 24666481,
+    "additional_defined_cpp_transitions_this_attempt": 4,
+    "prior_attempt_defined_cpp_transitions": 49268234,
+    "cumulative_executed_defined_cpp_transitions": 49268238
+  },
+  "source_hashes": {
+    "controls.py": "d9d8df7a2ec5dc0bccac5c9d38df773467f39ffb564ea111f859e5d37c9a3f3c",
+    "trace_critic.py": "9b6d1ce91e78206defc0875f57a6ee7c876fb3dd6dd64941c9dd416a069a2d76",
+    "mutations.py": "0e467f61522ae22d4e4049d8682dc6e6b01a578c0ba86ae9ab62400d75ef8af2",
+    "test_hardening.py": "c2bb255684fb4ab811d666283b459a4920905aeaa41fcb92b5439b70814c8f23",
+    "run_hardening.py": "07f02cf9724af55d80ee1b929ec5ed917ead46593f23bd6d87208e20ed6cad99",
+    "corpus.py": "62c95ea3eeed553e5a24d6f24183d89b75f07acfc06c38a0155d9adc03ea6331",
+    "actor_bridge.py": "dbe0441064614b676f365c5dbbcc570b195d1349e91a941809b6170cbbd19ca2",
+    "backend.py": "4e64775b095abb570d2ef220a27cd87bf134d79a4d43afcf2ced05c6288e5e97",
+    "specification.py": "c1682b3d24be7188f964e06fc8740d4aed96980795d1aa93e4e9f6493c4e38e1"
+  },
+  "minimized_witness_provenance": {
+    "requests": 18,
+    "defined_transitions": 2112,
+    "executed_defined_transitions": 0,
+    "cache_reused": true,
+    "request_sha256": "7c2becceffe7d26ebb860e13f097b7265ec0953302c369e0a4ffe5672bb41b9b",
+    "response_sha256": "f5864487ba17aa2a3c61071eac5a68ca0bafa5bad319ac020795dcbf56bdae6d",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "scope": "Finite comparator/ACAF hardening by one author with separate code paths; no new Lean build, orbit extension, complete stack system or non-halting proof."
+}

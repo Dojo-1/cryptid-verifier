@@ -1,0 +1,5 @@
+Residue grid: 76 larger/translated: 64 contextual cores: 512
+Contextual rewrites: 933 {'normalize01': 258, 'pair11': 106, 'reset00': 243, 'countdown111': 118, 'core100': 159, 'core111': 42, 'entry1': 7} explicit unsupported: 67
+Independent random block checks: 300 kernels: 8
+Derived arithmetic trace stop: {"budget": "contextual rewrite count", "limit": 100, "a": 862312594128352370665051, "tail": []}
+All fixed reference limits respected; maximum residue/core count: 195911

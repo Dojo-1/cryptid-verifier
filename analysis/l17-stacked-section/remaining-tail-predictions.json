@@ -1,0 +1,20 @@
+{
+  "status": "Derived after the 64 exploratory remaining-tail probes and a checked 60-transition local path; registered here before the validation below. Not an externally authenticated preregistration.",
+  "new_contextual_candidate": {
+    "source": "Ccal(a;(10)^c1100v)",
+    "guards": "a>=7, c>=7; arbitrary finite suffix v",
+    "target": "Ccal(0;1^(2a-12)(01)^7 1^(2c-13)(01)^7 1^3 v)",
+    "raw_transitions": "4a+4c+92",
+    "head_shift": -2
+  },
+  "validation_scope": {
+    "one_tail_grid": "a=7..14, c=1..8, r=0..8, b=0,1,2; b=1,r=1 uses c>=7 only",
+    "contextual_new_rule": "256 seeded probes; a=7..64, c=7..32, arbitrary suffix length 0..40",
+    "larger_new_rule": "64 seeded probes; a=1000..20000, c=100..2000, arbitrary suffix length 0..40",
+    "reference_limit_per_probe": 200000,
+    "block_widths": [2,6],
+    "stop_on_first_mismatch": true
+  },
+  "existing_trace_policy": "The original 100- and 2000-rewrite traces use the original rewrite engine unchanged. core1100 is supplied as a new isolated lemma, so the frozen traces and earlier validation remain reproducible.",
+  "forbidden_promotions": ["One extra layer is not unbounded stack growth on the blank orbit.", "Finite endpoint checks do not replace the universal sweep proof or Lean formalization."]
+}

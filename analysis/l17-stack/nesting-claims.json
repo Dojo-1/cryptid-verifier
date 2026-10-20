@@ -1,0 +1,20 @@
+{
+  "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+  "provenance": "New separate declarative transcription by the same author, after exploratory K7/K27/K41 paths. Not independently authored and not Lean formalized.",
+  "rules": {
+    "NEST": {
+      "guards": {"a": [7, null], "n": [0, null]},
+      "source": [["01", "a"], ["1", 1], ["01010101010101011", "n"], ["00", 1], ["v", 1]],
+      "target": [["1", "2*a-12"], ["01010101010101111", "n+1"], ["v", 1]],
+      "steps": "4*a+74*n+50",
+      "shift": -2
+    },
+    "A_NEST": {
+      "guards": {"n": [0, null]},
+      "source": [["10", 8], ["1", 1], ["01010101010101011", "n"], ["00", 1], ["v", 1]],
+      "target": [["11", 1], ["01010101010101111", "n+1"], ["v", 1]],
+      "steps": "60+74*n",
+      "shift": -16
+    }
+  }
+}
