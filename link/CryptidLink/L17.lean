@@ -37,13 +37,13 @@ def cfgA (a b : ℕ) : Cfg (Fin 2) (Fin 6) :=
 
 /-! ## List identities -/
 
-theorem rot_list (x y : Fin 2) : ∀ n, [x] ++ ([y, x] : List (Fin 2)) ^ n = ([x, y] : List (Fin 2)) ^ n ++ [x]
+theorem rot_list (x y : Fin 2) : ∀ n : ℕ, [x] ++ ([y, x] : List (Fin 2)) ^ n = ([x, y] : List (Fin 2)) ^ n ++ [x]
   | 0 => by simp [list_pow_zero]
   | n + 1 => by
     simp only [list_pow_succ, List.append_assoc]
     rw [← rot_list x y n] <;> rfl
 
-theorem rot2 (x y : Fin 2) : ∀ m, ([x, y] : List (Fin 2)) ^ m ++ [x, y] = [x] ++ (([y, x] : List (Fin 2)) ^ m ++ [y])
+theorem rot2 (x y : Fin 2) : ∀ m : ℕ, ([x, y] : List (Fin 2)) ^ m ++ [x, y] = [x] ++ (([y, x] : List (Fin 2)) ^ m ++ [y])
   | 0 => rfl
   | m + 1 => by
     simp only [list_pow_succ, List.append_assoc]
@@ -198,7 +198,6 @@ theorem ones_LB (a : ℕ) :
       ListBlank.append (([1] : List (Fin 2)) ^ (2 * a + 4)) default := by
   simp only [ListBlank.append_append]
   congr 1
-  (try simp only [List.append_assoc])
   exact ones a
 
 theorem branch_b0 (a : ℕ) : ReachesPlus target (cfgC a 0) (cfgC 0 (2 * a + 4)) := by
@@ -222,7 +221,6 @@ theorem tail_eq (a : ℕ) (R : ListBlank (Fin 2)) :
       ListBlank.append (([0, 1] : List (Fin 2)) ^ (a + 4)) (ListBlank.append [0] R) := by
   simp only [ListBlank.append_append]
   congr 1
-  (try simp only [List.append_assoc])
   exact L1 a
 
 theorem branch_ge2 (a b : ℕ) (ha : 1 ≤ a) :
