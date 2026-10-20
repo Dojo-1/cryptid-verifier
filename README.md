@@ -53,7 +53,8 @@ encoding φ and an invariant), and each machine file instantiates it.
 
 For the lead L17 (`1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---`, not one of the paper's Cryptids),
 `CryptidLink/L17.lean` proves four of its five counter branches directly against the raw machine, and
-`L17.blank_reaches_boundary`: from the blank tape it reaches C(53262756, 1), where the unresolved branch begins
+`L17.blank_reaches_boundary`: from the blank tape it reaches C(53262756, 1), where the unresolved branch begins. Later files extend this, with GPT's derivation, to
+`L17.Orbit.blank_reaches_trace_end`: the blank tape reaches a configuration with a counter of about 2·10^295
 (details in `analysis/leads/L17.md`).
 
 Each of the three machines' halting problems is now, provably, exactly the arithmetic question stated, with no bounded check involved.
