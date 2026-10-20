@@ -160,3 +160,71 @@ example : run9 2 (5, 2, 0) = some (5, 2, 5) := by decide
 #print axioms section_branch2
 #print axioms a9_mod3
 #print axioms step9_halt_iff
+
+/-! ### A.9 halting criterion: a race that starts tied, or with b one ahead -/
+
+theorem run9_succ' (n : Nat) : ∀ s, run9 (n + 1) s = (run9 n s).bind step9 := by
+  induction n with
+  | zero => intro s; simp [run9]
+  | succ n ih =>
+    intro s
+    show (step9 s).bind (run9 (n + 1)) = ((step9 s).bind (run9 n)).bind step9
+    cases step9 s with
+    | none => rfl
+    | some t => exact ih t
+
+/-- A race state: b ≥ 1 and b − c ∈ {0, 1}. -/
+def raceHalts (s : Nat × Nat × Nat) : Prop := 1 ≤ s.2.1 ∧ (s.2.1 = s.2.2 ∨ s.2.1 = s.2.2 + 1)
+
+/-- From a race state the machine halts (after b+1 steps). -/
+theorem halts_of_race (a b c : Nat) (h : raceHalts (a, b, c)) : run9 (b + 1) (a, b, c) = none := by
+  obtain ⟨hb, h | h⟩ := h
+  · simp only at h hb; subst h
+    rw [run9_succ', sweep_le _ _ _ (Nat.le_refl _)]
+    simp only [Option.bind, step9]; rw [Nat.sub_self, if_pos (by simp)]
+  · simp only at h hb; subst h
+    rw [run9_succ', sweep_gt a (c + 1) c (by omega)]
+    simp only [Option.bind, step9]; rw [if_pos (by simp)]
+
+/-- The only predecessors of a halting configuration C(a,0,0) are race states. -/
+theorem pred_of_halt (r : Nat × Nat × Nat) (a : Nat) (h : step9 r = some (a, 0, 0)) : raceHalts r := by
+  obtain ⟨x, b, c⟩ := r
+  dsimp only [step9] at h
+  repeat' split at h
+  all_goals (first
+    | (simp at h; done)
+    | (simp only [Option.some.injEq, Prod.mk.injEq] at h
+       first | omega | (unfold raceHalts; dsimp only; omega)))
+
+/-- **A.9 halting criterion.** From its start C(5,2,0), A.9 halts iff it reaches a state
+    C(a,b,c) with b ≥ 1 and b − c ∈ {0, 1}: a sweep that ends exactly in a tie. -/
+theorem a9_halts_iff :
+    (∃ n, run9 n (5, 2, 0) = none) ↔ ∃ n s, run9 n (5, 2, 0) = some s ∧ raceHalts s := by
+  constructor
+  · intro ⟨n, hn⟩
+    -- first index where the run dies
+    have first : ∀ n, run9 n (5, 2, 0) = none →
+        ∃ m s, run9 m (5, 2, 0) = some s ∧ step9 s = none := by
+      intro n
+      induction n with
+      | zero => intro h; simp [run9] at h
+      | succ n ih =>
+        intro h
+        rw [run9_succ'] at h
+        cases hr : run9 n (5, 2, 0) with
+        | none => exact ih hr
+        | some s => rw [hr] at h; exact ⟨n, s, hr, h⟩
+    obtain ⟨m, ⟨a, b, c⟩, hm, hs⟩ := first n hn
+    obtain ⟨rfl, rfl⟩ := (step9_halt_iff a b c).mp hs
+    cases m with
+    | zero => simp [run9] at hm
+    | succ m =>
+      rw [run9_succ'] at hm
+      cases hr : run9 m (5, 2, 0) with
+      | none => rw [hr] at hm; simp at hm
+      | some r => rw [hr] at hm; exact ⟨m, r, hr, pred_of_halt r a hm⟩
+  · intro ⟨n, ⟨a, b, c⟩, hn, hr⟩
+    refine ⟨n + (b + 1), ?_⟩
+    rw [run9_add, hn]; exact halts_of_race a b c hr
+
+#print axioms a9_halts_iff

@@ -40,9 +40,10 @@ Build: `lake build` (Lean `v4.24.0`). CI runs the build plus `scripts/audit_trus
 | `section_branch2` | if 2 ≤ c < k+5 then S(2k+p, c) ↠ S(6c−7+3p, k+4−c) |
 | `a9_mod3` | along the orbit from C(5,2,0), a ≡ 2 (mod 3) always (true, but it cannot block halting) |
 | `step9_halt_iff` | the only halting configurations are C(a,0,0) |
+| `a9_halts_iff` | **A.9 halts from C(5,2,0) ⟺ it reaches some C(a,b,c) with b ≥ 1 and b − c ∈ {0, 1}**: a draining race that ends exactly in a tie |
 
 ## What is NOT proved
-- That Antihydra, A.4 or A.9 never halts (all open).
+- That Antihydra, A.4 or A.9 never halts (all open; each is now reduced to an explicit arithmetic condition).
 - The real-number (Mathlib) form of the Mahler reduction.
 
 ## Scripts (`scripts/`, evidence only)
