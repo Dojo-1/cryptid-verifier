@@ -1,0 +1,11 @@
+{
+  "steps": 10000000,
+  "start": 4,
+  "chunk_size": 4096,
+  "backend": "python-int",
+  "parities_sha256": "3d2d5bdb241a7d9c043a021676efc6ab8955a426d38ab03a1e68b51c0f4ee651",
+  "final_b_bits": 5849628,
+  "final_b_big_endian_sha256": "492b40104f194d1d41057039e7291f9dfd9afa94ff96dbd5a788471f167ba225",
+  "elapsed_seconds": 162.7319613599999,
+  "output": "parities-10m.npy (reproducible; not bundled)"
+}

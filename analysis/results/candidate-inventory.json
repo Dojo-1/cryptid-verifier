@@ -1,0 +1,378 @@
+{
+  "status": "triage only; no novelty, unresolved-status, equivalence, or proof assertion",
+  "paper": "arXiv:2610.22603v2 Appendix C",
+  "upstream": "google-deepmind/cryptids",
+  "upstream_commit": "a0c1f56af53a76e985a656032b48015f7e48921b",
+  "candidates": [
+    {
+      "machine": "1RB0LD_1LC1RA_1RA1LC_1LE1LA_0RF1LD_---1RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LD_1RC0RA_1LA1RE_0LA0LB_0RB1RF_---1RD",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LF_0RC1RD_1LA1LD_1LE0RA_---1LC_0LA1LA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LD_1LC0RA_1RA1LB_1LA1LE_1RF0LC_---0RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RD_0LC1RA_1RA1LC_0RB1LE_1RF0LD_---0RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RE_1LC0RA_1RD0LB_1LB1RC_1LF0RD_---0LE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LA_1RC1RE_1LD0RB_1LA0LC_0RF0RD_0RB---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0RB_1LB0LC_1RD1LC_1RE0RA_0RF1RA_---1LB",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LF_1RC1RA_0RD0RB_1LE---_0LA1LE_1RD1LA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RE_1LC0RA_0RD1LB_---1RC_1LF1RE_0LB0LE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB---_0RC0RD_1LD1RB_0LE0LC_1RA0LF_1LD1LE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RD_0LC1RA_0RA1LC_1RA1LE_1RF0LD_---0RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LE_1LC0RA_0RF0LD_1LE1LA_1RC0LB_---1RC",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LE_1RC1RA_0LD1RB_1LE1LD_1RF0LA_---0RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RF_1LC1LF_0RE1LD_0LB1LD_---1RC_1RA0RD",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0RF_1RC1RF_1LD0LE_---1LC_1RA1LE_1LC1RB",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RF_0LC0RF_1RD1LC_---0LE_0RC1LF_1RA0LE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RB_1LC0RE_---1LD_0RA1LB_1RA1LF_0LE1LE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RC_1LC1LC_1RE0LD_1LB1RF_---1RA_0RD1RD",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1LA_1LC0RE_1LF1LD_1RE0LC_1LB1RA_---0LA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LC_1RC0LD_1LA0RB_1LB1LE_1RF0LA_---0RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LF_1LC1RA_0RE0RD_---1LE_1LF1RC_1LC1LA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB1LC_1LC1RD_1LA0LB_0RB1RE_1RF0RA_---0RC",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LE_1LC1RA_1RA1LD_0LC0LA_0RE1RF_0RC---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LD_0RC1RB_0RD0RA_1LE0RD_1LF---_0LA1LA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    },
+    {
+      "machine": "1RB0LC_0LC1RF_1LE1RD_0RC1RC_0LA1LA_---1RA",
+      "domain": "BB(6)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": true,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB3LA1LA1RA1RA_2LB2RA---4RB1LB",
+      "domain": "BB(2,5)",
+      "reported_in_paper_table1": true,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": false
+    },
+    {
+      "machine": "1RB2LA0RB1LB---_1LA3RA1RA4LB0RB",
+      "domain": "BB(2,5)",
+      "reported_in_paper_table1": false,
+      "exact_module_in_upstream": false,
+      "follow_up_queue": true
+    }
+  ],
+  "counts": {
+    "appendix_c": 52,
+    "paper_table1": 26,
+    "exact_upstream_module": 25,
+    "follow_up_queue": 25
+  }
+}

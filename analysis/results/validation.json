@@ -1,0 +1,31 @@
+{
+  "unittest": {
+    "command": "python -m unittest discover -s analysis/scripts -p 'test_*.py' -v",
+    "tests": 16,
+    "exit_code": 0,
+    "result": "OK"
+  },
+  "raw_tm_smoke": {
+    "command": "python analysis/scripts/smoke.py",
+    "raw_steps_per_machine": 300000,
+    "matched_configurations": {
+      "Antihydra": 12,
+      "A.4": 44,
+      "A.9": 275
+    },
+    "exit_code": 0
+  },
+  "audit_manifest": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "lean": {
+    "rebuild_performed": false,
+    "reason": "lean/lake unavailable",
+    "unchanged_source_files": 10
+  },
+  "github": {
+    "push_or_pr_created": false,
+    "reason": "connected GitHub returns 404 for Dojo-1/cryptid-verifier"
+  }
+}

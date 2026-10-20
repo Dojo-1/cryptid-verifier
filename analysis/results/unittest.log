@@ -1,0 +1,21 @@
+test_concatenation_and_restarting (test_reproducibility.AccelerationTests.test_concatenation_and_restarting) ... ok
+test_empty (test_reproducibility.AccelerationTests.test_empty) ... ok
+test_exhaustive_parity_bijection_and_direct_endpoint (test_reproducibility.AccelerationTests.test_exhaustive_parity_bijection_and_direct_endpoint) ... ok
+test_fifty_thousand_direct_steps_and_partial_last_chunk (test_reproducibility.AccelerationTests.test_fifty_thousand_direct_steps_and_partial_last_chunk) ... ok
+test_fixed_point_shadows (test_reproducibility.AccelerationTests.test_fixed_point_shadows) ... ok
+test_imports_have_no_file_or_simulation_side_effects (test_reproducibility.AccelerationTests.test_imports_have_no_file_or_simulation_side_effects) ... ok
+test_invalid_arguments (test_reproducibility.AccelerationTests.test_invalid_arguments) ... ok
+test_known_orbit (test_reproducibility.AccelerationTests.test_known_orbit) ... ok
+test_low_bits_determine_parities_not_endpoint (test_reproducibility.AccelerationTests.test_low_bits_determine_parities_not_endpoint) ... ok
+test_random_starts_and_chunk_sizes (test_reproducibility.AccelerationTests.test_random_starts_and_chunk_sizes) ... ok
+test_chi_square_matches_naive_counter_oracle (test_reproducibility.MonitorTests.test_chi_square_matches_naive_counter_oracle) ... ok
+test_degenerate_calibration_is_rejected (test_reproducibility.MonitorTests.test_degenerate_calibration_is_rejected) ... ok
+test_halting_counter_and_initial_peak_are_reported (test_reproducibility.MonitorTests.test_halting_counter_and_initial_peak_are_reported) ... ok
+test_invalid_data (test_reproducibility.MonitorTests.test_invalid_data) ... ok
+test_no_new_records_is_not_a_pass (test_reproducibility.MonitorTests.test_no_new_records_is_not_a_pass) ... ok
+test_null_calibration_uses_same_family_and_is_reproducible (test_reproducibility.MonitorTests.test_null_calibration_uses_same_family_and_is_reproducible) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.095s
+
+OK
