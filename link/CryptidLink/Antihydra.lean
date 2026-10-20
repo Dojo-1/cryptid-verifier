@@ -19,37 +19,39 @@ open BusyBeaver.M_1RB1RA_0LC1LE_1LD1LC_1LA0LB_1LF1RE_HHH0RA
 
 def φ (s : ℕ × ℕ) : State := .P s.1 (s.2 - 1) 1
 
+/-- Upstream `next` matches on the first counter before the second, so this case needs `cases a`. -/
+theorem next_P3 (a b c : ℕ) : next (.P a (b + 3) c) = some (.P a (b + 1) (c + 3)) := by
+  cases a <;> rfl
+
 theorem loop (a r : ℕ) (hr : 1 ≤ r) : ∀ j c,
     It next j (some (.P a (2 * j + r) c)) = some (.P a r (c + 3 * j)) := by
   obtain ⟨r, rfl⟩ : ∃ r', r = r' + 1 := ⟨r - 1, by omega⟩
   intro j
   induction j with
-  | zero => intro c; rfl
+  | zero => intro c; simp [It]
   | succ j ih =>
     intro c
     rw [It_succ]
     have e : 2 * (j + 1) + (r + 1) = (2 * j + r) + 3 := by omega
-    rw [e]
-    show It next j (some (.P a ((2 * j + r) + 1) (c + 3))) = _
-    rw [show (2 * j + r) + 1 = 2 * j + (r + 1) by omega, ih]
-    congr 3; omega
+    rw [e, next_P3, show (2 * j + r) + 1 = 2 * j + (r + 1) by omega, ih,
+      show c + 3 + 3 * j = c + 3 * (j + 1) by omega]
 
-theorem run_It : ∀ n s, run n s = It step n (some s) := by
+theorem run_It : ∀ n s, run n s = It _root_.step n (some s) := by
   intro n
   induction n with
   | zero => intro s; rfl
   | succ n ih =>
     intro s
     rw [It_succ]
-    show (step s).bind (run n) = _
-    cases h : step s with
-    | none => exact (It_none step n).symm
+    show (_root_.step s).bind (run n) = _
+    cases h : _root_.step s with
+    | none => exact (It_none _root_.step n).symm
     | some t => exact ih t
 
-theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n (some (0, 4)) = none) := by
-  refine sim_halts step next φ (fun s => 2 ≤ s.2) (0, 4) (by decide) ?_ ?_ ?_
+theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It _root_.step n (some (0, 4)) = none) := by
+  refine sim_halts _root_.step next φ (fun s => 2 ≤ s.2) (0, 4) (by decide) ?_ ?_ ?_
   · rintro ⟨a, B⟩ ⟨a', B'⟩ hI h
-    simp only [step] at h
+    simp only [_root_.step] at h
     split at h
     · simp only [Option.some.injEq, Prod.mk.injEq] at h; obtain ⟨-, rfl⟩ := h; simp
     · split at h
@@ -57,7 +59,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
       · simp only [Option.some.injEq, Prod.mk.injEq] at h; obtain ⟨-, rfl⟩ := h; simp
   · rintro ⟨a, B⟩ ⟨a', B'⟩ hI h
     simp only at hI
-    simp only [step] at h
+    simp only [_root_.step] at h
     split at h
     · rename_i hB
       simp only [Option.some.injEq, Prod.mk.injEq] at h
@@ -84,7 +86,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
         congr 2 <;> omega
   · rintro ⟨a, B⟩ hI h
     simp only at hI
-    simp only [step] at h
+    simp only [_root_.step] at h
     split at h
     · simp at h
     · split at h

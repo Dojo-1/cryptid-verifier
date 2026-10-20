@@ -154,8 +154,8 @@ theorem sim : (∃ m, It next m (some (φ (0, 3))) = none) ↔ (∃ n, It step4 
     · rw [step4_one] at h
       obtain rfl := Option.some.inj h
       refine ⟨0, ?_⟩
-      show next (.C a 0) = _
-      simp only [next, φ, Option.some.injEq, State.C.injEq] <;> omega
+      show some (State.C 2 (2 * a + 1)) = some (State.C 2 (2 * a + 2 - 1))
+      rw [show 2 * a + 2 - 1 = 2 * a + 1 by omega]
     · rw [step4_two] at h; simp at h
     · obtain ⟨s'', hs, hn⟩ := big a b h3
       rw [hs] at h
