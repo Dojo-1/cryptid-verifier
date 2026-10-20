@@ -205,7 +205,7 @@ theorem F111 (u d : ℕ) (v : ListBlank (Fin 2)) :
     rw [show d + 3 = d + 1 + 1 + 1 from rfl, ← ListBlank.append_pow_succ' _ (d + 1 + 1),
       ← ListBlank.append_pow_succ' _ (d + 1)]
     all_goals rfl
-  rw [hl5] at h5
+  rw [hl5] at h4 h5
   have h6 := sweepD (d + 3) (ListBlank.append [0] (ListBlank.append (([0, 1] : List (Fin 2)) ^ (u + 4)) default))
     (ListBlank.append [1, 0] v)
   have hl6 : ListBlank.append [0] (ListBlank.append (([0, 1] : List (Fin 2)) ^ (u + 4)) default) =
@@ -214,7 +214,7 @@ theorem F111 (u d : ℕ) (v : ListBlank (Fin 2)) :
   have hr6 : ListBlank.append (([1, 0] : List (Fin 2)) ^ (d + 3)) (ListBlank.append [1, 0] v) =
       ListBlank.append [1, 0, 1, 0] (ListBlank.append (([1, 0] : List (Fin 2)) ^ (d + 1)) (ListBlank.append [1, 0] v)) := by
     rw [show d + 3 = 2 + (d + 1) by omega, ListBlank.append_pow_add]; rfl
-  rw [hl6] at h5 h6
+  rw [hl6] at h4 h5 h6
   rw [hr6] at h6
   have h7 := K22 (ListBlank.append (([0, 1] : List (Fin 2)) ^ u) default)
     (ListBlank.append (([1, 0] : List (Fin 2)) ^ (d + 1)) (ListBlank.append [1, 0] v))
