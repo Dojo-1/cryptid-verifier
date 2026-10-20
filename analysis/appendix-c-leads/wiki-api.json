@@ -1,0 +1,410 @@
+{
+  "batchcomplete": "",
+  "warnings": {
+    "main": {
+      "*": "Unrecognized parameter: explaintext."
+    },
+    "query": {
+      "*": "Unrecognized value for parameter \"prop\": extracts"
+    }
+  },
+  "query": {
+    "normalized": [
+      {
+        "from": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+        "to": "1RB--- 1RC0LC 0RD0LE 1LE1RF 0LB0RC 0RE1RA"
+      },
+      {
+        "from": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+        "to": "1RB1RD 1LC0LE 1RA0LB 1RA1RF 0RA0RC 1RE---"
+      },
+      {
+        "from": "1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+        "to": "1RB1RC 1LC0LE 0RA1RD 1RF1LB 1LD0LA ---0RC"
+      },
+      {
+        "from": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+        "to": "1RB1LC 1LA0RD 0LB1LF 1RE1LC 1LC0RB 0LA---"
+      },
+      {
+        "from": "1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+        "to": "1RB--- 1LC1RE 1LD0LC 1LE1LC 1RF0RE 1RA0RB"
+      },
+      {
+        "from": "1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+        "to": "1RB0LF 0RC1RD 0LD0RA 1RC0RE 1RF--- 1LA0LB"
+      },
+      {
+        "from": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+        "to": "1RB0RE 0LC--- 1RE1LD 0LE1LB 1LC0RF 1RA1LD"
+      },
+      {
+        "from": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+        "to": "1RB1LE 1RC0RF 0LD--- 1RF1LE 0LF1LC 1LD0RA"
+      },
+      {
+        "from": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+        "to": "1RB0RE 1LC0RA 1LA1LD 1LC1LF 0LC0LB 1LE---"
+      },
+      {
+        "from": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+        "to": "1RB0LC 1RC1RE 1LA0LD 0RB0RA 1RB1RF 1RD---"
+      },
+      {
+        "from": "1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+        "to": "1RB0LB 0RC0LD 1LD1RE 0LA0RB 0RD0RF 1RA---"
+      },
+      {
+        "from": "1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+        "to": "1RB0RF 1LC--- 1RD0LC 0RE0RD 1LF1LC 1LE1RA"
+      },
+      {
+        "from": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+        "to": "1RB0LA 0RC0RB 1LD1LA 1LC1RE 1RF0RD 1LC---"
+      },
+      {
+        "from": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+        "to": "1RB1RC 0LA1RF 1RD0LE 1LC0RB 0RA0LC 0RD---"
+      },
+      {
+        "from": "1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+        "to": "1RB0RE 1LC1RA 1LD0LC 1RA0LA 1RA1RF 1RD---"
+      },
+      {
+        "from": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+        "to": "1RB1LC 1LC0RF 0LF1LD 0LE--- 1RF1LC 1LE0RA"
+      },
+      {
+        "from": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+        "to": "1RB0RE 1LC0RA 0LD1LB 1LA1LE 0LB0LF 1LD---"
+      },
+      {
+        "from": "1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+        "to": "1RB1RA 1LC0RE 1LE0LD 0LB1LB 1RA0LF 1LD---"
+      },
+      {
+        "from": "1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+        "to": "1RB1LF 1LC0RD ---1LA 0LA0RE 1LA1RA 1LB0LD"
+      },
+      {
+        "from": "1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+        "to": "1RB1RE 1LC1RE ---1LD 1LE0LB 0RF0LD 1RD1RA"
+      },
+      {
+        "from": "1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+        "to": "1RB1RF 1LC1LB 1RD1LD 1RE0RA ---0LB 0LF0RC"
+      },
+      {
+        "from": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+        "to": "1RB0LC 1LA1RF 1LD1RF 1LE0LA 0RB--- 0RA1RE"
+      },
+      {
+        "from": "1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+        "to": "1RB0LF 1LC0RB 0LD1LA 0RA1LE 0LA0RA 1LA---"
+      },
+      {
+        "from": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+        "to": "1RB0LC 1LA0RE 0RD1LF 1LC1LB 0LD0RB 0LA---"
+      },
+      {
+        "from": "1RB2LA0RB1LB---_1LA3RA1RA4LB0RB",
+        "to": "1RB2LA0RB1LB--- 1LA3RA1RA4LB0RB"
+      }
+    ],
+    "redirects": [
+      {
+        "from": "1RB0RE 1LC0RA 1LA1LD 1LC1LF 0LC0LB 1LE---",
+        "to": "1RB--- 0RC0RE 1RD1RF 1LE0LB 1RC0LD 1RC1RA"
+      },
+      {
+        "from": "1RB1RD 1LC0LE 1RA0LB 1RA1RF 0RA0RC 1RE---",
+        "to": "1RB--- 0RC0RE 1RD1RF 1LE0LB 1RC0LD 1RC1RA"
+      },
+      {
+        "from": "1RB0LC 1RC1RE 1LA0LD 0RB0RA 1RB1RF 1RD---",
+        "to": "1RB--- 0RC0RE 1RD1RF 1LE0LB 1RC0LD 1RC1RA"
+      }
+    ],
+    "pages": {
+      "-1": {
+        "ns": 0,
+        "title": "1RB--- 1RC0LC 0RD0LE 1LE1RF 0LB0RC 0RE1RA",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA"
+      },
+      "-2": {
+        "ns": 0,
+        "title": "1RB1RC 1LC0LE 0RA1RD 1RF1LB 1LD0LA ---0RC",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC"
+      },
+      "-3": {
+        "ns": 0,
+        "title": "1RB1LC 1LA0RD 0LB1LF 1RE1LC 1LC0RB 0LA---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---"
+      },
+      "-4": {
+        "ns": 0,
+        "title": "1RB--- 1LC1RE 1LD0LC 1LE1LC 1RF0RE 1RA0RB",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB"
+      },
+      "-5": {
+        "ns": 0,
+        "title": "1RB0LF 0RC1RD 0LD0RA 1RC0RE 1RF--- 1LA0LB",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB"
+      },
+      "-6": {
+        "ns": 0,
+        "title": "1RB0RE 0LC--- 1RE1LD 0LE1LB 1LC0RF 1RA1LD",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD"
+      },
+      "-7": {
+        "ns": 0,
+        "title": "1RB1LE 1RC0RF 0LD--- 1RF1LE 0LF1LC 1LD0RA",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA"
+      },
+      "-8": {
+        "ns": 0,
+        "title": "1RB0LB 0RC0LD 1LD1RE 0LA0RB 0RD0RF 1RA---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---"
+      },
+      "-9": {
+        "ns": 0,
+        "title": "1RB0RF 1LC--- 1RD0LC 0RE0RD 1LF1LC 1LE1RA",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA"
+      },
+      "-10": {
+        "ns": 0,
+        "title": "1RB0LA 0RC0RB 1LD1LA 1LC1RE 1RF0RD 1LC---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---"
+      },
+      "-11": {
+        "ns": 0,
+        "title": "1RB1RC 0LA1RF 1RD0LE 1LC0RB 0RA0LC 0RD---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---"
+      },
+      "-12": {
+        "ns": 0,
+        "title": "1RB0RE 1LC1RA 1LD0LC 1RA0LA 1RA1RF 1RD---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---"
+      },
+      "-13": {
+        "ns": 0,
+        "title": "1RB1LC 1LC0RF 0LF1LD 0LE--- 1RF1LC 1LE0RA",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA"
+      },
+      "-14": {
+        "ns": 0,
+        "title": "1RB0RE 1LC0RA 0LD1LB 1LA1LE 0LB0LF 1LD---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---"
+      },
+      "-15": {
+        "ns": 0,
+        "title": "1RB1RA 1LC0RE 1LE0LD 0LB1LB 1RA0LF 1LD---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---"
+      },
+      "-16": {
+        "ns": 0,
+        "title": "1RB1LF 1LC0RD ---1LA 0LA0RE 1LA1RA 1LB0LD",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD"
+      },
+      "-17": {
+        "ns": 0,
+        "title": "1RB1RE 1LC1RE ---1LD 1LE0LB 0RF0LD 1RD1RA",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA"
+      },
+      "-18": {
+        "ns": 0,
+        "title": "1RB1RF 1LC1LB 1RD1LD 1RE0RA ---0LB 0LF0RC",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC"
+      },
+      "-19": {
+        "ns": 0,
+        "title": "1RB0LC 1LA1RF 1LD1RF 1LE0LA 0RB--- 0RA1RE",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE"
+      },
+      "-20": {
+        "ns": 0,
+        "title": "1RB0LF 1LC0RB 0LD1LA 0RA1LE 0LA0RA 1LA---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---"
+      },
+      "-21": {
+        "ns": 0,
+        "title": "1RB0LC 1LA0RE 0RD1LF 1LC1LB 0LD0RB 0LA---",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---"
+      },
+      "-22": {
+        "ns": 0,
+        "title": "1RB2LA0RB1LB--- 1LA3RA1RA4LB0RB",
+        "missing": "",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB2LA0RB1LB---_1LA3RA1RA4LB0RB",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB2LA0RB1LB---_1LA3RA1RA4LB0RB&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB2LA0RB1LB---_1LA3RA1RA4LB0RB"
+      },
+      "441": {
+        "pageid": 441,
+        "ns": 0,
+        "title": "1RB--- 0RC0RE 1RD1RF 1LE0LB 1RC0LD 1RC1RA",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "touched": "2026-10-18T09:51:23Z",
+        "lastrevid": 9281,
+        "length": 8069,
+        "fullurl": "https://wiki.bbchallenge.org/wiki/1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+        "editurl": "https://wiki.bbchallenge.org/w/index.php?title=1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA&action=edit",
+        "canonicalurl": "https://wiki.bbchallenge.org/wiki/1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA"
+      }
+    }
+  }
+}

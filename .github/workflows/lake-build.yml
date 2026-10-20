@@ -33,6 +33,8 @@ jobs:
         run: python3 -m pip install numpy
       - name: Exact acceleration and finite-evidence regression checks
         run: python3 -m unittest discover -s analysis/scripts -p 'test_*.py' -v
+      - name: Appendix C lead screen checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/appendix-c-leads -p 'test_pipeline.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

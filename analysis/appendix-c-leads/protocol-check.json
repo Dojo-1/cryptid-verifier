@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-10-20T10:32:28.588775+00:00",
+  "embedded_queue_matches_leads_json": true,
+  "leads_txt_matches_queue": true,
+  "trace_rows_match_queue_and_budget": true,
+  "original_input_sha256": "9bd12618386780f25e60b2728104fd93e5a87592e71f8d1293d64f928278ab7e",
+  "original_hash_reproduced_from_delivered_input_files": false,
+  "interpretation": "Original hash serialization is unspecified and its value is not reproducible from delivered input files. Preserve it but do not use it as preregistration or authentication evidence. The embedded full queue matches. The following byte hashes were recorded after the experiment.",
+  "post_run_sha256": {
+    "protocol.json": "f96dfd5eab45c2288417277f8dece7aec1e4b7a5a3c6ad155a6e6d2e549befda",
+    "leads.json": "64bbffa87a1d864816a22ebaa8c297b97ea6ad9e98174da297b343fedbc00c51",
+    "leads.txt": "4c94ad929e5bbb51090e86b802c84dd058c5212a8d7af3d7d5dd253bbf8eb2d2",
+    "traces.jsonl": "2843f4ad1a1914664643c3ee6fa5bcf2360ea48a07689a289500b0e41a7d9e0b"
+  }
+}

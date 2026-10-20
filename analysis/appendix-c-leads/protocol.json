@@ -1,0 +1,149 @@
+{
+  "id": "appendix-c-leads-v1",
+  "recorded_at_utc": "2026-10-20T10:07:26.265430+00:00",
+  "timing": "Recorded before this turn's discovery simulations; earlier proposal was not authenticated preregistration.",
+  "input_sha256": "9bd12618386780f25e60b2728104fd93e5a87592e71f8d1293d64f928278ab7e",
+  "leads": [
+    {
+      "id": "L01",
+      "machine": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L02",
+      "machine": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L03",
+      "machine": "1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L04",
+      "machine": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L05",
+      "machine": "1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L06",
+      "machine": "1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L07",
+      "machine": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L08",
+      "machine": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L09",
+      "machine": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L10",
+      "machine": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L11",
+      "machine": "1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L12",
+      "machine": "1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L13",
+      "machine": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L14",
+      "machine": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L15",
+      "machine": "1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L16",
+      "machine": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L17",
+      "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L18",
+      "machine": "1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L19",
+      "machine": "1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L20",
+      "machine": "1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L21",
+      "machine": "1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L22",
+      "machine": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L23",
+      "machine": "1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L24",
+      "machine": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+      "domain": "BB(6)"
+    },
+    {
+      "id": "L25",
+      "machine": "1RB2LA0RB1LB---_1LA3RA1RA4LB0RB",
+      "domain": "BB(2,5)"
+    }
+  ],
+  "status_refresh": "Current public holdout lists plus machine pages and upstream exact-module inventory. Absence does not imply resolution.",
+  "simulation": {
+    "raw_steps_per_machine": 5000000,
+    "seed": 20261020,
+    "max_snapshot_support": 8192,
+    "reservoir_per_section": 16,
+    "sections": "machine state, previous move, head reversal and position relative to nonzero support"
+  },
+  "comparison": {
+    "baseline": "Paper-style greedy repeated blocks of maximum length 8 on the same captured states.",
+    "experimental": "Maximum block length 32, plus alternative return sections.",
+    "limitation": "Bounded representation screen, not a full paper pipeline replication."
+  },
+  "promotion": "Only universal macro-step proof, blank-start entry and reachable closure plus status/equivalence checks permit a newly certified reduction. Sampled fits remain hypotheses.",
+  "stop": "One 5-million-raw-step scan per lead; one chosen candidate receives at most 200000 additional raw steps per synthetic probe. Do not extend a failed horizon during this experiment.",
+  "kill": "No extra universally checked reduction within this budget means no measured discovery-rate benefit is claimed."
+}

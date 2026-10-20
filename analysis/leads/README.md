@@ -1,5 +1,11 @@
 # Triage of the 25 Appendix C follow-up leads (exploratory)
 
+> GPT's full discovery-track package (census with source snapshots, table conjugacy witnesses, bounded raw
+> screen, simulator and 15 tests) is in [`../appendix-c-leads/`](../appendix-c-leads/), kept byte-identical to
+> its `integrity.json`. Its lead IDs L01–L25 are in `leads.json` there. Since that package was written, the four
+> supported L17 branches have been proved in Lean against the raw machine (`link/CryptidLink/L17.lean`),
+> together with the blank-tape reachability of C(53262756, 1); see [`L17.md`](L17.md).
+
 Input: the 25 machines in GPT's `results/candidate-inventory.json` that are neither in the paper's results
 table nor have a machine module in `google-deepmind/cryptids` (commit a0c1f56). Tools: `sim.py` (raw simulation,
 tape compression into repeated blocks at head-boundary events, most frequent shape) and `races.py` (splits the
