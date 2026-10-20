@@ -1,0 +1,142 @@
+[
+  {
+    "mutant": "leading-count",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "missing-layer",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "wrong-tail",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "reverse-tail",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "time-slope",
+    "killed": true,
+    "witness": {
+      "case": 3,
+      "parameters": {
+        "a": 7,
+        "n": 1
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "time-intercept",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "head-shift",
+    "killed": true,
+    "witness": {
+      "case": 0,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": ""
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "drop-context",
+    "killed": true,
+    "witness": {
+      "case": 1,
+      "parameters": {
+        "a": 7,
+        "n": 0
+      },
+      "suffix": "1"
+    },
+    "mechanism": "Mismatch against stored literal C++ endpoint"
+  },
+  {
+    "mutant": "lower-guard",
+    "killed": true,
+    "witness": [
+      6,
+      0
+    ],
+    "mechanism": "Required input rejection; no raw-machine claim on an invalid argument"
+  },
+  {
+    "mutant": "negative-depth",
+    "killed": true,
+    "witness": [
+      7,
+      -1
+    ],
+    "mechanism": "Required input rejection; no raw-machine claim on an invalid argument"
+  },
+  {
+    "mutant": "boolean-a",
+    "killed": true,
+    "witness": [
+      true,
+      0
+    ],
+    "mechanism": "Required input rejection; no raw-machine claim on an invalid argument"
+  },
+  {
+    "mutant": "boolean-depth",
+    "killed": true,
+    "witness": [
+      7,
+      true
+    ],
+    "mechanism": "Required input rejection; no raw-machine claim on an invalid argument"
+  }
+]

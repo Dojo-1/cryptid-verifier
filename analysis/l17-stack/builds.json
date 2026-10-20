@@ -1,0 +1,45 @@
+{
+  "O2": {
+    "command": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "/workspace/scratch/918c55ca52eb/quest/l17-hardening/raw_comparator.cpp",
+      "-o",
+      "/workspace/scratch/918c55ca52eb/quest/l17-stack/comparator-O2"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "O0": {
+    "command": [
+      "g++",
+      "-std=c++17",
+      "-O0",
+      "/workspace/scratch/918c55ca52eb/quest/l17-hardening/raw_comparator.cpp",
+      "-o",
+      "/workspace/scratch/918c55ca52eb/quest/l17-stack/comparator-O0"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8",
+    "stderr": ""
+  },
+  "UBSan": {
+    "command": [
+      "g++",
+      "-std=c++17",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "/workspace/scratch/918c55ca52eb/quest/l17-hardening/raw_comparator.cpp",
+      "-o",
+      "/workspace/scratch/918c55ca52eb/quest/l17-stack/comparator-UBSan"
+    ],
+    "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "binary_sha256": "d862ebfd63860fbe2396fe9d6afdc704b0ea1042a2c65b2491cc06d841cf8941",
+    "stderr": ""
+  },
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+}

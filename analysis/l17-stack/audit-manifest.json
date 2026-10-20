@@ -1,0 +1,264 @@
+{
+  "task_id": "l17-stack-excursions-and-nesting-20261020",
+  "claim": {
+    "text": "The proposed L17 contextual calculus reaches three two-layer excursions in a bounded conditional blank-orbit continuation; a new context-preserving nesting identity has a read-window induction and bounded raw checks.",
+    "scope": "673467 conditional contextual rewrites including the supplied 2000-prefix, full time/head totals through 230000, independent state replay from 100000 through 673467; 268 nesting endpoints, 80 windows, 128 compiler comparison requests, 12 ACAF mutants and 12 unit methods.",
+    "status_before": "H",
+    "assumptions": [
+      "Incoming blank reachability to C(6575648756,1) is supplied by Claude; no private repo or Lean build inspected here.",
+      "Contextual F100/F111/F1100 and short-case universal interpretation uses the delivered mathematical derivations; not newly Lean formalized.",
+      "Exact literal TM semantics: undefined F1 halts without an action, blank 0, head at first displayed cell.",
+      "Local protocols precede their respective validation phases, after disclosed exploration; not externally authenticated preregistration."
+    ],
+    "forbidden_promotions": [
+      "No new Lean theorem, halting or non-halting theorem, or certified Cryptid.",
+      "A finite depth record is neither a universal bound nor unboundedness.",
+      "A uniform one-layer push on the U-input family does not iterate on the different T-output family.",
+      "Block depth alone is not a counter-encoding lower bound.",
+      "State-only phases do not provide accumulated raw-time/head certificates."
+    ]
+  },
+  "specification": {
+    "intended_object": "Complete contextual tape endpoints, bounded conditional trajectory, and a universally quantified nesting identity with explicit proof windows.",
+    "invariants": [
+      "Only exterior trailing zeros may be omitted.",
+      "The explicit 00 before v in NEST is required and v is never read.",
+      "Pure-tail depth is determined from actual word structure, not chunk count.",
+      "Unknown prefixes, guards and wall-budget stops remain explicit."
+    ],
+    "known_answer_cases": [
+      "NEST(n=0) agrees with the old C(a,1) base.",
+      "NEST(n=1) agrees with F1100(c=8).",
+      "C(7,1).U^2 reaches C(0,2).T^3 in 226 steps, head shift -2.",
+      "The first F1100 source has A divisible by 3 and canonical tail width 76."
+    ]
+  },
+  "implementation": {
+    "artifact": "analysis/l17-stack: orbit extensions, independent symbolic verifier, nesting actor, declarative schemas, literal evidence validators, reports, tests.",
+    "commit": "Additive combined handoff archive; preserves all 135 older file payloads. No git mutation, Lean edit or GitHub write.",
+    "environment": "Python 3.12, g++ 13.3.0, fresh O2/O0/UBSan comparator builds; standard library only.",
+    "live_entrypoint": "README.md reproduction commands; verify_results.py and verify_symbolic.py.",
+    "representation": "Exact periodic binary words and arbitrary-size integers; separate declarative periodic cursors; independent literal sparse C++ TM comparator."
+  },
+  "metric": {
+    "name": "Exact endpoints, read-window confinement, mutant kills, conditional prefix and canonical pure-tail depth.",
+    "type": "typed_tuple",
+    "units": "Raw transitions, word bits, head cells, contextual rewrites, cases and tail layers.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Literal and differently chunked forms of the canonical 76-pair source agree.",
+      "The critic consumes exact claims rather than actor predictions.",
+      "Random tape outside fixed windows is preserved.",
+      "Periodic U^n and T^n are compact encodings; no encoding-impossibility inference."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "268 full literal-machine nesting endpoints and 80 arbitrary-exterior window cases pass.",
+      "64 cases each match fresh O0 and UBSan builds against O2."
+    ],
+    "structural": [
+      "The C++ code has no actor/word-rule dependency.",
+      "verify_results imports no actor and reconstructs requests from the delivered claims.",
+      "verify_symbolic imports no rules.py, words.py, discover.py, extend.py or nesting.py.",
+      "All older ZIP payloads are checked byte for byte during packaging."
+    ],
+    "property_based": [
+      "Fixed nesting grid plus 96 seeded C-section and 64 seeded A-section inputs.",
+      "64 huge-counter exact-word/arithmetic checks.",
+      "Short-rule critic bridge tests cover all six branch schemas."
+    ],
+    "metamorphic": [
+      "Random tape on both sides of each kernel is unchanged.",
+      "NEST depth zero and one agree with old independently checked rule endpoints.",
+      "The independent symbolic implementation matches 73 checkpoints and 443467 retained choice codes."
+    ],
+    "fuzzing": [
+      "Seeded arbitrary right suffixes, exterior data, invalid guards and bool/integer ambiguity."
+    ],
+    "historical": [
+      "Text request-ID failure retained, executed zero machine transitions.",
+      "Unexercised short-schema extra-parameter defect found in review, fixed and tested; no recorded orbit branch affected."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Identical literal machine, source tape, head and transition horizon in each raw comparison."
+    ],
+    "negative_controls": [
+      "Four explicit invalid parameter/type controls defeat guard-removal mutants.",
+      "Eight endpoint/time/head/context mutants fail against raw results.",
+      "Incomplete prefixes and low guards are not silently extended."
+    ],
+    "compute_parity": "All per-probe horizons <=200000. 476 validation requests <=1024; 19 exploratory probes <=128. 3066776 fresh validation transitions, with ledger. No speed benefit is claimed.",
+    "parameter_parity": "Source, output coordinates, suffix and exact guard are retained for every claim instance.",
+    "sampling_parity": "New fixed grids and seeds are disclosed; no statistical tail inference.",
+    "data_access_parity": "All literal comparators receive the same full finite support, including exterior control bits."
+  },
+  "preregistration": {
+    "prediction": "Separate local protocols register 100000 full rewrites, later state-only discovery, full replay, deeper wall-budget search and nesting checks. Later phases are explicitly subsequent experiments after earlier stops.",
+    "primary_metric": "Exact complete words and guards; full counts/shifts only in full-time phases; fixed-window confinement and raw endpoint agreement for NEST.",
+    "uncertainty_method": "Exact finite comparisons and a mathematical induction; no p-value or asymptotic confidence claim.",
+    "kill_condition": "Any discrepancy stops that phase and is retained before correction.",
+    "stop_condition": "Discovery horizons 100000 then up to 1000000 global rewrites with explicit time/bit caps; deeper phase stops at 673467 on its 180-second cap. Raw probes never extend a failing horizon.",
+    "promotion_rule": "Lean formalization and connection to the supplied blank entry are needed for new Lean reachability; an invariant or explicit infinite argument is needed for a global stack claim."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Literal machine supplied by the user and prior contribution.",
+      "User-reported independent Claude replay at commit 8ff10a9, not independently retrieved.",
+      "NESTING.md fixed paths and inductive context-preservation argument."
+    ],
+    "execution_records": [
+      "RESULTS.json",
+      "extension.json",
+      "discovery.json",
+      "replay-compact.json",
+      "deeper.json",
+      "deeper-choices.txt",
+      "symbolic-recheck.json",
+      "nesting-validation.json",
+      "nesting-raw.jsonl.gz",
+      "nesting-windows.jsonl.gz",
+      "nesting-O0.jsonl.gz",
+      "nesting-UBSan.jsonl.gz",
+      "mutations.json",
+      "tests.log",
+      "failure-history.json",
+      "integrity.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Separate literal C++ and declarative symbolic implementations",
+        "origin": "Different code paths by the same author. User reports external replay of the older package; no new external replay claimed.",
+        "artifact": "Prior raw_comparator.cpp, new verify_results.py and verify_symbolic.py."
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Three two-layer excursions -> replay-compact.json and deeper.json exact integer witnesses.",
+      "Prefix arithmetic -> extension.json, registered protocols and symbolic-recheck.json.",
+      "Nesting induction -> NESTING.md, nesting-claims.json, fixed paths and raw windows.",
+      "Bounded validation -> nesting-validation.json, cases, response hashes, compiler metadata and ledger.",
+      "ACAF failures and controls -> mutations.json and failure-history.json.",
+      "Previous work -> 135 unchanged archive payloads."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "specification",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "Eventual blank-orbit stack behavior."
+        ]
+      },
+      {
+        "from": "specification",
+        "to": "implementation",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "No proof-assistant verification of new rules."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "validation",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "Same author despite separate code paths."
+        ]
+      },
+      {
+        "from": "validation",
+        "to": "measurement",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "Finite probes do not establish universal statements."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "Finite depth record is not a global law."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Complete contextual tapes, explicit guards and bounded claims."
+        ],
+        "transformed": [
+          "Open stack question becomes exact excursions, read-window induction and replayable witnesses."
+        ],
+        "lost": [
+          "No assertion of a new certified Cryptid."
+        ],
+        "remainder": [
+          "Global halting and stack questions remain open."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "Three transient two-layer excursions on the conditional supplied blank-orbit continuation, at targets 226798,344265,366709, each collapsing three rewrites later. Search stops at 673467. Independent declarative replay checks 573467 later edges. New NEST induction passes all specified bounded checks.",
+    "effect_size": "Maximum observed pure-tail depth 2; one new uniform nesting identity; zero new Lean theorems, global bounds or Cryptids.",
+    "uncertainty": "Incoming Lean entry and old external replay are supplied context. Mathematical lemmas await formalization. Wall-budget stopping is machine dependent; deterministic verifier reproduces the recorded endpoint. The large verbose intermediate is omitted but its event hash and compact checkpoints are retained.",
+    "status_after": "M",
+    "retired_claims": [
+      "A bounded one-layer prefix settles the blank stack question.",
+      "A uniform layer push on different input/output templates establishes unbounded growth on one orbit."
+    ],
+    "active_remainder": [
+      "Formalize K7,K41 and the A-section induction in Lean.",
+      "Formalize the F1100 and short contextual branches if still outstanding.",
+      "Find a reachable invariant or a sustained interacting-tail event.",
+      "Handle general unequal-width 1101 contexts and relevant low guards."
+    ]
+  }
+}

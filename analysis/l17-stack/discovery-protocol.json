@@ -1,0 +1,12 @@
+{
+  "recorded_at_utc": "2026-10-20T19:01:05.458436+00:00",
+  "reason": "The registered 100000-rewrite exact-time run exhausted its cap without a second layer or any F1100 use. Test whether a rarer first interaction appears later, without increasing any raw simulation horizon.",
+  "starting_source": "extension.json stop at 100000 rewrites",
+  "maximum_global_rewrites": 1000000,
+  "maximum_counter_bits": 524288,
+  "maximum_wall_seconds": 180,
+  "discovery_omits": "Raw transition totals and cumulative head shifts. No enormous quadratic countdown-time expressions are evaluated. This run is a state-only conditional discovery, not a time certificate.",
+  "checks": "Exact source/target complete words and claim guards at each edge, against declarative specification without evaluating step expressions; first new F1100 or unsupported stops before further action.",
+  "raw_probe_budget": "Original exploratory/validation caps unchanged.",
+  "replay": "Any new terminal interaction will be replayed from the 100000 checkpoint with full times and critic checks, separately registered before replay."
+}

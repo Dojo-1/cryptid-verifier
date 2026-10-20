@@ -1,0 +1,218 @@
+{
+  "algorithm": "sha256",
+  "scope": "All delivered new-directory payloads except this manifest itself. Large temporary replay intermediates, build binaries and caches excluded.",
+  "files": {
+    "AUDIT.md": {
+      "sha256": "8254afc39ad18540d30016728ddc17a0c75412d1ff6c3d08b017688e1b5b443b",
+      "bytes": 3534
+    },
+    "CLAUDE-BRIEF.md": {
+      "sha256": "6aab38b968bf8a353ca318dfdf84e7e77d9d4854419b64404fd6737b8ecbfb72",
+      "bytes": 2923
+    },
+    "NESTING.md": {
+      "sha256": "74d7e8ecf2043e00a39ca58e4c9cd7ea8bf75762b9a2d73d3890e8720caac3a2",
+      "bytes": 5878
+    },
+    "README.md": {
+      "sha256": "640dbdab0fccffcf1035aee11f915c74c93595947705e5a96cc82d4575911a2f",
+      "bytes": 6540
+    },
+    "RESULTS.json": {
+      "sha256": "5c9ff7e892eeb1c95b7ea8d055a298953551a960c654fb98a35e1e038a1cb05c",
+      "bytes": 2702
+    },
+    "audit-manifest.json": {
+      "sha256": "68d1d36aa557644279e3fc586ba639ce089e2b38ad5cee853825f3f520052ab6",
+      "bytes": 13420
+    },
+    "audit-validation.log": {
+      "sha256": "16c6fa7469ac19dfe2f35940390f804f21461dd1e0daeb16904826221e596fdc",
+      "bytes": 29
+    },
+    "builds.json": {
+      "sha256": "b3cf945979d3f676d1566787a1aced012322a8b57b876b8dbb259c2d1292e0b4",
+      "bytes": 1679
+    },
+    "deeper-choices.txt": {
+      "sha256": "2a21cb1afd3324a3b72137de5eea5c239853e99ad376a08287ff6b9cab58dc7c",
+      "bytes": 443467
+    },
+    "deeper-protocol.json": {
+      "sha256": "68c9cd3416dd8d6b642f54aba512d180b0996983f04ba3e6474f5f0fa0e972c6",
+      "bytes": 888
+    },
+    "deeper.json": {
+      "sha256": "95c120a6c2adb55f21f0670d8a5c5f5904a476a5095d09fdfcf8f247c4ff49f1",
+      "bytes": 3815868
+    },
+    "deeper.py": {
+      "sha256": "7fd253538e024f7b3ff5bb9c10b2e0bf07df0111ff20cd9cc861dd29b87fb36a",
+      "bytes": 2981
+    },
+    "discover.py": {
+      "sha256": "038fd6df1535ef0dd6875076e656b72e11f67bdd02012f853563c3d50f84fb7f",
+      "bytes": 5273
+    },
+    "discovery-protocol.json": {
+      "sha256": "46b8f2f91afdb57fdcdfb09d979f4a6871f44a8f2f84307be78f9ba8fa4bd79f",
+      "bytes": 1101
+    },
+    "discovery.json": {
+      "sha256": "447a80c563b9267210496270f684964b8fe5f819e73cee75ed6a41efeb16ef15",
+      "bytes": 448573
+    },
+    "extend.py": {
+      "sha256": "393abe20d8fde579fb6a7848f725c58775b2d424e0e2321fdd040120bc32e062",
+      "bytes": 5982
+    },
+    "extension.json": {
+      "sha256": "41158b6304fb7351eb60e99ab4dd841ca3acac0731d93cdd398024af5c26ddc7",
+      "bytes": 2859077
+    },
+    "failure-history.json": {
+      "sha256": "ef6714b4dbd563905ca00676e902aadf3df53a6773f90ace121da9fe3ae58693",
+      "bytes": 1022
+    },
+    "huge-checks.json": {
+      "sha256": "c1a79a8b2415eec00be67546d4854a765144fb2918d899d0ada80530cef87979",
+      "bytes": 6478
+    },
+    "kernel-claims.json": {
+      "sha256": "476b005d88ed0bb4306e00218e1f462cb27bd47e3da84df9020eef3c69c48559",
+      "bytes": 2515
+    },
+    "mutations.json": {
+      "sha256": "4178793b5a0c41a45a5ab428a6692bedba8b7d3b743a9d185a6e69319da40072",
+      "bytes": 2724
+    },
+    "nesting-O0.jsonl.gz": {
+      "sha256": "0618206dbaeb83d027a29f3d299f11a6b29738bd5acee796e5891f9783025fb2",
+      "bytes": 1331
+    },
+    "nesting-O0.jsonl.gz.meta.json": {
+      "sha256": "06838bf043633adccfaa221716a0bc0184d58d136d16b6250304ca849f6d23f0",
+      "bytes": 399
+    },
+    "nesting-UBSan.jsonl.gz": {
+      "sha256": "0618206dbaeb83d027a29f3d299f11a6b29738bd5acee796e5891f9783025fb2",
+      "bytes": 1331
+    },
+    "nesting-UBSan.jsonl.gz.meta.json": {
+      "sha256": "a201a2fea7bbf46ac75f96e248f52cd0fcd61885c5f3435fd82ad4116cc5dc15",
+      "bytes": 399
+    },
+    "nesting-cases.json": {
+      "sha256": "7601da4a4f8b56a58359d805be5766ffe8caf2e4e2a92300509e95a0886eb8c7",
+      "bytes": 2565367
+    },
+    "nesting-claims.json": {
+      "sha256": "bc6f9b9cef8e0112bab9c58e08042a1979af32ea4475e7a342cca1317d3e2b04",
+      "bytes": 787
+    },
+    "nesting-kernels-exploratory.json": {
+      "sha256": "a1729adfda7f5fa70f9b07b444169df9ce2265be75fd1d4671d84567e15c9753",
+      "bytes": 5748
+    },
+    "nesting-protocol.json": {
+      "sha256": "4c7cc15e01b241c6bc381abc5dbb5679b156ef107282a67faae722ace5c2d128",
+      "bytes": 1427
+    },
+    "nesting-raw.jsonl.gz": {
+      "sha256": "11a4735043f8e58ded79aa72470fc1c059b3cb1d04c752a89737b13a78e3e0d2",
+      "bytes": 2238618
+    },
+    "nesting-raw.jsonl.gz.meta.json": {
+      "sha256": "32ff5e46f96b8394a34a108e655414fa9733f9dcc11c0e8f9084aa01d7fb239f",
+      "bytes": 404
+    },
+    "nesting-validation.json": {
+      "sha256": "dc39f6a8fda279231f30304b865d6f7ca48abfee11213dce3678e54e04884bf5",
+      "bytes": 2158
+    },
+    "nesting-validation.log": {
+      "sha256": "dc39f6a8fda279231f30304b865d6f7ca48abfee11213dce3678e54e04884bf5",
+      "bytes": 2158
+    },
+    "nesting-windows.jsonl.gz": {
+      "sha256": "c3d98176d710ffde19c3eb8979ff36c297bfc9501bea1d4e4995a0b2ebe987d6",
+      "bytes": 3920
+    },
+    "nesting-windows.jsonl.gz.meta.json": {
+      "sha256": "debd7d874456f856f730fc33d83e8b30f8dd4bd20e081c3291c80aa0f8352dbe",
+      "bytes": 399
+    },
+    "nesting.py": {
+      "sha256": "0ae8df03454fe80fe5d4f703332e0e9feaa0cb2118f1c900749a6a3712c80a4c",
+      "bytes": 558
+    },
+    "paths.py": {
+      "sha256": "d636b3257604f01b79cc5c7b277277348234bb404797a5e8732d57a73297f405",
+      "bytes": 244
+    },
+    "probe.py": {
+      "sha256": "df4d2c78606e4e3bbe1708911ac7df93cfbe68aeb177a6ed9e5ff8a42a2cceb6",
+      "bytes": 1473
+    },
+    "probe1101.json": {
+      "sha256": "9c9336b4e45fd819b8c9bc4d9d92c1fca45758d765d3e66e2344c208c08317e7",
+      "bytes": 101101
+    },
+    "protocol.json": {
+      "sha256": "58ed894475f068ad355f8a0fffbac45831bf492fe57509908741f8eb9f52f635",
+      "bytes": 2206
+    },
+    "replay-compact.json": {
+      "sha256": "c08ced6a64cb2d3a234bc36938a103de995a83cd9a05480e4d2c886a33cd1ee6",
+      "bytes": 2918728
+    },
+    "replay-protocol.json": {
+      "sha256": "80826be88c810d4a3ba11586584cd902639b5831cea1d57f69a41975c5b5434a",
+      "bytes": 803
+    },
+    "replay.py": {
+      "sha256": "874efe6156ea1c07fcbe11c78809ccd3b413e6b5815c15ff36b964b4564e811d",
+      "bytes": 3910
+    },
+    "symbolic-recheck.json": {
+      "sha256": "345f595540861a1d1760e3511118d9315d0386c070101f49490726dc361ff331",
+      "bytes": 441
+    },
+    "symbolic-recheck.log": {
+      "sha256": "345f595540861a1d1760e3511118d9315d0386c070101f49490726dc361ff331",
+      "bytes": 441
+    },
+    "test_stack.py": {
+      "sha256": "1df3e4e16ec6894c8ef7c19848dfad2cc1f72a49744b17e2b2472cda65677eab",
+      "bytes": 3530
+    },
+    "tests.log": {
+      "sha256": "d9f113df26fc64e6a0acc9c2c02a7ea637a09b3289088bac71b31001475400c9",
+      "bytes": 1379
+    },
+    "validate_nesting-before-id-fix.py": {
+      "sha256": "c4444fa734c69ccdf4a74c8c24906af97ef42d8f33dc69ed6ce4992904b77c95",
+      "bytes": 9204
+    },
+    "validate_nesting.py": {
+      "sha256": "825d000188022d0762d826ffd831065eefca5b20d0bbf98b695ee63077fb09a1",
+      "bytes": 9196
+    },
+    "validation-budget-ledger.jsonl": {
+      "sha256": "141f8f5d9171442559ba182bea5b6598d9ab853cafba16f321e869c632c3751f",
+      "bytes": 1194
+    },
+    "verify_results.py": {
+      "sha256": "cfbfde656256e45dc362263874d7aa3f569f65ec0f47a27bad0176033b8dcbe2",
+      "bytes": 3808
+    },
+    "verify_symbolic.py": {
+      "sha256": "cc02ddfe82948f247ad1bdfbde57cba98201998f3b5bec2285fd58a3dc37ea38",
+      "bytes": 4302
+    },
+    "window-cases.json": {
+      "sha256": "a52b371e0686e620ab238e95de9e22dcff2c1ff484d1ff753c0dacd1eb1f7ba2",
+      "bytes": 21377
+    }
+  }
+}

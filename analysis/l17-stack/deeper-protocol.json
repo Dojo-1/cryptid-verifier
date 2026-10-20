@@ -1,0 +1,11 @@
+{
+  "recorded_at_utc": "2026-10-20T19:08:57.871759+00:00",
+  "reason": "Full replay reaches 230000, with a single two-layer excursion at 226798 and immediate collapse. Search state-only for the next interacting-prefix obstruction within the original one-million discovery horizon.",
+  "source": "replay-compact.json stop at 230000 contextual rewrites",
+  "maximum_global_rewrites": 1000000,
+  "maximum_counter_bits": 524288,
+  "maximum_wall_seconds": 180,
+  "stop": "First unsupported prefix, three pure tail layers, or budget. Stop does not certify a bound.",
+  "checks": "Guarded F1100/S1..S6 are now enabled in the linear actor; compare source/target with separate existing declarative claims at every edge. Times and physical head shifts omitted. Keep complete one-character claim decision trace plus sparse complete checkpoints.",
+  "raw_horizons": "Unchanged. No new raw probes."
+}
