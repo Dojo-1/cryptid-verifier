@@ -1,3 +1,5 @@
 .lake/
 mathlib/.lake/
 link/.lake/
+link/baselines
+link/artifacts

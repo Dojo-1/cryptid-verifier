@@ -65,6 +65,9 @@ jobs:
         working-directory: link
         run: |
           set -o pipefail
+          # upstream elaborates data files by paths relative to the build directory
+          ln -sfn .lake/packages/Cryptids/baselines baselines
+          ln -sfn .lake/packages/Cryptids/artifacts artifacts
           lake build 2>&1 | tee build.log
       - name: Trust audit
         working-directory: link
