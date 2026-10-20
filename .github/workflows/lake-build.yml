@@ -17,6 +17,11 @@ jobs:
         run: |
           set -o pipefail
           lake build 2>&1 | tee build.log
+          # The audit needs the `#print axioms` output; if nothing was compiled, rebuild from scratch.
+          if ! grep -q "depends on axioms" build.log; then
+            rm -rf .lake/build
+            lake build 2>&1 | tee build.log
+          fi
       - name: Trust audit
         run: python3 scripts/audit_trust.py build.log
       - name: Evidence smoke test (transcriptions vs raw Turing machines)

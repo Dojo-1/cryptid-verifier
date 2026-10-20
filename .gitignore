@@ -3,3 +3,4 @@ mathlib/.lake/
 link/.lake/
 link/baselines
 link/artifacts
+__pycache__/
