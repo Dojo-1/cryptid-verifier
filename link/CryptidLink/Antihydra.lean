@@ -53,7 +53,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
     split at h
     · simp only [Option.some.injEq, Prod.mk.injEq] at h; obtain ⟨-, rfl⟩ := h; simp
     · split at h
-      · exact Option.noConfusion h
+      · simp at h
       · simp only [Option.some.injEq, Prod.mk.injEq] at h; obtain ⟨-, rfl⟩ := h; simp
   · rintro ⟨a, B⟩ ⟨a', B'⟩ hI h
     simp only at hI
@@ -70,7 +70,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
       simp only [It, Function.iterate_one, Option.bind_some, next, φ]
       congr 2 <;> omega
     · split at h
-      · exact Option.noConfusion h
+      · simp at h
       · rename_i hB ha
         simp only [Option.some.injEq, Prod.mk.injEq] at h
         obtain ⟨rfl, rfl⟩ := h
@@ -86,7 +86,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
     simp only at hI
     simp only [step] at h
     split at h
-    · exact Option.noConfusion h
+    · simp at h
     · split at h
       · rename_i hB ha
         subst ha
@@ -96,7 +96,7 @@ theorem sim : (∃ m, It next m (some (φ (0, 4))) = none) ↔ (∃ n, It step n
         have hφ : φ (0, 2 * j + 3) = .P 0 (2 * j + 2) 1 := by simp [φ]
         rw [hφ, loop 0 2 (by norm_num) j 1]
         rfl
-      · exact Option.noConfusion h
+      · simp at h
 
 /-- **Antihydra, machine level.** The Turing machine `1RB1RA_0LC1LE_1LD1LC_1LA0LB_1LF1RE_---0RA`
     halts from the blank tape iff our macro system halts from A(0, 4). -/
@@ -123,7 +123,7 @@ theorem machine_halts_iff_walk : IsHalt target ↔ ∃ n, walk 0 (pv n 4) = none
     rw [run_eq] at hn
     cases h : walk 0 (pv n 4) with
     | none => rfl
-    | some x => rw [h] at hn; exact Option.noConfusion hn
+    | some x => rw [h] at hn; simp at hn
   · rintro ⟨n, hn⟩
     exact ⟨n, by rw [run_eq, hn]; rfl⟩
 

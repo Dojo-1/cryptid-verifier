@@ -54,12 +54,12 @@ theorem sim_halts (f : S → Option S) (g : T → Option T) (φ : S → T) (Inv 
     obtain ⟨s, -, -, K, hK, hG⟩ := key m
     obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hK
     rw [Nat.add_comm, It_add, hm, It_none] at hG
-    exact Option.noConfusion hG
+    simp at hG
   · rintro ⟨n, hn⟩
     have P : ∀ n s, Inv s → It f n (some s) = none → ∃ m, It g m (some (φ s)) = none := by
       intro n
       induction n with
-      | zero => intro s _ h; exact Option.noConfusion h
+      | zero => intro s _ h; simp [It] at h
       | succ n ih =>
         intro s hI h
         rw [It_succ] at h
