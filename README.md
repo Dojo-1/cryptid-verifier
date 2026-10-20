@@ -3,9 +3,10 @@
 Lean 4 (core, no Mathlib) companion to *At the Limits of Computability: Steps Towards
 Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al., arXiv:2610.22603).
 The macro-rules are transcribed from the paper (Sec. 2.2 for Antihydra, Appendices A.4 and A.9) and checked
-against the raw Turing machines for their first macro steps (`TMLink.lean`); they are not linked to the
-authors' own Lean proofs. The paper links their public repository at
-[google-deepmind/cryptids](https://github.com/google-deepmind/cryptids); this companion uses its own transcriptions.
+against the raw Turing machines for their first macro steps (`TMLink.lean`). The `link/` subproject then
+imports the authors' Lean proofs from [google-deepmind/cryptids](https://github.com/google-deepmind/cryptids)
+(pinned commit `a0c1f56`) and proves, for all three machines, that **the raw Turing machine halts from the
+blank tape iff our macro system halts**; combined with our criteria this gives machine-level statements.
 
 Build: `lake build` (Lean `v4.24.0`, core only). The Mathlib part lives in `mathlib/` (`cd mathlib && lake exe cache get && lake build`). CI runs the build plus `scripts/audit_trust.py`, which fails on any
 `sorry`/`admit`/`native_decide`/`axiom` in the sources and on any non-standard axiom in the `#print axioms` output. Zero `sorry`; `#print axioms` shows only
@@ -36,9 +37,23 @@ Every raw configuration with exactly the shape of a macro configuration is decod
 | `a4_link` | `1RB0LF_1LC1RA_0RE0RD_---1LE_1LF1RC_1LC1LA`: the first 25 (raw steps 7 … 8 936) are exactly `step4`'s run from C(0,3) (the tape also shows C(0,2a+4) between C(a,1) and C(2,2a+2); `step4_through_zero` checks that this is the expansion rule) |
 | `a9_link` | `1RB1RC_1LC1LC_1RE0LD_1LB1RF_---1RA_0RD1RD`: the first 40 (raw steps 100 … 9 738) are exactly `step9`'s run from C(5,2,0) |
 
-This is a bounded check. The authors report general Lean proofs in their
-[repository](https://github.com/google-deepmind/cryptids); those proofs are not imported or rebuilt here. A Python version (`analysis/scripts/smoke.py`, run in CI) extends it to 300 000
+This is a bounded check; the general statement is in the next section. A Python version (`analysis/scripts/smoke.py`, run in CI) extends it to 300 000
 raw steps: 12 / 44 / 275 macro configurations, all in agreement.
+
+### Machine level, via the authors' proofs (`link/`, Lean v4.35.0-rc4 + Mathlib, checked in CI)
+Upstream proves `IsHalt target ↔ CollatzHalts next start` for each machine, with its own finer macro system.
+`CryptidLink/Sim.lean` proves a general simulation lemma (each of our steps is one or more of theirs, through an
+encoding φ and an invariant), and each machine file instantiates it.
+
+| Theorem | Plain meaning |
+|---|---|
+| `Antihydra.machine_halts_iff_walk` | the Antihydra TM halts ⟺ the +2/−1 walk on the parities of the T-orbit of 4 goes below 0 |
+| `A4.machine_halts_iff_cascade` | the A.4 TM halts ⟺ some reachable C(m,1) has m + s + 4 = 2^(s+2) |
+| `A9.machine_halts_iff_race` | the A.9 TM halts ⟺ some reachable C(a,b,c) has b ≥ 1 and b − c ∈ {0, 1} |
+
+Each machine's halting problem is now, provably, exactly the arithmetic question stated, with no bounded check involved.
+The trust base grows by the upstream repository (audited by the same script for `sorry`/`native_decide`/axioms in our files;
+`#print axioms` for the three theorems shows only the standard three).
 
 ### Antihydra as one real number (`mathlib/CryptidReal/Antihydra.lean`, Mathlib, checked in CI)
 | Theorem | Plain meaning |
@@ -70,8 +85,8 @@ raw steps: 12 / 44 / 275 macro configurations, all in agreement.
 
 ## What is NOT proved
 - That Antihydra, A.4 or A.9 never halts (all open; each is now reduced to an explicit arithmetic condition).
-- That the macro rules hold for **all** parameters at the Turing-machine level: `TMLink` checks the first 8 / 25 / 40
-  macro steps against the raw machines; the general statement is the authors' result, not re-proved here.
+- The Turing-machine-to-macro step itself is the authors' proof (imported in `link/`), not re-proved independently;
+  our own independent check of it is the bounded `TMLink` (first 8 / 25 / 40 macro steps).
 
 ## Scripts (`analysis/scripts/`, evidence only; `smoke.py` runs in CI)
 Numerical experiments: connection-Laplacian frustration, 2-adic survival densities, stream monitor,

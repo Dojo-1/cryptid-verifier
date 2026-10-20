@@ -26,7 +26,26 @@ each lead must be checked against the current holdout list and the community's e
 `1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA` and `1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA` produce
 **identical** compressed-shape exponent sequences over all 819 occurrences in 3·10⁶ steps. They are not
 state relabelings of each other (checked over all permutations of B–F), so the agreement is at the macro level.
-This is a candidate pair for "one problem, two machines" (unproved; it would need a macro-level simulation proof).
+This is a candidate pair for "one problem, two machines".
+
+**Why (exact, from the transition tables).** Rename the states of the first machine M1 by A→A, B→B, C→D, D→E,
+E→C, F→F. Then M1 and the second machine M2 agree on 11 of 12 transitions. The only difference is B reading 0:
+
+- M2: B0 → write 1, move left, go to C.
+- M1: B0 → write 1, move right, go to D′ (its C). D′ reads the right neighbour: on 0 it writes 0, moves left, goes
+  to E′; E′ reads the 1 just written and moves left to C. Net: write 1, move left, state C, in 3 steps instead of 1.
+  On 1, M1 halts.
+
+So M1 is M2 with step dilation plus **one extra halting trigger**: a B0 event whose right neighbour is 1. As long as
+that never happens the runs are identical up to time. Consequences:
+
+- If M1 never halts, M2 never halts (proving M1 settles both).
+- If M2 halts, M1 halts no later (in its own time).
+- M1 halts ⟺ M2 halts, or a B0 event with a 1 on its right occurs first.
+
+Evidence on the trigger: in 5·10⁶ steps of M2 there are only 15 B0 events, all with blank cells on the right
+(context (1, 0, 0) every time), which suggests B0 happens only at the right edge of the written tape. Proving
+that would make the pair exactly equivalent. Not yet proved.
 
 ## Per-lead output
 
