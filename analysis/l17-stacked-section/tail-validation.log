@@ -1,0 +1,5 @@
+One-tail endpoint grid: 1680 explicit unsupported: 48 {'merge-tail': 576, 'core100': 64, 'two-ones-tail': 576, 'core111': 64, 'three-or-more-tail-ones': 384, 'core1100': 16}
+New stack-producing core: 256 arbitrary suffixes, 64 larger checks
+Maximum reference transitions: 84008 limit 200000
+Frozen 2000-rewrite trace shapes: {'one-tail': 1895, 'bridge': 105} unparsed: 0
+K60 complete path and two-tail witness checked with exact full tape endpoints.

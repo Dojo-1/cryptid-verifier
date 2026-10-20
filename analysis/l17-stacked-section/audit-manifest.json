@@ -1,0 +1,139 @@
+{
+  "task_id": "l17-stacked-tail-calculus-20261020",
+  "claim": {
+    "text": "Explicit sweep derivations cover L17's two nonzero residues and all one-tail inputs C(x,b).(01)^c1^r at x>=7,c>=1,b in {0,1,2}; some inputs create another tail layer. The supplied blank boundary has a bounded derived continuation.",
+    "scope": "Three contextual lemmas, six short cases, 4,333 rule endpoint checks, 300 random interpreter controls, 14 unittest methods, and a separate 2,000-rewrite arithmetic trace. No Lean theorem or complete stacked reduction.",
+    "status_before": "H",
+    "assumptions": [
+      "Exact two-symbol TM semantics with blank symbol 0 and the displayed literal transition table.",
+      "The incoming blank reachability to C(6575648756,1) is supplied by Claude, not independently inspected or built here.",
+      "Universal interpretation uses the mathematical sweep compositions and finite local paths; no proof assistant was run here.",
+      "The earlier census is a dated snapshot, not refreshed by this follow-up."
+    ],
+    "forbidden_promotions": [
+      "No new certified cryptid, halting or non-halting theorem.",
+      "A second tail layer on an arbitrary input does not imply unbounded stack depth or blank reachability.",
+      "The derived huge-time trajectory is not raw simulation or a Lean certificate.",
+      "Two thousand successful rewrites do not prove reachable closure."
+    ]
+  },
+  "specification": {
+    "intended_object": "Whole-tape raw-machine endpoints, exact time/head counts, context-preserving local paths, one-tail shapes and an explicitly bounded arithmetic orbit.",
+    "invariants": [
+      "Both tape exteriors are zero; the C head reads the first displayed symbol.",
+      "Only exterior trailing zeros may be omitted; interior zeros remain explicit.",
+      "Every endpoint includes complete nonzero support, state, head displacement and defined raw-transition count.",
+      "Unknown guards, absent dispatch cases and budget stops remain explicit."
+    ],
+    "known_answer_cases": [
+      "Undefined F1 halts without writing, moving or increasing the transition count.",
+      "Each A01, D10 and C01 path reads only its own two-cell block.",
+      "Claude's C(x,1).T observation is F111 with c=7,v=1, giving time 4x+80.",
+      "C(7,1).(01)^8 1 reaches C(0,2).T.T in 152 transitions, shift -2."
+    ]
+  },
+  "implementation": {
+    "artifact": "rules.py; words.py; reference.py; block_sim.py; validate.py; validate_tail_family.py; validate_small_tails.py; test_stacked.py; trace_symbolic.py; probe_remaining.py",
+    "commit": "Additive analysis/l17-stacked-section directory in a handoff archive. No repository, Lean or existing README mutation.",
+    "environment": "Python 3.12, standard library only; no Lean/lake build here.",
+    "live_entrypoint": "README.md reproduction commands.",
+    "representation": "Exact periodic words and arbitrary-size integer counters; independent dense bytearray raw interpreter; separate fixed-block evaluator at widths 2 and 6."
+  },
+  "metric": {
+    "name": "Complete endpoint agreement, fixed read windows, guarded coverage, derived prefix and additional tail layers.",
+    "type": "typed_tuple",
+    "units": "Rule probes, raw transitions, head cells, fixed reads, symbolic rewrites and tail layers.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Exact periodic-word equivalence at enormous counts, tested against explicit binary expansion on small words.",
+      "Translated initial heads and complete final support comparisons.",
+      "Do not identify one-tail shapes with arbitrary stacked configurations."
+    ]
+  },
+  "tests": {
+    "black_box": ["4,333 rule endpoint probes and 300 random full-state interpreter controls; 14 unittest methods pass."],
+    "structural": [
+      "Ten Python modules import without output or working-directory writes; no network or Lean operation on import.",
+      "Every fixed path records each read and checks it stays within the declared interval.",
+      "The combined archive preserves all 28 earlier file payloads byte for byte."
+    ],
+    "property_based": [
+      "All 511 binary words of lengths 0 through 8: slicing, trimming and periodic-prefix oracles.",
+      "Arbitrary suffixes after required literal prefixes; exact guard boundaries and finite kernels.",
+      "One-tail grid, six short-tail grids and separately seeded larger inputs."
+    ],
+    "metamorphic": [
+      "Changing absolute initial head position translates the whole endpoint.",
+      "Splitting a block run across restart boundaries preserves complete state.",
+      "The frozen 2,000-rewrite trace is reproduced exactly without overwriting it."
+    ],
+    "fuzzing": ["Random complete states, interior-zero suffixes, leading-zero alignment, invalid guards, halting and exhausted event budgets."],
+    "historical": ["The leading-zero encoder defect is fixed with a regression test; the original census and all 15 tests are bundled unchanged."]
+  },
+  "controls": {
+    "matched_baselines": ["Raw dense interpreter versus two independent block widths for the same rule source and exact transition budget."],
+    "negative_controls": [
+      "Invalid parameter guards raise errors.",
+      "Small or unsupported prefixes remain explicit in the original rewrite engine.",
+      "A one-tail closure claim is defeated by a checked two-layer endpoint."
+    ],
+    "compute_parity": "Rule endpoints use identical raw-transition budgets; no accelerator speed or discovery-rate benefit is inferred.",
+    "parameter_parity": "Same machine, source, literal suffix, head and endpoint formula in all compared paths.",
+    "sampling_parity": "Exact fixed grids plus seeded contexts. No uniform-time, mixing or statistical-tail interpretation.",
+    "data_access_parity": "All interpreters receive the same complete finite word and blank exteriors."
+  },
+  "preregistration": {
+    "prediction": "Local protocols and formula records precede their validation phases, after disclosed exploratory fits and kernel derivation. They are not externally authenticated preregistration.",
+    "primary_metric": "Full raw-machine endpoint agreement and a context-preserving universal sweep derivation suitable for formalization.",
+    "uncertainty_method": "Exact finite comparisons and mathematical path composition; no p-value or asymptotic inference.",
+    "kill_condition": "Any complete-state or read-window mismatch retires the formula on that guard.",
+    "stop_condition": "Every reference probe <=200,000 raw transitions; original 100-rewrite trace preserved; separate later 2,000-rewrite budget; subsequent tail phases separately recorded.",
+    "promotion_rule": "Actual Lean statements, passing build and connection to the incoming blank boundary are required before reporting new Lean machine-level reachability. Closed reduction needs all reachable guards and stacked prefixes."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Literal L17 machine supplied by the user and retained in rules.py.",
+      "User-supplied Claude brief reporting PR #6 and its incoming boundary; not independently inspected here.",
+      "DERIVATION.md: mathematical sweep compositions and whole-tape endpoint specifications."
+    ],
+    "execution_records": [
+      "validation-results.json", "tail-family-checks.json", "small-tail-checks.json",
+      "symbolic-extension.json", "remaining-tail-probes.json", "tests.log",
+      "validation.log", "tail-validation.log", "small-tail-validation.log", "integrity.json"
+    ],
+    "independent_witnesses": [{
+      "name": "Dense raw interpreter and fixed-block evaluators",
+      "origin": "Separate implementations by the same author, not external independent replication.",
+      "artifact": "reference.py; block_sim.py; validators"
+    }],
+    "claim_to_artifact_map": [
+      "Both nonzero residues -> DERIVATION.md and validation-results.json.",
+      "Contextual F100/F111 -> fixed paths, arbitrary-suffix checks and mathematical sweep proof.",
+      "F1100, the two-layer witness and one-tail nonclosure -> tail-family-checks.json and K60.",
+      "Six short-tail rules -> small-tail-checks.json with seven literal kernels and their sweeps.",
+      "Derived large orbit -> symbolic-extension.json and exact trace_symbolic.py reproduction.",
+      "Frozen-prefix one-tail observations -> tail-family-checks.json shape audit; no universal closure inference.",
+      "Earlier census, simulators and 15 tests -> unchanged analysis/appendix-c-leads payloads."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {"from":"requirement","to":"specification","preserved":["Derive L17 tail dynamics for the two remaining residues."],"transformed":["Open search becomes explicit one-tail and contextual prefix goals."],"lost":["No promise of resolving the entire machine."],"remainder":["General stacked interactions and low guards."]},
+      {"from":"specification","to":"implementation","preserved":["Complete tape, time, state, guard and head semantics."],"transformed":["Finite binary words become exact periodic chunks and guarded counter formulas."],"lost":["No loss of nonzero tape support is intended."],"remainder":["No formally verified implementation."]},
+      {"from":"implementation","to":"validation","preserved":["Identical source configurations and raw budgets."],"transformed":["Formulas become raw and block endpoint comparisons."],"lost":["Finite inputs do not cover all parameters."],"remainder":["Universal interpretation rests on the separately given sweeps."]},
+      {"from":"validation","to":"measurement","preserved":["All counted comparisons, guards and explicit unsupported cases."],"transformed":["Results become JSON witnesses, logs and exact traces."],"lost":["Most full raw paths are reproducible rather than bundled."],"remainder":["External replication and Lean formalization."]},
+      {"from":"measurement","to":"interpretation","preserved":["One-tail nonclosure and the finite scope of the blank-prefix continuation."],"transformed":["A richer tape section becomes a proof-ready tail calculus."],"lost":["No inference of unbounded stack depth or non-halting."],"remainder":["Reachable closure remains open."]},
+      {"from":"interpretation","to":"requirement","preserved":["Concrete formulas and finite proof windows for Claude."],"transformed":["The original frontier advances to a long derived prefix with explicit obligations."],"lost":["No newly certified Cryptid."],"remainder":["Formalize contextual lemmas and analyze reachable stacked prefixes."]}
+    ]
+  },
+  "result": {
+    "observed": "Both nonzero residues, three general contextual lemmas, six short 1100 cases and all one-tail branches at x>=7 are derived and have matching finite endpoints. 4,333 rule probes, 300 random interpreter controls and 14 tests pass. The supplied blank boundary continues through 2,000 original rewrites, with a 296-digit final pair counter.",
+    "effect_size": "One explicit two-tail endpoint refutes universal single-tail closure. Zero new Lean theorems, complete stacked reductions or certified Cryptids.",
+    "uncertainty": "Universal arguments are mathematical, not compiled proofs. Incoming blank reachability is supplied context. No reachable unbounded-stack or infinite non-halting conclusion. The new 1100 lemmas are separate functions and are not silently added to the frozen trace engine.",
+    "status_after": "M",
+    "retired_claims": ["All one-tail inputs return to one tail.","A finite successful rewrite prefix proves non-halting."],
+    "active_remainder": ["Formalize fixed segments and sweep compositions in Lean.","Connect derived checkpoints to the supplied incoming theorem.","Analyze low guards and multiple-tail prefixes, especially (10)^c1101v.","Decide reachable stack-depth behavior without promoting finite observations."]
+  }
+}
