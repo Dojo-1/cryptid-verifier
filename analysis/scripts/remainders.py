@@ -1,6 +1,6 @@
 """At each decision point, the integer r that must land in a finite window W for the machine to halt.
 Halting happens exactly when r ∈ W at some decision (derived from the paper's rules)."""
-import sys, math; sys.path.insert(0,'/tmp/zk/global')
+import sys, math; import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from machines import *
 def a1_r(s,t):            # states A(0,b,0,d): halt iff d - b - 2 == 0
     a,b,c,d=s

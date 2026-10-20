@@ -2,7 +2,7 @@
 small value (< K) or BIG with a residue mod M. Successors are computed from many concrete
 representatives (big values K+r+M*j, j in 0..J-1) so all small differences/orderings occur.
 Discovery tool only: a hit-free result suggests an invariant to prove exactly in Lean."""
-import sys, itertools; sys.path.insert(0,'/tmp/zk/global')
+import sys, itertools; import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from machines import *
 def absv(x,K,M): return x if x<K else ('B',x%M)
 def reps(v,K,M,J):

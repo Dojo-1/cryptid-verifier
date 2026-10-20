@@ -1,4 +1,4 @@
-import sys, math; sys.path.insert(0,'/tmp/zk/global')
+import sys, math; import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from machines import MACHINES
 N=3_000_000
 print(f"{'machine':10s} {'status':12s} {'decisions':>9s} {'bits':>6s} {'bits/decision (late half)':>26s} {'regime':>11s}")

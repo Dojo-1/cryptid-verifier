@@ -1,4 +1,4 @@
-import sys; sys.path.insert(0,'/tmp/zk/global')
+import sys; import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from machines import *
 from collections import Counter
 def run(step,s0,N=3_000_000,maxbits=3000):

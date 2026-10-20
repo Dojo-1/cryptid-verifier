@@ -20,8 +20,8 @@ def strip_comments(src: str) -> str:
     return "".join(out)
 
 bad = []
-src_dirs = sys.argv[2:] or ["AntihydraOuroboros"]
-files = [f for d in src_dirs for f in sorted(pathlib.Path(".").glob(f"{d}/**/*.lean"))]
+# scan every Lean source under the current directory (lakefiles and root modules included), except build dirs
+files = sorted(f for f in pathlib.Path(".").rglob("*.lean") if ".lake" not in f.parts)
 for f in files:
     for m in FORBIDDEN.finditer(strip_comments(f.read_text())):
         bad.append(f"{f}: forbidden `{m.group(0).strip()}`")
@@ -37,4 +37,4 @@ for name, axs in lines:
 
 if bad:
     print("\n".join(bad)); sys.exit(1)
-print(f"trust audit OK: {len(lines)} audited theorems, standard axioms only")
+print(f"trust audit OK: {len(files)} Lean files scanned, {len(lines)} audited theorems, standard axioms only")
