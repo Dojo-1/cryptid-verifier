@@ -48,3 +48,24 @@ jobs:
       - name: Trust audit
         working-directory: mathlib
         run: python3 ../scripts/audit_trust.py build.log
+
+  link:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch Mathlib cache
+        working-directory: link
+        run: lake exe cache get
+      - name: Build (links to google-deepmind/cryptids machine-level proofs)
+        working-directory: link
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+      - name: Trust audit
+        working-directory: link
+        run: python3 ../scripts/audit_trust.py build.log
