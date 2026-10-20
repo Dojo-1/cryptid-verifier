@@ -37,7 +37,7 @@ def search(name, K, M, D, B):
     unknown = [u for u in range(1, len(idx) + 1) if u not in sources]   # never sampled: successors unknown
     clauses = [[s]] + [[-u, v] for u, v in edges] + [[-h] for h in halting] + [[-u] for u in unknown]
     f = CNFFormula(num_vars=len(idx), clauses=clauses)
-    r = frame_solve_coupled(f, max_rounds=10**6)        # lambda-sat coupled frame: BCP + 2-SAT + parity, sound refutation
+    r = frame_solve_scouted(f)                          # lambda-sat router (fixed upstream in dd391db: unit-aware 2-SAT, exact scout gate)
     if r.status == 'UNSAT':
         return 'UNSAT', r.resolved_by, True, len(idx), len(edges), len(halting), 0
     # consistent 2-SAT: the least fixed point (reachable closure) is the candidate; replay it

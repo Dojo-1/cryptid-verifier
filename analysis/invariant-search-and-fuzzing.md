@@ -11,11 +11,19 @@ halting-capable state in I; no unsampled state in I. These are unit and binary c
 coupled frame (`frame_solve_coupled`: unit propagation + 2-SAT + parity) decides them soundly.
 
 **Result.** All 60 instances (12 machines × (K,M,D) ∈ {(4,2,2), (6,4,4), (6,6,6), (8,12,8), (8,24,12)}) are
-**UNSAT, refuted by lambda-sat**: no invariant of this kind exists for any of the 12 machines. The negative result
+**UNSAT, refuted by lambda-sat**: no invariant of this kind exists for any of the 12 machines. With lambda-sat at
+`dd391db` the default router (`frame_solve_scouted`) refutes all 60 directly in its 2-SAT frame. The negative result
 is sound even though the box sampling is not complete: sampling can only *miss* edges, and halting is already
 reachable with the sampled ones.
 
-**Feedback for lambda-sat** (found while wiring it in):
+**Scope (correction).** This rules out invariants built from small values, residues and clipped pairwise
+differences, and the Lean no-go theorems rule out affine counter–time laws. Neither excludes general
+**semilinear** invariants: linear inequalities mixing coordinates (b included), disjunctions over phases, or
+congruences on combinations. That search is still open, for Antihydra too. An earlier remark of mine that it was
+"provably impossible" for Antihydra was too strong. (Point raised in the GPT-6.1 audit.)
+
+**Feedback for lambda-sat** (found while wiring it in; **fixed upstream in `dd391db`**, PR #34 — unit/empty
+clauses folded into the 2-SAT check and the scout gate made exact):
 - `frame_solve_scouted` returns `CDCL_NEEDED` on trivially refutable Horn chains (unit, x₁→x₂→…→xₙ, ¬xₙ, any n),
   which `frame_solve_coupled` refutes. The scout appears to prune the frame that owns the instance.
 - `check_binary_clauses` ignores unit clauses, so it reports such formulas as "consistent". This is sound as a
