@@ -6,8 +6,10 @@ tape compression into repeated blocks at head-boundary events, most frequent sha
 shape's exponent sequence into runs of constant increment, "races", and tries exact affine fits for the
 transitions between them, "resets", per residue class).
 
-**Status refresh is not done.** bbchallenge.org could not be fetched from this session. Before any proof effort
-each lead must be checked against the current holdout list and the community's equivalence classes.
+**Status refresh: see `gpt-2026-10-20/report.md`** (GPT, against the bbchallenge holdout lists and annotation
+sheet). In short: L02/L09/L10 belong to the documented Racheline2024 family; L25 is reported resolved
+(verification pending); L13 already has public analysis; the 25 tables form 19 families when the start state is ignored.
+L17 is followed up in `L17.md`.
 
 ## Results (3 000 000 raw steps per machine)
 
