@@ -58,7 +58,7 @@ lemma S_div (n : ℕ) : (S n 4 : ℝ) / 3 ^ n = ∑ k ∈ range n, t k := by
     rw [sum_range_succ, ← ih]
     have hS : (S (n + 1) 4 : ℝ) = 3 * (S n 4 : ℝ) + 2 ^ n * q n := by
       simp only [S, q]; push_cast; ring
-    rw [hS]; unfold t; rw [div_pow]; field_simp; ring
+    rw [hS]; unfold t; rw [div_pow]; field_simp <;> ring_nf
 
 /-- bₙ = (3/2)ⁿ · (4 + Σ_{k<n} tₖ), from `real_bridge`. -/
 lemma b_eq (n : ℕ) : (iterT n 4 : ℝ) = (3 / 2 : ℝ) ^ n * (4 + ∑ k ∈ range n, t k) := by
@@ -69,7 +69,7 @@ lemma b_eq (n : ℕ) : (iterT n 4 : ℝ) = (3 / 2 : ℝ) ^ n * (4 + ∑ k ∈ ra
   rw [← S_div, div_pow]
   have hb : (iterT n 4 : ℝ) = (3 ^ n * 4 + (S n 4 : ℝ)) / 2 ^ n := by
     rw [eq_div_iff h2]; linarith
-  rw [hb]; field_simp; ring
+  rw [hb]; field_simp <;> ring_nf
 
 /-- The tail Rₙ = ξ·(3/2)ⁿ − bₙ. -/
 noncomputable def R (n : ℕ) : ℝ := ∑' j, q (n + j) * (2 / 3 : ℝ) ^ j / 3
@@ -84,7 +84,7 @@ lemma tail (n : ℕ) : ξ * (3 / 2 : ℝ) ^ n - iterT n 4 = R n := by
     rw [Nat.add_comm j n, pow_add, div_pow, div_pow, div_pow]
     have h2 : (2 : ℝ) ^ n ≠ 0 := by positivity
     have h3 : (3 : ℝ) ^ n ≠ 0 := by positivity
-    field_simp; ring
+    field_simp <;> ring_nf
   rw [← hmul]; ring
 
 lemma w_summable : Summable (fun j : ℕ => (2 / 3 : ℝ) ^ j / 3) := geom_summable.div_const 3
@@ -95,7 +95,8 @@ lemma w_tsum : ∑' j : ℕ, (2 / 3 : ℝ) ^ j / 3 = 1 := by
 lemma g_summable (n : ℕ) : Summable (fun j : ℕ => q (n + j) * (2 / 3 : ℝ) ^ j / 3) := by
   refine Summable.of_nonneg_of_le (fun j => ?_) (fun j => ?_) (geom_summable.mul_left (4 / 3))
   · have := q_ge (n + j); positivity
-  · have := q_le (n + j); have hr : 0 ≤ (2 / 3 : ℝ) ^ j := by positivity; nlinarith
+  · have := q_le (n + j); have hr : 0 ≤ (2 / 3 : ℝ) ^ j := (by positivity)
+    nlinarith
 
 /-- 3 < Rₙ: some later parity is even (`exists_even_after`). -/
 lemma R_gt (n : ℕ) : 3 < R n := by
@@ -103,9 +104,11 @@ lemma R_gt (n : ℕ) : 3 < R n := by
   rw [iterT_add] at hj
   have h3 : ∑' i : ℕ, 3 * ((2 / 3 : ℝ) ^ i / 3) = 3 := by rw [tsum_mul_left, w_tsum]; ring
   rw [← h3]; unfold R
-  refine tsum_lt_tsum (i := j) (fun i => ?_) ?_ (w_summable.mul_left 3) (g_summable n)
-  · have := q_ge (n + i); have hr : 0 ≤ (2 / 3 : ℝ) ^ i := by positivity; nlinarith
-  · rw [q_even _ hj]; have hr : 0 < (2 / 3 : ℝ) ^ j := by positivity; nlinarith
+  refine Summable.tsum_lt_tsum (i := j) (fun i => ?_) ?_ (w_summable.mul_left 3) (g_summable n)
+  · have := q_ge (n + i); have hr : 0 ≤ (2 / 3 : ℝ) ^ i := (by positivity)
+    nlinarith
+  · rw [q_even _ hj]; have hr : 0 < (2 / 3 : ℝ) ^ j := (by positivity)
+    nlinarith
 
 /-- Rₙ < 4: some later parity is odd (`exists_odd_after`). -/
 lemma R_lt (n : ℕ) : R n < 4 := by
@@ -113,9 +116,11 @@ lemma R_lt (n : ℕ) : R n < 4 := by
   rw [iterT_add] at hj
   have h4 : ∑' i : ℕ, 4 * ((2 / 3 : ℝ) ^ i / 3) = 4 := by rw [tsum_mul_left, w_tsum]; ring
   rw [← h4]; unfold R
-  refine tsum_lt_tsum (i := j) (fun i => ?_) ?_ (g_summable n) (w_summable.mul_left 4)
-  · have := q_le (n + i); have hr : 0 ≤ (2 / 3 : ℝ) ^ i := by positivity; nlinarith
-  · rw [q_odd _ hj]; have hr : 0 < (2 / 3 : ℝ) ^ j := by positivity; nlinarith
+  refine Summable.tsum_lt_tsum (i := j) (fun i => ?_) ?_ (g_summable n) (w_summable.mul_left 4)
+  · have := q_le (n + i); have hr : 0 ≤ (2 / 3 : ℝ) ^ i := (by positivity)
+    nlinarith
+  · rw [q_odd _ hj]; have hr : 0 < (2 / 3 : ℝ) ^ j := (by positivity)
+    nlinarith
 
 /-- **Main theorem.** Antihydra's b-orbit is bₙ = ⌊ξ · (3/2)ⁿ⌋ − 3. -/
 theorem antihydra_floor (n : ℕ) : (iterT n 4 : ℤ) = ⌊ξ * (3 / 2 : ℝ) ^ n⌋ - 3 := by
