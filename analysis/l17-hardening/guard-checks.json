@@ -1,0 +1,268 @@
+{
+  "cases": [
+    {
+      "rule": "F100",
+      "parameters": {
+        "a": 6,
+        "c": 0
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F100",
+      "parameters": {
+        "a": 5,
+        "c": 0
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": -1
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "F100",
+      "parameters": {
+        "a": 7,
+        "c": -2
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "F111",
+      "parameters": {
+        "a": 4,
+        "c": 1
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F111",
+      "parameters": {
+        "a": 3,
+        "c": 1
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F111",
+      "parameters": {
+        "a": 5,
+        "c": 0
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "F111",
+      "parameters": {
+        "a": 5,
+        "c": -1
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "F1100",
+      "parameters": {
+        "a": 6,
+        "c": 7
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F1100",
+      "parameters": {
+        "a": 5,
+        "c": 7
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "F1100",
+      "parameters": {
+        "a": 7,
+        "c": 6
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "F1100",
+      "parameters": {
+        "a": 7,
+        "c": 5
+      },
+      "suffix": "01011",
+      "violated": "c",
+      "status": "rejected"
+    },
+    {
+      "rule": "S1",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S1",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S2",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S2",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S3",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S3",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S4",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S4",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S5",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S5",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S6",
+      "parameters": {
+        "a": 6
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "S6",
+      "parameters": {
+        "a": 5
+      },
+      "suffix": "01011",
+      "violated": "a",
+      "status": "rejected"
+    },
+    {
+      "rule": "R1",
+      "parameters": {
+        "j": -1
+      },
+      "suffix": "01011",
+      "violated": "j",
+      "status": "rejected"
+    },
+    {
+      "rule": "R1",
+      "parameters": {
+        "j": -2
+      },
+      "suffix": "01011",
+      "violated": "j",
+      "status": "rejected"
+    },
+    {
+      "rule": "R2",
+      "parameters": {
+        "j": -1
+      },
+      "suffix": "01011",
+      "violated": "j",
+      "status": "rejected"
+    },
+    {
+      "rule": "R2",
+      "parameters": {
+        "j": -2
+      },
+      "suffix": "01011",
+      "violated": "j",
+      "status": "rejected"
+    }
+  ]
+}

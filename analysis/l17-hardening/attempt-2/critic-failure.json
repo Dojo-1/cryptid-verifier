@@ -1,0 +1,22 @@
+{
+  "failure": {
+    "index": 129,
+    "pattern": "101100",
+    "count": 0,
+    "split": 0,
+    "exterior_zeros": 12
+  },
+  "minimized": {
+    "left": [
+      [
+        "10",
+        0
+      ]
+    ],
+    "right": [],
+    "literal_semantics": "Both are empty, so the old comparator must return true but returns false."
+  },
+  "correction": "Discard zero-count chunks before examining or trimming their final symbol.",
+  "impact": "New critic representation code. Main rule instantiation already omits zero-count terms, and no L17 endpoint failure was observed. Recompare all cached literal outputs with corrected critic.",
+  "witness_status": "Reproduced before correction; same-author diagnosis, not external replication."
+}

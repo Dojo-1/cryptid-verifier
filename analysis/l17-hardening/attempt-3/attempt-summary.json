@@ -1,0 +1,7 @@
+{
+  "defined_cpp_transitions_before_stop": 4,
+  "stop": "Mutation generator only searched top-level functions and failed to locate the class method Word.drop.",
+  "correction": "Search the AST recursively for the controlled named function. Original actor and oracle values are unchanged.",
+  "surviving_results": "Raw endpoints, windows, compiler controls, 1024 word representations, 64 huge counters, guard rejections and both symbolic traces completed before this harness stop.",
+  "continuation": "Reuse only identical hash-bound literal outputs; rerun actor/spec and mutation checks."
+}

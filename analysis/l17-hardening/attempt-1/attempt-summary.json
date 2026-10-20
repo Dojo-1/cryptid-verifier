@@ -1,0 +1,8 @@
+{
+  "operational_stop": "The O0 control executable was observed as a zero-byte non-executable file. It was recompiled successfully; no scientific mismatch was observed. No cause is inferred.",
+  "defined_cpp_transitions_before_stop": 276662,
+  "correction": "Verify nonempty executable at build and bind hash immediately before compiler parity checks. Repeat the same fixed campaign, preserve this attempt and include its raw work in the total budget.",
+  "scope": "Comparator raw endpoint and window checks passed before the operational stop. Remaining checks had not completed.",
+  "corrected_total_defined_cpp_transitions": 24601745,
+  "accounting_correction": "The first raw-rule gzip was observed empty; its 24,325,083 transitions are counted from the retained execution metadata rather than the missing response artifact. A second physical execution retained the complete response."
+}

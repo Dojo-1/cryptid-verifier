@@ -1,0 +1,9 @@
+{
+  "cases": 6381,
+  "case_queue_sha256": "461146acbaa35c9031b2d03df92cd6e1c2d9f61b568a859af22c27018d9053a1",
+  "claims_sha256": "d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074",
+  "literal_request_sha256": "c8f2dadb7461cf3f02e89a78bc4ef8a3dcb0de0fd60e18998a4c877dce202105",
+  "nonclosure_witness_case_id": 1772,
+  "regression_cases": 21,
+  "provenance": "Queue reconstructed from the frozen snapshots and exact seed; its complete serialized request digest equals the actual comparator input digest."
+}

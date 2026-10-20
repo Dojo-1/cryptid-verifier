@@ -1,0 +1,15 @@
+Comparator compiled at O2, O0 and UBSan.
+Actor versus separately consumed specification: {'pass': 6372, 'not_applicable': 9}
+C++ complete endpoint comparisons: 6381 passed; 24325083 defined transitions.
+Arbitrary two-sided read-window contexts: 192 passed.
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 198, in <module>
+    try:main(args.actor_root or default_actor())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/run_hardening.py", line 148, in main
+    reps=representations(actor,seed);write(ROOT/'representation-checks.json',{'checks':len(reps),'cases':reps})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-hardening/controls.py", line 55, in representations
+    assert equal_words(word.parts,[(pattern,n)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

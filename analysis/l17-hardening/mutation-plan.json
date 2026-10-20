@@ -1,0 +1,142 @@
+{
+  "prediction": "The campaign should detect all 20 specified live implementation defects. Any survivor will be reported as a coverage gap, with no score clipping.",
+  "primary_metric": "Killed/survived by defect class; guard-contract kills are reported separately from wrong physical endpoints.",
+  "mutants": [
+    {
+      "name": "F100-leading",
+      "function": "core100",
+      "old": "2*a-12",
+      "new": "2*a-10",
+      "class": "tape"
+    },
+    {
+      "name": "F100-time",
+      "function": "core100",
+      "old": "4*a+4*c+50",
+      "new": "4*a+4*c+49",
+      "class": "time"
+    },
+    {
+      "name": "F100-shift",
+      "function": "core100",
+      "old": "4*a+4*c+50,-2",
+      "new": "4*a+4*c+50,-1",
+      "class": "head"
+    },
+    {
+      "name": "F100-context",
+      "function": "core100",
+      "old": "tail.prepend",
+      "new": "Word().prepend",
+      "class": "context"
+    },
+    {
+      "name": "F111-leading",
+      "function": "core111",
+      "old": "2*a-8",
+      "new": "2*a-6",
+      "class": "tape"
+    },
+    {
+      "name": "F111-pairs",
+      "function": "core111",
+      "old": "('01',c+6)",
+      "new": "('01',c+7)",
+      "class": "tape"
+    },
+    {
+      "name": "F111-zero",
+      "function": "core111",
+      "old": "('0',1)",
+      "new": "('0',0)",
+      "class": "interior-zero"
+    },
+    {
+      "name": "F111-guard",
+      "function": "core111",
+      "old": "c<1",
+      "new": "c<0",
+      "class": "guard-contract"
+    },
+    {
+      "name": "F1100-middle",
+      "function": "core1100",
+      "old": "2*c-13",
+      "new": "2*c-11",
+      "class": "tape"
+    },
+    {
+      "name": "F1100-stack",
+      "function": "core1100",
+      "old": "('1',3)",
+      "new": "('1',4)",
+      "class": "stack-tail"
+    },
+    {
+      "name": "F1100-time",
+      "function": "core1100",
+      "old": "4*a+4*c+92",
+      "new": "4*a+4*c+90",
+      "class": "time"
+    },
+    {
+      "name": "short-c3-pairs",
+      "function": "core1100_small",
+      "old": "Endpoint(a+7,",
+      "new": "Endpoint(a+6,",
+      "class": "tape"
+    },
+    {
+      "name": "short-c6-zero",
+      "function": "core1100_small",
+      "old": "('01',6),('0',1)",
+      "new": "('01',6),('0',0)",
+      "class": "interior-zero"
+    },
+    {
+      "name": "short-c4-middle",
+      "function": "core1100_small",
+      "old": "('01',1),('1',1),('01',5)",
+      "new": "('01',1),('1',0),('01',5)",
+      "class": "interior-one"
+    },
+    {
+      "name": "residue-leading",
+      "function": "residue",
+      "old": "20*j+15",
+      "new": "21*j+15",
+      "class": "residue-coefficient"
+    },
+    {
+      "name": "residue-time",
+      "function": "residue",
+      "old": "60*j*j",
+      "new": "61*j*j",
+      "class": "time"
+    },
+    {
+      "name": "residue-shift",
+      "function": "residue",
+      "old": "-14*j-13",
+      "new": "-14*j-12",
+      "class": "head"
+    },
+    {
+      "name": "rewrite-reset",
+      "function": "rewrite",
+      "old": "2*a+4",
+      "new": "2*a+6",
+      "class": "dispatch"
+    },
+    {
+      "name": "word-drop-one-cell",
+      "class": "representation"
+    },
+    {
+      "name": "block-leading-zero-regression",
+      "class": "historical-encoding"
+    }
+  ],
+  "shrinking": "At most 128 predicate calls per first failure, preserving the rule guard unless the failure is explicitly a rejection-contract test.",
+  "note": "Prediction is recorded before running the mutation campaign. All source copies are ephemeral; frozen actor files are not modified."
+}

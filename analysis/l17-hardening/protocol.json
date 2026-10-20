@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-10-20T17:48:57.270249+00:00",
+  "object": "L17 raw endpoint formulas, arbitrary-context windows, exact counters and the bounded derived trace in the frozen handoff.",
+  "skills": [
+    "acaf-fuzzer",
+    "recursive-research-auditor"
+  ],
+  "actor": "Frozen Python rules, words and block evaluator.",
+  "critic": "Separate declarative claims and separately written C++ literal-machine interpreter. No actor imports in the critic.",
+  "ambigator": "Guard boundaries, alternating-run counts, suffix length and density, absolute translation, tape reflection, state renaming and equivalent chunk decompositions.",
+  "fuzzer": "Deterministic fixed grids and independent seeded streams.",
+  "budgets": {
+    "frozen_rule_cases": 4333,
+    "new_acaf_rule_cases": 2048,
+    "window_context_variants_per_kernel": 12,
+    "raw_interpreter_controls": 300,
+    "raw_metamorphic_variants": 192,
+    "huge_integer_cases": 64,
+    "word_representation_cases": 1024,
+    "maximum_raw_transitions_per_request": 200000,
+    "maximum_total_defined_raw_transitions": 80000000,
+    "maximum_actor_mutants": 20,
+    "maximum_shrink_attempts_per_first_failure": 128
+  },
+  "seed": 202610201745,
+  "primary_metrics": [
+    "Exact full tape, state, head, raw count and halting agreement.",
+    "Read-window locality with arbitrary nonzero context outside each window.",
+    "Mutation sensitivity, by defect class, with survivors disclosed."
+  ],
+  "kill": "Any mismatch suspends the corresponding claim on that guard. Preserve the original failing record, shrink without extending a raw horizon and record any correction before rerunning.",
+  "stop": "One frozen campaign within the declared counts and raw total; no orbit extension or richer tail rules in this hardening phase.",
+  "promotion": "Passing finite checks strengthens M evidence only. No new Lean theorem, machine non-halting, complete stack closure, independent external replication or claimed performance gain.",
+  "provenance": "The new specification is a separate transcription by the same author from the delivered statements; the actual consumed file hash will be recorded. No fresh-author or external independence is claimed."
+}
