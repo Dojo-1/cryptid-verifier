@@ -21,6 +21,13 @@ jobs:
         run: python3 scripts/audit_trust.py build.log
       - name: Evidence smoke test (transcriptions vs raw Turing machines)
         run: python3 analysis/scripts/smoke.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical-check dependency
+        run: python3 -m pip install numpy
+      - name: Exact acceleration and finite-evidence regression checks
+        run: python3 -m unittest discover -s analysis/scripts -p 'test_*.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

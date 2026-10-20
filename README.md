@@ -4,7 +4,8 @@ Lean 4 (core, no Mathlib) companion to *At the Limits of Computability: Steps To
 Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al., arXiv:2610.22603).
 The macro-rules are transcribed from the paper (Sec. 2.2 for Antihydra, Appendices A.4 and A.9) and checked
 against the raw Turing machines for their first macro steps (`TMLink.lean`); they are not linked to the
-authors' own Lean proofs, whose repository the paper does not name.
+authors' own Lean proofs. The paper links their public repository at
+[google-deepmind/cryptids](https://github.com/google-deepmind/cryptids); this companion uses its own transcriptions.
 
 Build: `lake build` (Lean `v4.24.0`, core only). The Mathlib part lives in `mathlib/` (`cd mathlib && lake exe cache get && lake build`). CI runs the build plus `scripts/audit_trust.py`, which fails on any
 `sorry`/`admit`/`native_decide`/`axiom` in the sources and on any non-standard axiom in the `#print axioms` output. Zero `sorry`; `#print axioms` shows only
@@ -35,8 +36,8 @@ Every raw configuration with exactly the shape of a macro configuration is decod
 | `a4_link` | `1RB0LF_1LC1RA_0RE0RD_---1LE_1LF1RC_1LC1LA`: the first 25 (raw steps 7 … 8 936) are exactly `step4`'s run from C(0,3) (the tape also shows C(0,2a+4) between C(a,1) and C(2,2a+2); `step4_through_zero` checks that this is the expansion rule) |
 | `a9_link` | `1RB1RC_1LC1LC_1RE0LD_1LB1RF_---1RA_0RD1RD`: the first 40 (raw steps 100 … 9 738) are exactly `step9`'s run from C(5,2,0) |
 
-This is a bounded check (the authors' Lean proofs establish the rules for all parameters; their repository
-is not linked from the paper). A Python version (`analysis/scripts/smoke.py`, run in CI) extends it to 300 000
+This is a bounded check. The authors report general Lean proofs in their
+[repository](https://github.com/google-deepmind/cryptids); those proofs are not imported or rebuilt here. A Python version (`analysis/scripts/smoke.py`, run in CI) extends it to 300 000
 raw steps: 12 / 44 / 275 macro configurations, all in agreement.
 
 ### Antihydra as one real number (`mathlib/CryptidReal/Antihydra.lean`, Mathlib, checked in CI)
@@ -80,3 +81,27 @@ A.4 orbit (3M rule steps: 2789 visits to C(m,1), none in the halting set; no mod
 - A.4 halting set: an external suggestion gave m ∈ {2, 7, 19, 41, 88, …} (m = 3(2^s − 1) − s). That is wrong;
   the correct set, proved here and confirmed by brute force, is m = 2^(s+2) − 4 − s ∈ {0, 3, 10, 25, 56, …}.
 - A.9 branch 2: the formula k − c + 4 must be read as k + 4 − c in ℕ (truncated subtraction makes them differ).
+
+## Reproducible numerical checks
+
+The finite-evidence audit is in [`analysis/independent-audit.md`](analysis/independent-audit.md).
+It adds importable exact parity generation, explicit paths, JSON results, and optional matched
+Monte Carlo calibration of the overlapping-window P4 statistic. Python 3 and NumPy are sufficient;
+`gmpy2` is an optional speedup. These checks do not establish a logarithm law or non-halting.
+
+```bash
+python -m unittest discover -s analysis/scripts -p 'test_*.py' -v
+python analysis/scripts/antihydra_fast.py 10000000 --output analysis/results/parities-10m.npy
+python analysis/scripts/predictions_p1_p3_p4.py analysis/results/parities-10m.npy --output analysis/results/predictions-10m.json
+```
+
+For a bounded calibration run (99 equally long iid controls, same overlapping windows):
+
+```bash
+python analysis/scripts/antihydra_fast.py 100000 --output analysis/results/parities-100k.npy
+python analysis/scripts/predictions_p1_p3_p4.py analysis/results/parities-100k.npy --lo 10000 --null-replicates 99 --output analysis/results/calibration-100k.json
+```
+
+The original conjecture file is retained as a historical record. The audit distinguishes its
+registered record-time P1 target from stronger all-time readings, and prediction bands from
+separate alert thresholds.

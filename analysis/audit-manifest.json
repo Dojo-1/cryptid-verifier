@@ -1,0 +1,236 @@
+{
+  "task_id": "cryptid-finite-evidence-review-20261020",
+  "claim": {
+    "text": "The finite Antihydra parity acceleration and P1/P3/P4 monitors reproduce their intended bounded arithmetic; broader interpretations remain unproved.",
+    "scope": "Uploaded snapshot and b0=4 through 10 million autonomous b-steps; 100k-step P4 calibration only.",
+    "status_before": "H",
+    "assumptions": [
+      "Uploaded archive is the supplied project snapshot; no Git history is available.",
+      "Macro-to-TM rules are assumed beyond the bounded raw-TM smoke checks."
+    ],
+    "forbidden_promotions": [
+      "No proof of infinite non-halting, Bernoulli mixing, logarithm law or novel cryptid.",
+      "No general Presburger impossibility theorem."
+    ]
+  },
+  "specification": {
+    "intended_object": "T(b)=floor((3*b+4)/2), its exact parity stream, the associated +2/-1 counter and finite monitors.",
+    "invariants": [
+      "Chunk endpoint and parity word agree with direct arithmetic.",
+      "Changing chunk boundaries preserves the word and endpoint.",
+      "First negative counter time is retained.",
+      "P4 controls use the same word extraction and family."
+    ],
+    "known_answer_cases": [
+      "b=4 has first parities 0001 and endpoint 36 at 4 steps.",
+      "An all-odd stream crosses below zero at t=1.",
+      "Constant tables are degenerate, not evidence of independence."
+    ]
+  },
+  "implementation": {
+    "artifact": "analysis/scripts/antihydra_fast.py; predictions_p1_p3_p4.py; test_reproducibility.py",
+    "commit": "No Git commit: uploaded ZIP SHA256 b414234e7597bcc5d9693bf4545b75954e9eecaf9e99fa36d91a8870b6904a32 plus supplied patch",
+    "environment": "Python 3.12.14, NumPy 2.3.5, Python integer backend, no Lean/lake",
+    "live_entrypoint": "python analysis/scripts/antihydra_fast.py 10000000; predictions_p1_p3_p4.py; unittest discovery",
+    "representation": "Byte-per-parity array and exact arbitrary-precision integer endpoint."
+  },
+  "metric": {
+    "name": "Typed finite result: parity hash, counter/drawdown, P3 band ratio, descriptive P4 family statistic and matched-null tail rank.",
+    "type": "typed_tuple",
+    "units": "Macro steps; integer counter levels; dimensionless ratios.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Chunk segmentation and restart.",
+      "Low-bit-preserving initial-state shifts.",
+      "Small parity bijection exhaustive enumeration."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "16 unittest methods passed; original three raw-TM smoke checks passed."
+    ],
+    "structural": [
+      "All 10 Lean files are byte-identical to the snapshot.",
+      "Importing the edited scripts executes no simulation and writes no files."
+    ],
+    "property_based": [
+      "60 seeded random starts, horizons and chunk sizes."
+    ],
+    "metamorphic": [
+      "Chunk concatenation, restarts and exact endpoint transport under dyadic shifts."
+    ],
+    "fuzzing": [
+      "Invalid data, zero-length runs, negative parameters, constant and alternating streams."
+    ],
+    "historical": [
+      "First 4 Antihydra parities, 50,000 direct arithmetic steps, 10-million-step reported records."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Direct integer recurrence for the acceleration.",
+      "Naive Counter contingency-table oracle.",
+      "99 iid bit streams at N=100000 for all 120 overlapping-window tests."
+    ],
+    "negative_controls": [
+      "Alternating parity sequence has strong dependence.",
+      "All-odd sequence exposes a halt; constant tables are marked degenerate."
+    ],
+    "compute_parity": "Null controls match N and extraction. No speed comparison with the original GMP run is made.",
+    "parameter_parity": "Null controls match maximum window 16, all 120 pairs, seed recorded.",
+    "sampling_parity": "Overlapping windows are used in both observed and null streams.",
+    "data_access_parity": "Same observed parity words; no withheld oracle data."
+  },
+  "preregistration": {
+    "prediction": "This is a retrospective audit manifest assembled after reproduction, not a new preregistration. Supplied claims predict exact bounded agreement.",
+    "primary_metric": "Exact finite word/endpoint agreement and reproduction of numerical record values.",
+    "uncertainty_method": "Exact integer comparison on bounded tests; Monte Carlo rank resolution 1/100 for 99 controls.",
+    "kill_condition": "Any parity/endpoint mismatch retires the generator correctness interpretation for that domain.",
+    "stop_condition": "One 10-million-step reproduction and one 100k-step 99-control calibration; no horizon escalation.",
+    "promotion_rule": "Promote only to measured finite agreement; retain asymptotic and universal claims as H/A."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Uploaded cryptid-verifier-main.zip",
+      "Uploaded arXiv:2610.22603v2 PDF",
+      "https://github.com/google-deepmind/cryptids/tree/a0c1f56af53a76e985a656032b48015f7e48921b"
+    ],
+    "execution_records": [
+      "analysis/results/generation-10m.json",
+      "analysis/results/predictions-10m.json",
+      "analysis/results/calibration-100k.json",
+      "analysis/results/validation.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Direct arithmetic and naive contingency oracle",
+        "origin": "Different code paths, same reviewing author; not external independent replication.",
+        "artifact": "analysis/scripts/test_reproducibility.py"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Finite parity generation -> direct-reference tests and generation hash.",
+      "Finite predictions -> predictions-10m.json.",
+      "P4 null diagnostic -> calibration-100k.json.",
+      "No-go scope -> theorem quantifiers in AntihydraOuroboros/Basic.lean."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "Exact bounded arithmetic"
+        ],
+        "transformed": [
+          "Open discovery question becomes an evidence-audit contribution."
+        ],
+        "lost": [
+          "No new machine discovery is claimed."
+        ],
+        "remainder": [
+          "Universal macro proofs and novelty checks."
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "implementation",
+        "preserved": [
+          "Finite recurrence and exact divisibility."
+        ],
+        "transformed": [
+          "Stepwise orbit -> chunks."
+        ],
+        "lost": [
+          "No loss claimed within checked arithmetic."
+        ],
+        "remainder": [
+          "No full implementation formalization."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "Word and endpoint comparisons."
+        ],
+        "transformed": [
+          "Universal implementation claim -> bounded samples."
+        ],
+        "lost": [
+          "Universal parameter coverage."
+        ],
+        "remainder": [
+          "Formal correctness theorem remains external."
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "Raw record values and hashes."
+        ],
+        "transformed": [
+          "Finite executions -> JSON reports."
+        ],
+        "lost": [
+          "Full parity arrays are reproducible but not bundled."
+        ],
+        "remainder": [
+          "No statistical asymptotic guarantee."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Bounded evidence only."
+        ],
+        "transformed": [
+          "Raw chi-square transforms -> matched-null diagnostic."
+        ],
+        "lost": [
+          "No iid p-value interpretation."
+        ],
+        "remainder": [
+          "Specific-orbit mixing."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Reliable ingredients for further searches."
+        ],
+        "transformed": [
+          "Research leads -> frozen candidate queue."
+        ],
+        "lost": [
+          "No inferred novelty."
+        ],
+        "remainder": [
+          "Status refresh, equivalent-machine checks and proof search."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "16 new tests and all three raw-TM smoke checks passed; 10-million-step P1/P3/P4 values reproduced; 100k matched P4 tail rank 0.84.",
+    "effect_size": "Finite exact agreement; no discovery-rate or performance advantage measured.",
+    "uncertainty": "Bounded numerical evidence; Lean/lake unavailable, no Lean rebuild.",
+    "status_after": "M",
+    "retired_claims": [
+      "General no-go for all semilinear invariants inferred from the affine counter-time result.",
+      "CRT as proof of single-orbit independence.",
+      "P3 labelled an iterated-logarithm band."
+    ],
+    "active_remainder": [
+      "Quantitative dependence control for the specific orbit.",
+      "Effective complete tail certificate.",
+      "New behaviorally distinct cryptid discovery."
+    ]
+  }
+}
