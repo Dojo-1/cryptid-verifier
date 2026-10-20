@@ -96,6 +96,19 @@ Stratum 1 is the sharper and more testable form. Stratum 2 is its consequence fo
 **P4 (pre-registered).** For Antihydra at t = 10⁷ the χ² z-score of (past j, future k) independence stays
 within ±4 for every j + k ≤ 16. *Refuted if* any z > 6, which would mean the real place leaks predictive structure.
 
+## Results of the pre-registered tests (t = 10⁷, `scripts/antihydra_fast.py` + `predictions_p1_p3_p4.py`)
+Parities generated in chunks of 4096 via b mod 2ᵏ (`pv_mod`), with b advanced exactly by 2ᵏ·b' = 3ᵏ·b + Sₖ
+(`real_bridge`); checked against direct simulation for 50 000 steps. 10⁷ steps take 17 s.
+
+| Prediction | Result | Verdict |
+|---|---|---|
+| P1: DD/log_φ t ∈ [0.8, 1.25] on [10⁶, 10⁷] | new records only at t = 7 325 962–4: DD = 30, 31, 32, ratios 0.91, 0.94, 0.97; DD(10⁷) = 32 against log_φ 10⁷ = 33.5 | holds |
+| P3: \|aₜ/t − ½\| ≤ 3√(ln t / t) | max of the ratio to the band = 0.28 | holds |
+| P4: \|z\| ≤ 4 for all 120 (j,k) with j + k ≤ 16 | z ∈ [−1.78, 2.52] | holds |
+
+By-product: the counter never drops below 12 after t = 14, so Antihydra does not halt within 10⁷ macro steps
+(a known fact; the community has simulated further).
+
 ## Self-review (what to trust)
 - **Proved (Lean, CI):** the reductions (`run_eq`, `a4_halts_iff`, `a9_halts_iff`, `antihydra_floor`), the residue
   dichotomy (`pv_mod`/`pv_inj`/`pv_surj`, `pv_past3`) and the bounded raw-TM linkage.
