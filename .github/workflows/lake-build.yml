@@ -1,0 +1,21 @@
+name: lake build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+      - name: Trust audit
+        run: python3 scripts/audit_trust.py build.log
