@@ -28,10 +28,10 @@ Build: `lake build` (Lean `v4.24.0`). Zero `sorry`; `#print axioms` shows only
 | `con_even_out`, `con_odd_out` | contraction steps only produce b ∈ {1, 3}, never the halting value 2 |
 | `expand_closed` | closed form of the expansion cascade from C(2, B) |
 | `cascade_hits_two` | the cascade from C(m,1) hits b = 2 after s steps ⟺ m + s + 4 = 2^(s+2), i.e. m ∈ {0, 3, 10, 25, 56, 119, 246, …} |
+| `a4_halts_iff` | **A.4 halts from C(0,3) ⟺ it visits some C(m,1) with m + s + 4 = 2^(s+2)** (full rule system; invariant `J` also shows b = 0 is never reached) |
 
 ## What is NOT proved
 - That Antihydra or A.4 never halts (both open).
-- The full statement "A.4 halts ⟺ some visit C(m,1) has m = 2^(s+2) − 4 − s" (the pieces are proved; the assembly over the closed rule system is not).
 - The real-number (Mathlib) form of the Mahler reduction.
 
 ## Scripts (`scripts/`, evidence only)
