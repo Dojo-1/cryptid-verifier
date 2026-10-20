@@ -1,0 +1,63 @@
+{
+  "recorded_at_utc": "2026-10-20T19:25:35.165237+00:00",
+  "trigger": "User reports Claude Lean reachability through the frozen 2000-rewrite endpoint and raises one-tail closure. Later local records already contain three two-layer excursions.",
+  "local_derivation_precedes_checks": true,
+  "claim": "For u,d>=0 and arbitrary finite v: Ccal(3u+9;1(01)^(d+7)100v) reaches Ccal(10u+18;1^(2d+1)(01)^7 1^3 v).",
+  "time": "60u^2+156u+4d+242",
+  "head_shift": "-14u-18",
+  "composition": "F1100(a=3u+9,c=d+7), entry E, countdown Q(q=2u+2,a=1), normalization N(q=7).",
+  "raw_grid": {
+    "u": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "d": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "suffix": "alternating fixed binary suffix by case index"
+  },
+  "random_seed": 310017,
+  "random_cases": 64,
+  "random_domain": {
+    "u": [
+      9,
+      45
+    ],
+    "d": [
+      0,
+      90
+    ],
+    "suffix_max_bits": 24
+  },
+  "raw_limits": {
+    "maximum_probes": 200,
+    "maximum_transitions_per_probe": 200000,
+    "maximum_total_new_defined_transitions": 20000000
+  },
+  "huge_arithmetic_cases": 32,
+  "mutation_tests": "Six in-memory output/time/head/context mutations checked against literal raw records; guard controls reject noninteger or negative u/d.",
+  "recorded_excursion_checks": "All three actual sources have a divisible by 3 and c>=7; check fused target against recorded post-normalization states. First event also checks full transition/shift sum.",
+  "kill": "Stop on any source/target/count/shift mismatch; preserve it before correction.",
+  "limits": [
+    "No Lean theorem or CI status independently verified here.",
+    "The rule proves a return to S only on its stated guard; general counter closure remains open.",
+    "An internal two-layer checkpoint and single-tail return-map endpoints can coexist."
+  ]
+}

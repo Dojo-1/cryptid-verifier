@@ -1,0 +1,64 @@
+{
+  "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+  "provenance": "Separate same-author declarative statement, consumed directly by the literal comparator campaign. Written after mathematical composition, before new raw validation.",
+  "rules": {
+    "RETURN": {
+      "guards": {
+        "u": [
+          0,
+          null
+        ],
+        "d": [
+          0,
+          null
+        ]
+      },
+      "source": [
+        [
+          "01",
+          "3*u+9"
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "01",
+          "d+7"
+        ],
+        [
+          "100",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "target": [
+        [
+          "01",
+          "10*u+18"
+        ],
+        [
+          "1",
+          "2*d+1"
+        ],
+        [
+          "01",
+          7
+        ],
+        [
+          "111",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "steps": "60*u*u+156*u+4*d+242",
+      "shift": "-14*u-18"
+    }
+  }
+}
