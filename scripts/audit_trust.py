@@ -20,7 +20,9 @@ def strip_comments(src: str) -> str:
     return "".join(out)
 
 bad = []
-for f in sorted(pathlib.Path(".").glob("AntihydraOuroboros/**/*.lean")):
+src_dirs = sys.argv[2:] or ["AntihydraOuroboros"]
+files = [f for d in src_dirs for f in sorted(pathlib.Path(".").glob(f"{d}/**/*.lean"))]
+for f in files:
     for m in FORBIDDEN.finditer(strip_comments(f.read_text())):
         bad.append(f"{f}: forbidden `{m.group(0).strip()}`")
 

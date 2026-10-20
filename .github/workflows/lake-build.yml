@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  core:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,4 +18,24 @@ jobs:
           set -o pipefail
           lake build 2>&1 | tee build.log
       - name: Trust audit
-        run: python3 scripts/audit_trust.py build.log
+        run: python3 scripts/audit_trust.py build.log AntihydraOuroboros
+
+  mathlib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch Mathlib cache
+        working-directory: mathlib
+        run: lake exe cache get
+      - name: Build
+        working-directory: mathlib
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+      - name: Trust audit
+        working-directory: mathlib
+        run: python3 ../scripts/audit_trust.py build.log CryptidReal
