@@ -5,7 +5,7 @@ Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al., arXiv:2
 The macro-rules are transcribed by hand from the paper (Sec. 2.2 for Antihydra, Appendix A.4);
 they are **not yet linked** to the authors' Turing-machine-level Lean proofs.
 
-Build: `lake build` (Lean `v4.24.0`). CI runs the build plus `scripts/audit_trust.py`, which fails on any
+Build: `lake build` (Lean `v4.24.0`, core only). The Mathlib part lives in `mathlib/` (`cd mathlib && lake exe cache get && lake build`). CI runs the build plus `scripts/audit_trust.py`, which fails on any
 `sorry`/`admit`/`native_decide`/`axiom` in the sources and on any non-standard axiom in the `#print axioms` output. Zero `sorry`; `#print axioms` shows only
 `propext`, `Quot.sound`, `Classical.choice`.
 
@@ -22,6 +22,15 @@ Build: `lake build` (Lean `v4.24.0`). CI runs the build plus `scripts/audit_trus
 | `no_dyadic_invariant`, `no_invariant_mod9`, `no_invariant_prime_pow`, `no_integer_invariant` | no conserved quantity a + c·t modulo 2^k, 4^k, 8^k, 9, p^k (p ≠ 3), or over ℤ |
 | `pv_past3` | b mod 3^j records the last j parities (3-adic memory) |
 | `real_bridge` | 2ⁿ·bₙ = 3ⁿ·b₀ + Sₙ: the link to ⌊ξ(3/2)ⁿ⌋ (Mahler 3/2 setting) |
+
+### Antihydra as one real number (`mathlib/CryptidReal/Antihydra.lean`, Mathlib, checked in CI)
+| Theorem | Plain meaning |
+|---|---|
+| `exists_even_after`, `exists_odd_after` (core) | within b + 4 steps every orbit shows both an even and an odd value (it never sits on −3 or −4) |
+| `S_bounds` (core) | 3(3ⁿ − 2ⁿ) ≤ Sₙ ≤ 4(3ⁿ − 2ⁿ) |
+| `antihydra_floor` | **bₙ = ⌊ξ·(3/2)ⁿ⌋ − 3 for every n**, with ξ = 4 + Σₖ qₖ(2/3)ᵏ/3, qₖ = 4 − (bₖ mod 2) (ξ ≈ 7.86417726205661897…) |
+| `antihydra_parity` | Antihydra's parities are those of ⌊ξ·(3/2)ⁿ⌋ − 3: its halting question is a question about the integer parts of ξ·(3/2)ⁿ (Mahler 3/2 setting) |
+| `ξ_floor` | ⌊ξ⌋ = 7 |
 
 ### A.4 (`AntihydraOuroboros/A4.lean`)
 | Theorem | Plain meaning |
@@ -44,7 +53,6 @@ Build: `lake build` (Lean `v4.24.0`). CI runs the build plus `scripts/audit_trus
 
 ## What is NOT proved
 - That Antihydra, A.4 or A.9 never halts (all open; each is now reduced to an explicit arithmetic condition).
-- The real-number (Mathlib) form of the Mahler reduction.
 
 ## Scripts (`scripts/`, evidence only)
 Numerical experiments: connection-Laplacian frustration, 2-adic survival densities, stream monitor,
