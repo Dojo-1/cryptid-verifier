@@ -1,0 +1,254 @@
+{
+  "task_id": "appendix-c-lead-screen-20261020",
+  "claim": {
+    "text": "A bounded 25-lead screen can produce a reproducible status census and partial L17 counter reduction; it certifies no new cryptid.",
+    "scope": "25 fixed Appendix C starts; 5,000,000 raw transitions each; one candidate's synthetic probes at most 200,000 transitions per probe.",
+    "status_before": "H",
+    "assumptions": [
+      "Public status snapshots are reports, not independently rebuilt solution certificates.",
+      "The universal L17 sweep derivation is supplied mathematically but is not Lean formalized.",
+      "The original local protocol is not externally authenticated, and its original input-checksum field is not reproducible from delivered inputs."
+    ],
+    "forbidden_promotions": [
+      "No new cryptid, complete universal reduction, infinite non-halting proof or discovery-rate benefit.",
+      "Same unrooted transition table does not imply the same blank-start halting question.",
+      "Derived huge raw times are not simulated or Lean-verified prefixes."
+    ]
+  },
+  "specification": {
+    "intended_object": "Exact sparse-tape semantics of the 25 literal Turing machines, state/reflection table conjugacies, lossless repeated-block encodings and guarded L17 counter endpoints.",
+    "invariants": [
+      "Blank symbol 0 and the complete finite nonzero tape are preserved by representation.",
+      "A rooted conjugacy preserves initial state A; unrooted witnesses record its image.",
+      "Both parser variants use exactly the same saved configurations.",
+      "Unsupported rules and fixed-budget timeouts remain explicit."
+    ],
+    "known_answer_cases": [
+      "Undefined transition at the start has zero successful transitions.",
+      "The paper's 1111110101010 example compresses to 1^5 (10)^4.",
+      "A known-family L09 table witness sends A to D and does not preserve the blank start.",
+      "L17 reaches C(0,2) after two raw transitions."
+    ]
+  },
+  "implementation": {
+    "artifact": "scan.cpp; tm.py; analyze.py; census.py; probe_l17.py; test_pipeline.py",
+    "commit": "Additive analysis/appendix-c-leads directory; no Git commit or repository mutation. Upstream module inventory pinned to a0c1f56af53a76e985a656032b48015f7e48921b.",
+    "environment": "Python 3.12.14; GCC 13.3.0; C++17; standard library only; no Lean/lake.",
+    "live_entrypoint": "See README.md reproduction commands.",
+    "representation": "C++ dense bounded tape with exact reservoir snapshots; independent Python sparse dictionary tape; integer counter formulas and complete-tape endpoint checks."
+  },
+  "metric": {
+    "name": "Typed census, witnessed table families, bounded halts, representation diagnostics, raw endpoint agreement and new certified reductions.",
+    "type": "typed_tuple",
+    "units": "Starts, raw transitions, configurations, blocks and integer counters.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Random state relabeling, tape reflection and all-transition witnesses.",
+      "Reject changed table transitions and unsupported start equivalence.",
+      "Independent literal Appendix D parser and full tape expansion."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "15 unittest methods pass; C++ scanner compared with a Python sparse-tape oracle on all 25 leads, 3 answer tables and 100 seeded random tables."
+    ],
+    "structural": [
+      "New directory only; no Lean files or existing scripts modified.",
+      "No simulation, writes, network calls or compiler invocation occur on import of the executable entry-point modules.",
+      "Sweep traces check that no cell outside their block is read."
+    ],
+    "property_based": [
+      "All 1,023 binary words of lengths 0 through 9 plus 500 seeded random/structured strings, both block widths.",
+      "4,433 distinct guarded L17 branch inputs and 80 collapsed-countdown inputs checked against raw tape endpoints."
+    ],
+    "metamorphic": [
+      "Random table state renaming and reflection preserve canonical forms; every emitted witness is checked transition by transition.",
+      "Lossless expansion of both independently compressed sides preserves the head boundary."
+    ],
+    "fuzzing": [
+      "One-transition table mutation, stray nonzero tape cells, zero budget, support-width exclusion, negative guards and an exact-budget halting endpoint."
+    ],
+    "historical": [
+      "Appendix D's lookahead example, known Racheline2024 initial-state distinction, and the literal Appendix C lead queue."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Maximum block length 8 versus 32 on identical 3,740 captured configurations.",
+      "Independent sparse interpreter versus C++ simulation; literal paper pseudocode versus optimized parser."
+    ],
+    "negative_controls": [
+      "Changing one transition defeats a table-conjugacy certificate.",
+      "Known same-table family starts are rejected as rooted equivalences.",
+      "Stray tape cells outside the C(a,b) template defeat recognition."
+    ],
+    "compute_parity": "The same frozen 5-million-step trajectories feed both parsers. No timing or discovery-rate comparison is inferred from block count.",
+    "parameter_parity": "Seed, horizons, sample capacities and width filters are identical; only the maximum block length differs in that comparison.",
+    "sampling_parity": "Both parsers use the identical stratified reservoir. These samples are not claimed to be uniform over time or consecutive return events.",
+    "data_access_parity": "Identical exact saved tape strings; all public source snapshots and their hashes are bundled."
+  },
+  "preregistration": {
+    "prediction": "Local prospective protocol recorded before raw scans; not authenticated preregistration. Its full queue matches inputs, but its original checksum field is not reproducible. Derived outer-countdown arithmetic was added after the screen.",
+    "primary_metric": "Additional complete universally checked reduction, with status/equivalence checks and blank-start closure.",
+    "uncertainty_method": "Exact finite comparisons on specified inputs; no asymptotic, p-value or posterior interpretation.",
+    "kill_condition": "No additional complete universally checked reduction within the budget means no measured discovery-rate benefit.",
+    "stop_condition": "One 5-million-step screen per lead; fixed 200,000-step bound per selected synthetic probe, with no failed-horizon extension. Derived arithmetic endpoints are separately labeled.",
+    "promotion_rule": "Only universal macro proof, blank-start entry, reachable closure and novelty/equivalence review permit a new certified reduction. Finite matches remain M; universal interpretation awaits formal verification."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Uploaded arXiv:2610.22603v2 Appendix C and D",
+      "https://wiki.bbchallenge.org/w/images/6/69/BB6_holdouts_663.txt",
+      "https://wiki.bbchallenge.org/w/images/9/9b/Bb2x5_informalLast37.txt",
+      "https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301",
+      "https://wiki.bbchallenge.org/wiki/BB(2,5)",
+      "https://wiki.bbchallenge.org/wiki/1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+      "https://github.com/google-deepmind/cryptids/tree/a0c1f56af53a76e985a656032b48015f7e48921b",
+      "https://wiki.bbchallenge.org/wiki/User:RobinCodes/Machines_at_the_Edge",
+      "https://github.com/Laturas/mildly_upsetting_tm_simulator"
+    ],
+    "execution_records": [
+      "protocol-check.json",
+      "census.json",
+      "scan.log",
+      "traces.jsonl",
+      "representations.json",
+      "l17-probes.json",
+      "validation.log",
+      "integrity.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Sparse-tape reference and literal paper parser",
+        "origin": "Different code paths written by the same reviewing agent; not an external independent replication.",
+        "artifact": "test_pipeline.py; tm.py"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Current snapshot membership and prior analyses -> census.json with source rows, URLs and hashes.",
+      "Transition-table families -> census.json explicit all-transition witnesses.",
+      "Bounded trajectories -> scan.log and traces.jsonl.",
+      "Representation diagnostics -> representations.json; differential parser checks.",
+      "Guarded L17 endpoints and frontier -> l17-probes.json; l17-reduction.md.",
+      "No promotion -> REPORT.md evidence ledger and explicit remaining boundary."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "specification",
+        "preserved": [
+          "Find additional cryptid leads."
+        ],
+        "transformed": [
+          "Open search becomes a bounded 25-input screen."
+        ],
+        "lost": [
+          "No unbounded exhaustive search."
+        ],
+        "remainder": [
+          "Complete machine reductions and novelty review."
+        ]
+      },
+      {
+        "from": "specification",
+        "to": "implementation",
+        "preserved": [
+          "Exact raw tape, guard and start-state semantics."
+        ],
+        "transformed": [
+          "Trajectories become lossless sampled strings and counter templates."
+        ],
+        "lost": [
+          "Unsaved intermediate configurations; raw runs remain reproducible."
+        ],
+        "remainder": [
+          "No formally verified simulator."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "validation",
+        "preserved": [
+          "Endpoint and representation comparisons."
+        ],
+        "transformed": [
+          "Implementation claims become bounded differential checks."
+        ],
+        "lost": [
+          "Universal parameter coverage."
+        ],
+        "remainder": [
+          "Lean sweep induction and composition."
+        ]
+      },
+      {
+        "from": "validation",
+        "to": "measurement",
+        "preserved": [
+          "Raw horizons, sample counts and exact formula checks."
+        ],
+        "transformed": [
+          "Checks become JSON and logs."
+        ],
+        "lost": [
+          "Full probe transition histories are reproducible, not bundled."
+        ],
+        "remainder": [
+          "External replication."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Finite scope and source provenance."
+        ],
+        "transformed": [
+          "Compact patterns become one partial reduction and an explicit frontier."
+        ],
+        "lost": [
+          "No inference of mixing, novelty or infinite avoidance."
+        ],
+        "remainder": [
+          "Singleton-suffix branch."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "A concrete next proof obligation."
+        ],
+        "transformed": [
+          "Broad queue becomes sourced leads and a derived boundary target."
+        ],
+        "lost": [
+          "No certified new cryptid in this run."
+        ],
+        "remainder": [
+          "Formalize branches; analyze reachable frontier; complete status/equivalence search."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "25 starts each survived 5 million raw transitions; 3,740 snapshots. Nineteen unrooted table families, including three starts of a documented family; L25 reported solved pending verification. Fifteen tests pass. L17 has 4,433 guarded raw endpoint checks, 80 collapsed checks, and 64 frontier probes (39 returns, 25 timeouts, no halts).",
+    "effect_size": "Zero newly certified cryptids and zero complete additional universally checked reductions. Mean block count 12.569786 -> 11.875936 is a representation diagnostic only.",
+    "uncertainty": "Finite simulation and sampled parameter checks. Public resolution reports not rebuilt. L17 universal sweep derivation not Lean formalized. Large-time boundary is derived conditionally, not simulated. No complete literature or behavioral-equivalence search.",
+    "status_after": "M",
+    "retired_claims": [
+      "The 25 missing exact upstream/table entries are 25 new cryptids.",
+      "Ignoring the start state deduplicates blank-tape halting questions.",
+      "A lower block count measures a discovery-rate improvement."
+    ],
+    "active_remainder": [
+      "Formalize the three sweeps and four supported L17 branches.",
+      "Analyze C(53262756,1), conditional on the derivation.",
+      "Certify reachable closure and finish novelty/behavioral-equivalence checks."
+    ]
+  }
+}

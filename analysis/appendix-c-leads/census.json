@@ -1,0 +1,1247 @@
+{
+  "refreshed_at_utc": "2026-10-20T10:28:13.683905+00:00",
+  "scope": "Literal membership, public annotations, state renaming and tape reflection. No complete behavioral-equivalence or literature search.",
+  "sources": {
+    "bb6": "https://wiki.bbchallenge.org/w/images/6/69/BB6_holdouts_663.txt",
+    "bb2x5": "https://wiki.bbchallenge.org/w/images/9/9b/Bb2x5_informalLast37.txt",
+    "annotated": "https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301",
+    "upstream": "https://github.com/google-deepmind/cryptids/tree/a0c1f56af53a76e985a656032b48015f7e48921b",
+    "known_family": "https://wiki.bbchallenge.org/wiki/1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+    "bb2x5_status": "https://wiki.bbchallenge.org/wiki/BB(2,5)"
+  },
+  "input_sha256": {
+    "leads.json": "64bbffa87a1d864816a22ebaa8c297b97ea6ad9e98174da297b343fedbc00c51",
+    "holdouts-663.txt": "cfb2540f8101f2f2f20a14f9bc848252e34e45de2920fdd6b257096093844ee9",
+    "holdouts-2x5-37.txt": "1c3711159bb333528160e36fce28ddb40397d993982308b2f7776caee3bad882",
+    "bb6-annotated.csv": "fc025a7fe96f1e36376c76216439511c621ca871b8f7e9f07d782f75e7577195",
+    "upstream-inventory.json": "54b24a4235323827de869635fb8158993495bf115f43846befda62950e9d8def"
+  },
+  "collection_sizes": {
+    "bb6_663": 663,
+    "bb2x5_37": 37,
+    "upstream_modules": 53,
+    "lead": 25,
+    "known_family": 1
+  },
+  "table_families_ignoring_initial_state": [
+    [
+      "L01"
+    ],
+    [
+      "L02",
+      "L09",
+      "L10"
+    ],
+    [
+      "L03"
+    ],
+    [
+      "L04",
+      "L16"
+    ],
+    [
+      "L05"
+    ],
+    [
+      "L06"
+    ],
+    [
+      "L07",
+      "L08",
+      "L22"
+    ],
+    [
+      "L11"
+    ],
+    [
+      "L12"
+    ],
+    [
+      "L13"
+    ],
+    [
+      "L14",
+      "L24"
+    ],
+    [
+      "L15"
+    ],
+    [
+      "L17"
+    ],
+    [
+      "L18"
+    ],
+    [
+      "L19"
+    ],
+    [
+      "L20"
+    ],
+    [
+      "L21"
+    ],
+    [
+      "L23"
+    ],
+    [
+      "L25"
+    ]
+  ],
+  "leads": [
+    {
+      "id": "L01",
+      "machine": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 374,
+          "Holdouts (From the 1534 list)": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE1RA",
+          "Status": "",
+          "Classification": "Shift-overflow counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L02",
+      "machine": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1075,
+          "Holdouts (From the 1534 list)": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "Could be solvable",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDEFBA",
+            "reflected": false,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABDEF",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCAEDF",
+            "reflected": false,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABDEF",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCAEDF",
+            "reflected": false,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "known_family",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDEFBA",
+            "reflected": false,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Already documented Racheline2024 family; differing start states are not assumed to give the same blank orbit."
+    },
+    {
+      "id": "L03",
+      "machine": "1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1096,
+          "Holdouts (From the 1534 list)": "1RB1RC_1LC0LE_0RA1RD_1RF1LB_1LD0LA_---0RC",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L04",
+      "machine": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1098,
+          "Holdouts (From the 1534 list)": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "EFCABD",
+            "reflected": false,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LC_1LA1RE_1LD1RE_1RE0LA_0RA1RF_0RB---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BAECDF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "EFCABD",
+            "reflected": false,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L05",
+      "machine": "1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 842,
+          "Holdouts (From the 1534 list)": "1RB---_1LC1RE_1LD0LC_1LE1LC_1RF0RE_1RA0RB",
+          "Status": "",
+          "Classification": "Structural counter + counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L06",
+      "machine": "1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 971,
+          "Holdouts (From the 1534 list)": "1RB0LF_0RC1RD_0LD0RA_1RC0RE_1RF---_1LA0LB",
+          "Status": "",
+          "Classification": "Chaotic Bell Class 2",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_1LC0LD_1RD0LB_0RF1RE_1RF0RA_0LE0RC",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDFEAB",
+            "reflected": false,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L07",
+      "machine": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1105,
+          "Holdouts (From the 1534 list)": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "lead",
+          "target": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCDEFA",
+            "reflected": false,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+          "rooted": false,
+          "witness": {
+            "state_map": "DEBFAC",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L08",
+      "machine": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1109,
+          "Holdouts (From the 1534 list)": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "lead",
+          "target": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+          "rooted": false,
+          "witness": {
+            "state_map": "FABCDE",
+            "reflected": false,
+            "source_start_maps_to": "F",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDEBFA",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L09",
+      "machine": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1063,
+          "Holdouts (From the 1534 list)": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+          "Status": "CRYPTID",
+          "Classification": "Bell-like",
+          "Notes": "Probviously halting cryptid",
+          "Sources": "1",
+          "Done By": "-d"
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "DECFBA",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCADEF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABEDF",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCADEF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABEDF",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "known_family",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "DECFBA",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Already documented Racheline2024 family; differing start states are not assumed to give the same blank orbit."
+    },
+    {
+      "id": "L10",
+      "machine": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1114,
+          "Holdouts (From the 1534 list)": "1RB0LC_1RC1RE_1LA0LD_0RB0RA_1RB1RF_1RD---",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "ECDBFA",
+            "reflected": false,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABEDF",
+            "reflected": false,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCAEDF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB1RD_1LC0LE_1RA0LB_1RA1RF_0RA0RC_1RE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CABEDF",
+            "reflected": false,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB0RE_1LC0RA_1LA1LD_1LC1LF_0LC0LB_1LE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCAEDF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "known_family",
+          "target": "1RB---_0RC0RE_1RD1RF_1LE0LB_1RC0LD_1RC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "ECDBFA",
+            "reflected": false,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Already documented Racheline2024 family; differing start states are not assumed to give the same blank orbit."
+    },
+    {
+      "id": "L11",
+      "machine": "1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 400,
+          "Holdouts (From the 1534 list)": "1RB0LB_0RC0LD_1LD1RE_0LA0RB_0RD0RF_1RA---",
+          "Status": "",
+          "Classification": "Shift-overflow counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_1RC0LC_0RD0LE_1LE1RF_0LB0RC_0RE0RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCDEFA",
+            "reflected": false,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L12",
+      "machine": "1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1120,
+          "Holdouts (From the 1534 list)": "1RB0RF_1LC---_1RD0LC_0RE0RD_1LF1LC_1LE1RA",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_1LC0RB_0LD0LC_1RE1RB_1RD1LF_1LA0LE",
+          "rooted": false,
+          "witness": {
+            "state_map": "FABCDE",
+            "reflected": true,
+            "source_start_maps_to": "F",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LA---",
+          "rooted": false,
+          "witness": {
+            "state_map": "EFABCD",
+            "reflected": false,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L13",
+      "machine": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1073,
+          "Holdouts (From the 1534 list)": "1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "Probviously halting machine",
+          "Sources": "1",
+          "Done By": "Peacemaker, Legion, hipparcos, dyuan"
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB0RF_1LC---_1LF1LD_1RE0LD_0RC0RE_1LC1RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "DECFAB",
+            "reflected": false,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [
+        "Public annotation sheet already describes this as a probable halter.",
+        "https://wiki.bbchallenge.org/wiki/User:RobinCodes/Machines_at_the_Edge",
+        "https://github.com/Laturas/mildly_upsetting_tm_simulator"
+      ],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L14",
+      "machine": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 843,
+          "Holdouts (From the 1534 list)": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+          "Status": "",
+          "Classification": "Structural counter + counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "lead",
+          "target": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DCBAEF",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L15",
+      "machine": "1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 468,
+          "Holdouts (From the 1534 list)": "1RB0RE_1LC1RA_1LD0LC_1RA0LA_1RA1RF_1RD---",
+          "Status": "",
+          "Classification": "Shift-overflow counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L16",
+      "machine": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1122,
+          "Holdouts (From the 1534 list)": "1RB1LC_1LC0RF_0LF1LD_0LE---_1RF1LC_1LE0RA",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DECFAB",
+            "reflected": false,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LC_1LA1RE_1LD1RE_1RE0LA_0RA1RF_0RB---",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDEFBA",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB1LC_1LA0RD_0LB1LF_1RE1LC_1LC0RB_0LA---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DECFAB",
+            "reflected": false,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L17",
+      "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1127,
+          "Holdouts (From the 1534 list)": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LD_0RC1RA_1RD1RE_1LA0LE_0RA0RF_1RC---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DABCEF",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_1RC1RE_1LD0LE_1RF0LC_0RD0RA_0RB1RD",
+          "rooted": false,
+          "witness": {
+            "state_map": "CDFBEA",
+            "reflected": true,
+            "source_start_maps_to": "C",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB1RE_1LC0LE_1RD0LB_0RA1RC_0RC0RF_1RA---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCDAEF",
+            "reflected": true,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L18",
+      "machine": "1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 121,
+          "Holdouts (From the 1534 list)": "1RB1RA_1LC0RE_1LE0LD_0LB1LB_1RA0LF_1LD---",
+          "Status": "",
+          "Classification": "Unknown",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LF_1RC1RB_1LD0RA_1LA0LE_0LC1LC_1LE---",
+          "rooted": false,
+          "witness": {
+            "state_map": "BCDEAF",
+            "reflected": false,
+            "source_start_maps_to": "B",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "bb6_663",
+          "target": "1RB---_0RC1RC_1RD0LE_1RE0RB_1LF0RA_1LC1LF",
+          "rooted": false,
+          "witness": {
+            "state_map": "FCDBEA",
+            "reflected": true,
+            "source_start_maps_to": "F",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L19",
+      "machine": "1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1134,
+          "Holdouts (From the 1534 list)": "1RB1LF_1LC0RD_---1LA_0LA0RE_1LA1RA_1LB0LD",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L20",
+      "machine": "1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1080,
+          "Holdouts (From the 1534 list)": "1RB1RE_1LC1RE_---1LD_1LE0LB_0RF0LD_1RD1RA",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L21",
+      "machine": "1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 968,
+          "Holdouts (From the 1534 list)": "1RB1RF_1LC1LB_1RD1LD_1RE0RA_---0LB_0LF0RC",
+          "Status": "",
+          "Classification": "Chaotic Bell Class 2",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L22",
+      "machine": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 1072,
+          "Holdouts (From the 1534 list)": "1RB0LC_1LA1RF_1LD1RF_1LE0LA_0RB---_0RA1RE",
+          "Status": "",
+          "Classification": "Bell-like",
+          "Notes": "Analysis of an almost identical machine (1RB0LC_1LA1RE_1LD1RE_1RE0LA_0RA1RF_0RB---)",
+          "Sources": "1",
+          "Done By": "nerdyjoe"
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "lead",
+          "target": "1RB0RE_0LC---_1RE1LD_0LE1LB_1LC0RF_1RA1LD",
+          "rooted": false,
+          "witness": {
+            "state_map": "ECFABD",
+            "reflected": true,
+            "source_start_maps_to": "E",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        },
+        {
+          "collection": "lead",
+          "target": "1RB1LE_1RC0RF_0LD---_1RF1LE_0LF1LC_1LD0RA",
+          "rooted": false,
+          "witness": {
+            "state_map": "FDABCE",
+            "reflected": true,
+            "source_start_maps_to": "F",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [
+        "The annotation sheet links analysis of a closely related table. No behavioral equivalence to that table is established here."
+      ],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L23",
+      "machine": "1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": true,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 624,
+          "Holdouts (From the 1534 list)": "1RB0LF_1LC0RB_0LD1LA_0RA1LE_0LA0RA_1LA---",
+          "Status": "",
+          "Classification": "Chaotic Fractal Type 1",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "bb6_663",
+          "target": "1RB0LA_0RC1RD_0LD1RE_1LA0RF_0RD0LD_1RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DABCEF",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Listed BB(6) holdout; no proof of novelty or new cryptid status."
+    },
+    {
+      "id": "L24",
+      "machine": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+      "domain": "BB(6)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [
+        {
+          "row": 844,
+          "Holdouts (From the 1534 list)": "1RB0LC_1LA0RE_0RD1LF_1LC1LB_0LD0RB_0LA---",
+          "Status": "",
+          "Classification": "Structural counter + counter",
+          "Notes": "",
+          "Sources": "",
+          "Done By": ""
+        }
+      ],
+      "table_matches": [
+        {
+          "collection": "lead",
+          "target": "1RB1RC_0LA1RF_1RD0LE_1LC0RB_0RA0LC_0RD---",
+          "rooted": false,
+          "witness": {
+            "state_map": "DCBAEF",
+            "reflected": true,
+            "source_start_maps_to": "D",
+            "preserves_blank_start": false,
+            "all_transitions_checked": true
+          }
+        }
+      ],
+      "prior_analysis": [],
+      "assessment": "Absent literally from 663 representatives; resolution is not implied. Inspect witnessed matches and annotations."
+    },
+    {
+      "id": "L25",
+      "machine": "1RB2LA0RB1LB---_1LA3RA1RA4LB0RB",
+      "domain": "BB(2,5)",
+      "literal_membership": {
+        "bb6_663": false,
+        "bb2x5_37": false,
+        "upstream_modules": false,
+        "known_family": false
+      },
+      "annotated_rows": [],
+      "table_matches": [],
+      "prior_analysis": [],
+      "assessment": "Reported solved with moderate rigor; wiki says independent verification pending. Exact outcome not independently checked here."
+    }
+  ]
+}

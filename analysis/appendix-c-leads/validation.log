@@ -1,0 +1,20 @@
+test_random_state_renaming_reflection_witness (test_pipeline.ConjugacyChecks.test_random_state_renaming_reflection_witness) ... ok
+test_same_table_family_does_not_preserve_start (test_pipeline.ConjugacyChecks.test_same_table_family_does_not_preserve_start) ... ok
+test_single_transition_change_is_rejected (test_pipeline.ConjugacyChecks.test_single_transition_change_is_rejected) ... ok
+test_blank_prefix_respects_budget_and_open_frontier (test_pipeline.L17Checks.test_blank_prefix_respects_budget_and_open_frontier) ... ok
+test_collapsed_outer_rules_against_raw_tape (test_pipeline.L17Checks.test_collapsed_outer_rules_against_raw_tape) ... ok
+test_local_sweeps_never_read_outside_their_block (test_pipeline.L17Checks.test_local_sweeps_never_read_outside_their_block) ... ok
+test_probe_detects_halt_at_exact_budget_endpoint (test_pipeline.L17Checks.test_probe_detects_halt_at_exact_budget_endpoint) ... ok
+test_rule_guards_and_endpoints (test_pipeline.L17Checks.test_rule_guards_and_endpoints) ... ok
+test_section_recognizer_rejects_lost_tape (test_pipeline.L17Checks.test_section_recognizer_rejects_lost_tape) ... ok
+test_literal_paper_oracle_and_round_trip (test_pipeline.ParserChecks.test_literal_paper_oracle_and_round_trip) ... ok
+test_paper_boundary_example (test_pipeline.ParserChecks.test_paper_boundary_example) ... ok
+test_sides_expand_with_head_preserved (test_pipeline.ParserChecks.test_sides_expand_with_head_preserved) ... ok
+test_seeded_sampling_is_repeatable (test_pipeline.ScannerChecks.test_seeded_sampling_is_repeatable) ... ok
+test_sparse_reference_at_every_saved_configuration (test_pipeline.ScannerChecks.test_sparse_reference_at_every_saved_configuration) ... ok
+test_zero_budget_and_full_support_filter (test_pipeline.ScannerChecks.test_zero_budget_and_full_support_filter) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.860s
+
+OK
