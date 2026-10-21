@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "generic_schema_states": 2400,
+  "huge_boundary_A_bits": 977821,
+  "huge_internal_rows": 5,
+  "huge_stop": "S-D0",
+  "huge_reverse_recovered_exact_push": true,
+  "boundary_source_sha256": "e56fc7086c957f8f134a1b0ac0188cf47ab2e82f28cac8f969fc19f19d64174a",
+  "claims_sha256": "3fc4ef99a3975cee8a903a95dede7ec463b105db6cbd2e76eeae73aa34f8091b",
+  "critic_uses_actor_for_candidates": false,
+  "critic_solver": "Exact Fraction Gaussian elimination over the frozen claim expressions",
+  "elapsed_seconds": 0.6920573879997391
+}

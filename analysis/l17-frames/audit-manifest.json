@@ -1,0 +1,276 @@
+{
+  "task_id": "l17-opposite-streams-frames-2026-10-21",
+  "claim": {
+    "text": "Canonical internal D/G is injective with finite forward and backward chains; push entries are roots; reversible tape frames preserve complete logical traces.",
+    "scope": "Only the six guarded internal rows with canonical positive block widths/middles; excludes S/J exits and outer-loop dynamics. Frames preserve logical cell labels and event clocks.",
+    "status_before": "H",
+    "assumptions": [
+      "Existing contextual D/G/JOIN rules as frozen in the preceding claim file.",
+      "Canonical complete tails have blank exterior; normalization boundaries are exits."
+    ],
+    "forbidden_promotions": [
+      "Global raw-machine reversibility",
+      "Universal return to S",
+      "Blank-orbit bounded stack",
+      "Nonhalting",
+      "A new long blank prefix",
+      "New Lean theorem",
+      "Independent authorship replication",
+      "More raw steps from repeated frame views"
+    ]
+  },
+  "specification": {
+    "intended_object": "Restricted canonical D/G relation and clock-tagged tape embeddings.",
+    "invariants": [
+      "Opposite-stream candidate ranges do not overlap",
+      "Forward rank(s,l,R) decreases",
+      "Backward rank(N,k) decreases",
+      "F1100 entries have no internal predecessor",
+      "Coordinate decoding preserves full tape,state,head and raw event index"
+    ],
+    "known_answer_cases": [
+      "D12 needs D-mode offset3",
+      "N=4 backward chain needs k as second rank",
+      "A37/c7 exits at width4",
+      "A46/c7 exits at terminal0",
+      "Raw machine has a two-predecessor collision",
+      "Display fillers are not logical zero cells"
+    ]
+  },
+  "implementation": {
+    "artifact": "counter_streams.py,counter_critic.py,tape_frames.py",
+    "commit": "Additive artifact snapshot; no repository or Lean modification.",
+    "environment": "Linux-6.18.55-x86_64-with-glibc2.39;Python3.12.14;standard library and g++",
+    "live_entrypoint": "validate_streams.py,verify_streams.py,validate_frames.py,verify_frames.py",
+    "representation": "Exact integer counter tuples; periodic integer embeddings; sparse literal tapes; exact Fraction equation solving."
+  },
+  "metric": {
+    "name": "Typed endpoint/trace equality and ranked guarded relation",
+    "type": "typed_tuple",
+    "units": "Canonical state tuple,raw event indices,logical/display coordinates,defined transitions,macro rows",
+    "direction": "two_sided",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Reflection",
+      "Uniform and unequal gaps",
+      "Waggling and digit-dependent offsets",
+      "Negative and huge coordinates",
+      "Invalid image/filler points",
+      "Irregular intervals",
+      "Clock tilt boundaries"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "32 full C++ raw traces including every read triple and endpoint"
+    ],
+    "structural": [
+      "18 unittests",
+      "Generic exact affine-schema solver",
+      "Push-root guards and explicit inverse algebra"
+    ],
+    "property_based": [
+      "10780 counter states compared to consumed row expressions",
+      "5476 generic F1100 entry excursions",
+      "2400 supplementary solver states"
+    ],
+    "metamorphic": [
+      "8 frames,103368 decoded snapshots",
+      "Causal and adaptive clock tests",
+      "Negative-coordinate round trips"
+    ],
+    "fuzzing": [
+      "Seeded counter domains and binary tapes",
+      "15 deliberately wrong coordinate/inverse/rank predicates"
+    ],
+    "historical": [
+      "Recovered977821-bit boundary reversed to exact push entry",
+      "Six dependencies byte-identical to preceding handoff"
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Frozen literal C++ interpreter",
+      "Separate frozen Python OPS table",
+      "Frozen old endpoint schema",
+      "Generic Gaussian elimination critic"
+    ],
+    "negative_controls": [
+      "Unit display movement on stretched cells",
+      "Forgotten remapping/phase",
+      "Invalid tilted clock",
+      "Wrong inverse parity/residue",
+      "Missing mode offset",
+      "Wrong lexicographic order"
+    ],
+    "compute_parity": "12921 baseline defined steps checked by12921 fresh C++ steps;8 views execute103368 transformed steps of those same prefixes. No count inflation as independent runs.",
+    "parameter_parity": "Same32 initial tapes/control states for all8 frames.",
+    "sampling_parity": "Prospective main4000-state sample; additional2400 critic states explicitly supplementary.",
+    "data_access_parity": "Literal interpreters receive full raw tapes, not counter endpoints. Frame metadata is retained and its remapping cost is not hidden."
+  },
+  "preregistration": {
+    "prediction": "Guarded inverse uniqueness and lexicographic ranks follow the row arithmetic; decoded reversible frames agree exactly; naive display movement or clocks fail.",
+    "primary_metric": "Exact comparison of complete decoded state,full read trace and guarded row relation.",
+    "uncertainty_method": "Analytic proofs with bounded implementation checks; same-author correlated design.",
+    "kill_condition": "Any endpoint,frame decode,inverse guard or rank mismatch blocks promotion.",
+    "stop_condition": "First mismatch or registered cap; unsupported J/G cases stay explicit exits.",
+    "promotion_rule": "Analytic conditional result and bounded measurements only; Claude must formalize theorem content for Lean promotion."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Frozen literal machine string",
+      "Frozen D/G/JOIN claim expressions",
+      "Algebraic proof in CLAUDE-BRIEF.md"
+    ],
+    "execution_records": [
+      "streams-results.json",
+      "streams-recheck.json",
+      "frames-results.json",
+      "frames-recheck.json",
+      "mutations-results.json",
+      "tests-final.log"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Literal C++ interpreter",
+        "origin": "Separate raw code path; same author",
+        "artifact": "../l17-hardening/raw_comparator.cpp"
+      },
+      {
+        "name": "Raw Python transition table",
+        "origin": "Separate code path; same author",
+        "artifact": "../l17-stacked-section/reference.py"
+      },
+      {
+        "name": "Generic counter critic",
+        "origin": "Equation-solving path with no actor import; same author",
+        "artifact": "counter_critic.py"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Injectivity -> inverse algebra and generic schema solving",
+      "Termination -> forward/backward lexicographic proofs and bound",
+      "Affine impossibility -> exact2,3,3 inequality certificate",
+      "Frames -> embedding algebra and literal trace comparisons",
+      "Boundary recovery -> streams-recheck.json and frozen boundary hash"
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "exact original machine",
+          "separate frame ideas"
+        ],
+        "transformed": [
+          "ideas become invertible embeddings and guarded opposite streams"
+        ],
+        "lost": [
+          "no tape bits dropped"
+        ],
+        "remainder": [
+          "useful global invariant"
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "implementation",
+        "preserved": [
+          "cell labels,phase,guards,tuple coordinates"
+        ],
+        "transformed": [
+          "algebraic relations become typed code and exact solver"
+        ],
+        "lost": [
+          "no metadata hidden"
+        ],
+        "remainder": [
+          "shared authorship"
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "full endpoints,read paths,all guard boundaries"
+        ],
+        "transformed": [
+          "universal claims sampled for execution"
+        ],
+        "lost": [
+          "universality does not come from sampling"
+        ],
+        "remainder": [
+          "analytic/formal proof"
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "source hashes,raw counts,same input controls"
+        ],
+        "transformed": [
+          "comparisons become declared bounded counts"
+        ],
+        "lost": [
+          "no failed case discarded"
+        ],
+        "remainder": [
+          "external reproduction"
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "scope,units,correlation"
+        ],
+        "transformed": [
+          "agreement supports code confidence"
+        ],
+        "lost": [
+          "no promotion to global return"
+        ],
+        "remainder": [
+          "unsupported exits"
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "frame ideas and coordination with Claude"
+        ],
+        "transformed": [
+          "next task is internal relation lemmas after current Lean work"
+        ],
+        "lost": [
+          "no claim to resolve full machine"
+        ],
+        "remainder": [
+          "outer-loop and short-tail behavior"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "18 tests,15 wrong candidates,32 literal traces,8 frame views,10780 main counter states,2400 supplementary critic states and5476 push excursions all pass declared checks. Huge width39 entry recovered backward exactly.",
+    "effect_size": "Exact agreement on declared finite objects; no speedup claim.",
+    "uncertainty": "Analytic results conditional on old contextual rules; no new Lean build or global invariant.",
+    "status_after": "A",
+    "retired_claims": [
+      "Restricted macro inverse implies raw-machine reversibility",
+      "A smooth/stretching view alone demonstrates a halting invariant"
+    ],
+    "active_remainder": [
+      "Unsupported J/G exits",
+      "Outer S dynamics",
+      "Global stack-depth bound",
+      "Actual Lean formalization of internal injectivity/ranks/root theorem"
+    ]
+  }
+}

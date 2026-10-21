@@ -49,6 +49,8 @@ jobs:
         run: python3 -m unittest discover -s analysis/l17-general-d -p 'test_general_d.py' -v
       - name: L17 contextual stepper vs literal machine
         run: python3 -m unittest discover -s analysis/leads -p 'test_l17_ctx.py' -v
+      - name: L17 opposite-stream frame checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-frames -p 'test_frames.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

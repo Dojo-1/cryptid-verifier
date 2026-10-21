@@ -1,0 +1,23 @@
+test_adaptive_clock_at_digit_boundaries (test_frames.FrameTests.test_adaptive_clock_at_digit_boundaries) ... ok
+test_affine_obstruction_certificate (test_frames.FrameTests.test_affine_obstruction_certificate) ... ok
+test_canonical_boundary_exclusions (test_frames.FrameTests.test_canonical_boundary_exclusions) ... ok
+test_causal_angle_boundary (test_frames.FrameTests.test_causal_angle_boundary) ... ok
+test_exact_large_coordinate_roundtrip (test_frames.FrameTests.test_exact_large_coordinate_roundtrip) ... ok
+test_fillers_are_outside_the_logical_tape (test_frames.FrameTests.test_fillers_are_outside_the_logical_tape) ... ok
+test_frame_preserves_sparse_tape_and_clock (test_frames.FrameTests.test_frame_preserves_sparse_tape_and_clock) ... ok
+test_generic_solver_is_separate (test_frames.FrameTests.test_generic_solver_is_separate) ... ok
+test_imports_do_not_write (test_frames.FrameTests.test_imports_do_not_write) ... ok
+test_inverse_parity_tags (test_frames.FrameTests.test_inverse_parity_tags) ... ok
+test_join_and_gap_use_different_lex_levels (test_frames.FrameTests.test_join_and_gap_use_different_lex_levels) ... ok
+test_long_N4_path_returns_to_its_root (test_frames.FrameTests.test_long_N4_path_returns_to_its_root) ... ok
+test_mode_offset_is_needed (test_frames.FrameTests.test_mode_offset_is_needed) ... ok
+test_named_uncovered_generic_pushes (test_frames.FrameTests.test_named_uncovered_generic_pushes) ... ok
+test_negative_nonuniform_coordinates (test_frames.FrameTests.test_negative_nonuniform_coordinates) ... ok
+test_pushes_are_roots (test_frames.FrameTests.test_pushes_are_roots) ... ok
+test_raw_machine_has_two_predecessors (test_frames.FrameTests.test_raw_machine_has_two_predecessors) ... ok
+test_undefined_halt_does_not_advance_frame (test_frames.FrameTests.test_undefined_halt_does_not_advance_frame) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.312s
+
+OK

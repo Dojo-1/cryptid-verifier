@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "requests": 32,
+  "defined_reads_replayed": 12921,
+  "imports_frame_actor": false,
+  "source_hash_bound": true,
+  "fresh_Cpp_transitions": 0
+}
