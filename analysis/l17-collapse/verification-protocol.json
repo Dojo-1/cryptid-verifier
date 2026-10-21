@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-10-20T20:26:33.961745+00:00",
+  "goal": "Independently replay every new state-only edge from673467 through2000000, using old declarative primitive checker and a separate consumed scalar-return specification.",
+  "inputs": [
+    "search.json",
+    "choices.txt",
+    "fast.json",
+    "fast-choices.txt",
+    "guard.json",
+    "guard-choices.txt",
+    "reset-spec.json"
+  ],
+  "checks": "Every primitive source/target against old claims; every coarse branch checks independent source guards, scalar target expressions and primitive rewrite count; full stored checkpoint and endpoint equality; choice hashes.",
+  "not_imported": [
+    "search.py",
+    "fast.py",
+    "discover.py",
+    "extend.py",
+    "words.py",
+    "rules.py",
+    "actors.py"
+  ],
+  "time_head": "Not recomputed; all continuations remain conditional arithmetic and not a Lean chain.",
+  "maximum_wall_seconds": 360,
+  "failure": "Preserve discrepancies before any fix, no silent adjustment of candidate checkpoints."
+}

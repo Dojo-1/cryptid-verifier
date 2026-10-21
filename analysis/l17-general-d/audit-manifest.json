@@ -1,0 +1,270 @@
+{
+  "task_id": "l17-general-d-2026-10-21",
+  "claim": {
+    "text": "Arbitrary-middle D has finite named exits; guarded JOIN and729-residue family compose correctly; conditional2M->3M continuation is reproduced.",
+    "scope": "N>=2,k>=1,m>=0 for finite-exit rank; JOIN a>=7,c>=5,l>=1; RET729 t>=0,c>=11. No universal collapse.",
+    "status_before": "H",
+    "assumptions": [
+      "Preceding contextual machine identities as documented; private Lean status supplied by user, not inspected.",
+      "The retained2M checkpoint and its earlier conditional provenance."
+    ],
+    "forbidden_promotions": [
+      "New Lean proof",
+      "Global stack-depth bound",
+      "Universal return-to-S theorem",
+      "Nonhalting",
+      "Raw simulation of huge checkpoints",
+      "Independent authorship replication"
+    ]
+  },
+  "specification": {
+    "intended_object": "Whole physical TM endpoints and a finite-exit counter reduction.",
+    "invariants": [
+      "Interior zeros retained",
+      "Time counts defined transitions",
+      "All guard boundaries explicit",
+      "3k+8m decreases3 on internal D moves",
+      "Every recorded scalar choice and exceptional edge matched"
+    ],
+    "known_answer_cases": [
+      "D(7,1,2) leaves a gap",
+      "D(7,5,1) changes terminal to(01)^14",
+      "c=11 RET729 endpoint has zero middle count"
+    ]
+  },
+  "implementation": {
+    "artifact": "gd_actor.py,gd_critic.py,claims.json,return-family-claims.json",
+    "commit": "Additive artifact snapshot bound by integrity.json; no repository commit made.",
+    "environment": "Linux-6.18.55-x86_64-with-glibc2.39; 3.12.14; g++ build options in validation.json",
+    "live_entrypoint": "gd_validate.py;check_compositions.py;verify_continuation.py",
+    "representation": "Exact arbitrary-size integers and finite periodic word chunks; original rewrite index distinct from raw time."
+  },
+  "metric": {
+    "name": "Endpoint tuple and read-bound containment",
+    "type": "typed_tuple",
+    "units": "TM state,tape cells,head coordinate,defined transitions,original contextual rewrite index",
+    "direction": "two_sided",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Fragmented words",
+      "Exterior zeros versus interior zeros",
+      "Zero width/middle",
+      "Random exterior tape",
+      "Compiler settings"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "601 C++ row probes",
+      "51 O0 and51 UBSan sample probes",
+      "21 dense-Python samples"
+    ],
+    "structural": [
+      "15 unittests",
+      "553 old-rule compositions",
+      "8 RET39 plus15 RET729 arithmetic checks",
+      "No-import-write and actor-free replay tests"
+    ],
+    "property_based": [
+      "2000 seeded finite-exit rank checks"
+    ],
+    "metamorphic": [
+      "74 exterior tape/window probes",
+      "Huge fragmented context"
+    ],
+    "fuzzing": [
+      "Seeded binary suffixes and arbitrary tape beyond read bounds",
+      "11 planted faults killed"
+    ],
+    "historical": [
+      "Earlier260 payloads unchanged",
+      "Prior window corrections and data preserved",
+      "New tooling correction logs retained"
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Literal C++ machine",
+      "Separate dense Python machine",
+      "Declarative old-rule composition checker",
+      "Frozen reset-map specification"
+    ],
+    "negative_controls": [
+      "Drop interior zero",
+      "Change terminal width/ones",
+      "Wrong time/head/state",
+      "Shrink read window"
+    ],
+    "compute_parity": "Same cases for sample compiler replays; actual work recorded, caches explicitly labelled. Largest whole-return rule not raw-simulated.",
+    "parameter_parity": "O0 and UBSan use cases[::12], identical to those O2 cases.",
+    "sampling_parity": "Seeded fixed grids; no post-failure parameter exclusion.",
+    "data_access_parity": "All paths receive the same complete literal tapes; no actor endpoint oracle enters the raw machines."
+  },
+  "preregistration": {
+    "prediction": "Recover width39,977821-bit A,mod243=62 from2M checkpoint; generalized middle counts may leave the old fixed-T domain.",
+    "primary_metric": "Exact endpoint/time/head tuple plus read containment and guarded-prefix replay.",
+    "uncertainty_method": "Analytic guarded compositions with bounded literal checks; no statistical universal inference.",
+    "kill_condition": "Any raw endpoint/time/head/window mismatch blocks the row.",
+    "stop_condition": "First unsupported rule, three pure layers or registered resource cap. Actual continuation stopped at3M cap.",
+    "promotion_rule": "Only bounded measurement and conditional arithmetic; actual Lean theorem required for proof promotion."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Machine transition string",
+      "Earlier byte-identical derivations and claims",
+      "User-supplied Claude boundary fingerprint"
+    ],
+    "execution_records": [
+      "validation.json",
+      "raw-recheck.json",
+      "composition-checks.json",
+      "continuation-recheck.json",
+      "mutations.json",
+      "tests-final.log"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Literal C++ comparator",
+        "origin": "different code path; same author and specification narrative",
+        "artifact": "../l17-hardening/raw_comparator.cpp"
+      },
+      {
+        "name": "Dense Python raw machine",
+        "origin": "different code path; same author",
+        "artifact": "../l17-stacked-section/reference.py"
+      },
+      {
+        "name": "Claude boundary fingerprint",
+        "origin": "user reports independent stepper, remote file unavailable",
+        "artifact": "Recovered boundary.json agrees with977821 bits,mod24362,width39"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Rows -> DERIVATION.md,claims.json,validation.json",
+      "Finite exit -> gd_critic.ranked_exit,rank algebra and tests",
+      "Return family -> return-family-claims.json,composition-checks.json",
+      "Continuation -> retained choices,recovery.json,continuation.json,continuation-recheck.json"
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "all m>=0",
+          "whole tape and guards"
+        ],
+        "transformed": [
+          "S-only target becomes named S/G/J exits"
+        ],
+        "lost": [
+          "no input bit dropped"
+        ],
+        "remainder": [
+          "universal return not established"
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "implementation",
+        "preserved": [
+          "exact counters",
+          "context and positions"
+        ],
+        "transformed": [
+          "formulas split between actor and declarative transcription"
+        ],
+        "lost": [
+          "no clipping"
+        ],
+        "remainder": [
+          "shared authorship"
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "full endpoint tuple and read bounds"
+        ],
+        "transformed": [
+          "universal rows sampled as finite literal tapes"
+        ],
+        "lost": [
+          "universal quantification is not supplied by the raw sample"
+        ],
+        "remainder": [
+          "analytic proof/formal transport"
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "raw response bytes",
+          "resource counters"
+        ],
+        "transformed": [
+          "test fixtures become finite counts and exact matches"
+        ],
+        "lost": [
+          "no mismatch discarded"
+        ],
+        "remainder": [
+          "scope-only low probes not promoted"
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "bounded nature",
+          "dependency hashes"
+        ],
+        "transformed": [
+          "literal agreement supports implementation confidence"
+        ],
+        "lost": [
+          "no promotion to global invariant"
+        ],
+        "remainder": [
+          "unformalized theorem content"
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "remaining universal return question",
+          "exact closure obstruction"
+        ],
+        "transformed": [
+          "next task is changed-terminal invariant and Lean rows"
+        ],
+        "lost": [
+          "no completed nonhalting conclusion"
+        ],
+        "remainder": [
+          "blank-orbit stack bound remains open"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "601 base probes,703 compiler endpoint checks,74 windows,11 mutants,15 tests pass; separate replay agrees through3M; width39 event returns via six D decisions.",
+    "effect_size": "Exact agreement on declared finite comparisons; no performance or causal effect claimed.",
+    "uncertainty": "Same-author derivation/spec/test correlation; universal theorem unformalized; private repo inaccessible.",
+    "status_after": "A",
+    "retired_claims": [
+      "Generalized fixed-T D domain closed under every boundary row."
+    ],
+    "active_remainder": [
+      "Universal return from G/J and changed terminals",
+      "Low join guards when reached",
+      "Blank-orbit stack bound",
+      "Lean formalization of listed rows and RET729"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/l17-collapse/validate.py", line 108, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/l17-collapse/validate.py", line 95, in main
+    lo,hi=case['read_bound'];assert lo<=out['read_min']<=out['read_max']<=hi,(case['id'],'window')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (40, 'window')

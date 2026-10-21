@@ -1,0 +1,77 @@
+{
+  "recorded_at_utc": "2026-10-20T20:06:54.129083+00:00",
+  "derivation": "Safe excursion theorem: at reset states Ccal(0;1^N(01)^k1^(3z)T v), N>=2,k>=1,z>=1, a cycle with r=N mod3 either returns to one outer tail (r=0), decreases k (r=2), or decreases z by1 and increases k by7 (r=1). Hence lexicographic (z,k) strictly descends until a one-tail return.",
+  "branches": {
+    "r0": "q=N/3; return S(1+5q+k,3z,7,3) via E/Q/N",
+    "r1": "reset N=10q-6,k=k+7,z=z-1 via E/Q/F111; if z reaches0 merge with T",
+    "r2": "reset N=10q+15,k=k-1,z unchanged via E/Q/P/Z; if k reaches0 merge leading ones"
+  },
+  "bound": "At most k+8z decision cycles; therefore at most4(k+8z) primitive rewrites including zero-count Q identities in a conceptual cycle.",
+  "resonant_toy": "N=4 stays4 under r1; z cycles have exact time21z^2+(6k+70)z, head shift-11z, target S(0,4,k+7z+7,3).",
+  "raw_limits": "Shared with main protocol: total new raw requests<=256, each<=200000 transitions and total<=20million. Budget queues are fixed before execution; over-horizon cases are explicitly arithmetic-only.",
+  "promotion": "This is a guarded mathematical termination derivation, not Lean proof, not closure for all middle counts, and not a global blank depth bound.",
+  "excluded": "No general 1101 or unproved low-guard derivation.",
+  "raw_queue": {
+    "immediate_grid": {
+      "h": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "d": [
+        0,
+        1,
+        2,
+        7
+      ],
+      "suffixes": [
+        "",
+        "001101"
+      ]
+    },
+    "rank_grid": {
+      "N": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        11,
+        17,
+        26
+      ],
+      "k": [
+        1,
+        3,
+        7
+      ],
+      "z": [
+        1,
+        2
+      ]
+    },
+    "resonant_grid": {
+      "N": 4,
+      "k": [
+        1,
+        7,
+        12
+      ],
+      "z": [
+        0,
+        1,
+        3,
+        10
+      ]
+    },
+    "all_cases": "120 immediate cases +48 ranking cases +12 resonance cases =180 fixed requests, at most256 shared cap. Predictions beyond200000 transitions remain arithmetic-only and are marked before raw dispatch."
+  },
+  "branch_steps": {
+    "r0": "15q^2+12q+2; shift -7q-2",
+    "r1": "15q^2+32q+6k+44; shift -7q-4",
+    "r2": "15q^2+62q+57; shift -7q-11"
+  },
+  "recorded_at_validation_amendment_utc": "2026-10-20T20:08:02.461804+00:00"
+}

@@ -1,0 +1,64 @@
+{
+  "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+  "provenance": "Analytic extension ofRET39 to all widths c>=11; arithmetic-only checks; no new literal campaign claimed.",
+  "rules": {
+    "RET729": {
+      "guards": {
+        "t": [
+          0,
+          null
+        ],
+        "c": [
+          11,
+          null
+        ]
+      },
+      "source": [
+        [
+          "01",
+          "729*t+548"
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "01",
+          "c"
+        ],
+        [
+          "100",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "target": [
+        [
+          "01",
+          "1000000*t+740902"
+        ],
+        [
+          "1",
+          "2*c-22"
+        ],
+        [
+          "01",
+          7
+        ],
+        [
+          "111",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "steps": "659340308940*t*t+976981433088*t+4*c+361912016145",
+      "shift": "-1998542*t+(-1480699)"
+    }
+  }
+}

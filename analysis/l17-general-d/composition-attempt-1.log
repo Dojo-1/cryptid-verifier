@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 5, in <module>
+    from verify_symbolic import next_state
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-stack/verify_symbolic.py", line 10, in <module>
+    from paths import HERE,HARDENING
+ImportError: cannot import name 'HARDENING' from 'paths' (/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/paths.py)

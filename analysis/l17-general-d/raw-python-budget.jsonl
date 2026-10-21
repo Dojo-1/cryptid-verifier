@@ -1,0 +1,3 @@
+{"dense_python_cases": 21, "fresh_defined_transitions": 45666, "note": "Two completed dense verifications before per-run logging was installed.", "recorded_from_completed_run": true, "run": 1}
+{"dense_python_cases": 21, "fresh_defined_transitions": 45666, "note": "Two completed dense verifications before per-run logging was installed.", "recorded_from_completed_run": true, "run": 2}
+{"dense_python_cases": 21, "fresh_defined_transitions": 45666, "replayed": true}

@@ -1,0 +1,96 @@
+{
+  "recorded_at_utc": "2026-10-20T20:34:08.366967+00:00",
+  "status": "New guarded mathematical collapse derivations and bounded measured continuation; no new Lean theorem or global invariant.",
+  "source_reports": "User reports L17e universal F1100/nesting and CI at d60e69f, independent first-event match. Not independently retrieved here.",
+  "collapse": {
+    "immediate_guard": "F1100-output u congruent2mod3",
+    "immediate_postpush_time": "60h^2+144h+86 for u=3h+2",
+    "immediate_postpush_shift": "-14h-16",
+    "ranked_family": "D(N,k,z),N>=2,k,z>=1,middle=3z",
+    "linear_rank": "k+8z; exactly minus1 per nonreturn decision",
+    "consequence": "d congruent1mod3 gives a guaranteed finite return for arbitrary u",
+    "global_bound_proved": false
+  },
+  "continuation": {
+    "stop_rewrite": 2000000,
+    "total_pushes": 7,
+    "maximum_observed_pure_tail_depth": 2,
+    "first_nonimmediate_source": 1407520,
+    "first_nonimmediate_postpush_length": 17,
+    "second_nonimmediate_source": 1803910,
+    "second_nonimmediate_postpush_length": 6,
+    "unsafe_joint_guard_reached": false,
+    "1101_or_unproved_low_guard_reached": false,
+    "independent_recheck": {
+      "passed": true,
+      "start_rewrite": 673467,
+      "end_rewrite": 2000000,
+      "total_added_primitive_rewrites": 1326533,
+      "word_primitive_choices": 347075,
+      "coarse_phases": [
+        {
+          "phase": "fast",
+          "coarse_rounds": 105750,
+          "word_edges": 40,
+          "stop": 1407538,
+          "passed": true
+        },
+        {
+          "phase": "guard",
+          "coarse_rounds": 161917,
+          "word_edges": 17,
+          "stop": 2000000,
+          "passed": true
+        }
+      ],
+      "matched_sparse_checkpoints": 61,
+      "reset_spec_sha256": "edd0002cba2400d0f42ebf602e8a99d6aab4f59da0da974142434cc06bc9fbaf",
+      "actor_imported": false,
+      "word_class_imported": false,
+      "time_head_totals_recomputed": false,
+      "elapsed_seconds": 224.43774763800002
+    }
+  },
+  "raw_validation": {
+    "endpoints": 183,
+    "read_window_cases": 183,
+    "fresh_defined_transitions": 1735242,
+    "maximum_probes": 256,
+    "maximum_per_probe": 200000,
+    "maximum_total": 20000000,
+    "arithmetic_only_over_horizon_cases": 4,
+    "excluded_guard_cases": 10,
+    "mutants_killed": 6,
+    "long_arithmetic_checks": 24,
+    "short_huge_checks": 8,
+    "unit_methods": 12,
+    "scalar_calibrations": 500
+  },
+  "candidate_obstruction": {
+    "source": [
+      9,
+      1,
+      8,
+      4
+    ],
+    "target": [
+      16,
+      1,
+      15,
+      1
+    ],
+    "steps": 295,
+    "shift": -25,
+    "blank_reachability_asserted": false
+  },
+  "retired": [
+    "Every F1100 push collapses after three post-push rewrites.",
+    "The observed sufficient push predicate alone is an invariant over all S states."
+  ],
+  "remaining": [
+    "Formalize immediate and ranked-collapse lemmas using now-reported Lean F1100 and existing rules.",
+    "Prove an admissibility condition on blank-reachable S states, or find a reachable event outside the covered guards.",
+    "No general1101 or low-guard derivation until actual reachability."
+  ],
+  "correction": "Raw read-window bound was one cell too narrow; original failed critic/log retained. Existing hash-bound raw results reused after correcting bound only."
+}

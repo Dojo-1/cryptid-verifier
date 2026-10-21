@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "start": 2000000,
+  "end": 3000000,
+  "primitive_rewrites": 1000000,
+  "phases": [
+    {
+      "name": "recovery",
+      "coarse_rounds": 16348,
+      "primitive_word_edges": 11,
+      "stop": 2059835,
+      "passed": true
+    },
+    {
+      "name": "continuation",
+      "coarse_rounds": 256907,
+      "primitive_word_edges": 70,
+      "stop": 3000000,
+      "passed": true
+    }
+  ],
+  "matched_sparse_checkpoints": 26,
+  "actor_imported": false,
+  "word_class_imported": false,
+  "time_head_totals_recomputed": false,
+  "claims_sha256": "d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074",
+  "reset_spec_sha256": "edd0002cba2400d0f42ebf602e8a99d6aab4f59da0da974142434cc06bc9fbaf",
+  "elapsed_seconds": 183.71998827200014
+}

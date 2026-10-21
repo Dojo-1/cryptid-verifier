@@ -1,0 +1,3 @@
+F1100 1803910 a bits 856395 c 68 a mod3 2
+{"prior_rewrites": 1407538, "stop_index": 2000000, "coarse_rounds": 161917, "trigger_index": null, "elapsed_seconds": 27.135920951999992}
+STOP global rewrite budget a bits 0 shape kind pure

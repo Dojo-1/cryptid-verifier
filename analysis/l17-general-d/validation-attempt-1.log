@@ -1,0 +1,23 @@
+{
+  "endpoint_cases": 601,
+  "compiler_runs": [
+    {
+      "label": "O2",
+      "cases": 601,
+      "all_passed": true
+    },
+    {
+      "label": "O0",
+      "cases": 51,
+      "all_passed": true
+    },
+    {
+      "label": "UBSan",
+      "cases": 51,
+      "all_passed": true
+    }
+  ],
+  "window_checks": 74,
+  "mutants": 6,
+  "total_fresh_transitions": 1590023
+}

@@ -1,0 +1,258 @@
+{
+  "task_id": "l17-collapse-ranked-subsystem-20261020",
+  "claim": {
+    "text": "A guarded two-layer subsystem always returns to the S section by the integer rank k+8z. It and the immediate-collapse guard cover all seven pushes in a conditional two-million-rewrite continuation.",
+    "scope": "Mathematical collapse/ranking and reached-iteration formulas,183 raw endpoints/windows,12 tests,six mutants,independent replay of1326533 added normalized rewrites.",
+    "status_before": "H",
+    "assumptions": [
+      "User reports Lean-proved F1100, nesting and incoming blank prefix; no new private repo or Lean inspection here.",
+      "Contextual C-section formulas and translation conventions retain their prior mathematical meaning.",
+      "Large continuations are exact conditional arithmetic, not new Lean certificates or raw simulation."
+    ],
+    "forbidden_promotions": [
+      "No global two-layer bound, non-halting result or new Cryptid.",
+      "Ranked-subsystem closure is not closure of all reachable S states.",
+      "Long full return at>=5555729670 transitions is not claimed raw simulated.",
+      "A candidate-invariant exit is not asserted blank-reachable.",
+      "Different same-author code paths are not independent-authorship replication."
+    ]
+  },
+  "specification": {
+    "intended_object": "Immediate post-push collapse; ranked D(N,k,z),N>=2,k,z>=1; finite longer returns at reached residue itineraries; bounded continuation.",
+    "invariants": [
+      "Only trailing exterior zeros implicit; arbitrary finite v preserved.",
+      "Rank k+8z decreases exactly1 on every non-return safe decision.",
+      "Zero countdown is identity; no unobserved1101 or unproved low-case extension.",
+      "Physical source/target/time/head compared in raw cases; large search is state-only."
+    ],
+    "known_answer_cases": [
+      "N=4 has exact resonant time21z^2+(6k+70)z and shift-11z.",
+      "N=2,k=z=1 uses q=0 identity and returns in57 transitions.",
+      "The corrected raw read window for P1(h=0,d=1) is[-11,19].",
+      "S(9,1,8,4) reaches S(16,1,15,1) in295 transitions,shift-25."
+    ]
+  },
+  "implementation": {
+    "artifact": "analysis/l17-collapse: actor compositions, consumed claims, literal evidence, scalar discovery and independent replay, proof briefs and tests.",
+    "commit": "Additive handoff; all206 older archive payloads preserved. No git or Lean mutation.",
+    "environment": "Python3.12, g++13.3.0 C++17 O2 comparator; standard library.",
+    "live_entrypoint": "README reproduction commands and verifiers.",
+    "representation": "Exact word counts plus scalar reset section; separate declarative targets, literal sparse machine and independent periodic cursors."
+  },
+  "metric": {
+    "name": "Exact endpoints and read bounds, rank progress, conditional push depth/duration and guarded prefix.",
+    "type": "typed_tuple",
+    "units": "Raw transitions,head cells,contextual rewrites,decision cycles,tail layers,probes.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Q0 tape identity and canonical leading-one joins.",
+      "Arbitrary suffixes and exact periodic-word equality.",
+      "Scalar reset engine calibrated against word semantics; independent source/target formulas replay all coarse branches.",
+      "Different section choices distinguish fine two-layer checkpoints from S return endpoints."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "183 literal endpoints and window bounds pass;1735242 fresh defined transitions."
+    ],
+    "structural": [
+      "Independent raw verifier consumes actual claims, no actor imports.",
+      "Search verifier consumes reset-spec.json and old primitive claims; no generator or word-class imports.",
+      "Prior archive payloads compared byte for byte during packaging."
+    ],
+    "property_based": [
+      "Fixed residue/ranking grids,huge algebra cases,500 scalar calibration states and exact rank decrease."
+    ],
+    "metamorphic": [
+      "Right context is preserved; zero-length resonance is identity; parameterized long returns match reached huge endpoints."
+    ],
+    "fuzzing": [
+      "Six planted endpoint/time/head/context defects caught; ten excluded guard instances rejected."
+    ],
+    "historical": [
+      "Initial read-bound defect retained with its critic and failed log; raw records reused only under matching hashes."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Same literal machine,source,head and exact raw horizon in all raw comparisons.",
+      "Old word engine versus scalar reset projection before acceleration."
+    ],
+    "negative_controls": [
+      "Raw candidate-invariant counterexample and original too-narrow read window.",
+      "Invalid short-middle branch is rejected instead of invoking unobserved1101 cases.",
+      "Six in-memory mutants each mismatch a literal endpoint."
+    ],
+    "compute_parity": "183 raw requests<=256,each<=200000,total1735242<=20million. Four ranking requests remain arithmetic-only; no long raw run beyond fixed budget. Search phases share2million global cap with separately recorded wall budgets.",
+    "parameter_parity": "Guarded parameters and suffix match between consumed source/target statements and actual requests.",
+    "sampling_parity": "Fixed grids and seeds declared locally after disclosed derivation; no statistical rare-event inference.",
+    "data_access_parity": "Complete finite tape support,blank left exterior and explicit right contexts preserved."
+  },
+  "preregistration": {
+    "prediction": "Locally recorded main,rank,fast-discovery,verification and reached-return protocols. No externally authenticated preregistration.",
+    "primary_metric": "Exact complete-state and read-window agreement,algebraic rank proof,and explicit finite continuation stops.",
+    "uncertainty_method": "Exact finite comparisons and a mathematical well-founded descent; no confidence interval or asymptotic inference.",
+    "kill_condition": "Any discrepancy stops its phase and is retained before repair.",
+    "stop_condition": "Word phase240seconds; faster phases180/120seconds,allwithin2million global rewrites. Independent verification360seconds,actual224.44. Raw probes capped as above.",
+    "promotion_rule": "Lean formalization for new machine-checked collapse; a preserved blank-reachable admissibility condition before claiming global depth<=2."
+  },
+  "evidence": {
+    "primary_sources": [
+      "User report of L17e proofs and independent first-event match at d60e69f.",
+      "Frozen literal machine and contextual specifications in prior packages.",
+      "COLLAPSE.md branch proofs,read windows and linear rank."
+    ],
+    "execution_records": [
+      "RESULTS.json",
+      "claims.json",
+      "return2-claims.json",
+      "validation.json",
+      "return2-validation.json",
+      "raw.jsonl.gz",
+      "return2-raw.jsonl.gz",
+      "raw-budget.jsonl",
+      "scalar-calibration.json",
+      "reset-spec.json",
+      "search.json",
+      "fast.json",
+      "guard.json",
+      "search-recheck.json",
+      "failure-history.json",
+      "validation-attempt-1.log",
+      "tests.log",
+      "integrity.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Literal machine,raw-record verifier and declarative scalar/primitive replay",
+        "origin": "Separate same-author code paths; externally reported Claude first-event check is not a new external replay of this package.",
+        "artifact": "Prior raw_comparator.cpp;new verify_raw.py,verify_search.py."
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Guarded collapse and rank -> COLLAPSE.md and consumed cycle claims.",
+      "Reached long returns -> fast/guard local word edges plus parameterized arithmetic checks.",
+      "183 raw endpoints/read bounds -> two consumed claim queues and hashed literal records.",
+      "Two-million conditional prefix -> search/fast/guard outputs,choices and separate recheck.",
+      "Failure and candidate obstruction -> failed window critic/log and raw EXIT control.",
+      "No global closure -> explicit remainder in brief and audit."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "specification",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "The global bound requires an explicit reachable-set invariant."
+        ]
+      },
+      {
+        "from": "specification",
+        "to": "implementation",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "New mathematical lemmas are not yet Lean-built here."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "validation",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "Same-author correlation is disclosed despite separate code paths."
+        ]
+      },
+      {
+        "from": "validation",
+        "to": "measurement",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "Finite raw probes do not substitute for universal derivations."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "All seven observed guards do not prove future admissibility."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Typed guards,whole tape,count/head conventions and explicit stop budgets."
+        ],
+        "transformed": [
+          "An informal immediate-collapse observation becomes guarded rules,a rank,and reached longer itineraries."
+        ],
+        "lost": [
+          "No implication from the prefix to a global bound."
+        ],
+        "remainder": [
+          "A terminating excursion subsystem leaves global closure open."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "Seven F1100 pushes through2million contextual rewrites;firstnon-immediate source1407520 returns17post-push rewrites later,next1803910 returns6later. No reached thirdlayer/1101/unprovedlowcase. Immediate and ranked collapse cover all seven.183raw endpoints/windows,12tests,sixmutants and independent prefix replay pass.",
+    "effect_size": "One terminating two-layer subsystem,explicit linear rank,immediate lemma and two reached guarded S returns. Zero new Lean theorems or global bounds.",
+    "uncertainty": "The large continuation is conditional normalized arithmetic. Universal collapse proof is mathematical and awaits Lean. The observed sufficient guard is not invariant on arbitraryS; the raw exit is not asserted blank-reachable.",
+    "status_after": "M",
+    "retired_claims": [
+      "All pushes collapse after three post-push rewrites.",
+      "Observed guard alone is an invariant on all S states."
+    ],
+    "active_remainder": [
+      "Formalize immediate and ranked collapse in Lean.",
+      "Establish a blank-reachable admissibility invariant or discover a reached guard outside the covered subsystem.",
+      "Only derive1101/low branches if subsequently reached."
+    ]
+  }
+}

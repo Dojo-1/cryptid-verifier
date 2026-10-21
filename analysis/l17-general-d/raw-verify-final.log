@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "rechecked_stored_endpoints": 703,
+  "rechecked_windows": 74,
+  "dense_python_cases": 21,
+  "dense_python_fresh_defined_transitions": 45666,
+  "independent_code_path": true,
+  "independent_authorship": false
+}

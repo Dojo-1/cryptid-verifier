@@ -1,0 +1,2 @@
+{"new_checked_edges": 347075, "counts": {"E": 94842, "Q": 107556, "P": 32832, "Z": 61100, "N": 17004, "F100": 21157, "F111": 12584}, "trigger_index": null, "maximum_pure_tail_depth": 1, "elapsed_seconds": 240.003703801}
+STOP wall budget 1020542 a bits 484469 kind pure

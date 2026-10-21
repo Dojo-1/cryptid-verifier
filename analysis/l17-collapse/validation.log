@@ -1,0 +1,10 @@
+{
+  "candidate_cases": 170,
+  "raw_cases": 166,
+  "excluded": 4,
+  "guards": 10,
+  "raw_transitions": 1204467,
+  "mutants": 6,
+  "long_arithmetic_checks": 24,
+  "matched_reached_long": true
+}

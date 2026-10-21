@@ -1,0 +1,63 @@
+{
+  "mutations": [
+    {
+      "mutant": "time-minus-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "head-plus-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "wrong-state",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "missing-first-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "missing-context",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "drop-interior-zero",
+      "killed": true,
+      "witness_id": 210
+    },
+    {
+      "mutant": "JOIN-delete-output-zero",
+      "killed": true,
+      "witness_id": 518
+    },
+    {
+      "mutant": "JOIN-wrong-l-width",
+      "killed": true,
+      "witness_id": 517
+    },
+    {
+      "mutant": "G1-retain-old-terminal-width",
+      "killed": true,
+      "witness_id": 477
+    },
+    {
+      "mutant": "D11join-retain-old-terminal-ones",
+      "killed": true,
+      "witness_id": 565
+    },
+    {
+      "mutant": "JOIN-shrink-left-read-window",
+      "killed": true,
+      "witness_id": 517
+    }
+  ],
+  "total": 11,
+  "all_killed": true,
+  "raw_responses_reused": true,
+  "fresh_raw_transitions": 0
+}

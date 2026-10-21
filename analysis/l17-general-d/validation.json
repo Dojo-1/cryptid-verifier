@@ -1,0 +1,129 @@
+{
+  "status": "Bounded checks, not new Lean proof",
+  "claims_sha256": "3fc4ef99a3975cee8a903a95dede7ec463b105db6cbd2e76eeae73aa34f8091b",
+  "comparator_source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+  "builds": [
+    {
+      "label": "O2",
+      "options": [
+        "-O2"
+      ],
+      "stderr": "",
+      "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f"
+    },
+    {
+      "label": "O0",
+      "options": [
+        "-O0"
+      ],
+      "stderr": "",
+      "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8"
+    },
+    {
+      "label": "UBSan",
+      "options": [
+        "-O1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined"
+      ],
+      "stderr": "",
+      "binary_sha256": "b1f069b7252c526be8b7f09d80981f83a060ee05ae041466c0af8e4a8eb61c9c"
+    }
+  ],
+  "runs": [
+    {
+      "label": "O2",
+      "cases": 601,
+      "all_passed": true
+    },
+    {
+      "label": "O0",
+      "cases": 51,
+      "all_passed": true
+    },
+    {
+      "label": "UBSan",
+      "cases": 51,
+      "all_passed": true
+    }
+  ],
+  "raw_metadata": [
+    {
+      "label": "O2",
+      "requests": 601,
+      "defined_transitions": 1223045,
+      "executed_defined_transitions": 1223045,
+      "cache_reused": false,
+      "request_sha256": "dac1b81d8858b6a8b3e3a48021a93e0edf0aadc0ba5d97d1c5ecbd65f356d8c1",
+      "response_sha256": "b18366c717e85741b9557c5434ffd4a6de61e9a01a38459d33b9e305eefd7c98",
+      "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+      "stderr": ""
+    },
+    {
+      "label": "O0",
+      "requests": 51,
+      "defined_transitions": 122210,
+      "executed_defined_transitions": 122210,
+      "cache_reused": false,
+      "request_sha256": "dbd96641c1fcf1ae4faea81d327dbe10edafe1a403b478dcc9933df842c929d9",
+      "response_sha256": "131c5d05e752d398558c0cec07faf5bb366966c2c6fe1e8856bcb235d37b9d13",
+      "binary_sha256": "1a1c37690af0923f9d7800cadc2078fdc18aa7920e309957aa60ff7b87135dc8",
+      "stderr": ""
+    },
+    {
+      "label": "UBSan",
+      "requests": 51,
+      "defined_transitions": 122210,
+      "executed_defined_transitions": 122210,
+      "cache_reused": false,
+      "request_sha256": "dbd96641c1fcf1ae4faea81d327dbe10edafe1a403b478dcc9933df842c929d9",
+      "response_sha256": "131c5d05e752d398558c0cec07faf5bb366966c2c6fe1e8856bcb235d37b9d13",
+      "binary_sha256": "b1f069b7252c526be8b7f09d80981f83a060ee05ae041466c0af8e4a8eb61c9c",
+      "stderr": ""
+    }
+  ],
+  "window_checks": 74,
+  "window_metadata": {
+    "requests": 74,
+    "defined_transitions": 122558,
+    "executed_defined_transitions": 122558,
+    "cache_reused": false,
+    "request_sha256": "aee6be1e0972580932816b03e54091cd92cb48d4939377f5db15a7a61ec01f57",
+    "response_sha256": "c0e6ceefac0e3ffca3cfb74d278b6caa566f9e96582daf7e270484d7cb8407ec",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "mutations": [
+    {
+      "mutant": "time-minus-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "head-plus-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "wrong-state",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "missing-first-one",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "missing-context",
+      "killed": true,
+      "witness_id": 0
+    },
+    {
+      "mutant": "drop-interior-zero",
+      "killed": true,
+      "witness_id": 210
+    }
+  ],
+  "RET39": "Arithmetic compositions only; minimum time exceeds200k; no raw run"
+}

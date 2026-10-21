@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-10-21",
+  "object": "L17 generalized middle-count collapse and guarded continuation from the archived 2M endpoint",
+  "evidence": "Analytic compositions conditional on contextual rules; bounded measurements against literal TM. No new Lean proof or global nonhalting claim.",
+  "source": "../l17-collapse/guard.json",
+  "source_sha256": "9c21be4dc2e6ae2eab2c14890ef0cebe56a5e8ed14c2ea07930f3c7e010cdd92",
+  "source_hash_note": "This is the previous guard report's input hash; the actual guard.json bytes are hashed and retained by every new replay.",
+  "prediction": "The next push outside the two prior sufficient guards has width39 and a 977821-bit A with A mod243=62. It need not return within the old D(multiple-of-three) subsystem.",
+  "comparison": "Recover exact A from retained scalar choices and old declarative endpoint checks; compare Claude's supplied fingerprint, without claiming exact remote-file equality.",
+  "budgets": {"maximum_global_rewrites":2300000,"maximum_coarse_rounds":100000,"maximum_counter_bits":1200000,"maximum_wall_seconds":180,"maximum_excursion_rewrites":512},
+  "stop": "Record first outside-both push, expand known rules to first unsupported state or one-tail return; then use separately registered continuation if needed. Never guess an unsupported endpoint.",
+  "raw_checks": {"maximum_steps_per_case":200000,"maximum_total_defined_transitions":40000000,"maximum_cases":1600,"seed":21102026,"compilers":["O2","O0","UBSan"],"random_contexts_per_kernel":12},
+  "controls": ["immutable old specification and comparator", "separate declarative replay without importing the actor", "grid and seeded cases", "random tape outside read windows", "mutations of time, shift, output, guards and interior-zero handling"],
+  "kill": "Any endpoint, time, head or read-window mismatch blocks promotion of that row until failure is preserved and corrected.",
+  "promotion": "Only derived rows whose bounded literal checks pass enter the handoff. A finite sample never promotes a global termination or stack bound.",
+  "correlation": "Actor, declarative specification and test design share authorship. The C++ transition implementation is a separate code path; external independent replay is requested from Claude."
+}

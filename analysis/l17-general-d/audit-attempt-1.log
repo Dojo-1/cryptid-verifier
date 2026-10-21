@@ -1,0 +1,3 @@
+WARNING: round_trip.edges should normally cover the full requirement-to-interpretation cycle
+PASS: 0 errors, 1 warning(s)
+Expanded the three aggregate edges into the full six-edge chain; see final log.
