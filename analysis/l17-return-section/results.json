@@ -1,0 +1,286 @@
+{
+  "status": "Mathematical composition and bounded raw checks; not Lean formalized, no global closure result.",
+  "claims_sha256": "a5d4852e7ce1e01e0b93fb8b15633b2fc24214fbec53358472418798323cb0d0",
+  "comparator_source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+  "build_stderr": "",
+  "raw_endpoints": 163,
+  "raw_metadata": {
+    "requests": 163,
+    "defined_transitions": 3502298,
+    "executed_defined_transitions": 3502298,
+    "cache_reused": false,
+    "request_sha256": "43c2259b98e370f6d4167b6000fc52c719f50bb85e1a6d54350be5a668978dab",
+    "response_sha256": "f847647e39c2ad3908aa5d84c4e092fc138dfc768574f3949f20d3d788e7aaa4",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "huge_checks": [
+    {
+      "u_bits": 129,
+      "d_bits": 129,
+      "passed": true
+    },
+    {
+      "u_bits": 160,
+      "d_bits": 152,
+      "passed": true
+    },
+    {
+      "u_bits": 191,
+      "d_bits": 175,
+      "passed": true
+    },
+    {
+      "u_bits": 222,
+      "d_bits": 198,
+      "passed": true
+    },
+    {
+      "u_bits": 253,
+      "d_bits": 221,
+      "passed": true
+    },
+    {
+      "u_bits": 284,
+      "d_bits": 244,
+      "passed": true
+    },
+    {
+      "u_bits": 315,
+      "d_bits": 267,
+      "passed": true
+    },
+    {
+      "u_bits": 346,
+      "d_bits": 290,
+      "passed": true
+    },
+    {
+      "u_bits": 377,
+      "d_bits": 313,
+      "passed": true
+    },
+    {
+      "u_bits": 408,
+      "d_bits": 336,
+      "passed": true
+    },
+    {
+      "u_bits": 439,
+      "d_bits": 359,
+      "passed": true
+    },
+    {
+      "u_bits": 470,
+      "d_bits": 382,
+      "passed": true
+    },
+    {
+      "u_bits": 501,
+      "d_bits": 405,
+      "passed": true
+    },
+    {
+      "u_bits": 532,
+      "d_bits": 428,
+      "passed": true
+    },
+    {
+      "u_bits": 563,
+      "d_bits": 451,
+      "passed": true
+    },
+    {
+      "u_bits": 594,
+      "d_bits": 474,
+      "passed": true
+    },
+    {
+      "u_bits": 625,
+      "d_bits": 497,
+      "passed": true
+    },
+    {
+      "u_bits": 656,
+      "d_bits": 520,
+      "passed": true
+    },
+    {
+      "u_bits": 687,
+      "d_bits": 543,
+      "passed": true
+    },
+    {
+      "u_bits": 718,
+      "d_bits": 566,
+      "passed": true
+    },
+    {
+      "u_bits": 749,
+      "d_bits": 589,
+      "passed": true
+    },
+    {
+      "u_bits": 780,
+      "d_bits": 612,
+      "passed": true
+    },
+    {
+      "u_bits": 811,
+      "d_bits": 635,
+      "passed": true
+    },
+    {
+      "u_bits": 842,
+      "d_bits": 658,
+      "passed": true
+    },
+    {
+      "u_bits": 873,
+      "d_bits": 681,
+      "passed": true
+    },
+    {
+      "u_bits": 904,
+      "d_bits": 704,
+      "passed": true
+    },
+    {
+      "u_bits": 935,
+      "d_bits": 727,
+      "passed": true
+    },
+    {
+      "u_bits": 966,
+      "d_bits": 750,
+      "passed": true
+    },
+    {
+      "u_bits": 997,
+      "d_bits": 773,
+      "passed": true
+    },
+    {
+      "u_bits": 1028,
+      "d_bits": 796,
+      "passed": true
+    },
+    {
+      "u_bits": 1059,
+      "d_bits": 819,
+      "passed": true
+    },
+    {
+      "u_bits": 1090,
+      "d_bits": 842,
+      "passed": true
+    }
+  ],
+  "guard_checks": [
+    {
+      "arguments": [
+        -1,
+        0
+      ],
+      "rejected": true
+    },
+    {
+      "arguments": [
+        0,
+        -1
+      ],
+      "rejected": true
+    },
+    {
+      "arguments": [
+        true,
+        0
+      ],
+      "rejected": true
+    },
+    {
+      "arguments": [
+        0,
+        true
+      ],
+      "rejected": true
+    },
+    {
+      "arguments": [
+        0.0,
+        0
+      ],
+      "rejected": true
+    }
+  ],
+  "mutations": [
+    {
+      "mutant": "a-offset",
+      "killed": true,
+      "case": 0
+    },
+    {
+      "mutant": "b-offset",
+      "killed": true,
+      "case": 0
+    },
+    {
+      "mutant": "tail-length",
+      "killed": true,
+      "case": 0
+    },
+    {
+      "mutant": "quadratic-time",
+      "killed": true,
+      "case": 11
+    },
+    {
+      "mutant": "head-shift",
+      "killed": true,
+      "case": 0
+    },
+    {
+      "mutant": "drop-context",
+      "killed": true,
+      "case": 1
+    }
+  ],
+  "excursions": [
+    {
+      "source_index": 226797,
+      "target_index": 226801,
+      "source_a_bits": 107633,
+      "source_c": 76,
+      "source_a_mod3": 0,
+      "target_b": 139,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Full recorded time and shift agree"
+    },
+    {
+      "source_index": 344264,
+      "target_index": 344268,
+      "source_a_bits": 163423,
+      "source_c": 57,
+      "source_a_mod3": 0,
+      "target_b": 101,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Not accumulated in this state-only phase"
+    },
+    {
+      "source_index": 366708,
+      "target_index": 366712,
+      "source_a_bits": 174105,
+      "source_c": 59,
+      "source_a_mod3": 0,
+      "target_b": 105,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Not accumulated in this state-only phase"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "raw_endpoints": 163,
+  "raw_transitions": 3502298,
+  "mutants": 6,
+  "huge_checks": 32,
+  "matched_excursions": [
+    {
+      "source_index": 226797,
+      "target_index": 226801,
+      "source_a_bits": 107633,
+      "source_c": 76,
+      "source_a_mod3": 0,
+      "target_b": 139,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Full recorded time and shift agree"
+    },
+    {
+      "source_index": 344264,
+      "target_index": 344268,
+      "source_a_bits": 163423,
+      "source_c": 57,
+      "source_a_mod3": 0,
+      "target_b": 101,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Not accumulated in this state-only phase"
+    },
+    {
+      "source_index": 366708,
+      "target_index": 366712,
+      "source_a_bits": 174105,
+      "source_c": 59,
+      "source_a_mod3": 0,
+      "target_b": 105,
+      "target_k": 7,
+      "target_s": 3,
+      "passed": true,
+      "time_check": "Not accumulated in this state-only phase"
+    }
+  ]
+}

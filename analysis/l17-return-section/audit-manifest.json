@@ -1,0 +1,239 @@
+{
+  "task_id": "l17-return-section-20261020",
+  "claim": {
+    "text": "A scoped contextual return identity absorbs all three previously recorded conditional two-layer excursions into Claude four-counter S endpoints.",
+    "scope": "Mathematical F1100/E/Q/N composition; 163 full raw endpoints, six mutants, 32 huge arithmetic checks, five tests and three recorded excursion matches.",
+    "status_before": "H",
+    "assumptions": [
+      "F1100 has the stated contextual mathematical derivation; it remains unformalized according to the user report.",
+      "The earlier guarded continuation and its supplied blank entry retain their prior conditional status.",
+      "The reported Lean build and current CI information have not been independently retrieved."
+    ],
+    "forbidden_promotions": [
+      "No global closure, non-halting or new Lean theorem.",
+      "No equality of GPT rewrite indices with Claude move counts.",
+      "No assertion that future F1100 sources have the same divisibility guard.",
+      "No new outside-authorship replication."
+    ]
+  },
+  "specification": {
+    "intended_object": "Complete contextual return from S(3u+9,1,d+7,1) to S(10u+18,2d+1,7,3) with exact time/head.",
+    "invariants": [
+      "u,d are nonnegative integers; booleans rejected.",
+      "Explicit 00 before arbitrary suffix v supplies F1100 lookahead.",
+      "Intermediate two-layer words are permitted; both return endpoints fit S."
+    ],
+    "known_answer_cases": [
+      "u=d=0 gives time 242, shift -18 and target S(18,1,7,3).",
+      "All three observed F1100 sources have a divisible by three."
+    ]
+  },
+  "implementation": {
+    "artifact": "analysis/l17-return-section/validate.py,verify.py,claims.json and test_return.py.",
+    "commit": "Additive handoff archive; all 189 earlier payloads unchanged. No git/Lean mutation.",
+    "environment": "Python3.12, fresh g++ C++17 O2 build of the unchanged prior comparator.",
+    "live_entrypoint": "README reproduction commands.",
+    "representation": "Actor composes old contextual formulas; separate declarative exact-word checker and literal C++ raw machine."
+  },
+  "metric": {
+    "name": "Complete raw endpoint agreement, exact count/shift composition and observed return target matches.",
+    "type": "typed_tuple",
+    "units": "Endpoints, transitions, head cells, cases and arithmetic checks.",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Preserve arbitrary finite v after required 00.",
+      "Count raw defined transitions and full physical head shift.",
+      "Distinguish fine-section stack depth from a coarser return-map state."
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "163 literal full endpoints pass, using 3502298 new defined transitions."
+    ],
+    "structural": [
+      "verify.py imports no actor; it reconstructs actual requests from consumed claims and binds response hashes."
+    ],
+    "property_based": [
+      "99 fixed-grid plus 64 seeded cases; 32 huge compressed-word comparisons.",
+      "Five invalid parameter/type controls."
+    ],
+    "metamorphic": [
+      "All three huge recorded excursions match the fused target; first also matches recorded count/shift sums."
+    ],
+    "fuzzing": [
+      "Seeded finite right suffixes and six in-memory endpoint/time/head/context mutations."
+    ],
+    "historical": [
+      "Preserves earlier failed harness history and all old payloads; no new discrepancy in this campaign."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "The same complete source, state, machine and raw time budget feed literal and declarative comparisons."
+    ],
+    "negative_controls": [
+      "Six planted defects each produce a mismatch; invalid types and negative u/d are rejected."
+    ],
+    "compute_parity": "163 probes<=200, each<=200000 transitions; 3502298 fresh transitions<=20000000. No performance claim.",
+    "parameter_parity": "Identical guarded u,d,v for composition and consumed claim.",
+    "sampling_parity": "Fixed grid and disclosed seed310017; no statistical closure inference.",
+    "data_access_parity": "Literal comparator receives the exact source support generated from the consumed claim."
+  },
+  "preregistration": {
+    "prediction": "Local protocol and claims were recorded after algebraic derivation and before new raw validation; no externally authenticated preregistration.",
+    "primary_metric": "Exact full endpoint plus count/head identity, and agreement with retained excursion endpoints.",
+    "uncertainty_method": "Exact finite checks and mathematical composition; no asymptotic confidence inference.",
+    "kill_condition": "Any complete-word, count or displacement discrepancy stops promotion and is retained.",
+    "stop_condition": "At most200 probes, each<=200000 raw steps, total<=20million. Actual163 probes and3502298 transitions.",
+    "promotion_rule": "Formalize F1100 and compose with the existing Lean moves before claiming a new Lean theorem; prove reachable guard coverage before global closure."
+  },
+  "evidence": {
+    "primary_sources": [
+      "User-reported Lean endpoint and nine-move stepper.",
+      "Previously delivered F1100, E, Q, N contextual derivations and immutable excursion records.",
+      "New CLAUDE-BRIEF.md algebraic return derivation."
+    ],
+    "execution_records": [
+      "protocol.json",
+      "claims.json",
+      "cases.json",
+      "raw.jsonl.gz",
+      "raw.jsonl.gz.meta.json",
+      "raw-budget.jsonl",
+      "results.json",
+      "validation.log",
+      "tests.log",
+      "integrity.json"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "Separate literal machine and declarative-record verifier",
+        "origin": "Same author, separate code paths; no new external replay claimed.",
+        "artifact": "Prior raw_comparator.cpp plus new verify.py."
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Return identity -> CLAUDE-BRIEF.md and consumed claims.json.",
+      "Raw checks and mutants -> results.json, cases and hashed raw responses.",
+      "Three actual matches -> results.json excursions backed by earlier unchanged records.",
+      "Original trace shape counts and 981-bit endpoint -> earlier symbolic-extension.json."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "specification",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "The closure question requires an explicit section."
+        ]
+      },
+      {
+        "from": "specification",
+        "to": "implementation",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "A mathematical rule is not yet a Lean theorem."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "validation",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "Same author despite separate code paths."
+        ]
+      },
+      {
+        "from": "validation",
+        "to": "measurement",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "Finite tests do not establish universal rules."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "Observed guarded returns do not cover all future guards."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Exact guarded return endpoints and count/head conventions."
+        ],
+        "transformed": [
+          "Three transient stack events become one scoped counter move."
+        ],
+        "lost": [
+          "No general closure claim."
+        ],
+        "remainder": [
+          "Global return-map closure remains open."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "All163 raw endpoints, six mutant kills,32 huge comparisons,five invalid inputs and five unit methods pass. The new return rule matches all three prior observed stack excursions, including full time/head comparison for the first.",
+    "effect_size": "One proposed guarded S-to-S return move, covering all three observed F1100 events. Zero new Lean theorems or global closure results.",
+    "uncertainty": "The conditional later trajectory uses unformalized contextual lemmas; user reports the earlier Lean prefix. F1100 under other residues or short widths and global coverage remain open.",
+    "status_after": "M",
+    "retired_claims": [
+      "At most one tail at every later C checkpoint, assuming the checked continuation.",
+      "Observed transient stacks alone exclude a finite counter return map."
+    ],
+    "active_remainder": [
+      "Formalize F1100 and the fused return lemma.",
+      "Extend the S stepper with the precise guard and test it against the supplied continuation.",
+      "Handle remaining guards or prove they are unreachable."
+    ]
+  }
+}

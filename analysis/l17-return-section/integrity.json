@@ -1,0 +1,70 @@
+{
+  "algorithm": "sha256",
+  "scope": "New delivered payloads, excluding this manifest and local build/cache files.",
+  "files": {
+    "CLAUDE-BRIEF.md": {
+      "bytes": 3487,
+      "sha256": "58331c96504bcac4cabf555b74f141802f336771c5c46176263eff2c41a5a825"
+    },
+    "README.md": {
+      "bytes": 2350,
+      "sha256": "10d831ae79e693d36515a678fb2115f99ac447abd925118fcee243ba98a6c74d"
+    },
+    "audit-manifest.json": {
+      "bytes": 10150,
+      "sha256": "86b1779f317be36defb7559b85bd23f3f301cddb5c57e674654c52a022911f58"
+    },
+    "audit-validation.log": {
+      "bytes": 29,
+      "sha256": "16c6fa7469ac19dfe2f35940390f804f21461dd1e0daeb16904826221e596fdc"
+    },
+    "cases.json": {
+      "bytes": 107375,
+      "sha256": "0ccaa38c22d0cdbfe860714ec554cfb3d9db07b05edfb9859148e52a7734c9ac"
+    },
+    "claims.json": {
+      "bytes": 1048,
+      "sha256": "a5d4852e7ce1e01e0b93fb8b15633b2fc24214fbec53358472418798323cb0d0"
+    },
+    "protocol.json": {
+      "bytes": 1945,
+      "sha256": "3f11eba9c3b91a8fe061c442c0d7dcc6d44a41620eea7927c9df454fd2a1ae6c"
+    },
+    "raw-budget.jsonl": {
+      "bytes": 300,
+      "sha256": "44f0ba373400144b5aa572dc391aa115fc4a7b04ba48190378cf958c6f0dc5fd"
+    },
+    "raw.jsonl.gz": {
+      "bytes": 7024,
+      "sha256": "e525f6dcece8fb61ace477ce8529fa3d0f2d70462e16244cd569ed952db17214"
+    },
+    "raw.jsonl.gz.meta.json": {
+      "bytes": 404,
+      "sha256": "a91be2ee720ff4fd3c3cc547ff3fdb9935c33086ccdbc22f6ed32a44a608089c"
+    },
+    "results.json": {
+      "bytes": 5146,
+      "sha256": "0f5a505702853aa223055a4c1f95b97bc5f2a70cccaf2b7a213556b00c6c2bd6"
+    },
+    "test_return.py": {
+      "bytes": 1167,
+      "sha256": "0d7c561b9001dc4e052c6f6255fab81264f74c5b2532464f64d6534d6562747c"
+    },
+    "tests.log": {
+      "bytes": 529,
+      "sha256": "0f27e7a9256dc28f7baae34a10b7483f71901aee6975d2c0d6b78e81a762cb60"
+    },
+    "validate.py": {
+      "bytes": 6865,
+      "sha256": "4088184648b90773e0281ab199109bc8ddad235287067cb1ab21dc579cc7a158"
+    },
+    "validation.log": {
+      "bytes": 1024,
+      "sha256": "5384f595ddad55b5f7f215c8d0396b8066f406dfccebd80597a6d804680435f2"
+    },
+    "verify.py": {
+      "bytes": 1764,
+      "sha256": "0e2ba89fd7d35dbb28c96776e6827657721fe03a017190029b3a4dac3df807aa"
+    }
+  }
+}

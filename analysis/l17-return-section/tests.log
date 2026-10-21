@@ -1,0 +1,10 @@
+test_all_recorded_excursions (test_return.ReturnTests.test_all_recorded_excursions) ... ok
+test_contextual_suffix (test_return.ReturnTests.test_contextual_suffix) ... ok
+test_guard_boundary (test_return.ReturnTests.test_guard_boundary) ... ok
+test_independent_raw_record_verification (test_return.ReturnTests.test_independent_raw_record_verification) ... ok
+test_invalid_guards (test_return.ReturnTests.test_invalid_guards) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.055s
+
+OK
