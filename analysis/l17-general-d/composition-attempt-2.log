@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 56, in main
+    for c in cases:checked+=check(c,new,old)
+                            ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 31, in check
+    sequence=['E']+(['Q'] if p['q'] else [])
+                             ~^^^^^
+KeyError: 'q'

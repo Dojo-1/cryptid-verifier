@@ -45,6 +45,10 @@ jobs:
         run: python3 -m unittest discover -s analysis/l17-return-section -p 'test_return.py' -v
       - name: L17 collapse checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-collapse -p 'test_collapse.py' -v
+      - name: L17 general-D checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-general-d -p 'test_general_d.py' -v
+      - name: L17 contextual stepper vs literal machine
+        run: python3 -m unittest discover -s analysis/leads -p 'test_l17_ctx.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

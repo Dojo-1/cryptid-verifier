@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 69, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 58, in main
+    for t in (0,1,2,10,100,2**128+5,2**2048+17):check(single(new,'RET39',{'t':t},'001101'),new,old)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/918c55ca52eb/quest/recovered/analysis/l17-general-d/check_compositions.py", line 42, in check
+    a,w,name,steps,shift=old_step(a,w,old);assert name==required,(case['rule'],required,name)
+                                                  ^^^^^^^^^^^^^^
+AssertionError: ('RET39', 'F1100', 'N')

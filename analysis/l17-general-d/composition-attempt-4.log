@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "old_rule_compositions": 553,
+  "JOIN_literal_only_cases": 48,
+  "RET39_arithmetic_checks": 8,
+  "matched_huge_reached_endpoint": true,
+  "source_to_first_one_tail_rewrites": 21,
+  "D_decisions": [
+    1,
+    1,
+    1,
+    2,
+    2,
+    0
+  ],
+  "rank_exit": "S-r0",
+  "raw_simulated_large_RETURN": false,
+  "new_claims_sha256": "3fc4ef99a3975cee8a903a95dede7ec463b105db6cbd2e76eeae73aa34f8091b",
+  "old_claims_sha256": "d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074",
+  "actor_imported": false,
+  "word_class_imported": false
+}

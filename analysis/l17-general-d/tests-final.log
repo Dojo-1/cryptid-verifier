@@ -1,0 +1,20 @@
+test_boolean_is_not_a_counter (test_general_d.GeneralDTests.test_boolean_is_not_a_counter) ... ok
+test_exterior_zero_and_interior_zero_are_distinct (test_general_d.GeneralDTests.test_exterior_zero_and_interior_zero_are_distinct) ... ok
+test_gap_rows_change_the_right_width (test_general_d.GeneralDTests.test_gap_rows_change_the_right_width) ... ok
+test_identity_at_large_zero_middle (test_general_d.GeneralDTests.test_identity_at_large_zero_middle) ... ok
+test_join_fragmented_context (test_general_d.GeneralDTests.test_join_fragmented_context) ... ok
+test_join_guard_boundaries (test_general_d.GeneralDTests.test_join_guard_boundaries) ... ok
+test_low_join_guard_stays_explicit (test_general_d.GeneralDTests.test_low_join_guard_stays_explicit) ... ok
+test_m1_has_a_real_join_boundary (test_general_d.GeneralDTests.test_m1_has_a_real_join_boundary) ... ok
+test_m2_retains_the_interior_zero (test_general_d.GeneralDTests.test_m2_retains_the_interior_zero) ... ok
+test_no_import_writes (test_general_d.GeneralDTests.test_no_import_writes) ... ok
+test_rank_decreases_until_a_named_exit (test_general_d.GeneralDTests.test_rank_decreases_until_a_named_exit) ... ok
+test_replay_imports_no_actor (test_general_d.GeneralDTests.test_replay_imports_no_actor) ... ok
+test_return_family_includes_the_zero_middle_boundary (test_general_d.GeneralDTests.test_return_family_includes_the_zero_middle_boundary) ... ok
+test_scientific_source_binding (test_general_d.GeneralDTests.test_scientific_source_binding) ... ok
+test_short_middle_not_allowed_in_old_row (test_general_d.GeneralDTests.test_short_middle_not_allowed_in_old_row) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.371s
+
+OK

@@ -1,0 +1,19 @@
+{
+  "l17-collapse/fast.py": "8f3c004932e2a6cc3fe2a559d220c25b6b24c0a6c993d8ada02e4b5399f16077",
+  "l17-collapse/search.py": "1dad783ac85d22f8e530fa9dd09d2c9d6eee9bacd4f1daef030411ac7fa7725c",
+  "l17-collapse/verify_search.py": "5611b2b3434ea440bfc26f6f8d9b0dc3c8075ca17cb11ac635773e207b189db8",
+  "l17-collapse/reset-spec.json": "edd0002cba2400d0f42ebf602e8a99d6aab4f59da0da974142434cc06bc9fbaf",
+  "l17-collapse/guard.json": "a12b8f413584f47bbb8b496c6f503fe306ceddedab638619c0452ed995a666a2",
+  "l17-stack/discover.py": "038fd6df1535ef0dd6875076e656b72e11f67bdd02012f853563c3d50f84fb7f",
+  "l17-stack/extend.py": "393abe20d8fde579fb6a7848f725c58775b2d424e0e2321fdd040120bc32e062",
+  "l17-stack/verify_symbolic.py": "cc02ddfe82948f247ad1bdfbde57cba98201998f3b5bec2285fd58a3dc37ea38",
+  "l17-stack/paths.py": "d636b3257604f01b79cc5c7b277277348234bb404797a5e8732d57a73297f405",
+  "l17-stacked-section/rules.py": "b14f119c067c3afbea2564c640cb7471343dc51b64a01f1c28c171c7c043d237",
+  "l17-stacked-section/words.py": "3b793547a7d7279b2a8f4909d1e2dafdc251a84e20cdde7947fc76fdd2988c86",
+  "l17-stacked-section/reference.py": "0d4a7905b28fcf96b685a66b846a5604d049ed405b3a123937ac2c5e25b9c200",
+  "l17-hardening/specification.py": "c1682b3d24be7188f964e06fc8740d4aed96980795d1aa93e4e9f6493c4e38e1",
+  "l17-hardening/backend.py": "4e64775b095abb570d2ef220a27cd87bf134d79a4d43afcf2ced05c6288e5e97",
+  "l17-hardening/raw_comparator.cpp": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+  "l17-hardening/claims.json": "d0f0339d0ef045b44ab1203f29981f960383d7d045375e506f7114ff87e3f074",
+  "l17-hardening/trace_critic.py": "9b6d1ce91e78206defc0875f57a6ee7c876fb3dd6dd64941c9dd416a069a2d76"
+}
