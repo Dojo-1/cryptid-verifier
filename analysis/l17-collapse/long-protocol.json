@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-10-20T20:17:24.714590+00:00",
+  "reason": "Observed non-immediate excursion has source A mod243=230, c71. Five residue decisions are1,2,2,1,0. Derive a symbolic finite return family for that reached itinerary.",
+  "rule": "S(243t+230,1,e+10,1) -> S(100000t+91810,2e+1,7,3), t,e>=0.",
+  "time": "6593367660t^2+12104704176t+4e+5555729670",
+  "shift": "-199514t-183154",
+  "component_q": [
+    "162t+149",
+    "540t+494",
+    "1800t+1651",
+    "6000t+5508",
+    "20000t+18358"
+  ],
+  "component_middle": "2e+7 -> 2e+4 -> 2e+1, then absorb19 pairs.",
+  "validation": "Exact word/count/head composition from previously derived universal rules and separate consumed claim; match reached source/target, seeded finite and huge parameters. Full raw return exceeds200000 even at t=e=0 (5555729670 transitions), so it is not raw-simulated. Components and shorter collapse families are tested within original raw caps.",
+  "excluded": "No global invariant and no new Lean theorem."
+}

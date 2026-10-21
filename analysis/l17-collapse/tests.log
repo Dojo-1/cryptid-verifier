@@ -1,0 +1,17 @@
+test_candidate_push_guard_not_invariant (test_collapse.CollapseTests.test_candidate_push_guard_not_invariant) ... ok
+test_corrected_read_bound_regression (test_collapse.CollapseTests.test_corrected_read_bound_regression) ... ok
+test_forbidden_middle_not_silently_extended (test_collapse.CollapseTests.test_forbidden_middle_not_silently_extended) ... ok
+test_independent_raw_record_verifier (test_collapse.CollapseTests.test_independent_raw_record_verifier) ... ok
+test_long_return_not_mislabeled_raw (test_collapse.CollapseTests.test_long_return_not_mislabeled_raw) ... ok
+test_rank_bound_on_declared_toys (test_collapse.CollapseTests.test_rank_bound_on_declared_toys) ... ok
+test_reached_five_decision_itinerary (test_collapse.CollapseTests.test_reached_five_decision_itinerary) ... ok
+test_resonant_fixed_front (test_collapse.CollapseTests.test_resonant_fixed_front) ... ok
+test_scalar_calibration_preserved (test_collapse.CollapseTests.test_scalar_calibration_preserved) ... ok
+test_search_ends_at_registered_global_cap (test_collapse.CollapseTests.test_search_ends_at_registered_global_cap) ... ok
+test_two_decision_return_minimum (test_collapse.CollapseTests.test_two_decision_return_minimum) ... ok
+test_zero_countdown_boundary (test_collapse.CollapseTests.test_zero_countdown_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.123s
+
+OK

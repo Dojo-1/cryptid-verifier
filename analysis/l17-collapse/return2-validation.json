@@ -1,0 +1,76 @@
+{
+  "status": "Bounded raw validation and conditional arithmetic; not Lean formalized.",
+  "claims_sha256": "d37f06d128dd00bda3a1af1b8c1c165c07ceaa544cc9b031ee2fa916dd670c73",
+  "raw_cases": 17,
+  "raw_metadata": {
+    "requests": 17,
+    "defined_transitions": 530775,
+    "executed_defined_transitions": 530775,
+    "cache_reused": false,
+    "request_sha256": "1456cec4e342ba446e62f924eb2da1a1d54b5ed152fba6bdb4f4d51d8ee85809",
+    "response_sha256": "947504237d58fc882d73eeabf887a5b5697955de53911c0837424f12386f0aec",
+    "binary_sha256": "beec9294ce46c1ba04c08a3ea7da7503d517ce18a49ec829c9a71262e33d595f",
+    "stderr": ""
+  },
+  "huge_checks": [
+    {
+      "v_bits": 129,
+      "e_bits": 129,
+      "passed": true
+    },
+    {
+      "v_bits": 160,
+      "e_bits": 146,
+      "passed": true
+    },
+    {
+      "v_bits": 191,
+      "e_bits": 163,
+      "passed": true
+    },
+    {
+      "v_bits": 222,
+      "e_bits": 180,
+      "passed": true
+    },
+    {
+      "v_bits": 253,
+      "e_bits": 197,
+      "passed": true
+    },
+    {
+      "v_bits": 284,
+      "e_bits": 214,
+      "passed": true
+    },
+    {
+      "v_bits": 315,
+      "e_bits": 231,
+      "passed": true
+    },
+    {
+      "v_bits": 346,
+      "e_bits": 248,
+      "passed": true
+    }
+  ],
+  "matched_reached_source": 1803910,
+  "matched_reached_target": 1803917,
+  "candidate_exit": {
+    "source": [
+      9,
+      1,
+      8,
+      4
+    ],
+    "target": [
+      16,
+      1,
+      15,
+      1
+    ],
+    "steps": 295,
+    "shift": -25,
+    "blank_reachability_asserted": false
+  }
+}

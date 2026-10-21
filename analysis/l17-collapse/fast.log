@@ -1,0 +1,5 @@
+F1100 1079641 a bits 512551 c 74 a mod3 0
+F1100 1363314 a bits 647211 c 72 a mod3 0
+F1100 1407520 a bits 668162 c 71 a mod3 2
+{"prior_rewrites": 1020542, "stop_index": 1407538, "coarse_rounds": 105750, "trigger_index": 1407520, "elapsed_seconds": 12.601798078000002}
+STOP triggered excursion returned a bits 668171 shape kind pure

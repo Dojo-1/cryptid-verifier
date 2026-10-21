@@ -1,0 +1,24 @@
+{
+  "recorded_at_utc": "2026-10-20T20:15:23.803860+00:00",
+  "reason": "First failure of three-rewrite collapse reached at1407520; it nevertheless returns after17 post-push rewrites and lies in the new middle-divisible-by3 safe family. Search remaining original two-million horizon for a push outside both sufficient guards.",
+  "source": "search.json stop",
+  "source_sha256": "9c21be4dc2e6ae2eab2c14890ef0cebe56a5e8ed14c2ea07930f3c7e010cdd92",
+  "reset_section": "B(N,k,s)=Ccal(0;1^N(01)^k1^s), N>=20 and k=0 implies s=0.",
+  "formula": "Each ordinary reset round has Nnew=10*floor(N/3)+C(k,s,N mod3). Stop before F1100; direct linear formulas follow E/Q and one-tail branches.",
+  "numeric_guard": "Nnew >= (10N-50)/3 > N for N>=20, so accelerated-rule lower guards are preserved.",
+  "calibration": "Reuse successful500-case calibration, scalar core unchanged.",
+  "budgets": {
+    "maximum_global_rewrites": 2000000,
+    "maximum_coarse_rounds": 200000,
+    "maximum_wall_seconds": 120,
+    "maximum_counter_bits": 2097152,
+    "maximum_local_rewrites_after_first_failed_guard": 64
+  },
+  "checks": "Exact integer arithmetic, full scalar state recorded at rare events and periodic checkpoints; retain all coarse branch codes. Discovery is conditional on the documented return-map derivation; no accumulated huge transition counts.",
+  "stop": "First F1100 whose a mod3 !=0, then its first return/unsupported/three-layer state; or budgets. Other F1100 events use the previously checked word dispatcher until reset and continue.",
+  "excluded": "No speculative 1101 or low-guard derivation.",
+  "input_report": "fast.json",
+  "trigger_mode": "outside_both",
+  "trigger": "F1100 source a%3!=0 and c%3!=2",
+  "calibration_source_sha256": "5fe5cfcedf496b650982d4c621628033bb922558568d92cc1bceac7761286c66"
+}

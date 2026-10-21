@@ -1,0 +1,4492 @@
+[
+  {
+    "case": 0,
+    "N_bits": 11,
+    "k": 28,
+    "s": 79,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 1,
+    "N_bits": 11,
+    "k": 32,
+    "s": 10,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 2,
+    "N_bits": 11,
+    "k": 92,
+    "s": 30,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 3,
+    "N_bits": 11,
+    "k": 0,
+    "s": 0,
+    "branch": "A",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 4,
+    "N_bits": 11,
+    "k": 1,
+    "s": 93,
+    "branch": "E",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 5,
+    "N_bits": 11,
+    "k": 5,
+    "s": 13,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 6,
+    "N_bits": 10,
+    "k": 5,
+    "s": 17,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 7,
+    "N_bits": 12,
+    "k": 52,
+    "s": 42,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 8,
+    "N_bits": 11,
+    "k": 91,
+    "s": 52,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 9,
+    "N_bits": 10,
+    "k": 90,
+    "s": 22,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 10,
+    "N_bits": 10,
+    "k": 37,
+    "s": 58,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 11,
+    "N_bits": 12,
+    "k": 91,
+    "s": 31,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 12,
+    "N_bits": 10,
+    "k": 79,
+    "s": 6,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 13,
+    "stops_before_push": true
+  },
+  {
+    "case": 14,
+    "N_bits": 9,
+    "k": 47,
+    "s": 23,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 15,
+    "N_bits": 12,
+    "k": 72,
+    "s": 56,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 16,
+    "N_bits": 12,
+    "k": 20,
+    "s": 8,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 17,
+    "N_bits": 11,
+    "k": 23,
+    "s": 54,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 18,
+    "N_bits": 10,
+    "k": 34,
+    "s": 23,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 19,
+    "N_bits": 10,
+    "k": 59,
+    "s": 91,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 20,
+    "N_bits": 11,
+    "k": 73,
+    "s": 73,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 21,
+    "N_bits": 10,
+    "k": 76,
+    "s": 23,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 22,
+    "N_bits": 11,
+    "k": 78,
+    "s": 42,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 23,
+    "N_bits": 11,
+    "k": 4,
+    "s": 62,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 24,
+    "N_bits": 11,
+    "k": 3,
+    "s": 23,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 25,
+    "N_bits": 10,
+    "k": 43,
+    "s": 96,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 26,
+    "N_bits": 12,
+    "k": 62,
+    "s": 6,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 27,
+    "N_bits": 7,
+    "k": 26,
+    "s": 64,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 28,
+    "N_bits": 10,
+    "k": 7,
+    "s": 9,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 29,
+    "N_bits": 12,
+    "k": 54,
+    "s": 45,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 30,
+    "N_bits": 12,
+    "k": 36,
+    "s": 27,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 31,
+    "N_bits": 10,
+    "k": 26,
+    "s": 85,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 32,
+    "N_bits": 11,
+    "k": 54,
+    "s": 96,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 33,
+    "N_bits": 11,
+    "k": 63,
+    "s": 78,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 34,
+    "N_bits": 10,
+    "k": 89,
+    "s": 38,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 35,
+    "N_bits": 10,
+    "k": 1,
+    "s": 84,
+    "branch": "E",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 36,
+    "N_bits": 11,
+    "k": 7,
+    "s": 29,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 37,
+    "N_bits": 11,
+    "k": 81,
+    "s": 8,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 38,
+    "N_bits": 10,
+    "k": 45,
+    "s": 42,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 39,
+    "N_bits": 10,
+    "k": 41,
+    "s": 64,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 40,
+    "N_bits": 9,
+    "k": 3,
+    "s": 98,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 41,
+    "N_bits": 10,
+    "k": 29,
+    "s": 50,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 42,
+    "N_bits": 12,
+    "k": 12,
+    "s": 97,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 43,
+    "N_bits": 11,
+    "k": 41,
+    "s": 60,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 44,
+    "N_bits": 9,
+    "k": 43,
+    "s": 38,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 45,
+    "N_bits": 11,
+    "k": 61,
+    "s": 73,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 46,
+    "N_bits": 10,
+    "k": 29,
+    "s": 76,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 47,
+    "N_bits": 10,
+    "k": 51,
+    "s": 3,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 48,
+    "N_bits": 10,
+    "k": 25,
+    "s": 44,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 49,
+    "N_bits": 12,
+    "k": 2,
+    "s": 98,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 50,
+    "N_bits": 11,
+    "k": 52,
+    "s": 29,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 51,
+    "N_bits": 12,
+    "k": 34,
+    "s": 30,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 52,
+    "N_bits": 10,
+    "k": 72,
+    "s": 21,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 53,
+    "N_bits": 12,
+    "k": 30,
+    "s": 71,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 54,
+    "N_bits": 12,
+    "k": 74,
+    "s": 34,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 55,
+    "N_bits": 12,
+    "k": 25,
+    "s": 32,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 56,
+    "N_bits": 10,
+    "k": 92,
+    "s": 91,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 57,
+    "N_bits": 12,
+    "k": 30,
+    "s": 22,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 58,
+    "N_bits": 10,
+    "k": 64,
+    "s": 32,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 59,
+    "N_bits": 12,
+    "k": 48,
+    "s": 19,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 60,
+    "N_bits": 12,
+    "k": 95,
+    "s": 14,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 61,
+    "N_bits": 11,
+    "k": 84,
+    "s": 95,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 62,
+    "N_bits": 12,
+    "k": 95,
+    "s": 90,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 63,
+    "N_bits": 12,
+    "k": 41,
+    "s": 70,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 64,
+    "N_bits": 12,
+    "k": 21,
+    "s": 68,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 65,
+    "N_bits": 11,
+    "k": 79,
+    "s": 74,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 66,
+    "N_bits": 7,
+    "k": 4,
+    "s": 45,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 67,
+    "N_bits": 12,
+    "k": 92,
+    "s": 24,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 68,
+    "N_bits": 8,
+    "k": 56,
+    "s": 55,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 69,
+    "N_bits": 10,
+    "k": 52,
+    "s": 3,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 70,
+    "N_bits": 10,
+    "k": 94,
+    "s": 52,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 71,
+    "N_bits": 11,
+    "k": 41,
+    "s": 85,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 72,
+    "N_bits": 11,
+    "k": 82,
+    "s": 82,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 73,
+    "N_bits": 11,
+    "k": 63,
+    "s": 61,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 74,
+    "N_bits": 12,
+    "k": 71,
+    "s": 71,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 75,
+    "N_bits": 11,
+    "k": 61,
+    "s": 44,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 76,
+    "N_bits": 11,
+    "k": 19,
+    "s": 99,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 77,
+    "N_bits": 5,
+    "k": 17,
+    "s": 56,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 78,
+    "N_bits": 10,
+    "k": 56,
+    "s": 49,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 79,
+    "N_bits": 12,
+    "k": 11,
+    "s": 15,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 80,
+    "N_bits": 8,
+    "k": 71,
+    "s": 15,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 81,
+    "N_bits": 12,
+    "k": 91,
+    "s": 11,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 82,
+    "N_bits": 12,
+    "k": 92,
+    "s": 99,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 83,
+    "N_bits": 12,
+    "k": 17,
+    "s": 15,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 84,
+    "N_bits": 11,
+    "k": 82,
+    "s": 90,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 85,
+    "N_bits": 10,
+    "k": 96,
+    "s": 93,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 86,
+    "N_bits": 11,
+    "k": 18,
+    "s": 70,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 87,
+    "N_bits": 11,
+    "k": 21,
+    "s": 8,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 88,
+    "N_bits": 9,
+    "k": 76,
+    "s": 67,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 89,
+    "N_bits": 11,
+    "k": 61,
+    "s": 27,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 90,
+    "N_bits": 11,
+    "k": 26,
+    "s": 15,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 91,
+    "N_bits": 11,
+    "k": 64,
+    "s": 64,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 92,
+    "N_bits": 9,
+    "k": 35,
+    "s": 64,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 93,
+    "N_bits": 11,
+    "k": 51,
+    "s": 67,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 94,
+    "N_bits": 6,
+    "k": 90,
+    "s": 33,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 95,
+    "N_bits": 12,
+    "k": 67,
+    "s": 86,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 96,
+    "N_bits": 11,
+    "k": 67,
+    "s": 37,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 97,
+    "N_bits": 11,
+    "k": 84,
+    "s": 38,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 98,
+    "N_bits": 10,
+    "k": 18,
+    "s": 1,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 99,
+    "N_bits": 8,
+    "k": 3,
+    "s": 10,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 100,
+    "N_bits": 10,
+    "k": 70,
+    "s": 91,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 101,
+    "N_bits": 11,
+    "k": 19,
+    "s": 10,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 102,
+    "N_bits": 12,
+    "k": 44,
+    "s": 9,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 103,
+    "N_bits": 10,
+    "k": 66,
+    "s": 20,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 104,
+    "N_bits": 12,
+    "k": 71,
+    "s": 82,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 105,
+    "N_bits": 9,
+    "k": 21,
+    "s": 24,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 106,
+    "N_bits": 8,
+    "k": 10,
+    "s": 81,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 107,
+    "N_bits": 12,
+    "k": 55,
+    "s": 28,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 108,
+    "N_bits": 12,
+    "k": 57,
+    "s": 13,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 109,
+    "N_bits": 8,
+    "k": 91,
+    "s": 74,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 110,
+    "N_bits": 11,
+    "k": 42,
+    "s": 86,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 111,
+    "N_bits": 12,
+    "k": 70,
+    "s": 6,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 112,
+    "N_bits": 11,
+    "k": 61,
+    "s": 43,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 113,
+    "N_bits": 12,
+    "k": 75,
+    "s": 44,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 114,
+    "N_bits": 11,
+    "k": 8,
+    "s": 38,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 115,
+    "N_bits": 12,
+    "k": 41,
+    "s": 28,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 116,
+    "N_bits": 8,
+    "k": 99,
+    "s": 63,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 117,
+    "N_bits": 10,
+    "k": 11,
+    "s": 51,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 118,
+    "N_bits": 11,
+    "k": 67,
+    "s": 9,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 119,
+    "N_bits": 10,
+    "k": 72,
+    "s": 49,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 120,
+    "N_bits": 10,
+    "k": 71,
+    "s": 96,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 121,
+    "N_bits": 10,
+    "k": 60,
+    "s": 8,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 122,
+    "N_bits": 12,
+    "k": 15,
+    "s": 4,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 123,
+    "N_bits": 11,
+    "k": 47,
+    "s": 27,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 124,
+    "N_bits": 11,
+    "k": 60,
+    "s": 82,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 125,
+    "N_bits": 11,
+    "k": 2,
+    "s": 95,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 126,
+    "N_bits": 10,
+    "k": 8,
+    "s": 39,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 127,
+    "N_bits": 12,
+    "k": 70,
+    "s": 5,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 128,
+    "N_bits": 11,
+    "k": 17,
+    "s": 17,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 129,
+    "N_bits": 8,
+    "k": 66,
+    "s": 92,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 130,
+    "N_bits": 12,
+    "k": 87,
+    "s": 4,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 131,
+    "N_bits": 10,
+    "k": 85,
+    "s": 13,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 132,
+    "N_bits": 12,
+    "k": 57,
+    "s": 57,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 133,
+    "N_bits": 11,
+    "k": 0,
+    "s": 0,
+    "branch": "A",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 134,
+    "N_bits": 10,
+    "k": 24,
+    "s": 20,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 135,
+    "N_bits": 11,
+    "k": 65,
+    "s": 30,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 136,
+    "N_bits": 12,
+    "k": 17,
+    "s": 83,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 137,
+    "N_bits": 11,
+    "k": 14,
+    "s": 57,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 138,
+    "N_bits": 9,
+    "k": 80,
+    "s": 94,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 139,
+    "N_bits": 12,
+    "k": 97,
+    "s": 81,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 140,
+    "N_bits": 12,
+    "k": 33,
+    "s": 69,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 141,
+    "N_bits": 12,
+    "k": 12,
+    "s": 44,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 142,
+    "N_bits": 9,
+    "k": 62,
+    "s": 54,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 143,
+    "N_bits": 11,
+    "k": 93,
+    "s": 28,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 144,
+    "N_bits": 12,
+    "k": 5,
+    "s": 51,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 145,
+    "N_bits": 8,
+    "k": 10,
+    "s": 40,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 146,
+    "N_bits": 11,
+    "k": 40,
+    "s": 49,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 147,
+    "N_bits": 11,
+    "k": 92,
+    "s": 66,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 148,
+    "N_bits": 12,
+    "k": 68,
+    "s": 35,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 149,
+    "N_bits": 11,
+    "k": 24,
+    "s": 18,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 150,
+    "N_bits": 11,
+    "k": 45,
+    "s": 26,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 151,
+    "N_bits": 12,
+    "k": 32,
+    "s": 17,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 152,
+    "N_bits": 12,
+    "k": 84,
+    "s": 38,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 153,
+    "N_bits": 9,
+    "k": 75,
+    "s": 24,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 154,
+    "N_bits": 11,
+    "k": 48,
+    "s": 34,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 155,
+    "N_bits": 11,
+    "k": 77,
+    "s": 60,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 156,
+    "N_bits": 12,
+    "k": 72,
+    "s": 9,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 157,
+    "N_bits": 12,
+    "k": 75,
+    "s": 22,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 158,
+    "N_bits": 11,
+    "k": 91,
+    "s": 32,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 159,
+    "N_bits": 12,
+    "k": 57,
+    "s": 49,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 160,
+    "N_bits": 11,
+    "k": 77,
+    "s": 24,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 161,
+    "N_bits": 11,
+    "k": 83,
+    "s": 66,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 162,
+    "N_bits": 11,
+    "k": 96,
+    "s": 56,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 163,
+    "N_bits": 12,
+    "k": 85,
+    "s": 22,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 164,
+    "N_bits": 11,
+    "k": 11,
+    "s": 87,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 165,
+    "N_bits": 12,
+    "k": 44,
+    "s": 45,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 166,
+    "N_bits": 7,
+    "k": 87,
+    "s": 80,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 167,
+    "N_bits": 11,
+    "k": 53,
+    "s": 87,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 168,
+    "N_bits": 12,
+    "k": 26,
+    "s": 95,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 169,
+    "N_bits": 10,
+    "k": 10,
+    "s": 55,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 170,
+    "N_bits": 8,
+    "k": 76,
+    "s": 48,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 171,
+    "N_bits": 8,
+    "k": 42,
+    "s": 53,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 172,
+    "N_bits": 11,
+    "k": 18,
+    "s": 79,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 173,
+    "N_bits": 11,
+    "k": 46,
+    "s": 99,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 174,
+    "N_bits": 12,
+    "k": 99,
+    "s": 34,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 175,
+    "N_bits": 11,
+    "k": 69,
+    "s": 34,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 176,
+    "N_bits": 12,
+    "k": 97,
+    "s": 54,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 177,
+    "N_bits": 10,
+    "k": 90,
+    "s": 62,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 178,
+    "N_bits": 10,
+    "k": 81,
+    "s": 86,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 179,
+    "N_bits": 10,
+    "k": 74,
+    "s": 80,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 180,
+    "N_bits": 11,
+    "k": 52,
+    "s": 82,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 181,
+    "N_bits": 9,
+    "k": 86,
+    "s": 61,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 182,
+    "N_bits": 11,
+    "k": 37,
+    "s": 99,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 183,
+    "N_bits": 7,
+    "k": 49,
+    "s": 37,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 184,
+    "N_bits": 10,
+    "k": 81,
+    "s": 68,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 185,
+    "N_bits": 11,
+    "k": 90,
+    "s": 20,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 186,
+    "N_bits": 12,
+    "k": 72,
+    "s": 53,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 187,
+    "N_bits": 9,
+    "k": 40,
+    "s": 51,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 188,
+    "N_bits": 11,
+    "k": 80,
+    "s": 86,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 189,
+    "N_bits": 11,
+    "k": 74,
+    "s": 58,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 190,
+    "N_bits": 11,
+    "k": 83,
+    "s": 95,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 191,
+    "N_bits": 8,
+    "k": 16,
+    "s": 23,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 192,
+    "N_bits": 8,
+    "k": 69,
+    "s": 37,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 193,
+    "N_bits": 9,
+    "k": 84,
+    "s": 66,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 194,
+    "N_bits": 11,
+    "k": 54,
+    "s": 34,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 195,
+    "N_bits": 9,
+    "k": 38,
+    "s": 50,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 196,
+    "N_bits": 12,
+    "k": 53,
+    "s": 93,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 197,
+    "N_bits": 12,
+    "k": 3,
+    "s": 81,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 198,
+    "N_bits": 11,
+    "k": 26,
+    "s": 85,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 199,
+    "N_bits": 7,
+    "k": 64,
+    "s": 60,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 200,
+    "N_bits": 7,
+    "k": 70,
+    "s": 24,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 201,
+    "N_bits": 12,
+    "k": 12,
+    "s": 75,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 202,
+    "N_bits": 10,
+    "k": 12,
+    "s": 87,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 203,
+    "N_bits": 7,
+    "k": 71,
+    "s": 71,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 204,
+    "N_bits": 11,
+    "k": 2,
+    "s": 56,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 205,
+    "N_bits": 10,
+    "k": 77,
+    "s": 41,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 206,
+    "N_bits": 12,
+    "k": 51,
+    "s": 88,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 207,
+    "N_bits": 10,
+    "k": 54,
+    "s": 24,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 208,
+    "N_bits": 11,
+    "k": 41,
+    "s": 82,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 209,
+    "N_bits": 12,
+    "k": 68,
+    "s": 19,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 210,
+    "N_bits": 10,
+    "k": 92,
+    "s": 78,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 211,
+    "N_bits": 12,
+    "k": 52,
+    "s": 97,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 212,
+    "N_bits": 7,
+    "k": 26,
+    "s": 2,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 213,
+    "N_bits": 10,
+    "k": 22,
+    "s": 94,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 214,
+    "N_bits": 9,
+    "k": 72,
+    "s": 14,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 215,
+    "N_bits": 12,
+    "k": 68,
+    "s": 48,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 216,
+    "N_bits": 11,
+    "k": 68,
+    "s": 99,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 217,
+    "N_bits": 12,
+    "k": 87,
+    "s": 40,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 218,
+    "N_bits": 11,
+    "k": 69,
+    "s": 10,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 219,
+    "N_bits": 10,
+    "k": 30,
+    "s": 73,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 220,
+    "N_bits": 12,
+    "k": 50,
+    "s": 9,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 221,
+    "N_bits": 10,
+    "k": 95,
+    "s": 71,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 222,
+    "N_bits": 12,
+    "k": 74,
+    "s": 94,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 223,
+    "N_bits": 10,
+    "k": 53,
+    "s": 29,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 224,
+    "N_bits": 11,
+    "k": 69,
+    "s": 36,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 225,
+    "N_bits": 12,
+    "k": 48,
+    "s": 30,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 226,
+    "N_bits": 10,
+    "k": 37,
+    "s": 54,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 227,
+    "N_bits": 12,
+    "k": 76,
+    "s": 55,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 228,
+    "N_bits": 11,
+    "k": 87,
+    "s": 54,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 229,
+    "N_bits": 10,
+    "k": 1,
+    "s": 4,
+    "branch": "E",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 230,
+    "N_bits": 11,
+    "k": 32,
+    "s": 72,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 231,
+    "N_bits": 10,
+    "k": 83,
+    "s": 24,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 232,
+    "N_bits": 9,
+    "k": 83,
+    "s": 0,
+    "branch": "A",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 233,
+    "N_bits": 12,
+    "k": 78,
+    "s": 2,
+    "branch": "B",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 234,
+    "N_bits": 10,
+    "k": 0,
+    "s": 0,
+    "branch": "A",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 235,
+    "N_bits": 12,
+    "k": 99,
+    "s": 25,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 236,
+    "N_bits": 10,
+    "k": 22,
+    "s": 47,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 237,
+    "N_bits": 10,
+    "k": 23,
+    "s": 2,
+    "branch": "B",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 238,
+    "N_bits": 11,
+    "k": 33,
+    "s": 12,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 239,
+    "N_bits": 11,
+    "k": 95,
+    "s": 55,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 240,
+    "N_bits": 12,
+    "k": 1,
+    "s": 53,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 241,
+    "N_bits": 12,
+    "k": 90,
+    "s": 60,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 242,
+    "N_bits": 12,
+    "k": 66,
+    "s": 69,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 243,
+    "N_bits": 12,
+    "k": 71,
+    "s": 61,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 244,
+    "N_bits": 12,
+    "k": 2,
+    "s": 98,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 245,
+    "N_bits": 11,
+    "k": 33,
+    "s": 88,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 246,
+    "N_bits": 12,
+    "k": 75,
+    "s": 2,
+    "branch": "B",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 247,
+    "N_bits": 11,
+    "k": 35,
+    "s": 79,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 248,
+    "N_bits": 10,
+    "k": 15,
+    "s": 99,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 249,
+    "N_bits": 9,
+    "k": 96,
+    "s": 11,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 250,
+    "N_bits": 12,
+    "k": 3,
+    "s": 72,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 251,
+    "N_bits": 11,
+    "k": 65,
+    "s": 47,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 252,
+    "N_bits": 10,
+    "k": 65,
+    "s": 72,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 253,
+    "N_bits": 12,
+    "k": 99,
+    "s": 16,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 254,
+    "N_bits": 11,
+    "k": 82,
+    "s": 1,
+    "branch": "H",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 255,
+    "N_bits": 11,
+    "k": 88,
+    "s": 79,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 256,
+    "N_bits": 11,
+    "k": 35,
+    "s": 38,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 257,
+    "N_bits": 11,
+    "k": 57,
+    "s": 98,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 258,
+    "N_bits": 12,
+    "k": 83,
+    "s": 5,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 259,
+    "N_bits": 12,
+    "k": 80,
+    "s": 38,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 260,
+    "N_bits": 12,
+    "k": 63,
+    "s": 47,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 261,
+    "N_bits": 12,
+    "k": 96,
+    "s": 50,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 262,
+    "N_bits": 10,
+    "k": 20,
+    "s": 13,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 263,
+    "N_bits": 11,
+    "k": 24,
+    "s": 48,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 264,
+    "N_bits": 11,
+    "k": 45,
+    "s": 85,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 265,
+    "N_bits": 12,
+    "k": 83,
+    "s": 77,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 266,
+    "N_bits": 12,
+    "k": 20,
+    "s": 43,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 267,
+    "N_bits": 9,
+    "k": 13,
+    "s": 95,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 268,
+    "N_bits": 10,
+    "k": 77,
+    "s": 40,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 269,
+    "N_bits": 10,
+    "k": 90,
+    "s": 25,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 270,
+    "N_bits": 12,
+    "k": 59,
+    "s": 16,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 271,
+    "N_bits": 12,
+    "k": 83,
+    "s": 8,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 272,
+    "N_bits": 12,
+    "k": 58,
+    "s": 21,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 273,
+    "N_bits": 11,
+    "k": 8,
+    "s": 31,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 274,
+    "N_bits": 12,
+    "k": 52,
+    "s": 54,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 275,
+    "N_bits": 9,
+    "k": 76,
+    "s": 26,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 276,
+    "N_bits": 11,
+    "k": 78,
+    "s": 1,
+    "branch": "H",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 277,
+    "N_bits": 12,
+    "k": 73,
+    "s": 10,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 278,
+    "N_bits": 9,
+    "k": 28,
+    "s": 54,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 279,
+    "N_bits": 11,
+    "k": 94,
+    "s": 46,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 280,
+    "N_bits": 10,
+    "k": 39,
+    "s": 83,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 281,
+    "N_bits": 12,
+    "k": 79,
+    "s": 31,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 282,
+    "N_bits": 12,
+    "k": 25,
+    "s": 58,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 283,
+    "N_bits": 10,
+    "k": 86,
+    "s": 22,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 284,
+    "N_bits": 10,
+    "k": 32,
+    "s": 90,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 285,
+    "N_bits": 11,
+    "k": 98,
+    "s": 74,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 286,
+    "N_bits": 12,
+    "k": 78,
+    "s": 66,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 287,
+    "N_bits": 10,
+    "k": 56,
+    "s": 17,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 288,
+    "N_bits": 11,
+    "k": 13,
+    "s": 99,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 289,
+    "N_bits": 11,
+    "k": 52,
+    "s": 11,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 290,
+    "N_bits": 7,
+    "k": 75,
+    "s": 5,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 291,
+    "N_bits": 11,
+    "k": 80,
+    "s": 1,
+    "branch": "H",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 292,
+    "N_bits": 8,
+    "k": 53,
+    "s": 98,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 293,
+    "N_bits": 11,
+    "k": 49,
+    "s": 94,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 294,
+    "N_bits": 12,
+    "k": 46,
+    "s": 7,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 295,
+    "N_bits": 12,
+    "k": 44,
+    "s": 36,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 296,
+    "N_bits": 12,
+    "k": 60,
+    "s": 27,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 297,
+    "N_bits": 11,
+    "k": 64,
+    "s": 8,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 298,
+    "N_bits": 12,
+    "k": 81,
+    "s": 63,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 299,
+    "N_bits": 12,
+    "k": 43,
+    "s": 62,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 300,
+    "N_bits": 11,
+    "k": 74,
+    "s": 47,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 301,
+    "N_bits": 10,
+    "k": 73,
+    "s": 38,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 302,
+    "N_bits": 11,
+    "k": 1,
+    "s": 59,
+    "branch": "E",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 303,
+    "N_bits": 11,
+    "k": 8,
+    "s": 73,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 304,
+    "N_bits": 11,
+    "k": 9,
+    "s": 4,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 305,
+    "N_bits": 12,
+    "k": 3,
+    "s": 41,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 306,
+    "N_bits": 11,
+    "k": 56,
+    "s": 86,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 307,
+    "N_bits": 10,
+    "k": 72,
+    "s": 86,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 308,
+    "N_bits": 12,
+    "k": 25,
+    "s": 14,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 309,
+    "N_bits": 12,
+    "k": 50,
+    "s": 18,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 310,
+    "N_bits": 12,
+    "k": 3,
+    "s": 4,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 311,
+    "N_bits": 10,
+    "k": 11,
+    "s": 30,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 312,
+    "N_bits": 12,
+    "k": 47,
+    "s": 55,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 313,
+    "N_bits": 10,
+    "k": 35,
+    "s": 41,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 314,
+    "N_bits": 11,
+    "k": 54,
+    "s": 69,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 315,
+    "N_bits": 11,
+    "k": 13,
+    "s": 56,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 316,
+    "N_bits": 12,
+    "k": 29,
+    "s": 29,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 317,
+    "N_bits": 11,
+    "k": 31,
+    "s": 4,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 318,
+    "N_bits": 8,
+    "k": 3,
+    "s": 48,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 319,
+    "N_bits": 11,
+    "k": 45,
+    "s": 41,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 320,
+    "N_bits": 10,
+    "k": 93,
+    "s": 20,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 321,
+    "N_bits": 12,
+    "k": 38,
+    "s": 27,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 322,
+    "N_bits": 12,
+    "k": 34,
+    "s": 63,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 323,
+    "N_bits": 6,
+    "k": 56,
+    "s": 3,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 324,
+    "N_bits": 10,
+    "k": 27,
+    "s": 23,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 325,
+    "N_bits": 8,
+    "k": 34,
+    "s": 77,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 326,
+    "N_bits": 10,
+    "k": 95,
+    "s": 22,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 327,
+    "N_bits": 12,
+    "k": 20,
+    "s": 72,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 328,
+    "N_bits": 12,
+    "k": 77,
+    "s": 2,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 329,
+    "N_bits": 11,
+    "k": 73,
+    "s": 69,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 330,
+    "N_bits": 12,
+    "k": 28,
+    "s": 26,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 331,
+    "N_bits": 7,
+    "k": 13,
+    "s": 38,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 332,
+    "N_bits": 10,
+    "k": 89,
+    "s": 91,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 333,
+    "N_bits": 9,
+    "k": 46,
+    "s": 60,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 334,
+    "N_bits": 9,
+    "k": 34,
+    "s": 33,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 335,
+    "N_bits": 11,
+    "k": 20,
+    "s": 53,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 336,
+    "N_bits": 11,
+    "k": 3,
+    "s": 94,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 337,
+    "N_bits": 12,
+    "k": 3,
+    "s": 50,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 338,
+    "N_bits": 11,
+    "k": 20,
+    "s": 17,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 339,
+    "N_bits": 11,
+    "k": 90,
+    "s": 29,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 340,
+    "N_bits": 12,
+    "k": 25,
+    "s": 7,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 341,
+    "N_bits": 7,
+    "k": 97,
+    "s": 58,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 342,
+    "N_bits": 12,
+    "k": 25,
+    "s": 56,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 343,
+    "N_bits": 11,
+    "k": 32,
+    "s": 87,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 344,
+    "N_bits": 12,
+    "k": 52,
+    "s": 42,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 345,
+    "N_bits": 10,
+    "k": 16,
+    "s": 33,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 346,
+    "N_bits": 11,
+    "k": 15,
+    "s": 27,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 347,
+    "N_bits": 12,
+    "k": 4,
+    "s": 25,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 348,
+    "N_bits": 11,
+    "k": 61,
+    "s": 61,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 349,
+    "N_bits": 12,
+    "k": 70,
+    "s": 78,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 350,
+    "N_bits": 991,
+    "k": 20,
+    "s": 38,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 351,
+    "N_bits": 959,
+    "k": 49,
+    "s": 75,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 352,
+    "N_bits": 414,
+    "k": 89,
+    "s": 72,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 353,
+    "N_bits": 555,
+    "k": 52,
+    "s": 39,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 354,
+    "N_bits": 134,
+    "k": 14,
+    "s": 75,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 355,
+    "N_bits": 915,
+    "k": 89,
+    "s": 69,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 356,
+    "N_bits": 1004,
+    "k": 97,
+    "s": 43,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 357,
+    "N_bits": 245,
+    "k": 47,
+    "s": 57,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 358,
+    "N_bits": 549,
+    "k": 91,
+    "s": 72,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 359,
+    "N_bits": 269,
+    "k": 88,
+    "s": 45,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 360,
+    "N_bits": 851,
+    "k": 8,
+    "s": 28,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 361,
+    "N_bits": 791,
+    "k": 16,
+    "s": 81,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 362,
+    "N_bits": 174,
+    "k": 72,
+    "s": 85,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 363,
+    "N_bits": 732,
+    "k": 16,
+    "s": 79,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 364,
+    "N_bits": 183,
+    "k": 52,
+    "s": 93,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 365,
+    "N_bits": 937,
+    "k": 66,
+    "s": 35,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 366,
+    "N_bits": 300,
+    "k": 17,
+    "s": 11,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 367,
+    "N_bits": 593,
+    "k": 35,
+    "s": 10,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 368,
+    "N_bits": 818,
+    "k": 39,
+    "s": 14,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 369,
+    "N_bits": 134,
+    "k": 73,
+    "s": 85,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 370,
+    "N_bits": 751,
+    "k": 54,
+    "s": 48,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 371,
+    "N_bits": 771,
+    "k": 65,
+    "s": 67,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 372,
+    "N_bits": 738,
+    "k": 84,
+    "s": 37,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 373,
+    "N_bits": 160,
+    "k": 86,
+    "s": 94,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 374,
+    "N_bits": 547,
+    "k": 42,
+    "s": 7,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 375,
+    "N_bits": 464,
+    "k": 80,
+    "s": 56,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 376,
+    "N_bits": 743,
+    "k": 49,
+    "s": 53,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 377,
+    "N_bits": 798,
+    "k": 62,
+    "s": 91,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 378,
+    "N_bits": 197,
+    "k": 49,
+    "s": 97,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 379,
+    "N_bits": 171,
+    "k": 18,
+    "s": 50,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 380,
+    "N_bits": 700,
+    "k": 81,
+    "s": 40,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 381,
+    "N_bits": 913,
+    "k": 62,
+    "s": 20,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 382,
+    "N_bits": 785,
+    "k": 59,
+    "s": 66,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 383,
+    "N_bits": 134,
+    "k": 9,
+    "s": 81,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 384,
+    "N_bits": 251,
+    "k": 52,
+    "s": 14,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 385,
+    "N_bits": 992,
+    "k": 72,
+    "s": 80,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 386,
+    "N_bits": 197,
+    "k": 69,
+    "s": 42,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 387,
+    "N_bits": 434,
+    "k": 85,
+    "s": 50,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 388,
+    "N_bits": 698,
+    "k": 27,
+    "s": 2,
+    "branch": "B",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 389,
+    "N_bits": 304,
+    "k": 4,
+    "s": 13,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 390,
+    "N_bits": 374,
+    "k": 89,
+    "s": 50,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 391,
+    "N_bits": 741,
+    "k": 69,
+    "s": 12,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 392,
+    "N_bits": 902,
+    "k": 94,
+    "s": 19,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 393,
+    "N_bits": 542,
+    "k": 94,
+    "s": 41,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 394,
+    "N_bits": 683,
+    "k": 33,
+    "s": 41,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 395,
+    "N_bits": 410,
+    "k": 14,
+    "s": 37,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 396,
+    "N_bits": 875,
+    "k": 8,
+    "s": 0,
+    "branch": "A",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 397,
+    "N_bits": 218,
+    "k": 16,
+    "s": 78,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 398,
+    "N_bits": 732,
+    "k": 60,
+    "s": 25,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 399,
+    "N_bits": 714,
+    "k": 25,
+    "s": 19,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 400,
+    "N_bits": 908,
+    "k": 27,
+    "s": 11,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 401,
+    "N_bits": 232,
+    "k": 33,
+    "s": 11,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 402,
+    "N_bits": 764,
+    "k": 30,
+    "s": 66,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 403,
+    "N_bits": 958,
+    "k": 26,
+    "s": 16,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 404,
+    "N_bits": 321,
+    "k": 29,
+    "s": 32,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 405,
+    "N_bits": 205,
+    "k": 22,
+    "s": 63,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 406,
+    "N_bits": 836,
+    "k": 17,
+    "s": 94,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 407,
+    "N_bits": 990,
+    "k": 71,
+    "s": 13,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 408,
+    "N_bits": 301,
+    "k": 54,
+    "s": 69,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 409,
+    "N_bits": 690,
+    "k": 15,
+    "s": 49,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 410,
+    "N_bits": 381,
+    "k": 59,
+    "s": 58,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 411,
+    "N_bits": 792,
+    "k": 6,
+    "s": 99,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 412,
+    "N_bits": 708,
+    "k": 8,
+    "s": 45,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 413,
+    "N_bits": 315,
+    "k": 2,
+    "s": 57,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 414,
+    "N_bits": 745,
+    "k": 84,
+    "s": 62,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 415,
+    "N_bits": 516,
+    "k": 46,
+    "s": 1,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 416,
+    "N_bits": 785,
+    "k": 49,
+    "s": 15,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 417,
+    "N_bits": 850,
+    "k": 3,
+    "s": 14,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 418,
+    "N_bits": 913,
+    "k": 46,
+    "s": 39,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 419,
+    "N_bits": 273,
+    "k": 23,
+    "s": 29,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 420,
+    "N_bits": 729,
+    "k": 59,
+    "s": 79,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 421,
+    "N_bits": 255,
+    "k": 44,
+    "s": 19,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 422,
+    "N_bits": 841,
+    "k": 61,
+    "s": 72,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 423,
+    "N_bits": 672,
+    "k": 45,
+    "s": 62,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 424,
+    "N_bits": 160,
+    "k": 47,
+    "s": 24,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 425,
+    "N_bits": 838,
+    "k": 39,
+    "s": 98,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 426,
+    "N_bits": 865,
+    "k": 62,
+    "s": 64,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 427,
+    "N_bits": 554,
+    "k": 84,
+    "s": 54,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 428,
+    "N_bits": 472,
+    "k": 62,
+    "s": 70,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 429,
+    "N_bits": 849,
+    "k": 19,
+    "s": 25,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 430,
+    "N_bits": 250,
+    "k": 86,
+    "s": 51,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 431,
+    "N_bits": 965,
+    "k": 61,
+    "s": 68,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 432,
+    "N_bits": 883,
+    "k": 30,
+    "s": 15,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 433,
+    "N_bits": 211,
+    "k": 35,
+    "s": 98,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 434,
+    "N_bits": 506,
+    "k": 61,
+    "s": 19,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 435,
+    "N_bits": 709,
+    "k": 23,
+    "s": 7,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 436,
+    "N_bits": 131,
+    "k": 62,
+    "s": 53,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 437,
+    "N_bits": 581,
+    "k": 83,
+    "s": 11,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 438,
+    "N_bits": 531,
+    "k": 58,
+    "s": 50,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 439,
+    "N_bits": 190,
+    "k": 7,
+    "s": 16,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 440,
+    "N_bits": 218,
+    "k": 48,
+    "s": 0,
+    "branch": "G",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 441,
+    "N_bits": 189,
+    "k": 88,
+    "s": 96,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 442,
+    "N_bits": 962,
+    "k": 89,
+    "s": 75,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 443,
+    "N_bits": 231,
+    "k": 30,
+    "s": 78,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 444,
+    "N_bits": 737,
+    "k": 48,
+    "s": 94,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 445,
+    "N_bits": 598,
+    "k": 86,
+    "s": 25,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 446,
+    "N_bits": 748,
+    "k": 99,
+    "s": 23,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 447,
+    "N_bits": 170,
+    "k": 6,
+    "s": 93,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 448,
+    "N_bits": 646,
+    "k": 72,
+    "s": 26,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 449,
+    "N_bits": 527,
+    "k": 16,
+    "s": 53,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 450,
+    "N_bits": 803,
+    "k": 29,
+    "s": 79,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 451,
+    "N_bits": 819,
+    "k": 28,
+    "s": 56,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 452,
+    "N_bits": 471,
+    "k": 84,
+    "s": 42,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 453,
+    "N_bits": 755,
+    "k": 88,
+    "s": 95,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 454,
+    "N_bits": 1003,
+    "k": 9,
+    "s": 83,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 455,
+    "N_bits": 445,
+    "k": 27,
+    "s": 49,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 456,
+    "N_bits": 803,
+    "k": 33,
+    "s": 45,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 457,
+    "N_bits": 1012,
+    "k": 82,
+    "s": 86,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 458,
+    "N_bits": 547,
+    "k": 81,
+    "s": 87,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 459,
+    "N_bits": 360,
+    "k": 69,
+    "s": 63,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 460,
+    "N_bits": 562,
+    "k": 70,
+    "s": 92,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 461,
+    "N_bits": 1007,
+    "k": 62,
+    "s": 3,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 462,
+    "N_bits": 360,
+    "k": 72,
+    "s": 95,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 463,
+    "N_bits": 964,
+    "k": 40,
+    "s": 68,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 464,
+    "N_bits": 807,
+    "k": 35,
+    "s": 59,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 465,
+    "N_bits": 862,
+    "k": 90,
+    "s": 42,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 466,
+    "stops_before_push": true
+  },
+  {
+    "case": 467,
+    "N_bits": 174,
+    "k": 45,
+    "s": 25,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 468,
+    "N_bits": 455,
+    "k": 10,
+    "s": 97,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 469,
+    "N_bits": 391,
+    "k": 68,
+    "s": 1,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 470,
+    "N_bits": 788,
+    "k": 72,
+    "s": 37,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 471,
+    "N_bits": 340,
+    "k": 61,
+    "s": 89,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 472,
+    "N_bits": 373,
+    "k": 68,
+    "s": 65,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 473,
+    "N_bits": 784,
+    "k": 27,
+    "s": 69,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 474,
+    "N_bits": 224,
+    "k": 81,
+    "s": 58,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 475,
+    "N_bits": 904,
+    "k": 43,
+    "s": 59,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 476,
+    "N_bits": 413,
+    "k": 61,
+    "s": 70,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 477,
+    "N_bits": 451,
+    "k": 64,
+    "s": 50,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 478,
+    "N_bits": 941,
+    "k": 60,
+    "s": 57,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 479,
+    "N_bits": 852,
+    "k": 43,
+    "s": 91,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 480,
+    "N_bits": 245,
+    "k": 20,
+    "s": 85,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 481,
+    "N_bits": 748,
+    "k": 32,
+    "s": 52,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 482,
+    "N_bits": 305,
+    "k": 34,
+    "s": 9,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 483,
+    "N_bits": 1012,
+    "k": 71,
+    "s": 2,
+    "branch": "I",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 484,
+    "N_bits": 273,
+    "k": 45,
+    "s": 68,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 485,
+    "N_bits": 731,
+    "k": 18,
+    "s": 56,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 486,
+    "N_bits": 231,
+    "k": 64,
+    "s": 38,
+    "branch": "I",
+    "rewrites": 6,
+    "passed": true
+  },
+  {
+    "case": 487,
+    "N_bits": 446,
+    "k": 17,
+    "s": 12,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 488,
+    "N_bits": 634,
+    "k": 23,
+    "s": 35,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 489,
+    "N_bits": 636,
+    "k": 65,
+    "s": 46,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 490,
+    "N_bits": 632,
+    "k": 80,
+    "s": 13,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 491,
+    "N_bits": 309,
+    "k": 47,
+    "s": 58,
+    "branch": "H",
+    "rewrites": 5,
+    "passed": true
+  },
+  {
+    "case": 492,
+    "N_bits": 304,
+    "k": 97,
+    "s": 10,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 493,
+    "N_bits": 233,
+    "k": 84,
+    "s": 60,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 494,
+    "N_bits": 614,
+    "k": 10,
+    "s": 70,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 495,
+    "N_bits": 352,
+    "k": 24,
+    "s": 48,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 496,
+    "N_bits": 413,
+    "k": 32,
+    "s": 40,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 497,
+    "N_bits": 464,
+    "k": 52,
+    "s": 11,
+    "branch": "F",
+    "rewrites": 4,
+    "passed": true
+  },
+  {
+    "case": 498,
+    "N_bits": 985,
+    "k": 45,
+    "s": 21,
+    "branch": "C",
+    "rewrites": 3,
+    "passed": true
+  },
+  {
+    "case": 499,
+    "N_bits": 239,
+    "k": 71,
+    "s": 54,
+    "branch": "G",
+    "rewrites": 5,
+    "passed": true
+  }
+]

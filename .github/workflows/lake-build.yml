@@ -43,6 +43,8 @@ jobs:
         run: python3 -m unittest discover -s analysis/l17-stack -p 'test_stack.py' -v
       - name: L17 return-section checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-return-section -p 'test_return.py' -v
+      - name: L17 collapse checks (GPT contribution)
+        run: python3 -m unittest discover -s analysis/l17-collapse -p 'test_collapse.py' -v
 
   mathlib:
     runs-on: ubuntu-latest

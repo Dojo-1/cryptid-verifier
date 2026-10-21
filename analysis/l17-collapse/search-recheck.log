@@ -1,0 +1,32 @@
+primitive phase verified through 1020542
+fast verified through 1407538
+guard verified through 2000000
+{
+  "passed": true,
+  "start_rewrite": 673467,
+  "end_rewrite": 2000000,
+  "total_added_primitive_rewrites": 1326533,
+  "word_primitive_choices": 347075,
+  "coarse_phases": [
+    {
+      "phase": "fast",
+      "coarse_rounds": 105750,
+      "word_edges": 40,
+      "stop": 1407538,
+      "passed": true
+    },
+    {
+      "phase": "guard",
+      "coarse_rounds": 161917,
+      "word_edges": 17,
+      "stop": 2000000,
+      "passed": true
+    }
+  ],
+  "matched_sparse_checkpoints": 61,
+  "reset_spec_sha256": "edd0002cba2400d0f42ebf602e8a99d6aab4f59da0da974142434cc06bc9fbaf",
+  "actor_imported": false,
+  "word_class_imported": false,
+  "time_head_totals_recomputed": false,
+  "elapsed_seconds": 224.43774763800002
+}

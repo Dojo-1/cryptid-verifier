@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-20T20:03:32.870480+00:00",
+  "user_report": "Claude reports L17e F1100, A-section nesting, uniform push and witnesses Lean-proved; independent first-event match at 143228 Claude moves / 226797 GPT rewrites, commit d60e69f checks green. Not independently retrieved here.",
+  "goal": "Scope the post-push collapse guard; find first later F1100 event outside the previously observed divisibility guard, then follow that one excursion to return or obstruction.",
+  "source": "l17-stack/deeper.json stop at global GPT rewrite 673467",
+  "source_sha256": "95c120a6c2adb55f21f0670d8a5c5f5904a476a5095d09fdfcf8f247c4ff49f1",
+  "budgets": {
+    "maximum_global_rewrites": 2000000,
+    "maximum_counter_bits": 1048576,
+    "maximum_search_wall_seconds": 240,
+    "maximum_local_rewrites_after_first_guard_failure": 64,
+    "checkpoint_interval": 10000,
+    "maximum_new_raw_validation_probes": 256,
+    "maximum_raw_transitions_per_probe": 200000,
+    "maximum_total_new_raw_transitions": 20000000
+  },
+  "trigger_guard": "At first subsequent F1100 source whose a % 3 != 0, record source, exact push, and the next local rewrites; test collapse after three post-push rewrites.",
+  "stop": "Stop at the first triggered excursion return to at most one pure tail, first unsupported/low guard/reached 1101 prefix, three pure layers, or budget. Do not explore 1101 or low-guard generalizations before such reachability.",
+  "checks": "At every new edge compare complete source/target words and guards against separate existing declarative claims; retain every choice code and sparse complete checkpoints. This is state-only, no accumulated huge times/head.",
+  "kill": "Any actor/critic mismatch stops the run and is retained before repair.",
+  "interpretation": "Failure of the three-rewrite guard does not prove unboundedness or disprove all two-layer invariants. A complete global invariant requires every reachable guard to be covered.",
+  "postpush_statement": "For u=3h+2: Ccal(0;1^(2u+2)(01)^7 1^(2d+1)T v) reaches Ccal(10h+18;1^(2d+1)T v) via E,Q,N; time60h^2+144h+86, shift -14h-16."
+}

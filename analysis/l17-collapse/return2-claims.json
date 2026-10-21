@@ -1,0 +1,113 @@
+{
+  "machine": "1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+  "provenance": "Same-author declarative transcription of two-decision return and candidate-closure counterexample; consumed by the new literal validation.",
+  "rules": {
+    "SHORT": {
+      "guards": {
+        "v": [
+          0,
+          null
+        ],
+        "e": [
+          0,
+          null
+        ]
+      },
+      "source": [
+        [
+          "01",
+          "9*v+11"
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "01",
+          "e+9"
+        ],
+        [
+          "100",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "target": [
+        [
+          "01",
+          "100*v+55"
+        ],
+        [
+          "1",
+          "2*e+2"
+        ],
+        [
+          "01",
+          7
+        ],
+        [
+          "111",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "steps": "6540*v*v+5808*v+4*e+1547",
+      "shift": "-182*v-85"
+    },
+    "EXIT": {
+      "guards": {},
+      "source": [
+        [
+          "01",
+          9
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "1",
+          4
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "target": [
+        [
+          "01",
+          16
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "01",
+          15
+        ],
+        [
+          "1",
+          1
+        ],
+        [
+          "v",
+          1
+        ]
+      ],
+      "steps": 295,
+      "shift": -25
+    }
+  }
+}

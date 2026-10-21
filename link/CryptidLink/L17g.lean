@@ -125,7 +125,8 @@ theorem D_r2k (q z : ℕ) :
           (ListBlank.append (([1] : List (Fin 2)) ^ (3 * z)) (ListBlank.append Tl default)))) =
       S 0 (10 * q + 15 + 3 * z) 7 3 := by
     unfold S W cfgCt Ccal
-    rw [list_pow_zero, ListBlank.append_nil, ← ListBlank.append_pow_add]
+    simp only [list_pow_zero, ListBlank.append_nil]
+    rw [← ListBlank.append_pow_add ([1] : List (Fin 2)) (10 * q + 15) (3 * z)]
     all_goals rfl
   rw [e] at h2
   exact h1.trans h2

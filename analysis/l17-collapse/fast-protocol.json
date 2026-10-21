@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-20T20:10:43.647627+00:00",
+  "reason": "Word-level search reached 1020542 rewrites on its 240-second cap, with no additional F1100 event. Derive a scalar reset-section map to continue within the original two-million global rewrite horizon.",
+  "source": "search.json stop",
+  "source_sha256": "514a11115a21e1112de07bfaf886754e368ab0115d73d20b9bc73b444f706c11",
+  "reset_section": "B(N,k,s)=Ccal(0;1^N(01)^k1^s), N>=20 and k=0 implies s=0.",
+  "formula": "Each ordinary reset round has Nnew=10*floor(N/3)+C(k,s,N mod3). Stop before F1100; direct linear formulas follow E/Q and one-tail branches.",
+  "numeric_guard": "Nnew >= (10N-50)/3 > N for N>=20, so accelerated-rule lower guards are preserved.",
+  "calibration": "500 fixed-seed small/huge scalar states versus the existing guarded word engine, including exact primitive rewrite counts; no new raw probes. Stop before scalar use on any mismatch.",
+  "budgets": {
+    "maximum_global_rewrites": 2000000,
+    "maximum_coarse_rounds": 400000,
+    "maximum_wall_seconds": 180,
+    "maximum_counter_bits": 2097152,
+    "maximum_local_rewrites_after_first_failed_guard": 64
+  },
+  "checks": "Exact integer arithmetic, full scalar state recorded at rare events and periodic checkpoints; retain all coarse branch codes. Discovery is conditional on the documented return-map derivation; no accumulated huge transition counts.",
+  "stop": "First F1100 whose a mod3 !=0, then its first return/unsupported/three-layer state; or budgets. Other F1100 events use the previously checked word dispatcher until reset and continue.",
+  "excluded": "No speculative 1101 or low-guard derivation."
+}

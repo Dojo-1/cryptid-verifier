@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-10-20T20:24:43.455375+00:00",
+  "trigger": "Second non-immediate event at1803910 has A mod9=2, c68, and residue itinerary1,0. Derive its two-decision return family.",
+  "identity": "S(9v+11,1,e+9,1) -> S(100v+55,2e+2,7,3), v,e>=0.",
+  "time": "6540v^2+5808v+4e+1547",
+  "shift": "-182v-85",
+  "new_raw_grid": {
+    "v": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "e": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "suffix": "001101"
+  },
+  "guard_counterexample": "All ordinary S plus the restriction a mod3=0 or k mod3=2 at b=s=1 is not invariant: S(9,1,8,4) -> S(16,1,15,1) via F111,E,Q in295 transitions, shift-25. Source not asserted blank-reachable.",
+  "raw_extra_cases": 17,
+  "shared_caps": "Existing protocol caps<=256 raw probes, <=200000 per probe, <=20million defined transitions. Prior166 raw requests plus17=183.",
+  "longer_counts": "These are new formulas after the observed trace, not externally preregistered predictions. Validate before promotion."
+}

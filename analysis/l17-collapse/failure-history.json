@@ -1,0 +1,9 @@
+[
+  {
+    "attempt": 1,
+    "failure": "Raw window assertion at case40: P1(h=0,d=1) predicted[-10,19], actual[-11,19]. Endpoint/time/head agree.",
+    "cause": "The initial A sweep reads the newly introduced prefix cell at -2; full F111 and Z footprints begin at -2, not -1.",
+    "correction": "C1 minimum becomes -7q-4; C2 minimum -7q-11; P1/P2 minimum -14h-11; resonance minimum -11z. Source/target/time/head claims unchanged.",
+    "raw_evidence": "All fixed raw requests already executed and retained before the first window assertion. Hash-bound raw records reused to recheck corrected bounds; no claim of a second physical run."
+  }
+]
