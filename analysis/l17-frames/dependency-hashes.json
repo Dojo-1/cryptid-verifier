@@ -1,0 +1,8 @@
+{
+  "l17-general-d/claims.json": "3fc4ef99a3975cee8a903a95dede7ec463b105db6cbd2e76eeae73aa34f8091b",
+  "l17-general-d/boundary.json": "e56fc7086c957f8f134a1b0ac0188cf47ab2e82f28cac8f969fc19f19d64174a",
+  "l17-hardening/specification.py": "c1682b3d24be7188f964e06fc8740d4aed96980795d1aa93e4e9f6493c4e38e1",
+  "l17-hardening/backend.py": "4e64775b095abb570d2ef220a27cd87bf134d79a4d43afcf2ced05c6288e5e97",
+  "l17-hardening/raw_comparator.cpp": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+  "l17-stacked-section/reference.py": "0d4a7905b28fcf96b685a66b846a5604d049ed405b3a123937ac2c5e25b9c200"
+}

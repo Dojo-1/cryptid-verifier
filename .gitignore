@@ -4,3 +4,4 @@ link/.lake/
 link/baselines
 link/artifacts
 __pycache__/
+link/lake-manifest.json

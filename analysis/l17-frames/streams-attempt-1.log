@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "states_checked": 10780,
+  "row_counts": {
+    "S-D2k": 220,
+    "D2": 1524,
+    "J-low-a": 180,
+    "S-D1m0": 957,
+    "D1": 3249,
+    "J-short-width": 257,
+    "J-short-terminal": 254,
+    "D11join": 271,
+    "S-G2k": 124,
+    "G2": 1009,
+    "S-G0": 1040,
+    "G-low-a": 97,
+    "S-G1l0": 114,
+    "G1": 801,
+    "S-D0": 631,
+    "D12": 52
+  },
+  "distinct_internal_images": 6888,
+  "push_entries_with_no_predecessor": 5476,
+  "excursion_stops": {
+    "S-D0": 5334,
+    "J-low-a": 25,
+    "S-D1m0": 77,
+    "G-low-a": 24,
+    "S-G0": 14,
+    "J-short-width": 1,
+    "J-short-terminal": 1
+  },
+  "first_stops": {
+    "S-D0": {
+      "a": 7,
+      "c": 7,
+      "rows": 1,
+      "end": {
+        "mode": "D",
+        "N": 15,
+        "k": 6,
+        "m": 1,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "J-low-a": {
+      "a": 8,
+      "c": 7,
+      "rows": 0,
+      "end": {
+        "mode": "D",
+        "N": 4,
+        "k": 7,
+        "m": 1,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "S-D1m0": {
+      "a": 8,
+      "c": 8,
+      "rows": 0,
+      "end": {
+        "mode": "D",
+        "N": 4,
+        "k": 7,
+        "m": 3,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "G-low-a": {
+      "a": 8,
+      "c": 9,
+      "rows": 2,
+      "end": {
+        "mode": "G",
+        "N": 4,
+        "k": 20,
+        "m": 0,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "S-G0": {
+      "a": 17,
+      "c": 9,
+      "rows": 2,
+      "end": {
+        "mode": "G",
+        "N": 204,
+        "k": 20,
+        "m": 0,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "J-short-width": {
+      "a": 37,
+      "c": 7,
+      "rows": 3,
+      "end": {
+        "mode": "D",
+        "N": 2425,
+        "k": 4,
+        "m": 1,
+        "l": 7,
+        "s": 3
+      }
+    },
+    "J-short-terminal": {
+      "a": 46,
+      "c": 7,
+      "rows": 3,
+      "end": {
+        "mode": "D",
+        "N": 3070,
+        "k": 7,
+        "m": 1,
+        "l": 14,
+        "s": 0
+      }
+    }
+  },
+  "maximum_internal_excursion_rows": 48,
+  "roundtrip_examples": [
+    {
+      "a": 7,
+      "c": 7,
+      "rows": 1,
+      "stop": "S-D0"
+    },
+    {
+      "a": 8,
+      "c": 7,
+      "rows": 0,
+      "stop": "J-low-a"
+    },
+    {
+      "a": 9,
+      "c": 7,
+      "rows": 0,
+      "stop": "S-D0"
+    },
+    {
+      "a": 11,
+      "c": 12,
+      "rows": 1,
+      "stop": "S-D0"
+    },
+    {
+      "a": 17,
+      "c": 19,
+      "rows": 2,
+      "stop": "S-D0"
+    }
+  ],
+  "claims_sha256": "3fc4ef99a3975cee8a903a95dede7ec463b105db6cbd2e76eeae73aa34f8091b",
+  "raw_machine_runs": 0,
+  "elapsed_seconds": 0.7012438920000932
+}

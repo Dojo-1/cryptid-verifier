@@ -1,0 +1,19 @@
+{
+  "recorded_at":"2026-10-21, before the new campaigns",
+  "scope":"Alternate frames and opposite streams for L17, coordinated with Claude's D/G/JOIN formalization. No edits to earlier folders or Lean sources.",
+  "sources":{"prior_archive_sha256":"15f1f517ef92c20873f50ecf2bdf6b12a31223e7f8b38f9c823284f888bb6b88","counter_spec":"../l17-general-d/claims.json","machine":"1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---"},
+  "predictions":[
+    "Exact invertible coordinate changes preserve the complete logical raw trace when decoded.",
+    "Uniform elongation requires transformed neighbor moves; advancing by one display position generally fails.",
+    "For logical head coordinates, tau=M*t+P*x is strictly increasing along every possible defined move if M>|P|.",
+    "The six internal canonical D/G rows have at most one predecessor; output N mod10 and, at residue0, the middle parity identify it.",
+    "The combined lexicographic rank(s,l,R), R_D=3k+8m+3 and R_G=3k, decreases on each internal row, including the guarded JOIN.",
+    "F1100 entry states D(2a-12,7,2c-13;7,3) have no internal predecessor for a>=7,c>=7.",
+    "A single affine ranking with mode offsets cannot decrease on every internal D/G row for unbounded counters; the obstruction is in D1,D2,G1."
+  ],
+  "budgets":{"raw_cases":32,"maximum_defined_steps_per_case":512,"frame_variants":8,"maximum_counter_grid_N":80,"maximum_counter_grid_k":16,"maximum_counter_grid_m":12,"maximum_counter_grid_l":12,"maximum_counter_grid_s":9,"seeded_counter_states":4000,"maximum_excursion_rows":2000,"fresh_raw_transition_budget":2000000,"wall_seconds":180},
+  "controls":["Frozen whole-tape literal C++ machine","Separate dense Python transition table","Declarative old counter endpoint specification without new actor imports","Full encode/decode round trips","Seeded exterior/invalid lattice inputs","Deliberately incorrect movement, clock, inverse and rank variants"],
+  "stop":"First mismatch or resource cap. Unknown short join or terminal cases stay explicit stops. No speculative 1101 extension or new blank-orbit continuation.",
+  "promotion":"Analytic guarded statements and bounded implementation measurements only. New Lean theorem status requires Claude's formalization. No new nonhalting, global stack bound or universal return-to-S claim.",
+  "correlation":"The new algebra, frame actor and test design share authorship. Literal C++ and Python paths differ in implementation, not authorship."
+}

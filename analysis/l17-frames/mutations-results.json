@@ -1,0 +1,89 @@
+{
+  "all_killed": true,
+  "total": 15,
+  "frame_mutations": [
+    {
+      "mutant": "stretch-unit-move",
+      "killed": true
+    },
+    {
+      "mutant": "reflection-forgot-direction",
+      "killed": true
+    },
+    {
+      "mutant": "waggling-forgot-tape-remap",
+      "killed": true
+    },
+    {
+      "mutant": "forgot-frame-phase",
+      "killed": true
+    },
+    {
+      "mutant": "filler-treated-as-cell",
+      "killed": true
+    },
+    {
+      "mutant": "zero-causal-clock-increment",
+      "killed": true
+    },
+    {
+      "mutant": "naive-physical-clock-under-waggling",
+      "killed": true,
+      "witness_increment": -15
+    },
+    {
+      "mutant": "advance-clock-on-undefined-transition",
+      "killed": true
+    }
+  ],
+  "counter_mutations": [
+    {
+      "mutant": "omit-D-mode-offset",
+      "killed": true,
+      "witness": [
+        {
+          "mode": "D",
+          "N": 7,
+          "k": 1,
+          "m": 2,
+          "l": 7,
+          "s": 3
+        },
+        {
+          "mode": "G",
+          "N": 14,
+          "k": 7,
+          "m": 0,
+          "l": 7,
+          "s": 3
+        }
+      ]
+    },
+    {
+      "mutant": "put-width-before-terminal-count",
+      "killed": true
+    },
+    {
+      "mutant": "use-inner-scalar-as-global-rank",
+      "killed": true
+    },
+    {
+      "mutant": "wrong-sign-on-join-inverse-width",
+      "killed": true
+    },
+    {
+      "mutant": "forget-even-odd-inverse-tag",
+      "killed": true
+    },
+    {
+      "mutant": "decode-leading-counter-mod3",
+      "killed": true
+    },
+    {
+      "mutant": "backward-rank-uses-N-alone",
+      "killed": true
+    }
+  ],
+  "fresh_raw_transitions": 0,
+  "method": "In-memory deliberately wrong coordinate maps and ranking/inverse candidates; no source-file mutation."
+}
