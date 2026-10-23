@@ -11,7 +11,8 @@ import CryptidLink.L17j
   configurations take one step to the same configuration (GPT's witness). Backward uniqueness is a property of the
   macro domain, not of the machine.
 * **No affine rank:** `no_affine_rank`. No score that is affine in (k, m, l, s) in each mode decreases on every
-  internal edge (GPT's D1/D2/D12/G1 inequalities). The lexicographic rank of `L17j` is therefore needed.
+  internal edge (GPT's D1/D2/D12/G1 inequalities). The lexicographic rank of `L17j` supplies a ranking
+  outside this excluded class; other nonlinear rankings are not excluded.
 -/
 
 open BusyBeaver BusyBeaver.SixState Turing Relation

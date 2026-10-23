@@ -73,7 +73,7 @@ theorem machine_halts_iff_run9 : IsHalt target ↔ ∃ n, run9 n (5, 2, 0) = non
   isHalt_iff_acceleration.trans collatzHalts_iff
 
 /-- **A.9, machine level, race form.** The Turing machine halts from the blank tape iff its
-    orbit reaches C(a,b,c) with b ≥ 1 and b − c ∈ {0, 1}. -/
+    orbit reaches C(a,b,c) with b ≥ 1 and (b = c or b = c + 1). -/
 theorem machine_halts_iff_race :
     IsHalt target ↔ ∃ n s, run9 n (5, 2, 0) = some s ∧ raceHalts s :=
   machine_halts_iff_run9.trans a9_halts_iff

@@ -151,4 +151,5 @@ end TMLink
 
 #print axioms TMLink.antihydra_link
 #print axioms TMLink.a4_link
+#print axioms TMLink.step4_through_zero
 #print axioms TMLink.a9_link

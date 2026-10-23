@@ -156,6 +156,9 @@ theorem step9_halt_iff (a b c : Nat) : step9 (a, b, c) = none ↔ b = 0 ∧ c = 
 example : run9 2 (5, 2, 0) = some (5, 2, 5) := by decide
 
 #print axioms step9_enc
+#print axioms drain
+#print axioms sweep_le
+#print axioms sweep_gt
 #print axioms section_branch1
 #print axioms section_branch2
 #print axioms a9_mod3
@@ -173,7 +176,7 @@ theorem run9_succ' (n : Nat) : ∀ s, run9 (n + 1) s = (run9 n s).bind step9 := 
     | none => rfl
     | some t => exact ih t
 
-/-- A race state: b ≥ 1 and b − c ∈ {0, 1}. -/
+/-- A race state: b ≥ 1 and (b = c or b = c + 1). No truncated subtraction is used. -/
 def raceHalts (s : Nat × Nat × Nat) : Prop := 1 ≤ s.2.1 ∧ (s.2.1 = s.2.2 ∨ s.2.1 = s.2.2 + 1)
 
 /-- From a race state the machine halts (after b+1 steps). -/
