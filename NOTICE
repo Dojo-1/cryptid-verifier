@@ -1,0 +1,11 @@
+Cryptid Verifier
+Copyright 2026 Jesús José Vilela Jato
+
+The link/ subproject imports google-deepmind/cryptids, pinned in its lakefile.
+The upstream authors supply the original raw-machine acceleration proofs;
+this repository adds its stated reductions, contextual lemmas and experiments.
+Upstream and other dependencies retain their own copyright and licences.
+
+Research and implementation were developed with assistance from Claude and
+ChatGPT. A model's agreement is not independent verification. Formal claims
+are bounded by their Lean statements and axiom audits; experiments are finite.

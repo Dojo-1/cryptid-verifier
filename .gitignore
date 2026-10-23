@@ -5,3 +5,7 @@ link/baselines
 link/artifacts
 __pycache__/
 link/lake-manifest.json
+build.log
+mathlib/build.log
+link/build.log
+analysis/l17-hardening/comparator-*

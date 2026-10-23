@@ -23,7 +23,9 @@ jobs:
             lake build 2>&1 | tee build.log
           fi
       - name: Trust audit
-        run: python3 scripts/audit_trust.py build.log
+        run: python3 scripts/audit_trust.py --project core build.log
+      - name: Trust-gate falsification and inventory checks
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Evidence smoke test (transcriptions vs raw Turing machines)
         run: python3 analysis/scripts/smoke.py
       - uses: actions/setup-python@v5
@@ -37,6 +39,8 @@ jobs:
         run: python3 -m unittest discover -s analysis/appendix-c-leads -p 'test_pipeline.py' -v
       - name: L17 stacked-section checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-stacked-section -p 'test_stacked.py' -v
+      - name: Build literal comparator for the hardening regression
+        run: g++ -std=c++17 -O2 analysis/l17-hardening/raw_comparator.cpp -o analysis/l17-hardening/comparator-O2
       - name: L17 hardening harness checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-hardening -p 'test_hardening.py' -v
       - name: L17 stack checks (GPT contribution)
@@ -70,7 +74,7 @@ jobs:
           lake build 2>&1 | tee build.log
       - name: Trust audit
         working-directory: mathlib
-        run: python3 ../scripts/audit_trust.py build.log
+        run: python3 ../scripts/audit_trust.py --project mathlib build.log
 
   link:
     runs-on: ubuntu-latest
@@ -94,4 +98,4 @@ jobs:
           lake build 2>&1 | tee build.log
       - name: Trust audit
         working-directory: link
-        run: python3 ../scripts/audit_trust.py build.log
+        run: python3 ../scripts/audit_trust.py --project link build.log

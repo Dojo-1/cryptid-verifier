@@ -1,16 +1,80 @@
 # cryptid-verifier
 
-Lean 4 (core, no Mathlib) companion to *At the Limits of Computability: Steps Towards
+Lean 4 companion to *At the Limits of Computability: Steps Towards
 Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al., arXiv:2610.22603).
+The core reductions use no Mathlib; the real-number and machine-link subprojects
+use their separately pinned dependencies.
 The macro-rules are transcribed from the paper (Sec. 2.2 for Antihydra, Appendices A.4 and A.9) and checked
 against the raw Turing machines for their first macro steps (`TMLink.lean`). The `link/` subproject then
 imports the authors' Lean proofs from [google-deepmind/cryptids](https://github.com/google-deepmind/cryptids)
 (pinned commit `a0c1f56`) and proves, for all three machines, that **the raw Turing machine halts from the
 blank tape iff our macro system halts**; combined with our criteria this gives machine-level statements.
 
-Build: `lake build` (Lean `v4.24.0`, core only). The Mathlib part lives in `mathlib/` (`cd mathlib && lake exe cache get && lake build`). CI runs the build plus `scripts/audit_trust.py`, which fails on any
-`sorry`/`admit`/`native_decide`/`axiom` in the sources and on any non-standard axiom in the `#print axioms` output. Zero `sorry`; `#print axioms` shows only
-`propext`, `Quot.sound`, `Classical.choice` (the `TMLink` checks use no axioms at all).
+## Current evidence boundary
+
+| Status | Scope |
+|---|---|
+| **Proved in Lean** | Exact machine-level halting criteria for Antihydra, A.4 and A.9; the L17 reachability and restricted internal-graph results listed below. |
+| **Finite evidence** | Numerical orbits, literal-machine comparisons and mutation checks. They do not establish asymptotic laws. |
+| **Open** | Non-halting of the three Cryptids, the logarithm-law programme, universal L17 collapse and a bound on stack depth on the blank orbit. |
+
+The logarithm-law targets concern specified **blank-tape starts**, not all possible
+initial counter states. See the corrected [conjecture note](analysis/conjecture-logarithm-law.md)
+and [finite-evidence audit](analysis/independent-audit.md). For example, the Antihydra
+macro state A(0,1) halts immediately; its designated blank-tape start is A(0,4).
+
+## Build and trust checks
+
+Use a clean checkout and install [elan](https://github.com/leanprover/elan); the three
+`lean-toolchain` files select their respective Lean versions. Python 3 and NumPy are
+needed for the numerical tests; the comparator regression also needs a C++17 compiler.
+From the repository root:
+
+```bash
+set -o pipefail
+lake build 2>&1 | tee build.log
+python3 scripts/audit_trust.py --project core build.log
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
+```
+
+For the real-number subproject (Lean v4.24.0 + Mathlib):
+
+```bash
+cd mathlib
+lake exe cache get
+set -o pipefail
+lake build 2>&1 | tee build.log
+python3 ../scripts/audit_trust.py --project mathlib build.log
+cd ..
+```
+
+For the raw-machine links (Lean v4.35.0-rc4 + the pinned Cryptids dependency):
+
+```bash
+cd link
+lake exe cache get
+# Upstream reads these data paths relative to the build directory.
+ln -sfn .lake/packages/Cryptids/baselines baselines
+ln -sfn .lake/packages/Cryptids/artifacts artifacts
+set -o pipefail
+lake build 2>&1 | tee build.log
+python3 ../scripts/audit_trust.py --project link build.log
+cd ..
+```
+
+CI runs all three builds. The source policy rejects `axiom` declarations with
+modifiers, `sorry`, `admit`, `native_decide` and direct `sorryAx` identifiers outside
+comments and string literals. The gate requires both the live `#print axioms`
+commands in [the explicit inventory](scripts/trust_inventory.json) and their matching
+build-log output; every output record must use only `propext`, `Quot.sound` and
+`Classical.choice`. The `TMLink` kernel checks use no axioms.
+
+An absent inventoried output is a failure, including after a cached build that
+emits no messages: clean the affected local build with `lake clean` and rebuild.
+When adding a public theorem to this audit set, add its print command and update
+the inventory together. The inventory is explicit; it does not enumerate every
+intermediate lemma. This lexical/log check complements Lean's kernel and is not a
+sandbox for hostile metaprograms or a proof of the surrounding prose.
 
 ## What is proved
 
@@ -49,15 +113,29 @@ encoding φ and an invariant), and each machine file instantiates it.
 |---|---|
 | `Antihydra.machine_halts_iff_walk` | the Antihydra TM halts ⟺ the +2/−1 walk on the parities of the T-orbit of 4 goes below 0 |
 | `A4.machine_halts_iff_cascade` | the A.4 TM halts ⟺ some reachable C(m,1) has m + s + 4 = 2^(s+2) |
-| `A9.machine_halts_iff_race` | the A.9 TM halts ⟺ some reachable C(a,b,c) has b ≥ 1 and b − c ∈ {0, 1} |
+| `A9.machine_halts_iff_race` | the A.9 TM halts ⟺ some reachable C(a,b,c) has b ≥ 1 and (b = c or b = c + 1) |
 
-For the lead L17 (`1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---`, not one of the paper's Cryptids),
-`CryptidLink/L17.lean` proves four of its five counter branches directly against the raw machine, and
-`L17.blank_reaches_boundary`: from the blank tape it reaches C(53262756, 1), where the unresolved branch begins. Later files extend this, with GPT's derivation, to
-`L17.Orbit.blank_reaches_trace_end`: the blank tape reaches a configuration with a counter of about 2·10^295
-(details in `analysis/leads/L17.md`).
+### L17: current formal frontier (`link/CryptidLink/L17*.lean`)
 
-Each of the three machines' halting problems is now, provably, exactly the arithmetic question stated, with no bounded check involved.
+L17 (`1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---`) is an Appendix C lead,
+not one of the paper's eleven Cryptids. The work now extends beyond the original
+C(53262756,1) boundary through contextual rules and an explicit finite orbit proof:
+
+| Theorem / files | Exact scope |
+|---|---|
+| `L17.Orbit.blank_reaches_trace_end` | From blank, the raw machine reaches a state with a counter about 2·10^295, through 1,251 formal macro steps. |
+| `D_returns`, `push_returns` (`L17g`) | Return to a one-tail section for the stated guarded two-layer subsystem. |
+| General D/G rows, `RET729`, `JOIN`, `Dg11J` (`L17h/i`) | Contextual machine reachability under their explicit guards. |
+| `IStep.sound`, `internal_terminates` (`L17j`) | The six internal D/G rows are sound; every internal path reaches an exit or an uncovered guard. This is not universal return to S. |
+| `internal_acyclic`, `internal_unique_root`, `push_entries_disjoint` (`L17k`) | Acyclicity and unique ancestry inside that restricted graph. |
+| `raw_not_injective`, `no_affine_rank` (`L17k`) | The raw machine is not reversible; no per-mode integer affine score in (k,m,l,s), independent of N, decreases on every internal row. Other ranking classes remain possible. |
+
+Generic pushes `(a,c) = (37,7)` and `(46,7)` reach uncovered JOIN guards. Neither
+is claimed reachable from blank, and neither proves that eventual collapse is false.
+Universal collapse and a blank-orbit stack-depth bound remain open.
+See [the L17 record](analysis/leads/L17.md) for the derivations and finite checks.
+
+For Antihydra, A.4 and A.9, the exact machine-level halting criteria above are general theorems, with no bounded check involved.
 The trust base grows by the upstream repository (audited by the same script for `sorry`/`native_decide`/axioms in our files;
 `#print axioms` for the three theorems shows only the standard three).
 
@@ -87,10 +165,12 @@ The trust base grows by the upstream repository (audited by the same script for 
 | `section_branch2` | if 2 ≤ c < k+5 then S(2k+p, c) ↠ S(6c−7+3p, k+4−c) |
 | `a9_mod3` | along the orbit from C(5,2,0), a ≡ 2 (mod 3) always (true, but it cannot block halting) |
 | `step9_halt_iff` | the only halting configurations are C(a,0,0) |
-| `a9_halts_iff` | **A.9 halts from C(5,2,0) ⟺ it reaches some C(a,b,c) with b ≥ 1 and b − c ∈ {0, 1}**: a draining race that ends exactly in a tie |
+| `a9_halts_iff` | **A.9 halts from C(5,2,0) ⟺ it reaches some C(a,b,c) with b ≥ 1 and (b = c or b = c + 1)**: a draining race that ends in a tie or a lead of one |
 
 ## What is NOT proved
 - That Antihydra, A.4 or A.9 never halts (all open; each is now reduced to an explicit arithmetic condition).
+- A logarithm law, mixing or Bernoulli behavior on the designated deterministic orbits.
+- Universal L17 return to S, bounded stack depth on the blank orbit, or raw-machine reversibility.
 - The Turing-machine-to-macro step itself is the authors' proof (imported in `link/`), not re-proved independently;
   our own independent check of it is the bounded `TMLink` (first 8 / 25 / 40 macro steps).
 
@@ -102,6 +182,8 @@ A.4 orbit (3M rule steps: 2789 visits to C(m,1), none in the halting set; no mod
 - A.4 halting set: an external suggestion gave m ∈ {2, 7, 19, 41, 88, …} (m = 3(2^s − 1) − s). That is wrong;
   the correct set, proved here and confirmed by brute force, is m = 2^(s+2) − 4 − s ∈ {0, 3, 10, 25, 56, …}.
 - A.9 branch 2: the formula k − c + 4 must be read as k + 4 − c in ℕ (truncated subtraction makes them differ).
+- The 2026-10-23 audit found that the old trust scanner missed modified axiom declarations and direct `sorryAx`, and accepted incomplete axiom-output coverage. The gate now rejects those forms and requires the explicit theorem inventory; regression fixtures preserve the failures.
+- CRT residue coding does not establish statistical independence on the chosen orbit. The conjecture note records this correction, the designated-start restriction and the distinction between concentration bands and LIL scaling.
 
 ## Reproducible numerical checks
 
@@ -123,6 +205,26 @@ python analysis/scripts/antihydra_fast.py 100000 --output analysis/results/parit
 python analysis/scripts/predictions_p1_p3_p4.py analysis/results/parities-100k.npy --lo 10000 --null-replicates 99 --output analysis/results/calibration-100k.json
 ```
 
-The original conjecture file is retained as a historical record. The audit distinguishes its
-registered record-time P1 target from stronger all-time readings, and prediction bands from
-separate alert thresholds.
+The conjecture note preserves the exploratory measurements and records the later corrections.
+The audit distinguishes its recorded record-time P1 target from stronger all-time readings,
+and prediction bands from separate alert thresholds. Git history retains the original wording.
+
+To run the hardening harness tests with the absolute-position regression enabled:
+
+```bash
+g++ -std=c++17 -O2 analysis/l17-hardening/raw_comparator.cpp -o analysis/l17-hardening/comparator-O2
+python3 -m unittest discover -s analysis/l17-hardening -p 'test_hardening.py' -v
+```
+
+CI builds this comparator before running the suite. The full archived hardening campaign is
+separate finite evidence; a passing unit-test suite does not replay that whole campaign.
+
+## Licence, citation and provenance
+
+Original code and documentation are licensed under [Apache-2.0](LICENSE).
+[CITATION.cff](CITATION.cff) identifies this repository and the upstream paper;
+[NOTICE](NOTICE) records provenance and AI assistance. Imported dependencies retain
+their own copyright and licences. The authors of `google-deepmind/cryptids` supply
+the original raw-machine acceleration proofs. This repository's separate checks
+and reductions should be credited for their stated scope, without counting shared
+authorship or repeated model review as independent replication.

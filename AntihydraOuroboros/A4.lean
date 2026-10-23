@@ -66,6 +66,7 @@ theorem cascade_hits_two (m s : Nat) (h : 2 * 2 ^ (s + 2) ≤ 2 * m + 2 + 2 * s 
 example : (List.range 7).map (fun s => 2 ^ (s + 2) - 4 - s) = [0, 3, 10, 25, 56, 119, 246] := by decide
 
 #print axioms con_even_out
+#print axioms con_odd_out
 #print axioms expand_closed
 #print axioms cascade_hits_two
 

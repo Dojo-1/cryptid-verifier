@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the upstream paper for their respective contributions."
+type: software
+title: "Cryptid Verifier: Formal Reductions and Bounded Experiments for Busy Beaver Machines"
+authors:
+  - family-names: "Vilela Jato"
+    given-names: "Jesús José"
+repository-code: "https://github.com/Dojo-1/cryptid-verifier"
+license: Apache-2.0
+abstract: >-
+  Lean formal reductions and contextual reachability results, with bounded
+  numerical experiments. The machine links import the original proofs from
+  google-deepmind/cryptids. Non-halting, logarithm laws and global L17 collapse
+  remain open.
+references:
+  - type: article
+    title: "At the Limits of Computability: Steps Towards Autonomous AI Discovery on the Busy Beaver Frontier"
+    authors:
+      - family-names: "Dos Santos"
+        given-names: "Marco"
+      - family-names: "Veeriah"
+        given-names: "Vivek"
+      - family-names: "Havrilla"
+        given-names: "Alex"
+      - family-names: "Bolt"
+        given-names: "Andrew"
+      - family-names: "Zuzic"
+        given-names: "Goran"
+      - family-names: "Singh"
+        given-names: "Satinder"
+      - family-names: "Zahavy"
+        given-names: "Tom"
+    year: 2026
+    doi: "10.48550/arXiv.2610.22603"
