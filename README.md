@@ -25,52 +25,56 @@ macro state A(0,1) halts immediately; its designated blank-tape start is A(0,4).
 
 ## Build and trust checks
 
-Use a clean checkout and install [elan](https://github.com/leanprover/elan); the three
-`lean-toolchain` files select their respective Lean versions. Python 3 and NumPy are
-needed for the numerical tests; the comparator regression also needs a C++17 compiler.
-From the repository root:
+Install [elan](https://github.com/leanprover/elan) and Python 3.10+; ensure `lake` is
+on PATH. From a clean checkout, one command builds and audits all three projects:
 
-```bash
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 scripts/audit_trust.py --project core build.log
-python3 -m unittest discover -s scripts -p 'test_*.py' -v
+```sh
+python3 scripts/verify.py
 ```
 
-For the real-number subproject (Lean v4.24.0 + Mathlib):
+`make verify` is an optional alias. On Windows, use PowerShell with Python and elan
+on PATH:
 
-```bash
-cd mathlib
-lake exe cache get
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 ../scripts/audit_trust.py --project mathlib build.log
-cd ..
+```powershell
+py -3 scripts/verify.py
 ```
 
-For the raw-machine links (Lean v4.35.0-rc4 + the pinned Cryptids dependency):
+The runner selects each pinned toolchain, fetches dependency caches, regenerates
+the bulk L17 proof sources, copies upstream data into the paths its elaborators
+expect, and builds and audits core → Mathlib → machine links. It cleans our local
+build products for fresh axiom output, retains dependency caches and stops on any
+failure. Logs remain in `build.log`, `mathlib/build.log` and `link/build.log`.
+For one project, append `--project core`, `--project mathlib` or `--project link`.
+No manual symlinks or Bash pipelines are required. Tooling tests run on Linux and
+Windows in CI; the full Lean builds currently run on Linux.
 
-```bash
-cd link
-lake exe cache get
-# Upstream reads these data paths relative to the build directory.
-ln -sfn .lake/packages/Cryptids/baselines baselines
-ln -sfn .lake/packages/Cryptids/artifacts artifacts
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 ../scripts/audit_trust.py --project link build.log
-cd ..
-```
+| Project | Lean pin | Dependency boundary |
+|---|---|---|
+| core (`.`) | v4.24.0 | No Mathlib |
+| real-number proofs (`mathlib/`) | v4.24.0 | Mathlib v4.24.0 and the local core |
+| machine links (`link/`) | v4.35.0-rc4 | Cryptids commit `a0c1f56` and the local core |
 
-CI runs all three builds. The source policy rejects `axiom` declarations with
+The separate Lake projects retain these compatibility boundaries. The runner
+handles their working directories and relative dependencies. The five generated
+orbit chains are [hash-checked build inputs](link/CryptidLink/Generated/README.md);
+their endpoint remains tracked and CI uploads the regenerated sources and build log.
+For direct manual `lake build` commands, prepare the generated sources first as
+documented there; the verification runner also prepares upstream's data paths.
+
+CI runs all three builds and the numerical evidence suite. Numerical tests need
+NumPy; the literal-comparator regression also needs a C++17 compiler. These are
+separate from the standard-library-only verification runner. See
+[`scripts/README.md`](scripts/README.md) for maintained tooling and test commands.
+
+The source policy rejects `axiom` declarations with
 modifiers, `sorry`, `admit`, `native_decide` and direct `sorryAx` identifiers outside
 comments and string literals. The gate requires both the live `#print axioms`
 commands in [the explicit inventory](scripts/trust_inventory.json) and their matching
 build-log output; every output record must use only `propext`, `Quot.sound` and
 `Classical.choice`. The `TMLink` kernel checks use no axioms.
 
-An absent inventoried output is a failure, including after a cached build that
-emits no messages: clean the affected local build with `lake clean` and rebuild.
+An absent inventoried output is a failure. The verification runner cleans local
+build outputs before building so cached local results cannot omit required messages.
 When adding a public theorem to this audit set, add its print command and update
 the inventory together. The inventory is explicit; it does not enumerate every
 intermediate lemma. This lexical/log check complements Lean's kernel and is not a
@@ -174,9 +178,16 @@ The trust base grows by the upstream repository (audited by the same script for 
 - The Turing-machine-to-macro step itself is the authors' proof (imported in `link/`), not re-proved independently;
   our own independent check of it is the bounded `TMLink` (first 8 / 25 / 40 macro steps).
 
-## Scripts (`analysis/scripts/`, evidence only; `smoke.py` runs in CI)
-Numerical experiments: connection-Laplacian frustration, 2-adic survival densities, stream monitor,
-A.4 orbit (3M rule steps: 2789 visits to C(m,1), none in the halting set; no modular obstruction for moduli < 400).
+## Scripts and finite evidence
+
+Maintained verification tooling is indexed in [`scripts/`](scripts/README.md).
+The numerical evidence and literal-machine regression suites live under `analysis/`
+and run separately in CI. Their scope is finite evidence.
+
+The original one-off spectral, residue, stream and A.4/A.9 probes are preserved in
+[`analysis/experiments/`](analysis/experiments/README.md), with their dependencies,
+environment assumptions and current claim status documented. They have no dedicated
+regression tests and are excluded from the supported verification path.
 
 ## Corrections log
 - A.4 halting set: an external suggestion gave m ∈ {2, 7, 19, 41, 88, …} (m = 3(2^s − 1) − s). That is wrong;

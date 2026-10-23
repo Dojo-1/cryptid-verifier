@@ -5,32 +5,61 @@ on:
   pull_request:
 
 jobs:
-  core:
-    runs-on: ubuntu-latest
+  tooling:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.10'
+          - os: windows-latest
+            python: '3.12'
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Trust gate, generation and runner failure controls
+        run: python -m unittest discover -s scripts -p 'test_*.py' -v
+
+  lean:
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [core, mathlib, link]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Install elan
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Build
-        run: |
-          set -o pipefail
-          lake build 2>&1 | tee build.log
-          # The audit needs the `#print axioms` output; if nothing was compiled, rebuild from scratch.
-          if ! grep -q "depends on axioms" build.log; then
-            rm -rf .lake/build
-            lake build 2>&1 | tee build.log
-          fi
-      - name: Trust audit
-        run: python3 scripts/audit_trust.py --project core build.log
-      - name: Trust-gate falsification and inventory checks
-        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
-      - name: Evidence smoke test (transcriptions vs raw Turing machines)
-        run: python3 analysis/scripts/smoke.py
+      - name: Prepare, build and audit the selected project
+        run: python scripts/verify.py --project ${{ matrix.project }}
+      - name: Archive generated L17 proof sources and build log
+        if: always() && matrix.project == 'link'
+        uses: actions/upload-artifact@v4
+        with:
+          name: l17-orbit
+          path: |
+            link/CryptidLink/Generated/*.lean
+            link/generated-orbit.json
+            link/build.log
+
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Evidence smoke test (transcriptions vs raw Turing machines)
+        run: python3 analysis/scripts/smoke.py
       - name: Install numerical-check dependency
         run: python3 -m pip install numpy
       - name: Exact acceleration and finite-evidence regression checks
@@ -55,47 +84,3 @@ jobs:
         run: python3 -m unittest discover -s analysis/leads -p 'test_l17_ctx.py' -v
       - name: L17 opposite-stream frame checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-frames -p 'test_frames.py' -v
-
-  mathlib:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install elan
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Fetch Mathlib cache
-        working-directory: mathlib
-        run: lake exe cache get
-      - name: Build
-        working-directory: mathlib
-        run: |
-          set -o pipefail
-          lake build 2>&1 | tee build.log
-      - name: Trust audit
-        working-directory: mathlib
-        run: python3 ../scripts/audit_trust.py --project mathlib build.log
-
-  link:
-    runs-on: ubuntu-latest
-    timeout-minutes: 120
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install elan
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Fetch Mathlib cache
-        working-directory: link
-        run: lake exe cache get
-      - name: Build (links to google-deepmind/cryptids machine-level proofs)
-        working-directory: link
-        run: |
-          set -o pipefail
-          # upstream elaborates data files by paths relative to the build directory
-          ln -sfn .lake/packages/Cryptids/baselines baselines
-          ln -sfn .lake/packages/Cryptids/artifacts artifacts
-          lake build 2>&1 | tee build.log
-      - name: Trust audit
-        working-directory: link
-        run: python3 ../scripts/audit_trust.py --project link build.log

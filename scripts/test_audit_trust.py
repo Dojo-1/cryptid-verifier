@@ -21,7 +21,7 @@ class TrustAuditTests(unittest.TestCase):
         self.inventory = {'projects': {'core': {'sources': ['Probe.lean'], 'theorems': ['visible']}}}
 
     def check_source(self, source=None, log=None, inventory=None):
-        self.source.write_text(self.good if source is None else source)
+        self.source.write_text(self.good if source is None else source, encoding='utf-8')
         return audit(self.root, self.log if log is None else log, 'core',
                      self.inventory if inventory is None else inventory)[0]
 
