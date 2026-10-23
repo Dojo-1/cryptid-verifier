@@ -1,14 +1,25 @@
 # cryptid-verifier
 
-Lean 4 companion to *At the Limits of Computability: Steps Towards
-Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al., arXiv:2610.22603).
-The core reductions use no Mathlib; the real-number and machine-link subprojects
-use their separately pinned dependencies.
-The macro-rules are transcribed from the paper (Sec. 2.2 for Antihydra, Appendices A.4 and A.9) and checked
-against the raw Turing machines for their first macro steps (`TMLink.lean`). The `link/` subproject then
-imports the authors' Lean proofs from [google-deepmind/cryptids](https://github.com/google-deepmind/cryptids)
-(pinned commit `a0c1f56`) and proves, for all three machines, that **the raw Turing machine halts from the
-blank tape iff our macro system halts**; combined with our criteria this gives machine-level statements.
+**Lean proofs that turn machine-level halting questions into explicit arithmetic criteria.**
+
+For Antihydra, A.4 and A.9, this repository proves exact conditions equivalent to
+halting of the raw Turing machine from the blank tape. For example, **A.4 halts iff
+its macro orbit reaches C(m,1) with m + s + 4 = 2^(s+2) for some natural numbers
+m and s**. The remaining question is whether that particular orbit ever meets the
+condition. Non-halting remains open.
+
+L17, an Appendix C lead, has a different frontier: certified reachability to a
+counter around 2·10^295, guarded return lemmas and termination of a restricted
+internal graph. Its uncovered cases are recorded alongside the proofs.
+
+This is a Lean 4 companion to *At the Limits of Computability: Steps Towards
+Autonomous AI Discovery on the Busy Beaver Frontier* (Dos Santos et al.,
+arXiv:2610.22603). The authors' pinned
+[google-deepmind/cryptids](https://github.com/google-deepmind/cryptids/tree/a0c1f56af53a76e985a656032b48015f7e48921b)
+proofs supply the raw-machine accelerations. This repository connects them to its
+arithmetic criteria, adds bounded transcription checks and develops the L17 results
+listed below. The core reductions use no Mathlib; the other projects retain their
+separately pinned dependencies.
 
 ## Current evidence boundary
 
@@ -25,52 +36,56 @@ macro state A(0,1) halts immediately; its designated blank-tape start is A(0,4).
 
 ## Build and trust checks
 
-Use a clean checkout and install [elan](https://github.com/leanprover/elan); the three
-`lean-toolchain` files select their respective Lean versions. Python 3 and NumPy are
-needed for the numerical tests; the comparator regression also needs a C++17 compiler.
-From the repository root:
+Install [elan](https://github.com/leanprover/elan) and Python 3.10+; ensure `lake` is
+on PATH. From a clean checkout, one command builds and audits all three projects:
 
-```bash
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 scripts/audit_trust.py --project core build.log
-python3 -m unittest discover -s scripts -p 'test_*.py' -v
+```sh
+python3 scripts/verify.py
 ```
 
-For the real-number subproject (Lean v4.24.0 + Mathlib):
+`make verify` is an optional alias. On Windows, use PowerShell with Python and elan
+on PATH:
 
-```bash
-cd mathlib
-lake exe cache get
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 ../scripts/audit_trust.py --project mathlib build.log
-cd ..
+```powershell
+py -3 scripts/verify.py
 ```
 
-For the raw-machine links (Lean v4.35.0-rc4 + the pinned Cryptids dependency):
+The runner selects each pinned toolchain, fetches dependency caches, regenerates
+the bulk L17 proof sources, copies upstream data into the paths its elaborators
+expect, and builds and audits core → Mathlib → machine links. It cleans our local
+build products for fresh axiom output, retains dependency caches and stops on any
+failure. Logs remain in `build.log`, `mathlib/build.log` and `link/build.log`.
+For one project, append `--project core`, `--project mathlib` or `--project link`.
+No manual symlinks or Bash pipelines are required. Tooling tests run on Linux and
+Windows in CI; the full Lean builds currently run on Linux.
 
-```bash
-cd link
-lake exe cache get
-# Upstream reads these data paths relative to the build directory.
-ln -sfn .lake/packages/Cryptids/baselines baselines
-ln -sfn .lake/packages/Cryptids/artifacts artifacts
-set -o pipefail
-lake build 2>&1 | tee build.log
-python3 ../scripts/audit_trust.py --project link build.log
-cd ..
-```
+| Project | Lean pin | Dependency boundary |
+|---|---|---|
+| core (`.`) | v4.24.0 | No Mathlib |
+| real-number proofs (`mathlib/`) | v4.24.0 | Mathlib v4.24.0 and the local core |
+| machine links (`link/`) | v4.35.0-rc4 | Cryptids commit `a0c1f56` and the local core |
 
-CI runs all three builds. The source policy rejects `axiom` declarations with
+The separate Lake projects retain these compatibility boundaries. The runner
+handles their working directories and relative dependencies. The five generated
+orbit chains are [hash-checked build inputs](link/CryptidLink/Generated/README.md);
+their endpoint remains tracked and CI uploads the regenerated sources and build log.
+For direct manual `lake build` commands, prepare the generated sources first as
+documented there; the verification runner also prepares upstream's data paths.
+
+CI runs all three builds and the numerical evidence suite. Numerical tests need
+NumPy; the literal-comparator regression also needs a C++17 compiler. These are
+separate from the standard-library-only verification runner. See
+[`scripts/README.md`](scripts/README.md) for maintained tooling and test commands.
+
+The source policy rejects `axiom` declarations with
 modifiers, `sorry`, `admit`, `native_decide` and direct `sorryAx` identifiers outside
 comments and string literals. The gate requires both the live `#print axioms`
 commands in [the explicit inventory](scripts/trust_inventory.json) and their matching
 build-log output; every output record must use only `propext`, `Quot.sound` and
 `Classical.choice`. The `TMLink` kernel checks use no axioms.
 
-An absent inventoried output is a failure, including after a cached build that
-emits no messages: clean the affected local build with `lake clean` and rebuild.
+An absent inventoried output is a failure. The verification runner cleans local
+build outputs before building so cached local results cannot omit required messages.
 When adding a public theorem to this audit set, add its print command and update
 the inventory together. The inventory is explicit; it does not enumerate every
 intermediate lemma. This lexical/log check complements Lean's kernel and is not a
@@ -135,9 +150,11 @@ is claimed reachable from blank, and neither proves that eventual collapse is fa
 Universal collapse and a blank-orbit stack-depth bound remain open.
 See [the L17 record](analysis/leads/L17.md) for the derivations and finite checks.
 
-For Antihydra, A.4 and A.9, the exact machine-level halting criteria above are general theorems, with no bounded check involved.
-The trust base grows by the upstream repository (audited by the same script for `sorry`/`native_decide`/axioms in our files;
-`#print axioms` for the three theorems shows only the standard three).
+For Antihydra, A.4 and A.9, these machine-level equivalences are general theorems;
+their validity is not limited to a simulated prefix. They use the authors' upstream
+acceleration proofs. Lean checks the pinned dependencies, the lexical policy scans
+our local sources, and the inventoried endpoint axiom outputs contain only the
+permitted standard axioms. These are distinct checks with the boundaries described above.
 
 ### Antihydra as one real number (`mathlib/CryptidReal/Antihydra.lean`, Mathlib, checked in CI)
 | Theorem | Plain meaning |
@@ -147,6 +164,11 @@ The trust base grows by the upstream repository (audited by the same script for 
 | `antihydra_floor` | **bₙ = ⌊ξ·(3/2)ⁿ⌋ − 3 for every n**, with ξ = 4 + Σₖ qₖ(2/3)ᵏ/3, qₖ = 4 − (bₖ mod 2) (ξ ≈ 7.86417726205661897…) |
 | `antihydra_parity` | Antihydra's parities are those of ⌊ξ·(3/2)ⁿ⌋ − 3: its halting question is a question about the integer parts of ξ·(3/2)ⁿ (Mahler 3/2 setting) |
 | `ξ_floor` | ⌊ξ⌋ = 7 |
+
+The floor representation is an exact bridge to a specific explicit number. It does
+not establish a distribution law for that number's orbit. A route to non-halting
+through this representation still needs a suitable property of this particular
+deterministic orbit and a proved implication to the halting criterion.
 
 ### A.4 (`AntihydraOuroboros/A4.lean`)
 | Theorem | Plain meaning |
@@ -167,16 +189,44 @@ The trust base grows by the upstream repository (audited by the same script for 
 | `step9_halt_iff` | the only halting configurations are C(a,0,0) |
 | `a9_halts_iff` | **A.9 halts from C(5,2,0) ⟺ it reaches some C(a,b,c) with b ≥ 1 and (b = c or b = c + 1)**: a draining race that ends in a tie or a lead of one |
 
-## What is NOT proved
-- That Antihydra, A.4 or A.9 never halts (all open; each is now reduced to an explicit arithmetic condition).
-- A logarithm law, mixing or Bernoulli behavior on the designated deterministic orbits.
-- Universal L17 return to S, bounded stack depth on the blank orbit, or raw-machine reversibility.
-- The Turing-machine-to-macro step itself is the authors' proof (imported in `link/`), not re-proved independently;
-  our own independent check of it is the bounded `TMLink` (first 8 / 25 / 40 macro steps).
+## What remains open
 
-## Scripts (`analysis/scripts/`, evidence only; `smoke.py` runs in CI)
-Numerical experiments: connection-Laplacian frustration, 2-adic survival densities, stream monitor,
-A.4 orbit (3M rule steps: 2789 visits to C(m,1), none in the halting set; no modular obstruction for moduli < 400).
+- Whether Antihydra, A.4 or A.9 ever halts from the blank tape. Each question now has an explicit arithmetic criterion.
+- A logarithm law, mixing or Bernoulli behavior on the designated deterministic orbits.
+- Universal L17 return to S and bounded stack depth on its blank orbit. The raw transition map is not injective; the precise proved statement is in `L17k` above.
+
+A halting witness beyond a verified finite prefix remains compatible with these
+results. A longer certified run extends that prefix; settling non-halting requires
+an argument covering the entire designated orbit.
+
+## What would move the frontier
+
+The next useful result should make the open problem more precise or discharge a
+specific proof obligation. These are research targets, with no probability or
+completion claim attached:
+
+| Target | Concrete advance | Remaining obligation |
+|---|---|---|
+| L17 return-or-exception theorem | For every push in a stated domain, prove return to the chosen section or membership in an explicit residual family. | Determine whether the blank orbit reaches the residual cases and what happens there. |
+| Conditional bounds with explicit constants | State the exact hypotheses, onset, bounds and finite-prefix coverage; prove what they imply for the machine. | Establish the hypotheses for the designated deterministic orbit. |
+| Longer certified reach | Extend L17's blank-tape reachability theorem beyond the current endpoint, with every bridge and side condition checked in Lean. | Convert finite reach into a structural argument if the goal is non-halting. |
+
+A.4 and A.9 illustrate the aim: expose the arithmetic condition that decides the
+machine's fate, prove the equivalence, and leave the unresolved orbit question
+visible. Useful contributions include sharper hypotheses, missing cases, checked
+counterexamples and simpler verification paths. Every claim should point to its
+theorem or reproducible finite test and state the gap that remains.
+
+## Scripts and finite evidence
+
+Maintained verification tooling is indexed in [`scripts/`](scripts/README.md).
+The numerical evidence and literal-machine regression suites live under `analysis/`
+and run separately in CI. Their scope is finite evidence.
+
+The original one-off spectral, residue, stream and A.4/A.9 probes are preserved in
+[`analysis/experiments/`](analysis/experiments/README.md), with their dependencies,
+environment assumptions and current claim status documented. They have no dedicated
+regression tests and are excluded from the supported verification path.
 
 ## Corrections log
 - A.4 halting set: an external suggestion gave m ∈ {2, 7, 19, 41, 88, …} (m = 3(2^s − 1) − s). That is wrong;

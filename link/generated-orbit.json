@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "steps": 1250,
+  "steps_per_file": 250,
+  "sha256": {
+    "L17Orbit0.lean": "a9f6ca33eb25e4625e36374ad4ea511db331e1979bd9674fb781bbe6c72f869e",
+    "L17Orbit1.lean": "1f32bb2440fd183a58bcdcc56fc1e1683df091a1322a2e12ccde0c7e652244e6",
+    "L17Orbit2.lean": "666f8908e5740a64bb233748396ec3a39012ba52803b4403a76585acf97517a9",
+    "L17Orbit3.lean": "c475dab4b86e5a912e9417b7c608f855ecc8ee75788f681b146d0db8cbf03abb",
+    "L17Orbit4.lean": "c8829a97c24f6418e05d42f1139f32ffe803a70024f5c510543171531fdaa830"
+  }
+}
