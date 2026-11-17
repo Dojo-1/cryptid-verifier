@@ -31,7 +31,7 @@ theorem a101_repeat_exact (j : ℕ) (L R : ListBlank (Fin 2)) :
         R) := by
   induction j generalizing R with
   | zero =>
-    simp only [Nat.mul_zero, pow_zero, ListBlank.append_nil]
+    simp only [Nat.mul_zero]
     exact ReachesIn.zero _ _
   | succ j ih =>
     have h1 := ih (ListBlank.append [1, 0, 1] R)
@@ -52,7 +52,7 @@ theorem a101_repeat_exact (j : ℕ) (L R : ListBlank (Fin 2)) :
         (ListBlank.append [0, 1]
           (ListBlank.append (([0, 0, 1] : List (Fin 2)) ^ j)
             (ListBlank.append [0] L))) R
-    rw [ListBlank.append_pow_succ' ([1, 0, 1] : List (Fin 2)) j R]
+    rw [← ListBlank.append_pow_succ' ([1, 0, 1] : List (Fin 2)) j R]
     convert h1.trans h2 using 1 <;> omega
 
 end CryptidLink.L17
