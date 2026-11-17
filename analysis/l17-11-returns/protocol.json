@@ -1,0 +1,11 @@
+{
+  "base_commit": "1297fcd6ebb64697350cd514c5bd0d2d1c5a873b",
+  "seed": 17112029,
+  "scope": "Complete the two existing homogeneous11 formulas using corrected phase transport, exact outer sweeps, and canonical full right words. No new orbit-reachability assertion.",
+  "registration": "The analytic formulas already exist in the archived A-stream derivation. This protocol freezes the bounded independent-code-path check before executing it; it is not a preregistration of discovery.",
+  "maximum_cases": 1200,
+  "maximum_steps_per_probe": 200000,
+  "maximum_fresh_cpp_steps": 2000000,
+  "controls": ["frozen literal C++ comparator", "frozen Python OPS table", "whole tape, head, mode and clock", "read extrema and full traces up to1000 steps", "arbitrary contexts on both outer-sweep helpers", "12 planted expectation faults"],
+  "stop": "Any mismatched endpoint, clock, context or frame blocks the affected theorem. A completed homogeneous11 return does not establish a general mixed return or a blank-orbit stack bound."
+}

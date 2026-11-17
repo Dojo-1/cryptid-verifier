@@ -12,4 +12,5 @@ analysis/l17-hardening/comparator-*
 analysis/l17-a-stream/build/
 analysis/l17-mixed-return/build/
 analysis/l17-b-dispatch/build/
+analysis/l17-11-returns/build/
 link/CryptidLink/Generated/*.lean

@@ -1,0 +1,5 @@
+info: CryptidLink/L17ab.lean:375:0: 'CryptidLink.L17.c01_middle_headRight_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17ab.lean:376:0: 'CryptidLink.L17.k22_c01_last_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17ab.lean:377:0: 'CryptidLink.L17.a11_even_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17ab.lean:378:0: 'CryptidLink.L17.a11_odd_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17ab.lean:379:0: 'CryptidLink.L17.a11_homogeneous_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]

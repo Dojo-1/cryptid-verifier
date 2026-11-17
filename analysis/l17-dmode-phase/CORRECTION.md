@@ -1,7 +1,8 @@
 # L17 D-mode: corrected order of the exact 11 return kernels
 
-Status: **phase mismatch in earlier proposed factorization (R); corrected
-candidate ordering (M), submitted to Lean for proof (P only after CI).**
+Status: **the earlier factorization is retired; the corrected ordering
+is proved in L17z and its K22/J1K dispatch in L17aa.** Their builds passed
+on main. L17ab composes those results with the remaining outer layers.
 
 ## Correction to `analysis/l17-a-stream/DERIVATION.md`
 
@@ -74,6 +75,7 @@ by the Lean build.
 3. `a101_11_odd_dmode_exact`: `40*h+28` steps to the J1K-entry
    residual D head (with arbitrary exterior L,R).
 
-**Limit:** These do not yet prove a blank-left C section return or any
-claim concerning halting/non-halting. After they compile, compose
-them with K22 or J1K and the remaining C01/D10 bottom layers.
+**Limit:** L17z proves the phase transport, and L17aa the local K22/J1K
+dispatch. Complete homogeneous11 blank-left C returns are in L17ab,
+using the remaining C01/D10 outer layers. General mixed return and
+halting/non-halting remain open.

@@ -102,3 +102,7 @@ jobs:
           python3 analysis/l17-b-dispatch/verify_package.py
           python3 -m unittest discover -s analysis/l17-b-dispatch -p 'test_*.py' -v
           python3 analysis/l17-b-dispatch/mutations.py
+      - name: L17 homogeneous11 returns against fresh literal execution
+        run: |
+          python3 -m unittest discover -s analysis/l17-11-returns -p 'test_*.py' -v
+          python3 analysis/l17-11-returns/check_returns.py --cpp analysis/l17-hardening/comparator-O2 --no-save
