@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "endpoints": 672,
+  "full_traces": 661,
+  "scope": "Separate literal and declarative paths, same author."
+}

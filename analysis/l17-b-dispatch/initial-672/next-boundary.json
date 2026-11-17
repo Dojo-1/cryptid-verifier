@@ -1,0 +1,44 @@
+{
+  "source": {
+    "p": 6,
+    "c": 7,
+    "s": 2,
+    "r": 2,
+    "m": 3,
+    "v": "1101001101"
+  },
+  "endpoint": {
+    "q": 0,
+    "head": 8,
+    "steps": 52,
+    "ones": [
+      -36,
+      -34,
+      -32,
+      -30,
+      -28,
+      -26,
+      -23,
+      -21,
+      -19,
+      -17,
+      -15,
+      -13,
+      -11,
+      -8,
+      -5,
+      -3,
+      -1,
+      2,
+      4,
+      6,
+      10,
+      11,
+      13
+    ],
+    "read_min": -6,
+    "read_max": 7
+  },
+  "scope": "Generic guarded source, not asserted blank-reachable.",
+  "status": "Typed A exit; unrestricted return remains open."
+}

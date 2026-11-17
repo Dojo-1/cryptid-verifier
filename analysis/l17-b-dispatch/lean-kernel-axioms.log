@@ -1,0 +1,7 @@
+info: CryptidLink/L17l.lean:79:0: 'CryptidLink.L17.short_C2B_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:80:0: 'CryptidLink.L17.short_C5B_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:81:0: 'CryptidLink.L17.short_B1100_n5_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:82:0: 'CryptidLink.L17.short_B1100_n6_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:83:0: 'CryptidLink.L17.short_B1100_n7_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:84:0: 'CryptidLink.L17.short_B1101_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CryptidLink/L17l.lean:85:0: 'CryptidLink.L17.short_gap_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]

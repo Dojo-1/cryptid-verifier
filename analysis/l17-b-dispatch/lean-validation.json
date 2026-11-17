@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "command": "python3 scripts/verify.py --project link",
+  "exit_code": 0,
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "upstream_commit": "a0c1f56af53a76e985a656032b48015f7e48921b",
+  "base_commit": "0dce7aa662c1768a0772aeabb75ca344971608d5",
+  "build_log_sha256": "5f2d611b34ea6e448d26fefc4a43b3ce21e7a7499845800d3faa88fe4600f6d7",
+  "new_source_sha256": "4ac8fe02e5c23129da6351bb4d9e5bd422fe57fe53e997f3df63fe9481752094",
+  "new_theorem_axiom_records": [
+    "info: CryptidLink/L17l.lean:79:0: 'CryptidLink.L17.short_C2B_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:80:0: 'CryptidLink.L17.short_C5B_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:81:0: 'CryptidLink.L17.short_B1100_n5_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:82:0: 'CryptidLink.L17.short_B1100_n6_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:83:0: 'CryptidLink.L17.short_B1100_n7_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:84:0: 'CryptidLink.L17.short_B1101_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17l.lean:85:0: 'CryptidLink.L17.short_gap_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "trust_audit": "trust audit OK: 34 Lean files scanned, 80 inventoried theorems covered, standard axioms only"
+}

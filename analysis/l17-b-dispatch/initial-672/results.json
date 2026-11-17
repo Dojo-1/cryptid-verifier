@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "cases": 672,
+  "full_trace_comparisons": 661,
+  "by_kind": {
+    "B_1100_large": 36,
+    "B_1100_n5": 24,
+    "B_1100_n6": 24,
+    "B_1100_n7": 24,
+    "B_1101": 36,
+    "B_111": 36,
+    "B_zero": 36,
+    "C2_1100_large": 36,
+    "C2_1100_n5": 24,
+    "C2_1100_n6": 24,
+    "C2_1100_n7": 24,
+    "C2_1101": 36,
+    "C2_111": 36,
+    "C2_zero": 36,
+    "C5_1100_large": 36,
+    "C5_1101": 36,
+    "C5_111": 36,
+    "C5_zero": 36,
+    "kernel:B1100_n5": 16,
+    "kernel:B1100_n6": 16,
+    "kernel:B1100_n7": 16,
+    "kernel:B1101": 16,
+    "kernel:C2B": 16,
+    "kernel:C5B": 16
+  },
+  "maximum_steps": 1468,
+  "raw_metadata": {
+    "requests": 672,
+    "defined_transitions": 152956,
+    "executed_defined_transitions": 152956,
+    "cache_reused": false,
+    "request_sha256": "9d068b94ffe928a7626cc259a0e19284925eb81d9169d17ce142d03b66f8ca56",
+    "response_sha256": "5adb281c5783dcbfd3c646f1fb1837a9110e73bcff979074b7b3ad70b52eb97e",
+    "binary_sha256": "62f30bcf2bcccab081d5c77b80afe34d8a231ab14f65f8ea246cfdffbf1c9315",
+    "stderr": ""
+  },
+  "scope": "Same-author paths; compiler modes and raw implementations are controls, not external replication."
+}
