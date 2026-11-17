@@ -78,6 +78,53 @@ theorem d6_exact (L R : ListBlank (Fin 2)) :
       (Cfg.headLeft D L (ListBlank.append [1, 0, 1, 0, 1, 0] R)) := by
   l17_exact_steps
 
+/-! ## Guarded parametric scanner moves
+
+These are not tests at a finite list of widths. The power parameter is
+arbitrary; the exact conclusion follows from the local machine kernel
+and a framed tape-word identity.
+-/
+
+/-- For every n, token 01 extends the last 10 run by one pair in exactly 2 steps. -/
+theorem a01_run_exact (n : ℕ) (L R : ListBlank (Fin 2)) :
+    ReachesIn target 2
+      (Cfg.headRight A
+        (ListBlank.append (([0, 1] : List (Fin 2)) ^ n) L)
+        (ListBlank.append [0, 1] R))
+      (Cfg.headRight A
+        (ListBlank.append (([0, 1] : List (Fin 2)) ^ (n + 1)) L)
+        R) := by
+  rw [ListBlank.append_pow_succ ([0, 1] : List (Fin 2)) n L]
+  exact a01_exact _ _
+
+/-- For every n, token 101 splits a final run of width n+2 into widths n and 3,
+    inserting a genuine zero gap, in exactly 13 steps. The left context is arbitrary. -/
+theorem a101_split_run_exact (n : ℕ) (L R : ListBlank (Fin 2)) :
+    ReachesIn target 13
+      (Cfg.headRight A
+        (ListBlank.append (([0, 1] : List (Fin 2)) ^ (n + 2)) L)
+        (ListBlank.append [1, 0, 1] R))
+      (Cfg.headRight A
+        (ListBlank.append [0, 1, 0, 1, 0, 1, 0]
+          (ListBlank.append (([0, 1] : List (Fin 2)) ^ n) L))
+        R) := by
+  rw [show n + 2 = 2 + n by omega,
+    ListBlank.append_pow_add ([0, 1] : List (Fin 2)) 2 n L]
+  exact a101_exact _ _
+
+/-- The formerly typed B1101 exit actually returns to C if followed by 00.
+    This is the exact *local* 24-step B-to-C transfer, not yet a global C-section
+    return. The zero immediately left of the exit C remains explicit in L. -/
+theorem b110100_local_exact (L R : ListBlank (Fin 2)) :
+    ReachesIn target 24
+      (Cfg.headRight B (ListBlank.append [1, 0, 1, 0] L)
+        (ListBlank.append [1, 1, 0, 1, 0, 0] R))
+      (Cfg.headLeft C (ListBlank.append [0] L)
+        (ListBlank.append [1, 1, 1, 1, 1, 1, 1, 1, 1] R)) := by
+  have h1 := short_B1101_exact L (ListBlank.append [0, 0] R)
+  have h2 := a00l_exact (ListBlank.append [0] L) R
+  exact h1.trans h2
+
 end CryptidLink.L17
 
 #print axioms CryptidLink.L17.a01_exact
@@ -87,3 +134,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.cpop_exact
 #print axioms CryptidLink.L17.c6_exact
 #print axioms CryptidLink.L17.d6_exact
+#print axioms CryptidLink.L17.a01_run_exact
+#print axioms CryptidLink.L17.a101_split_run_exact
+#print axioms CryptidLink.L17.b110100_local_exact
