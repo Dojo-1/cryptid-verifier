@@ -146,6 +146,8 @@ C(53262756,1) boundary through contextual rules and an explicit finite orbit pro
 | `raw_not_injective`, `no_affine_rank` (`L17k`) | The raw machine is not reversible; no per-mode integer affine score in (k,m,l,s), independent of N, decreases on every internal row. Other ranking classes remain possible. |
 | Six `short_*_exact` kernels (`L17l`) | Exact raw-machine endpoints and clocks 38, 62, 75, 95, 65, 14, with arbitrary outside tape; finite kernels for the short-buffer B dispatcher. |
 | `short_gap_rotation` (`L17l`) | `(01)^n00 = 0(10)^n0` with arbitrary context, identifying the apparent mixed gap as a five-run stack. |
+| Homogeneous `00`/`100` returns (`L17t/u/v/x`) | Five complete three-run A-to-C branches, with exact clocks and blank-left endpoints, for p≥6,c≥7. |
+| `a11_even_blankleft_exact`, `a11_odd_blankleft_exact`, `a11_homogeneous_blankleft_exact` (`L17ab`) | The remaining two `11` branches, including one rule for every homogeneous `101` count, with canonical full words and exact clocks. |
 
 Generic pushes `(a,c) = (37,7)` and `(46,7)` reach uncovered JOIN guards. Neither
 is claimed reachable from blank, and neither proves that eventual collapse is false.
@@ -162,6 +164,14 @@ checks; `L17l` formalizes its six finite kernels and gap identity. The earlier
 [mixed-return](analysis/l17-mixed-return/README.md) packages are also included,
 with integrity checks and literal replays in CI. These generic rules do not
 extend the certified blank-orbit endpoint.
+
+The [homogeneous three-run table](analysis/l17-11-returns/README.md) is now
+fully covered by seven branch theorems: any finite count of consecutive
+`101` tokens followed by `00`, `100` or `11` has the stated C return for
+p≥6,c≥7. This domain keeps all three left runs and the arbitrary right
+context. Mixed `01`/`101` scanning and the five-run return problem remain
+open. Historical handoff notes retain their earlier status; the theorem
+files and this table give the current formal coverage.
 
 For Antihydra, A.4 and A.9, these machine-level equivalences are general theorems;
 their validity is not limited to a simulated prefix. They use the authors' upstream

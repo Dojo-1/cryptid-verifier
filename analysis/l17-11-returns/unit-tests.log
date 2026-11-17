@@ -1,0 +1,16 @@
+test_absolute_translation (test_returns.ReturnTests.test_absolute_translation) ... ok
+test_context_only_begins_after_terminal (test_returns.ReturnTests.test_context_only_begins_after_terminal) ... ok
+test_every_guarded_endpoint_and_read_window (test_returns.ReturnTests.test_every_guarded_endpoint_and_read_window) ... ok
+test_helper_encoder_rejects_unknown_mode_or_bad_sweep (test_returns.ReturnTests.test_helper_encoder_rejects_unknown_mode_or_bad_sweep) ... ok
+test_middle_zero_pairs_still_consumes_separator (test_returns.ReturnTests.test_middle_zero_pairs_still_consumes_separator) ... ok
+test_old_D10_D6_order_has_wrong_phase (test_returns.ReturnTests.test_old_D10_D6_order_has_wrong_phase) ... ok
+test_one_repetition_clock_and_full_word (test_returns.ReturnTests.test_one_repetition_clock_and_full_word) ... ok
+test_outer_zero_sweep_still_runs_k22 (test_returns.ReturnTests.test_outer_zero_sweep_still_runs_k22) ... ok
+test_return_encoder_rejects_inputs_outside_theorem_domain (test_returns.ReturnTests.test_return_encoder_rejects_inputs_outside_theorem_domain) ... ok
+test_undefined_transition_counts_zero (test_returns.ReturnTests.test_undefined_transition_counts_zero) ... ok
+test_zero_repetition_clock_and_full_word (test_returns.ReturnTests.test_zero_repetition_clock_and_full_word) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.206s
+
+OK

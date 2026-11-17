@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "base_commit": "1297fcd6ebb64697350cd514c5bd0d2d1c5a873b",
+  "command": "python3 scripts/verify.py --project link",
+  "exit_code": 0,
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "proof_sha256": "6c91becc3da6b620fc7abe75c6aaad317dc853e6610c7379dd1d25e5e4b76893",
+  "build_log_sha256": "9c464d020b5b20fcd562ce34963ec41422445ded6584d8b115bd41f01c376b79",
+  "audit": "trust audit OK: 50 Lean files scanned, 133 inventoried theorems covered, standard axioms only",
+  "new_axiom_records": [
+    "info: CryptidLink/L17ab.lean:375:0: 'CryptidLink.L17.c01_middle_headRight_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17ab.lean:376:0: 'CryptidLink.L17.k22_c01_last_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17ab.lean:377:0: 'CryptidLink.L17.a11_even_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17ab.lean:378:0: 'CryptidLink.L17.a11_odd_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "info: CryptidLink/L17ab.lean:379:0: 'CryptidLink.L17.a11_homogeneous_blankleft_exact' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "cpp_executed_steps": 466632,
+  "environment": "Linux-6.18.57-x86_64-with-glibc2.41"
+}

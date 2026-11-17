@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "seed": 17112029,
+  "cases": 1072,
+  "by_kind": {
+    "even": 464,
+    "odd": 464,
+    "middle": 72,
+    "outer22": 72
+  },
+  "full_traces": 1015,
+  "maximum_steps": 5478,
+  "mutations": 12,
+  "mutation_controls": [
+    {
+      "name": "even_missing_D10_clock",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "odd_extra_D10_clock",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "even_head_one_pair_short",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "odd_consumes_nonexistent_separator",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "middle_forgets_separator_clock",
+      "killed": true,
+      "witness": {
+        "n": 0,
+        "pad": "10100110001000111",
+        "suffix": "10100110101000010"
+      }
+    },
+    {
+      "name": "middle_forgets_separator_head",
+      "killed": true,
+      "witness": {
+        "n": 0,
+        "pad": "10100110001000111",
+        "suffix": "10100110101000010"
+      }
+    },
+    {
+      "name": "outer22_uses_middle_clock",
+      "killed": true,
+      "witness": {
+        "n": 0,
+        "pad": "10111110110011110",
+        "suffix": "11010110110101111"
+      }
+    },
+    {
+      "name": "outer22_uses_middle_head",
+      "killed": true,
+      "witness": {
+        "n": 0,
+        "pad": "10111110110011110",
+        "suffix": "11010110110101111"
+      }
+    },
+    {
+      "name": "even_drops_internal_zero",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "odd_drops_zero_before_context",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": "001101"
+      }
+    },
+    {
+      "name": "even_period_two_instead_of_three",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 1,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "odd_remains_D",
+      "killed": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "h": 0,
+        "suffix": ""
+      }
+    }
+  ],
+  "raw": {
+    "requests": 1072,
+    "defined_transitions": 414858,
+    "executed_defined_transitions": 414858,
+    "cache_reused": false,
+    "request_sha256": "0b919c51e088a5b9460eb48012c1715a7f4eea6e091d49d4ddbdf864db12da5f",
+    "response_sha256": "4cceff514c26b359608916e602bdd2e2954d411b769ec1395c36efb3e4b682f6",
+    "binary_sha256": "62f30bcf2bcccab081d5c77b80afe34d8a231ab14f65f8ea246cfdffbf1c9315",
+    "stderr": ""
+  },
+  "cases_sha256": "f5419d0a8bcc2d086e7ae14bec62d898ce81febabd011341f01aef665cad10e8",
+  "source_sha256": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+  "scope": "Bounded same-author cross-checks; the all-parameter proof is L17ab.lean."
+}
