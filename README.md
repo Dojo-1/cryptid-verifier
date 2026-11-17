@@ -174,7 +174,7 @@ permitted standard axioms. These are distinct checks with the boundaries describ
 |---|---|
 | `exists_even_after`, `exists_odd_after` (core, `AntihydraOuroboros/Escape.lean`) | within b + 4 steps every orbit shows both an even and an odd value (it never sits on −3 or −4) |
 | `S_bounds` (core, `Escape.lean`) | 3(3ⁿ − 2ⁿ) ≤ Sₙ ≤ 4(3ⁿ − 2ⁿ) |
-| `antihydra_floor` | **bₙ = ⌊ξ·(3/2)ⁿ⌋ − 3 for every n**, with ξ = 4 + Σₖ qₖ(2/3)ᵏ/3, qₖ = 4 − (bₖ mod 2) (ξ ≈ 7.86417726205911897…) |
+| `antihydra_floor` | **bₙ = ⌊ξ·(3/2)ⁿ⌋ − 3 for every n**, with ξ = 4 + Σₖ qₖ(2/3)ᵏ/3, qₖ = 4 − (bₖ mod 2) (ξ ≈ 7.86417726205661897…) |
 | `antihydra_parity` | Antihydra's parities are those of ⌊ξ·(3/2)ⁿ⌋ − 3: its halting question is a question about the integer parts of ξ·(3/2)ⁿ (Mahler 3/2 setting) |
 | `ξ_floor` | ⌊ξ⌋ = 7 |
 
