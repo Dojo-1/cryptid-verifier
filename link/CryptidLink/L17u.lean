@@ -115,7 +115,7 @@ theorem a00_even_blankleft_exact (u v h : ℕ) (R : ListBlank (Fin 2)) :
         (ListBlank.append returnKtail Rlast))).symm
 
   rw [he] at h123
-  convert h123 using 1 <;> omega
+  convert h123 using 1 <;> (first | rfl | omega | (simp only [a00_even_source, ListBlank.append_append]; rfl))
 
 end CryptidLink.L17
 
