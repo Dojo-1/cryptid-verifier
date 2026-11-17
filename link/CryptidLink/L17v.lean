@@ -39,7 +39,7 @@ def a100_odd_source (u v h : ℕ) (R : ListBlank (Fin 2)) :
       (ListBlank.append [1, 0, 0] R))
 
 /-- Complete physical C return tape, with the periodic suffix exactly
-    010 (111010)^h 1^9 R after the two K41 residual words. -/
+    010 (111010)^h 1^7 R after the two K41 residual words. -/
 def a100_odd_result (u v h : ℕ) (R : ListBlank (Fin 2)) :
     ListBlank (Fin 2) :=
   ListBlank.append [1]
@@ -55,7 +55,7 @@ def a100_odd_result (u v h : ℕ) (R : ListBlank (Fin 2)) :
     C with a genuinely blank left tape in exactly 32h+2u+2v+124 steps.
     This is the odd-100 guarded homogeneous return family. -/
 theorem a100_odd_blankleft_exact (u v h : ℕ) (R : ListBlank (Fin 2)) :
-    ReachesIn target (32 * h + 1 * u + 2 * v + 124)
+    ReachesIn target (32 * h + 2 * u + 2 * v + 124)
       (a100_odd_source u v h R)
       (Cfg.headRight C default (a100_odd_result u v h R)) := by
   let Lp : ListBlank (Fin 2) :=
