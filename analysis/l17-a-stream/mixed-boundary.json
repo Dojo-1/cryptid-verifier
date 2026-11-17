@@ -1,0 +1,66 @@
+{
+  "initial_runs": [
+    6,
+    7,
+    3
+  ],
+  "tokens": [
+    "01",
+    "101",
+    "01",
+    "101"
+  ],
+  "scanned_runs": [
+    6,
+    7,
+    2,
+    2,
+    3
+  ],
+  "scan_time": 30,
+  "scan_shift": 10,
+  "after_A00L": {
+    "q": 2,
+    "head": 2,
+    "steps": 40,
+    "ones": [
+      -34,
+      -32,
+      -30,
+      -28,
+      -26,
+      -24,
+      -21,
+      -19,
+      -17,
+      -15,
+      -13,
+      -11,
+      -9,
+      -6,
+      -4,
+      -1,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      17
+    ]
+  },
+  "C_window": "001010",
+  "literal_C_section_return": {
+    "steps": 166,
+    "head": -34,
+    "word": "1111110101010101010101010101010101010101010111001101",
+    "reason": "C-section"
+  },
+  "scope": "Generic mixed-token source,not a blank-reachable state. The homogeneous return rules do not cover its width2 runs. The166-step result is a finite literal check,not a general return rule."
+}

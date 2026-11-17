@@ -1,0 +1,43 @@
+{
+  "source": {
+    "p": 6,
+    "c": 7,
+    "s": 2,
+    "r": 2,
+    "m": 3,
+    "v": "001101"
+  },
+  "checkpoint": {
+    "q": 1,
+    "head": 4,
+    "steps": 38,
+    "ones": [
+      -36,
+      -34,
+      -32,
+      -30,
+      -28,
+      -26,
+      -23,
+      -21,
+      -19,
+      -17,
+      -15,
+      -13,
+      -11,
+      -8,
+      -5,
+      -3,
+      -1,
+      1,
+      3,
+      6,
+      7,
+      9
+    ],
+    "read_min": -6,
+    "read_max": 3
+  },
+  "reason": "The full C2_s2 table needs six leading ones. After three are consumed the next B read is arbitrary context; v has not been read.",
+  "scope": "Generic source,not claimed blank-reachable. Uncovered by this guarded table,not claimed to be a nonreturning state."
+}

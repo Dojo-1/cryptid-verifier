@@ -1,0 +1,12 @@
+{
+ "date":"2026-11-17",
+ "scope":"Additive continuation of the mixed001010 C boundary. Derive framed local rows for widths2-5,then compose guarded full returns. No edits to old packages or Lean.",
+ "source_archive_sha256":"28e2a3d97e053988c6883f818b044f37fb2bf8c43877ed8765f82f21534174e9",
+ "object":"C head at the final0 of a left10 run,following a zero gap,with a known right prefix. Distinguish local exits from blank-left C-sections.",
+ "budgets":{"seed":17112027,"maximum_local_steps":500,"maximum_local_branches":256,"maximum_endpoint_checks":1200,"maximum_raw_steps_per_probe":200000,"maximum_fresh_cpp_transitions":20000000},
+ "prediction":"Finite paths may give width2-5 rows under explicit right-prefix and left-context guards. A universal mixed return is not assumed.",
+ "controls":["Frozen C++ literal machine","Separate frozen Python OPS table","Full tape/head/time/read comparisons","Arbitrary contexts outside local windows","In-memory mutation checks","Compiler/translation controls"],
+ "kill":"A read outside the claimed window,wrong endpoint,clock,context or parameter guard blocks a row. Preserve failures and narrower domains.",
+ "stop":"At an unsupported left/right prefix or the recorded cap. No universal mixed-stack or blank-orbit conclusion from a finite grid.",
+ "promotion":"All-parameter mathematical identities require fixed framed paths and induction/composition. Actual Lean proof/build remains separate."
+}

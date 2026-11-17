@@ -1,0 +1,279 @@
+{
+  "task_id": "l17-mixed-return-2026-11-17",
+  "claim": {
+    "text": "Named mixed1101 return plus13 guarded four-run returns and9 framed transfers.",
+    "scope": "Shared table p>=6,c>=7,final widths2-5,explicit3/6/9-one buffers. Named lemma a>=5,c>=1. No arbitrary mixed-stack or blank-orbit theorem.",
+    "status_before": "H",
+    "assumptions": [
+      "Exact supplied literal L17 table.",
+      "Imported contextual sweeps and1101/scanner semantics are stated explicitly."
+    ],
+    "forbidden_promotions": [
+      "New Lean proof or build",
+      "Global mixed-stack termination",
+      "Blank reachability or stack bound",
+      "Halting/nonhalting",
+      "Necessary or optimal guard claims",
+      "External independent authorship"
+    ]
+  },
+  "specification": {
+    "intended_object": "Typed finite framed machine paths and exact blank-left section returns.",
+    "invariants": [
+      "Preserve full tapes,interior gaps,head,phase,clock and context.",
+      "A local exit is not automatically a blank-left C-section.",
+      "Right ones are explicit premises,never guessed."
+    ],
+    "known_answer_cases": [
+      "C2 reaches B4 in38 steps.",
+      "The old166-step example extends to2p+4c+126.",
+      "Original C composition takes4a+6c+152 with shift-2.",
+      "F1 has zero defined-step cost."
+    ]
+  },
+  "implementation": {
+    "artifact": "claims.json,kernels.json,campaign.py,verify.py,next_boundary.py",
+    "commit": "Additive artifact;earlier payloads unchanged;no git or Lean mutation.",
+    "environment": "Linux-6.18.57-x86_64-with-glibc2.41;Python 3.12.14;g++14.2.0",
+    "live_entrypoint": "README quick checks;campaign.py,controls.py,named_corners.py for fresh literal replay.",
+    "representation": "Framed finite binary words,exact counter expressions,sparse raw tapes and typed A/B/C/D endpoints."
+  },
+  "metric": {
+    "name": "Exact whole endpoint and read trace",
+    "type": "typed_tuple",
+    "units": "Cells,states,defined transitions,guarded parameters and check counts",
+    "direction": "two_sided",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Whole-word context framing",
+      "Head translations",
+      "Interior zero retention",
+      "O2/O0/UBSan",
+      "Clock/state/right-prefix negative controls"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "846 main endpoints and16 supplementary named lower-guard cases in C++ and Python."
+    ],
+    "structural": [
+      "16 unit methods;type/partition checks;huge exact arithmetic.",
+      "Finite read triples and13 composition routes."
+    ],
+    "property_based": [
+      "512 four-run returns,150 transfers,144 arbitrary-context kernel instances,40 named A/C compositions in the main846."
+    ],
+    "metamorphic": [
+      "42 identical translated controls across3 build modes."
+    ],
+    "fuzzing": [
+      "20 planted in-memory errors detected;no on-disk source mutation."
+    ],
+    "historical": [
+      "The saved mixed166-step A and222-step original C cases.",
+      "Frozen prior archive and dependencies,old1101 entry and halt convention."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Frozen literal C++ machine",
+      "Separate frozen Python OPS table",
+      "Declarative result critic"
+    ],
+    "negative_controls": [
+      "Wrong B/C exit mode",
+      "Missing bounce or D sweep time",
+      "Dropped interior gaps,pairs or ones",
+      "Wrong empty-run shift",
+      "Constant166 extrapolation",
+      "Weakened left context and undefined-action clock"
+    ],
+    "compute_parity": "Same846 inputs in both raw paths,840 full traces;16 extra corners also fully traced. Same42 translated inputs in all3 builds.185089 fresh C++ transitions total.",
+    "parameter_parity": "Identical raw tapes and suffixes between endpoint paths;8 outside contexts per18 kernel templates.",
+    "sampling_parity": "Seed17112027;main1200-case cap respected. Named low-guard16 cases are supplementary,not folded into846.",
+    "data_access_parity": "Interpreters receive actual bit tapes,not expected endpoints or accelerated rules."
+  },
+  "preregistration": {
+    "prediction": "Widths2-5 may give framed local rows under explicit prefix guards;universal mixed return not assumed.",
+    "primary_metric": "Whole tape,state,head,clock and read-window equality.",
+    "uncertainty_method": "Conditional mathematical derivation and bounded execution checks,same-author correlation disclosed.",
+    "kill_condition": "Any endpoint,context,clock or window mismatch blocks promotion.",
+    "stop_condition": "Stop at unsupported3-one B-mode or recorded caps:1200 endpoints,200000 steps/probe,20M fresh C++ transitions.",
+    "promotion_rule": "Universal identities require framed finite paths and induction/composition. Actual Lean build separately."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Literal supplied machine table",
+      "Frozen contextual sweeps and prior1101/scanner derivation",
+      "New fixed paths and full composition table"
+    ],
+    "execution_records": [
+      "results.json",
+      "verification.json",
+      "controls-results.json",
+      "named-corner-results.json",
+      "mutation-results.json",
+      "tests-final.log",
+      "next-boundary.json",
+      "raw-budget.jsonl"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "C++ literal machine",
+        "origin": "Separate frozen implementation path,same author",
+        "artifact": "../l17-hardening/raw_comparator.cpp"
+      },
+      {
+        "name": "Python literal table",
+        "origin": "Separate frozen table and execution path,same author",
+        "artifact": "raw.py"
+      },
+      {
+        "name": "Declaration critic",
+        "origin": "Consumes schema,not accelerated return code;same author",
+        "artifact": "verify.py"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "New fixed paths -> kernels.json and framed read argument.",
+      "13 full returns -> transfer compositions and complete words.",
+      "Named mixed lemma -> C2_s2 route plus old entry/scanner.",
+      "Buffer remainder -> next-boundary.json.",
+      "Measured agreement -> saved raw data and separate critic."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "representation",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "representation",
+        "to": "implementation",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Machine,tape,phase,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Exact transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;testing does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and unrestricted mixed return"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "846 main plus16 supplementary endpoints agree,840+16 full traces,42 compiler/translation controls,16 tests and20 negative controls pass.",
+    "effect_size": "Exact typed agreement and conditional identities;no statistical or speed claim.",
+    "uncertainty": "No independent external author,new Lean theorem,global return,blank reachability or halting decision.",
+    "status_after": "A",
+    "retired_claims": [
+      "A local C exit implies a blank-left section.",
+      "A right buffer may be lengthened without checking its actual bits.",
+      "The fixed166 count holds for all parameters."
+    ],
+    "active_remainder": [
+      "Formalize finite paths,framed transfers and named lemma in Lean.",
+      "Dispatch the3-one B exit by its actual next bits.",
+      "Longer mixed stacks and insufficient-buffer cases.",
+      "Blank-orbit reachability by a verified forward chain."
+    ]
+  }
+}

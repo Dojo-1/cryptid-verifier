@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "main_cases": 846,
+  "supplementary_cases": 16,
+  "total_endpoints": 862,
+  "main_full_traces": 840,
+  "supplementary_full_traces": 16,
+  "claims_sha256": "6c89f115323c8c638546cc7201f9ec33a3dc455951c9f234601212fb39abc57d",
+  "scope": "Separate literal and declarative code paths,same author;not an external reproduction or Lean build."
+}

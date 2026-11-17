@@ -1,0 +1,20 @@
+test_C6_induction (test_a_stream.StreamTests.test_C6_induction) ... ok
+test_D6_induction (test_a_stream.StreamTests.test_D6_induction) ... ok
+test_bad_tokens_and_guards (test_a_stream.StreamTests.test_bad_tokens_and_guards) ... ok
+test_decoder_exhaustive_finite_words (test_a_stream.StreamTests.test_decoder_exhaustive_finite_words) ... ok
+test_endpoints_small_guard_corners (test_a_stream.StreamTests.test_endpoints_small_guard_corners) ... ok
+test_framed_periodic_kernels (test_a_stream.StreamTests.test_framed_periodic_kernels) ... ok
+test_general_stack_normal_form (test_a_stream.StreamTests.test_general_stack_normal_form) ... ok
+test_halt_convention (test_a_stream.StreamTests.test_halt_convention) ... ok
+test_mixed_actor_against_literal_rewriting (test_a_stream.StreamTests.test_mixed_actor_against_literal_rewriting) ... ok
+test_symbolic_times_and_suffix_positions_at_huge_parameters (test_a_stream.StreamTests.test_symbolic_times_and_suffix_positions_at_huge_parameters) ... ok
+test_token_order_matters (test_a_stream.StreamTests.test_token_order_matters) ... ok
+test_transition_ledger (test_a_stream.StreamTests.test_transition_ledger) ... ok
+test_uniform_stack_normal_form (test_a_stream.StreamTests.test_uniform_stack_normal_form) ... ok
+test_width2_boundary_stays_explicit (test_a_stream.StreamTests.test_width2_boundary_stays_explicit) ... ok
+test_zero_and_exact_budget (test_a_stream.StreamTests.test_zero_and_exact_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.015s
+
+OK

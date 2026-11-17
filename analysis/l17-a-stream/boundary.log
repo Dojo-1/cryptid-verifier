@@ -1,0 +1,30 @@
+{
+  "initial_runs": [
+    6,
+    7,
+    3
+  ],
+  "tokens": [
+    "01",
+    "101",
+    "01",
+    "101"
+  ],
+  "scanned_runs": [
+    6,
+    7,
+    2,
+    2,
+    3
+  ],
+  "scan_time": 30,
+  "scan_shift": 10,
+  "C_window": "001010",
+  "literal_C_section_return": {
+    "steps": 166,
+    "head": -34,
+    "word": "1111110101010101010101010101010101010101010111001101",
+    "reason": "C-section"
+  },
+  "scope": "Generic mixed-token source,not a blank-reachable state. The homogeneous return rules do not cover its width2 runs. The166-step result is a finite literal check,not a general return rule."
+}

@@ -1,0 +1,436 @@
+[
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_base",
+    "p": {
+      "p": 6,
+      "c": 7
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_even_positive",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "zero_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "hundred_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_even",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 0
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 1
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 2
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 3
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 4
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 5
+    },
+    "passed": true
+  },
+  {
+    "rule": "eleven_odd",
+    "p": {
+      "p": 6,
+      "c": 7,
+      "h": 6
+    },
+    "passed": true
+  }
+]
