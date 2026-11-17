@@ -145,6 +145,8 @@
         "CryptidLink.L17.internal_step_injective",
         "CryptidLink.L17.internal_terminates",
         "CryptidLink.L17.internal_unique_root",
+        "CryptidLink.L17.k41_c01_last_exact",
+        "CryptidLink.L17.k41_c01_middle_exact",
         "CryptidLink.L17.k41short_exact",
         "CryptidLink.L17.nest",
         "CryptidLink.L17.no_affine_rank",
