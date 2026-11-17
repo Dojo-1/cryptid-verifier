@@ -1,0 +1,12 @@
+{
+ "date":"2026-11-17",
+ "scope":"Additive continuation of the exact 1101 A exit. Preserve all prior payloads. Derive a scanner on01/101 and guarded returns at00/100/11; expose unhandled terminal stacks.",
+ "source_archive_sha256":"1e6b40a347de6acc0e07c3ed123e4dd88bd9aebcb4fbbec54c3e9c27928d79e7",
+ "machine":"1RB0RE_1LC0RA_0LD1LB_1LA1LE_0LB0LF_1LD---",
+ "intended_invariants":["All two-sided words and head coordinates are retained, including every zero gap.","A01 appends one10 pair in2 defined steps; A101 has a13-step framed kernel and appends a zero gap.","The scanner stops on00,100,11 and never assumes the rest of the right context is blank.","Generic stack growth is distinct from blank-orbit reachability or a global stack bound."],
+ "budgets":{"seed":17112026,"maximum_endpoint_probes":1200,"maximum_steps_per_probe":200000,"total_fresh_cpp_transitions":20000000,"maximum_scanner_tokens":96,"exploratory_return_wall_seconds":30,"exploratory_return_steps_per_input":20000},
+ "prediction":"A prefix decoder of tokens01/101 can be implemented as a regular transduction with an unbounded left counter stack; fixed finite kernels suffice for each token. A uniform C-return for all resulting stacks is not assumed.",
+ "kill":"Any literal endpoint,time,head,window,context,or grammar mismatch blocks promotion; preserve the failed hypothesis and input.",
+ "stop":"Stop on the first unsupported terminal return or registered resource cap. No blank-orbit extension, repository mutation, Lean build or nonhalting claim.",
+ "promotion":"Universal identities require fixed paths and induction/composition. Sampling cross-checks code only. New statements remain unformalized until Claude or a later actual Lean build proves them."
+}

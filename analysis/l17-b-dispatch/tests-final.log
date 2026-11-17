@@ -1,0 +1,21 @@
+test_1101_is_an_A_exit_not_a_section_return (test_b_dispatch.BDispatchTests.test_1101_is_an_A_exit_not_a_section_return) ... ok
+test_confirmatory_budget_includes_failed_attempt (test_b_dispatch.BDispatchTests.test_confirmatory_budget_includes_failed_attempt) ... ok
+test_critic_replays_saved_results (test_b_dispatch.BDispatchTests.test_critic_replays_saved_results) ... ok
+test_fixed_1101_kernel_exits_at_context (test_b_dispatch.BDispatchTests.test_fixed_1101_kernel_exits_at_context) ... ok
+test_former_A_checkpoint_has_a_166_step_return (test_b_dispatch.BDispatchTests.test_former_A_checkpoint_has_a_166_step_return) ... ok
+test_guard_corners_against_literal_machine (test_b_dispatch.BDispatchTests.test_guard_corners_against_literal_machine) ... ok
+test_guards_reject_unsupported_sources (test_b_dispatch.BDispatchTests.test_guards_reject_unsupported_sources) ... ok
+test_huge_exact_parameters_without_tape_expansion (test_b_dispatch.BDispatchTests.test_huge_exact_parameters_without_tape_expansion) ... ok
+test_local_kernel_contexts_are_not_read (test_b_dispatch.BDispatchTests.test_local_kernel_contexts_are_not_read) ... ok
+test_mixed_gap_is_a_five_run_stack (test_b_dispatch.BDispatchTests.test_mixed_gap_is_a_five_run_stack) ... ok
+test_prefix_partition_exhaustive_finite_words (test_b_dispatch.BDispatchTests.test_prefix_partition_exhaustive_finite_words) ... ok
+test_reject_nonbinary_dispatch_input (test_b_dispatch.BDispatchTests.test_reject_nonbinary_dispatch_input) ... ok
+test_saved_boundary_returns_in_108_steps (test_b_dispatch.BDispatchTests.test_saved_boundary_returns_in_108_steps) ... ok
+test_short_1100_partition_and_join_to_large_rule (test_b_dispatch.BDispatchTests.test_short_1100_partition_and_join_to_large_rule) ... ok
+test_short_kernel_exit_cell_is_unread (test_b_dispatch.BDispatchTests.test_short_kernel_exit_cell_is_unread) ... ok
+test_undefined_transition_has_zero_cost (test_b_dispatch.BDispatchTests.test_undefined_transition_has_zero_cost) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.739s
+
+OK

@@ -87,3 +87,18 @@ jobs:
         run: python3 -m unittest discover -s analysis/leads -p 'test_l17_ctx.py' -v
       - name: L17 opposite-stream frame checks (GPT contribution)
         run: python3 -m unittest discover -s analysis/l17-frames -p 'test_frames.py' -v
+      - name: L17 A-stream package and literal replay
+        run: |
+          python3 analysis/l17-a-stream/verify_package.py
+          python3 -m unittest discover -s analysis/l17-a-stream -p 'test_*.py' -v
+          python3 analysis/l17-a-stream/verify.py
+      - name: L17 mixed-return package and literal replay
+        run: |
+          python3 analysis/l17-mixed-return/verify_package.py
+          python3 -m unittest discover -s analysis/l17-mixed-return -p 'test_*.py' -v
+          python3 analysis/l17-mixed-return/verify.py
+      - name: L17 short-buffer dispatcher and fault controls
+        run: |
+          python3 analysis/l17-b-dispatch/verify_package.py
+          python3 -m unittest discover -s analysis/l17-b-dispatch -p 'test_*.py' -v
+          python3 analysis/l17-b-dispatch/mutations.py

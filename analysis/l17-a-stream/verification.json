@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "cases": 992,
+  "full_trace_comparisons": 905,
+  "scanner_critic": "literal local word substitution, not the run-stack actor",
+  "claims_sha256": "23df319cef773c342f6615b2240ab738bbbd184585345d659fed541db642eb3d"
+}

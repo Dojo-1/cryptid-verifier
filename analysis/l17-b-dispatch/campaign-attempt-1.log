@@ -1,0 +1,3 @@
+Comparator rejected input: trace request exceeds fixed path limit
+No endpoint mismatch reported. Corrected request trace flag to steps<=1000.
+A conservative bound on the failed invocation is charged in raw-budget.jsonl.

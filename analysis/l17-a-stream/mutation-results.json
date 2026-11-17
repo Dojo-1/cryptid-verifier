@@ -1,0 +1,228 @@
+{
+  "passed": true,
+  "planted": 20,
+  "killed": 20,
+  "checks": [
+    {
+      "name": "drop_return_gap",
+      "killed": true,
+      "witness": {
+        "rule": "zero_even_positive",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "shorten_leading_run",
+      "killed": true,
+      "witness": {
+        "rule": "zero_odd",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "use_nine_terminal_ones",
+      "killed": true,
+      "witness": {
+        "rule": "hundred_even",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "drop_one_X_block",
+      "killed": true,
+      "witness": {
+        "rule": "hundred_odd",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "drop_a_pair",
+      "killed": true,
+      "witness": {
+        "rule": "eleven_even",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "wrong_leading_run",
+      "killed": true,
+      "witness": {
+        "rule": "eleven_odd",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        }
+      }
+    },
+    {
+      "name": "charge101_as_two_steps",
+      "killed": true,
+      "witness": {
+        "runs": [
+          1,
+          14,
+          11
+        ],
+        "tokens": [
+          "01",
+          "101"
+        ],
+        "v": "100101001100011101010010"
+      }
+    },
+    {
+      "name": "move101_only_two_cells",
+      "killed": true,
+      "witness": {
+        "runs": [
+          1,
+          14,
+          11
+        ],
+        "tokens": [
+          "01",
+          "101"
+        ],
+        "v": "100101001100011101010010"
+      }
+    },
+    {
+      "name": "remove_only_one_old_pair",
+      "killed": true,
+      "witness": {
+        "runs": [
+          1,
+          14,
+          11
+        ],
+        "tokens": [
+          "01",
+          "101"
+        ],
+        "v": "100101001100011101010010"
+      }
+    },
+    {
+      "name": "omit_new_left_gap",
+      "killed": true,
+      "witness": {
+        "runs": [
+          1,
+          14,
+          11
+        ],
+        "tokens": [
+          "01",
+          "101"
+        ],
+        "v": "100101001100011101010010"
+      }
+    },
+    {
+      "name": "reverse_token_order",
+      "killed": true,
+      "witness": {
+        "runs": [
+          1,
+          14,
+          11
+        ],
+        "tokens": [
+          "01",
+          "101"
+        ],
+        "v": "100101001100011101010010"
+      }
+    },
+    {
+      "name": "leave01_unwritten",
+      "killed": true,
+      "witness": {
+        "runs": [
+          8,
+          13,
+          12
+        ],
+        "tokens": [
+          "101",
+          "01"
+        ],
+        "v": "100111001011000010001110"
+      }
+    },
+    {
+      "name": "C6_wrong_head",
+      "killed": true,
+      "witness": "C6"
+    },
+    {
+      "name": "D6_wrong_time",
+      "killed": true,
+      "witness": "D6"
+    },
+    {
+      "name": "A100_one_step_short",
+      "killed": true,
+      "witness": "A100"
+    },
+    {
+      "name": "Cpop_wrong_head",
+      "killed": true,
+      "witness": "Cpop"
+    },
+    {
+      "name": "homogeneous_return_applied_to_mixed_tokens",
+      "killed": true,
+      "witness": {
+        "predicted": 128,
+        "actual": 166
+      }
+    },
+    {
+      "name": "trim_interior_double_zero",
+      "killed": true,
+      "witness": {
+        "rule": "zero_even_positive",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "h": 1
+        },
+        "v": "",
+        "embedded": false
+      }
+    },
+    {
+      "name": "weaken_A101_left_window",
+      "killed": true,
+      "witness": "0010101"
+    },
+    {
+      "name": "count_undefined_as_a_step",
+      "killed": true,
+      "witness": "F reading1"
+    }
+  ],
+  "scope": "Manual ACAF negative controls. Same-author measurements; no file mutation or solver service claimed."
+}

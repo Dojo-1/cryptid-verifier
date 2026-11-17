@@ -144,11 +144,24 @@ C(53262756,1) boundary through contextual rules and an explicit finite orbit pro
 | `IStep.sound`, `internal_terminates` (`L17j`) | The six internal D/G rows are sound; every internal path reaches an exit or an uncovered guard. This is not universal return to S. |
 | `internal_acyclic`, `internal_unique_root`, `push_entries_disjoint` (`L17k`) | Acyclicity and unique ancestry inside that restricted graph. |
 | `raw_not_injective`, `no_affine_rank` (`L17k`) | The raw machine is not reversible; no per-mode integer affine score in (k,m,l,s), independent of N, decreases on every internal row. Other ranking classes remain possible. |
+| Six `short_*_exact` kernels (`L17l`) | Exact raw-machine endpoints and clocks 38, 62, 75, 95, 65, 14, with arbitrary outside tape; finite kernels for the short-buffer B dispatcher. |
+| `short_gap_rotation` (`L17l`) | `(01)^n00 = 0(10)^n0` with arbitrary context, identifying the apparent mixed gap as a five-run stack. |
 
 Generic pushes `(a,c) = (37,7)` and `(46,7)` reach uncovered JOIN guards. Neither
 is claimed reachable from blank, and neither proves that eventual collapse is false.
 Universal collapse and a blank-orbit stack-depth bound remain open.
 See [the L17 record](analysis/leads/L17.md) for the derivations and finite checks.
+
+The [short-buffer continuation](analysis/l17-b-dispatch/DERIVATION.md) gives eleven
+guarded B rows and sixteen composed C2/C5 rows. It closes the saved mixed-return
+boundary in 108 raw transitions and the `1101+00` continuation in 166 steps
+for the recorded counters. General return from the five-run A family stays open.
+The complete parametric dispatcher is a mathematical derivation with bounded
+checks; `L17l` formalizes its six finite kernels and gap identity. The earlier
+[A-stream](analysis/l17-a-stream/README.md) and
+[mixed-return](analysis/l17-mixed-return/README.md) packages are also included,
+with integrity checks and literal replays in CI. These generic rules do not
+extend the certified blank-orbit endpoint.
 
 For Antihydra, A.4 and A.9, these machine-level equivalences are general theorems;
 their validity is not limited to a simulated prefix. They use the authors' upstream

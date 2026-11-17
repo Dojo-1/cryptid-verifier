@@ -1,0 +1,271 @@
+{
+  "task_id": "l17-a-stream-2026-11-17",
+  "claim": {
+    "text": "Exact A scanner and all-repetition homogeneous101 returns to C.",
+    "scope": "p>=6,c>=7,zero exterior,arbitrary unread right context; mixed returns and blank reachability excluded.",
+    "status_before": "H",
+    "assumptions": [
+      "Frozen L17 table and explicitly imported contextual sweeps/1101 entry."
+    ],
+    "forbidden_promotions": [
+      "New Lean proof",
+      "Universal mixed return",
+      "Blank-orbit reachability or stack bound",
+      "Nonhalting",
+      "External independent authorship"
+    ]
+  },
+  "specification": {
+    "intended_object": "Exact prefix transduction and contextual raw-TM endpoint relation.",
+    "invariants": [
+      "Whole tape,head,clock,zero gaps and read context are retained.",
+      "C6 andD6 have equal displacement but different raw times."
+    ],
+    "known_answer_cases": [
+      "A100 takes19 steps.",
+      "C6:010010->111010 in6;D6:010010->101010 in14.",
+      "Mixed width2 boundary001010.",
+      "F1 has0 defined steps."
+    ]
+  },
+  "implementation": {
+    "artifact": "scanner.py,claims.json,kernels.json,campaign.py,verify.py",
+    "commit": "Additive snapshot,previous archive byte-identical,no repository mutation.",
+    "environment": "Linux-6.18.57-x86_64-with-glibc2.41;Python 3.12.14;g++14.2.0",
+    "live_entrypoint": "README.md quick checks and fresh campaign/controls.",
+    "representation": "Exact integer run lists,framed binary words,periodic blocks and sparse raw tapes."
+  },
+  "metric": {
+    "name": "Exact whole endpoint and read trace",
+    "type": "typed_tuple",
+    "units": "Cells,states,defined transitions,tokens,repetition counts",
+    "direction": "two_sided",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Literal substitution versus run-stack compilation",
+      "Translations",
+      "Arbitrary kernel contexts",
+      "O2/O0/UBSan",
+      "Interior-gap and token-order negative controls"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "992 complete C++/Python endpoints;905 full traces."
+    ],
+    "structural": [
+      "15 unit methods,exhaustive finite parsing through length9,periodic sweep induction cases."
+    ],
+    "property_based": [
+      "625 return cases,56 original1101 compositions,143 mixed scanner prefixes,168 kernel contexts; all included in992."
+    ],
+    "metamorphic": [
+      "29 identical translated inputs in three compiler modes.",
+      "Independent literal scanner substitution critic."
+    ],
+    "fuzzing": [
+      "20 planted in-memory errors detected; no on-disk mutations."
+    ],
+    "historical": [
+      "Old archive SHA256 and byte integrity verified.",
+      "Old1101 entry,short41-step kernel and undefined-action clock retained."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Frozen C++ literal interpreter",
+      "Frozen separate Python raw table",
+      "Literal local scanner-word critic"
+    ],
+    "negative_controls": [
+      "Wrong parity clocks,heads and terminal suffixes",
+      "Dropped gaps or periodic blocks",
+      "Token reversal",
+      "Homogeneous formula applied to mixed width2",
+      "Weakened left window and undefined-action clock"
+    ],
+    "compute_parity": "Same992 inputs in both raw paths;905 full traces. Same29 translated inputs across builds.376507 fresh C++ transitions including controls,under20M.",
+    "parameter_parity": "All guards and suffix contexts identical between comparators;12 outside contexts per kernel.",
+    "sampling_parity": "Seed17112026. Mixed scanner cap96 tokens; homogeneous h<=95 is separate and may give j192. Exploratory n4/8 probes not promoted into the n3 theorem.",
+    "data_access_parity": "Raw interpreters receive actual complete tapes,not expected endpoints or counter rules."
+  },
+  "preregistration": {
+    "prediction": "01/101 scanning has fixed local kernels; no universal terminal return is assumed.",
+    "primary_metric": "Complete endpoint,state,head,time and read-window equality.",
+    "uncertainty_method": "Conditional mathematical composition and bounded numerical checks; same-author correlation explicit.",
+    "kill_condition": "Any endpoint,context,window or completeness mismatch blocks promotion.",
+    "stop_condition": "Stop at mixed width2 boundary;1200 endpoints,200000 steps/probe,20M fresh C++ transitions; no blank-orbit or global-termination extension.",
+    "promotion_rule": "All-parameter identities require finite framed paths and induction/composition. Actual Lean proof/build separately."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Frozen machine table,old contextual derivations,new fixed read paths and composition table."
+    ],
+    "execution_records": [
+      "results.json",
+      "verification.json",
+      "controls-results.json",
+      "mutation-results.json",
+      "mixed-boundary.json",
+      "tests-final.log",
+      "raw-budget.jsonl"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "C++ literal baseline",
+        "origin": "Separate frozen code path,same author",
+        "artifact": "../l17-hardening/raw_comparator.cpp"
+      },
+      {
+        "name": "Python literal baseline",
+        "origin": "Separate frozen OPS table and execution path,same author",
+        "artifact": "raw.py"
+      },
+      {
+        "name": "Scanner critic",
+        "origin": "Literal substitution instead of run-stack actor;same author",
+        "artifact": "verify.py"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Scanner -> A01/A101 paths and prefix-code induction.",
+      "Uniform returns -> C6/D6 induction and six compositions.",
+      "Original1101 -> old entry plus56 literal cases.",
+      "Mixed obstruction -> exact widths and001010 window.",
+      "Execution -> saved raw responses,critic and compiler controls."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "representation",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "representation",
+        "to": "implementation",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Exact machine,tape,clock,guards and generic-versus-blank distinction"
+        ],
+        "transformed": [
+          "Explicit transport in derivation and claim map"
+        ],
+        "lost": [
+          "No tape bits discarded;sampling does not supply universality"
+        ],
+        "remainder": [
+          "Lean formalization and arbitrary mixed return"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "All992 endpoints,905 full traces,29 translated controls,15 tests and20 planted-error checks pass. Homogeneous return closes; mixed width2 remains open.",
+    "effect_size": "Exact typed equality and conditional mathematical identities;no statistical or speed advantage claimed.",
+    "uncertainty": "No independent external author,new Lean build,blank reachability,universal mixed return or nonhalting.",
+    "status_after": "A",
+    "retired_claims": [
+      "Homogeneous geometric gap depth requires many independent counters.",
+      "The homogeneous parity table covers arbitrary mixed tokens."
+    ],
+    "active_remainder": [
+      "Formalize framed kernels and seven branches in Lean.",
+      "Derive the001010 width2 return for arbitrary contexts.",
+      "Extend mixed widths2-5 without assuming closure.",
+      "Establish any blank reachability by a verified forward chain."
+    ]
+  }
+}

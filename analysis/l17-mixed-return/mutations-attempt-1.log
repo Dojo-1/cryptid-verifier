@@ -1,0 +1,213 @@
+{
+  "passed": true,
+  "planted": 20,
+  "killed": 20,
+  "checks": [
+    {
+      "name": "consume_six_instead_of_nine_ones",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 7,
+        "m": 9
+      }
+    },
+    {
+      "name": "omit_a_D_sweep_clock",
+      "killed": true,
+      "witness": {
+        "rule": "C2_s2",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "m": 6
+        },
+        "v": "",
+        "pad": "",
+        "extra": ""
+      }
+    },
+    {
+      "name": "drop_C2_internal_gap",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 7,
+        "m": 6,
+        "s": 5
+      }
+    },
+    {
+      "name": "halve_C3_previous_run_clock",
+      "killed": true,
+      "witness": {
+        "rule": "C3",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "m": 3,
+          "s": 1
+        },
+        "v": "",
+        "pad": "",
+        "extra": ""
+      }
+    },
+    {
+      "name": "shorten_C4_middle_run",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 7,
+        "m": 3,
+        "s": 2
+      }
+    },
+    {
+      "name": "wrong_C5_unused_ones",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 7,
+        "m": 9
+      }
+    },
+    {
+      "name": "wrong_C5_output_width",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 7,
+        "m": 6,
+        "s": 6
+      }
+    },
+    {
+      "name": "forget_B_exit_mode",
+      "killed": true,
+      "witness": {
+        "kernel": "C2B"
+      }
+    },
+    {
+      "name": "omit_C5_B_bounce",
+      "killed": true,
+      "witness": {
+        "kernel": "C5B"
+      }
+    },
+    {
+      "name": "wrong_empty_run_head_shift",
+      "killed": true,
+      "witness": {
+        "rule": "D_zero_turn",
+        "p": {
+          "c": 1,
+          "n": 1
+        },
+        "v": "",
+        "pad": "1100100010100",
+        "extra": "0100010001010"
+      }
+    },
+    {
+      "name": "forget_parameterized_B_scan",
+      "killed": true,
+      "witness": {
+        "rule": "D_three_B",
+        "p": {
+          "n": 2
+        },
+        "v": "",
+        "pad": "1110010010100",
+        "extra": "0100011110111"
+      }
+    },
+    {
+      "name": "drop_pair_before_middle_one",
+      "killed": true,
+      "witness": {
+        "s": 1,
+        "n": 1
+      }
+    },
+    {
+      "name": "wrong_D_transfer_clock",
+      "killed": true,
+      "witness": {
+        "rule": "D_large",
+        "p": {
+          "r": 4,
+          "n": 2
+        },
+        "v": "",
+        "pad": "0100011100100",
+        "extra": "1111111011110"
+      }
+    },
+    {
+      "name": "C_transfer_one_cell_short",
+      "killed": true,
+      "witness": {
+        "rule": "C_large",
+        "p": {
+          "r": 6
+        },
+        "v": "",
+        "pad": "0101010100110",
+        "extra": "1111001100010"
+      }
+    },
+    {
+      "name": "forget_original_C_shift",
+      "killed": true,
+      "witness": {
+        "p": 6,
+        "c": 6,
+        "v": "",
+        "embedded": true
+      }
+    },
+    {
+      "name": "extrapolate_166_to_all_counters",
+      "killed": true,
+      "witness": {
+        "p": 7,
+        "c": 6,
+        "v": "",
+        "embedded": false
+      }
+    },
+    {
+      "name": "corrupt_C4_fixed_suffix",
+      "killed": true,
+      "witness": {
+        "s": 1
+      }
+    },
+    {
+      "name": "charge_B111_nine_instead_of_eight",
+      "killed": true,
+      "witness": {
+        "rule": "B_to_D",
+        "p": {
+          "n": 1
+        },
+        "v": "",
+        "pad": "0100100011111",
+        "extra": "0110011010100"
+      }
+    },
+    {
+      "name": "count_undefined_as_one",
+      "killed": true,
+      "witness": "F1"
+    },
+    {
+      "name": "weaken_C2_previous_pair_window",
+      "killed": true,
+      "witness": "0001010111"
+    }
+  ],
+  "scope": "Manual ACAF controls,same author,no on-disk source mutation."
+}

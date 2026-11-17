@@ -1,0 +1,282 @@
+{
+  "task_id": "l17-b-dispatch-2026-11-17",
+  "claim": {
+    "text": "Eleven guarded B rows and sixteen composed C2/C5 rows, six exact finite Lean kernels, and a formal gap identity.",
+    "scope": "p>=6,c>=7; B n>=5, with separate 1100 cases n5/6/7 and n>=8. Typed A exit retained. Generic sources, no blank-orbit claim.",
+    "status_before": "H",
+    "assumptions": [
+      "The supplied literal L17 table.",
+      "Explicit contextual sweeps and fixed paths in the derivation."
+    ],
+    "forbidden_promotions": [
+      "Universal mixed-stack return",
+      "Blank reachability or stack bound",
+      "Halting/nonhalting",
+      "Necessary or optimal guards",
+      "External independent authorship",
+      "Calling the whole parametric table Lean-proved"
+    ]
+  },
+  "specification": {
+    "intended_object": "Whole-tape typed machine paths, preserving the actual arbitrary right prefix.",
+    "invariants": [
+      "Preserve internal zero gaps, full tapes, head, mode, clock and unread context.",
+      "C and A local exits are not automatically blank-left sections.",
+      "Finite-tape classification uses zero exterior, including after a final written1."
+    ],
+    "known_answer_cases": [
+      "Saved frontier returns in108 defined transitions.",
+      "Short1100 clocks75,95,65.",
+      "B1101 is14 steps to A4.",
+      "Undefined F1 has zero defined-transition cost."
+    ]
+  },
+  "implementation": {
+    "artifact": "claims.json,kernels.json,campaign.py,verify.py,frontier.py,link/CryptidLink/L17l.lean",
+    "commit": "Branch research/l17-short-buffer-returns based on0dce7aa662c1768a0772aeabb75ca344971608d5; exact commit recorded by git.",
+    "environment": "Linux-6.18.57-x86_64-with-glibc2.41;Python 3.12.14;g++14.2.0;Lean4.35.0-rc4",
+    "live_entrypoint": "README check commands; scripts/verify.py --project link for formal validation.",
+    "representation": "Framed finite words, exact integer expressions, literal sparse tapes, typed A/B/C modes, symbolic Lean ListBlank context."
+  },
+  "metric": {
+    "name": "Exact whole endpoint and read trace",
+    "type": "typed_tuple",
+    "units": "Cells,states,defined transitions,guarded parameters and check counts",
+    "direction": "two_sided",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "Whole-word context framing",
+      "Head translations",
+      "Interior zero retention",
+      "O2/O0/UBSan",
+      "Clock/state/right-prefix negative controls"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "924 matched C++/Python endpoints."
+    ],
+    "structural": [
+      "16 unit methods, six finite exact Lean declarations and a formal gap identity.",
+      "Disjoint finite-prefix partition, literal gap normalization and huge exact arithmetic."
+    ],
+    "property_based": [
+      "96 arbitrary two-sided-context kernel instances.",
+      "Guard-corner grids and seeded larger parameters."
+    ],
+    "metamorphic": [
+      "33 translated inputs across O2,O0,UBSan."
+    ],
+    "fuzzing": [
+      "24 planted in-memory expectation/window faults detected."
+    ],
+    "historical": [
+      "Old saved38-step B frontier, now108-step C return.",
+      "A-stream and mixed-return packages checked byte-identically and replayed."
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Frozen C++ literal machine",
+      "Separate frozen Python OPS table",
+      "Declarative saved-output critic",
+      "Lean kernel for exact finite declarations"
+    ],
+    "negative_controls": [
+      "Wrong short-kernel clocks, head or window",
+      "Claiming a C return for an A exit",
+      "Omitted C2/C5 entry",
+      "Dropped internal zero or corrupted suffix",
+      "Wrong B111 clock"
+    ],
+    "compute_parity": "Same924 inputs in both raw paths,911 full traces. Same33 translated controls in three compiler modes. The first672-case campaign and conservative failed-attempt charge are retained.",
+    "parameter_parity": "Identical explicit tapes and clocks in literal paths;16 outside contexts per finite kernel.",
+    "sampling_parity": "Fixed confirmatory seed17112028 and1200-case cap. Discovery Python probes preceded protocol and are disclosed.",
+    "data_access_parity": "Literal backends receive bit tapes and limits, no expected endpoint or accelerated formula."
+  },
+  "preregistration": {
+    "prediction": "Conditional C returns for0/111/1100 and a typed A exit for1101.",
+    "primary_metric": "Exact whole tape, mode, head, clock, context and read-window agreement.",
+    "uncertainty_method": "Exploratory derivation separated from seeded confirmatory replay; no external replication claim.",
+    "kill_condition": "Any clock,tape,mode,context or read mismatch blocks a row.",
+    "stop_condition": "Typed unsupported A grammar or recorded caps. No arbitrary mixed-return inference.",
+    "promotion_rule": "Universal formulas need framed fixed paths plus induction/composition; formal status only after actual successful Lean build."
+  },
+  "evidence": {
+    "primary_sources": [
+      "Literal L17 transition table",
+      "Mixed-return contextual transfers",
+      "Explicit finite kernels and sweep compositions"
+    ],
+    "execution_records": [
+      "results.json",
+      "verification.json",
+      "controls-results.json",
+      "mutation-results.json",
+      "raw-budget.jsonl",
+      "frontier.json",
+      "next-boundary.json",
+      "VALIDATION.md"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "C++ literal comparator",
+        "origin": "Separate implementation path,same author",
+        "artifact": "../l17-hardening/raw_comparator.cpp"
+      },
+      {
+        "name": "Python OPS replay",
+        "origin": "Separate frozen table,same author",
+        "artifact": "../l17-stacked-section/reference.py"
+      },
+      {
+        "name": "Lean kernel",
+        "origin": "Pinned Lean/upstream semantics; finite exact declarations only",
+        "artifact": "../../link/CryptidLink/L17l.lean"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "Eleven B rows -> DERIVATION.md and claims.json.",
+      "Sixteen C compositions -> C2B/C5B entry, B scan and dispatch.",
+      "Six exact finite proofs and gap identity -> L17l.lean and trust inventory.",
+      "Saved108-step frontier and joined166-step continuation -> frontier.json,joined-frontier.json.",
+      "Five-run A entry and remaining general-return obligation -> next-boundary.json.",
+      "Finite agreement and faults -> raw results,critic,mutation reports."
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "representation",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "representation",
+        "to": "implementation",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "implementation",
+        "to": "test",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "test",
+        "to": "measurement",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "measurement",
+        "to": "interpretation",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      },
+      {
+        "from": "interpretation",
+        "to": "requirement",
+        "preserved": [
+          "Whole tape, internal zeros, clock, mode, head and exact domain."
+        ],
+        "transformed": [
+          "Literal words -> finite framed paths and guarded sweep compositions."
+        ],
+        "lost": [
+          "Finite testing alone does not establish the parametric table or blank reachability."
+        ],
+        "remainder": [
+          "Formalize complete parametric dispatch and general five-run return."
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "924 endpoints,911 traces,33 compiler controls,16 unit methods and24 negative controls pass; formal build status recorded in VALIDATION.md.",
+    "effect_size": "Exact agreement; no performance,probability or nonhalting claim.",
+    "uncertainty": "Full return table is analytic, not entirely formalized. Same-author implementation correlation. Blank reachability and unrestricted A grammar open.",
+    "status_after": "A",
+    "retired_claims": [
+      "Three right ones suffice to assume the old six/nine-one guard.",
+      "Every dispatched branch is a C return.",
+      "A finite word ending1 has no following10 pair.",
+      "The apparent mixed P/10 gap is outside the general10-run scanner grammar."
+    ],
+    "active_remainder": [
+      "Formalize the complete all-parameter return table.",
+      "Analyze general A scanning and return from widths[p,c,1,n-2,3].",
+      "Connect generic source families to the blank orbit.",
+      "Prove or disprove a global stack bound."
+    ]
+  }
+}

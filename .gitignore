@@ -9,4 +9,7 @@ build.log
 mathlib/build.log
 link/build.log
 analysis/l17-hardening/comparator-*
+analysis/l17-a-stream/build/
+analysis/l17-mixed-return/build/
+analysis/l17-b-dispatch/build/
 link/CryptidLink/Generated/*.lean

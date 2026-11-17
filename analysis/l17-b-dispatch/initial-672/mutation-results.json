@@ -1,0 +1,239 @@
+{
+  "passed": true,
+  "planted": 20,
+  "killed": 20,
+  "checks": [
+    {
+      "name": "short_5_wrong_clock",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_n5",
+        "p": {
+          "p": 6,
+          "c": 7
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "short_5_read_exit_cell",
+      "killed": true,
+      "witness": {
+        "kernel": "B1100_n5",
+        "pad": "01100100111011011",
+        "v": "11011111001000001"
+      }
+    },
+    {
+      "name": "short_6_wrong_clock",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_n6",
+        "p": {
+          "p": 6,
+          "c": 7
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "short_6_read_exit_cell",
+      "killed": true,
+      "witness": {
+        "kernel": "B1100_n6",
+        "pad": "00001000011001111",
+        "v": "10011000010001010"
+      }
+    },
+    {
+      "name": "short_7_wrong_clock",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_n7",
+        "p": {
+          "p": 6,
+          "c": 7
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "short_7_read_exit_cell",
+      "killed": true,
+      "witness": {
+        "kernel": "B1100_n7",
+        "pad": "11011100100010111",
+        "v": "11010111001000111"
+      }
+    },
+    {
+      "name": "B_1101_claim_C_return",
+      "killed": true,
+      "witness": {
+        "rule": "B_1101",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "n": 5
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "C2_1101_claim_C_return",
+      "killed": true,
+      "witness": {
+        "rule": "C2_1101",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "j": 0
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "C5_1101_claim_C_return",
+      "killed": true,
+      "witness": {
+        "rule": "C5_1101",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "j": 0
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "B0_one_cell_short",
+      "killed": true,
+      "witness": {
+        "rule": "B_zero",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "n": 5
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "B111_charge_nine_steps",
+      "killed": true,
+      "witness": {
+        "rule": "B_111",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "n": 5
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "corrupt_suffix_context",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_large",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "n": 8
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "omit_C2_entry",
+      "killed": true,
+      "witness": {
+        "rule": "C2_zero",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "j": 0
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "omit_C5_entry",
+      "killed": true,
+      "witness": {
+        "rule": "C5_zero",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "j": 0
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "forget_B1101_shift",
+      "killed": true,
+      "witness": {
+        "rule": "C2_1101",
+        "p": {
+          "p": 6,
+          "c": 7,
+          "j": 0
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "drop_short_6_internal_zero",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_n6",
+        "p": {
+          "p": 6,
+          "c": 7
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "shorten_short_5_output",
+      "killed": true,
+      "witness": {
+        "rule": "B_1100_n5",
+        "p": {
+          "p": 6,
+          "c": 7
+        },
+        "v": ""
+      }
+    },
+    {
+      "name": "forget_C2_B_mode",
+      "killed": true,
+      "witness": {
+        "kernel": "C2B",
+        "pad": "10110110001001011",
+        "v": "01110000110101000"
+      }
+    },
+    {
+      "name": "omit_C5_B_bounce",
+      "killed": true,
+      "witness": {
+        "kernel": "C5B",
+        "pad": "00010001010111001",
+        "v": "01000001100010100"
+      }
+    },
+    {
+      "name": "shrink_short_6_left_window",
+      "killed": true,
+      "witness": {
+        "kernel": "B1100_n6",
+        "pad": "00001000011001111",
+        "v": "10011000010001010"
+      }
+    }
+  ],
+  "scope": "Manual ACAF fault controls, same author; no on-disk mutation or completeness claim."
+}

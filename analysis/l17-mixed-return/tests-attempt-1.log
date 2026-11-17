@@ -1,0 +1,20 @@
+test_C4_zero_middle_is_retained (test_mixed_return.MixedReturnTests.test_C4_zero_middle_is_retained) ... ok
+test_budget (test_mixed_return.MixedReturnTests.test_budget) ... ok
+test_empty_run_turn_counter_effect (test_mixed_return.MixedReturnTests.test_empty_run_turn_counter_effect) ... ok
+test_every_guard_corner_literal (test_mixed_return.MixedReturnTests.test_every_guard_corner_literal) ... ok
+test_frame_exit_cell_is_not_read (test_mixed_return.MixedReturnTests.test_frame_exit_cell_is_not_read) ... ok
+test_halt_convention (test_mixed_return.MixedReturnTests.test_halt_convention) ... ok
+test_huge_parameter_suffix_positions (test_mixed_return.MixedReturnTests.test_huge_parameter_suffix_positions) ... ok
+test_local_unknown_read_stops_are_not_C_sections (test_mixed_return.MixedReturnTests.test_local_unknown_read_stops_are_not_C_sections) ... ok
+test_mixed_A_166_step_witness (test_mixed_return.MixedReturnTests.test_mixed_A_166_step_witness) ... ok
+test_more_unused_ones_do_not_change_time (test_mixed_return.MixedReturnTests.test_more_unused_ones_do_not_change_time) ... ok
+test_original_C_222_step_composition (test_mixed_return.MixedReturnTests.test_original_C_222_step_composition) ... ok
+test_partition_of_previous_widths (test_mixed_return.MixedReturnTests.test_partition_of_previous_widths) ... ok
+test_right_buffers_are_guards (test_mixed_return.MixedReturnTests.test_right_buffers_are_guards) ... ok
+test_width2_has_a_rightward_B_exit (test_mixed_return.MixedReturnTests.test_width2_has_a_rightward_B_exit) ... ok
+test_width5_needs_two_previous_pairs_for_B_exit (test_mixed_return.MixedReturnTests.test_width5_needs_two_previous_pairs_for_B_exit) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.012s
+
+OK

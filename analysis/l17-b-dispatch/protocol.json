@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-17",
+  "baseline_commit": "0dce7aa662c1768a0772aeabb75ca344971608d5",
+  "source": "l17-mixed-return/next-boundary.json",
+  "scope": "Dispatch the B exit with left word (10)^p0(10)^c0(10)(01)^n, including n=5,6,7 on terminal 1100. Compose with C2/C5 exits for previous widths 2/3. Preserve arbitrary suffixes and separate A exits from C returns.",
+  "registration": "Exploratory Python formula probes preceded this record. This freezes the confirmatory seeded C++ campaign; it is not a preregistration of discovery.",
+  "prediction": "The 0,111,1100 terminal classes have guarded C returns. The 1101 class has a framed A exit whose general return remains open.",
+  "budgets": {
+    "seed": 17112028,
+    "maximum_endpoint_checks": 1200,
+    "maximum_raw_steps_per_probe": 200000,
+    "maximum_fresh_cpp_transitions": 20000000
+  },
+  "controls": [
+    "Frozen literal C++ machine",
+    "Separate frozen Python OPS table",
+    "Exact full endpoint and read trace",
+    "Random context framing",
+    "In-memory planted faults",
+    "Translated tapes across O2, O0 and UBSan builds"
+  ],
+  "kill": "Any wrong tape, clock, mode, head or read bound blocks the affected statement; retain failures.",
+  "stop": "Stop at the typed A exit or a cap. No general stack termination or blank-orbit reachability inference.",
+  "promotion": "Finite symbolic-context paths and sweep compositions support all-parameter mathematical identities. Only successfully built Lean declarations are called Lean-proved.",
+  "review_extension": "After the first672-case campaign, review found P_m00=0(10)^m0. Added the110100 return subfamily before the new confirmatory run. Original seed/caps retained; original evidence archived. Not a preregistration of discovery."
+}
