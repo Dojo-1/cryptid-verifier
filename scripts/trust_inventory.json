@@ -115,6 +115,7 @@
         "CryptidLink.L17.a01_run_exact",
         "CryptidLink.L17.a100_exact",
         "CryptidLink.L17.a101_exact",
+        "CryptidLink.L17.a101_repeat_exact",
         "CryptidLink.L17.a101_split_run_exact",
         "CryptidLink.L17.b110100_local_exact",
         "CryptidLink.L17.blank_reaches_boundary",
