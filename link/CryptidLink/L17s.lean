@@ -55,10 +55,14 @@ theorem k41_c01_middle_exact (n : ℕ) (L R : ListBlank (Fin 2)) :
   have hrot :
       ListBlank.append [1] X =
       ListBlank.append (([1, 0] : List (Fin 2)) ^ (n + 1)) L := by
-    dsimp [X]
-    rw [rotLB n (ListBlank.append [0] L)]
-    rw [← ListBlank.append_pow_succ' ([1, 0] : List (Fin 2)) n L]
-    rfl
+    have hbase := rotLB n (ListBlank.append [0] L)
+    have hpow :
+        ListBlank.append (([1, 0] : List (Fin 2)) ^ n)
+          (ListBlank.append [1] (ListBlank.append [0] L)) =
+        ListBlank.append (([1, 0] : List (Fin 2)) ^ (n + 1)) L := by
+      rw [← ListBlank.append_pow_succ' ([1, 0] : List (Fin 2)) n L]
+      rfl
+    exact hbase.trans hpow
   have he :
       Cfg.headRight C X
         (ListBlank.append [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R) =
