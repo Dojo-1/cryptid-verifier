@@ -70,7 +70,8 @@ theorem mixed166_C_return_exact (L R : ListBlank (Fin 2)) :
     reading either exterior tape. -/
 theorem mixed166_contextual_exact (L R : ListBlank (Fin 2)) :
     ReachesIn target 166 (mixed166_source L R) (mixed166_end L R) := by
-  exact (mixed166_scan_C_exact L R).trans (mixed166_C_return_exact L R)
+  set_option maxRecDepth 16384 in
+    exact (mixed166_scan_C_exact L R).trans (mixed166_C_return_exact L R)
 
 /-- With a blank exterior left context, the endpoint is genuinely
     blank-left C. The right exterior context remains arbitrary. -/
@@ -78,7 +79,8 @@ theorem mixed166_blankleft_exact (R : ListBlank (Fin 2)) :
     ReachesIn target 166
       (mixed166_source default R)
       (Cfg.headRight C default (ListBlank.append [1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1] R)) := by
-  exact mixed166_contextual_exact default R
+  set_option maxRecDepth 8192 in
+    exact mixed166_contextual_exact default R
 
 end CryptidLink.L17
 
