@@ -265,6 +265,60 @@ theorem b110100_exact (u v k : ℕ) (R : Bits) :
   | 2 => exact b110100_n7_exact u v R
   | j + 3 => exact b110100_wide_exact u v j R
 
+private theorem b10_exact (L R : Bits) :
+    ReachesIn target 2
+      (Cfg.headRight B L (push Q R))
+      (Cfg.headRight B (push Q L) R) := by
+  l17_exact_steps
+
+/-- In B, each spatial 10 pair becomes 01 as the head moves right.
+The written pair is 10 in head-nearest order on the left tape. -/
+theorem b10_sweep_exact (j : ℕ) (L R : Bits) :
+    ReachesIn target (2 * j)
+      (Cfg.headRight B L (push (Q ^ j) R))
+      (Cfg.headRight B (push (Q ^ j) L) R) := by
+  induction j generalizing L with
+  | zero => exact ReachesIn.zero _ _
+  | succ j ih =>
+    rw [ListBlank.append_pow_succ Q j R]
+    have h1 := b10_exact L (push (Q ^ j) R)
+    have h2 := ih (push Q L)
+    rw [ListBlank.append_pow_succ' Q j L] at h2
+    convert h1.trans h2 using 1
+    omega
+
+/-- B may scan j more pairs before the terminal; they increase the width
+from k+5 to k+j+5. No bound on j or on the arbitrary suffix R is needed. -/
+theorem b110100_after_sweep_exact (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (2 * j + b110100_clock u v (k + j))
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R)))
+      (Cfg.headRight C default (b110100_result u v R (k + j))) := by
+  have hs := b10_sweep_exact j (push (Q ^ (k + 5)) (base u v))
+    (push [1, 1, 0, 1, 0, 0] R)
+  rw [← ListBlank.append_pow_add, show j + (k + 5) = k + j + 5 by omega] at hs
+  exact hs.trans (b110100_exact u v (k + j) R)
+
+/-- From the C2 entry (previous width 2), B starts with five pairs.
+The theorem includes the 38-step entry, the full sweep and the return. -/
+theorem c2_110100_after_sweep_exact (u v j : ℕ) (R : Bits) :
+    ReachesIn target (38 + (2 * j + b110100_clock u v j))
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1] (base u v))
+        (push [0, 1, 1, 1] (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))))
+      (Cfg.headRight C default (b110100_result u v R j)) := by
+  exact (short_C2B_exact (base u v) (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))).trans
+    (b110100_after_sweep_exact u v 0 j R)
+
+/-- From the C5 entry (previous width 3), B starts with nine pairs.
+The theorem includes the 62-step entry, the full sweep and the return. -/
+theorem c5_110100_after_sweep_exact (u v j : ℕ) (R : Bits) :
+    ReachesIn target (62 + (2 * j + b110100_clock u v (4 + j)))
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1] (base u v))
+        (push [0, 1, 1, 1] (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))))
+      (Cfg.headRight C default (b110100_result u v R (4 + j))) := by
+  exact (short_C5B_exact (base u v) (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))).trans
+    (b110100_after_sweep_exact u v 4 j R)
+
 end CryptidLink.L17
 
 #print axioms CryptidLink.L17.five_run00_wide_exact
@@ -273,3 +327,7 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.b110100_n6_exact
 #print axioms CryptidLink.L17.b110100_n7_exact
 #print axioms CryptidLink.L17.b110100_exact
+#print axioms CryptidLink.L17.b10_sweep_exact
+#print axioms CryptidLink.L17.b110100_after_sweep_exact
+#print axioms CryptidLink.L17.c2_110100_after_sweep_exact
+#print axioms CryptidLink.L17.c5_110100_after_sweep_exact
