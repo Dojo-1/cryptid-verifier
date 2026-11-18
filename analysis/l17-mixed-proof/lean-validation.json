@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "command": "python3 scripts/verify.py --project link",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "lean_commit": "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+  "local_build_cleaned": true,
+  "lake_jobs": 9073,
+  "scanned_lean_files": 52,
+  "inventoried_theorems": 150,
+  "new_theorems": 13,
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_sha256": "6a707a11d40b55e9cf375215950232cb747530338c93d704b6cd71eaadb607c6",
+  "base_commit": "39830809a1b9afa0337955eb5890ffeec0c235af"
+}

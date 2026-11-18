@@ -1,0 +1,10 @@
+{
+  "reason": "The comparator rejects full-trace requests over its fixed 1000-step cap. The initial batch used trace=true for every request.",
+  "conservative_transition_charge": 147030,
+  "charge_basis": "Sum of all 960 requested limits, including requests the comparator could not execute. The failed subprocess did not return a complete result set, so this overcharges rather than inferring an executed count.",
+  "corrections": [
+    "Request full traces only up to 1000 steps; retain whole-tape endpoints and read extrema for larger requests.",
+    "Python-only preflight found a one-cell Dpair1 source-origin error. The explicit separator belongs at -2(v+1)-4, rather than one cell earlier. The guarded machine formula and clock were unchanged."
+  ],
+  "scope": "Harness corrections before accepting evidence; no successful result is attributed to this attempt."
+}

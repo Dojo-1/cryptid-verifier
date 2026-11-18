@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "seed": 18112030,
+  "registered_before_execution": true,
+  "target": "L17MixedBoundary: mixed C2,s2 return and the original-C 01/101 mixed boundary",
+  "compiler_transition_cap": 2000000,
+  "maximum_requested_steps_per_case": 10000,
+  "campaign": "u=0..5,v=0..7,three suffixes for original C,A and C2;32 seeded larger cases per family;72 arbitrary-context cases for each of A01,B_to_D,D_pair1,A01101,scanner,1101 entry",
+  "compiler_controls": "24 translated cases in each of O2,O0,UBSan",
+  "mutation_controls": "At least twelve planted clock,head,state,buffer and tape-output errors must be rejected",
+  "stop": "Stop on the first endpoint,read-window,trace,compiler or mutation-control mismatch; do not repair formulas by fitting simulation data",
+  "scope": "Bounded same-author cross-checks of the formulas; quantified validity belongs to the Lean proofs. No blank reachability or nonhalting inference."
+}

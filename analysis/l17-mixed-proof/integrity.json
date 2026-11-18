@@ -1,0 +1,33 @@
+{
+  "algorithm": "sha256",
+  "scope": "Sealed continuation plus explicit Lean source and three reused literal-check inputs; excludes the manifest itself and build products.",
+  "files": {
+    "analysis/l17-hardening/backend.py": "4e64775b095abb570d2ef220a27cd87bf134d79a4d43afcf2ced05c6288e5e97",
+    "analysis/l17-hardening/raw_comparator.cpp": "1dcf83285d5bb5d28501793dd29fd42197a4cfda43059c1c5e5ba79235bcc6a4",
+    "analysis/l17-mixed-proof/CLAUDE-BRIEF.md": "380c98c6909c8f42b9bf4385b94c9cc81534583fc6e6a64ceb462b2505110317",
+    "analysis/l17-mixed-proof/README.md": "34a2c7183684d3414dc2c16c001f842111a0e2bbe1fbbcd52a23f6b04631df32",
+    "analysis/l17-mixed-proof/VALIDATION.md": "30a47b60e12c31cc33bfbcb091b95f8b0d0a3233c480f7275cf8109aa0378910",
+    "analysis/l17-mixed-proof/check_mixed.py": "bc0718c7549a9f92fb68e64aac77871ff42cb527decb45d54d0b31d4b6c263b4",
+    "analysis/l17-mixed-proof/control-O0.jsonl.gz": "2de2846b7d3c122dc7774b06642f734f5b075bd7df8e73f8d196c41c7dbcde10",
+    "analysis/l17-mixed-proof/control-O0.jsonl.gz.meta.json": "6ec7ae5a5fc44bde8f6cfbc624499d4c441fe782c1e78d4d2dcc9e86c0211edf",
+    "analysis/l17-mixed-proof/control-O2.jsonl.gz": "2de2846b7d3c122dc7774b06642f734f5b075bd7df8e73f8d196c41c7dbcde10",
+    "analysis/l17-mixed-proof/control-O2.jsonl.gz.meta.json": "a6cd0ee0a61f9e7644599b3837c4aead01a276e6c37b633c98f2eebc204c185f",
+    "analysis/l17-mixed-proof/control-UBSan.jsonl.gz": "2de2846b7d3c122dc7774b06642f734f5b075bd7df8e73f8d196c41c7dbcde10",
+    "analysis/l17-mixed-proof/control-UBSan.jsonl.gz.meta.json": "19b3dafd318592d750345a98877a817564f450d1a85e533eed2ad9021ac3f106",
+    "analysis/l17-mixed-proof/controls.json": "4281bd438f767e53c43ec69bf1e3b4ee4f3578e6882a2739e7ab5805b8497843",
+    "analysis/l17-mixed-proof/controls.py": "9941e048383da714247e0f038faf8f249af55d25f990954803a02d385cbd80c5",
+    "analysis/l17-mixed-proof/lean-axioms.log": "14b0d55ed48aab2a209b8fbad81ad7fccefc351913591c9c8ec249c27c24da87",
+    "analysis/l17-mixed-proof/lean-validation.json": "121e9e5f629e622c4b94618ab646b42e7082bef33fd577536dcb721848844ebd",
+    "analysis/l17-mixed-proof/protocol.json": "3398f30d95ccd1877629f642a92782b0592ce20a51a49dfeae34e13e8e87f7bd",
+    "analysis/l17-mixed-proof/raw-budget.jsonl": "9c95f916cc9c98e9196db5b2e7228241f609b72124989905315412d360e43bfb",
+    "analysis/l17-mixed-proof/raw.jsonl.gz": "e7406f2b8889f06a0de995b8d7ab40eb01e3438f2acb8f2891068c6a6d35e3bb",
+    "analysis/l17-mixed-proof/raw.jsonl.gz.meta.json": "3e83a4970b75d2e99455ceeda84780ec66b6cb6c14b555fe8c79fa88c520531c",
+    "analysis/l17-mixed-proof/rejected-attempt.json": "9155ee3a686c4086a38d861fdd8a3014624491ee74a573a81315185960795b71",
+    "analysis/l17-mixed-proof/report.json": "009ae454498dc7a00a8a224b415a5d66aaeea8c0916be981ae6edbc9c94ba8cd",
+    "analysis/l17-mixed-proof/test_mixed_proof.py": "0d64e46bf63d25b7670b7fb9b732ddd92cf73beee3cb564b3f566b05fb641a24",
+    "analysis/l17-mixed-proof/unit-tests.log": "5be51d55bda2a692700f64907933912fa7ede14ef3f642ba8b9499d9eea9e24b",
+    "analysis/l17-mixed-proof/verify_integrity.py": "e1062058b486ac71694119352b6bba2a85c09a5d32825b00690fdf7c95b45e98",
+    "analysis/l17-stacked-section/reference.py": "0d4a7905b28fcf96b685a66b846a5604d049ed405b3a123937ac2c5e25b9c200",
+    "link/CryptidLink/L17MixedBoundary.lean": "6a707a11d40b55e9cf375215950232cb747530338c93d704b6cd71eaadb607c6"
+  }
+}

@@ -13,4 +13,5 @@ analysis/l17-a-stream/build/
 analysis/l17-mixed-return/build/
 analysis/l17-b-dispatch/build/
 analysis/l17-11-returns/build/
+analysis/l17-mixed-proof/build/
 link/CryptidLink/Generated/*.lean

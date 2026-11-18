@@ -148,6 +148,7 @@ C(53262756,1) boundary through contextual rules and an explicit finite orbit pro
 | `short_gap_rotation` (`L17l`) | `(01)^n00 = 0(10)^n0` with arbitrary context, identifying the apparent mixed gap as a five-run stack. |
 | Homogeneous `00`/`100` returns (`L17t/u/v/x`) | Five complete three-run A-to-C branches, with exact clocks and blank-left endpoints, for p≥6,c≥7. |
 | `a11_even_blankleft_exact`, `a11_odd_blankleft_exact`, `a11_homogeneous_blankleft_exact` (`L17ab`) | The remaining two `11` branches, including one rule for every homogeneous `101` count, with canonical full words and exact clocks. |
+| `mixed_c2_s2_blankleft_exact`, `mixed_a_blankleft_exact`, `mixed_original_C_exact` (`L17MixedBoundary`) | The saved mixed `01/101` boundary, including a four-run return with p≥4,c≥1 and six buffered ones; the original C-section returns in exactly 4a+6c+152 steps for a≥5,c≥1. |
 
 Generic pushes `(a,c) = (37,7)` and `(46,7)` reach uncovered JOIN guards. Neither
 is claimed reachable from blank, and neither proves that eventual collapse is false.
@@ -169,8 +170,13 @@ The [homogeneous three-run table](analysis/l17-11-returns/README.md) is now
 fully covered by seven branch theorems: any finite count of consecutive
 `101` tokens followed by `00`, `100` or `11` has the stated C return for
 p≥6,c≥7. This domain keeps all three left runs and the arbitrary right
-context. Mixed `01`/`101` scanning and the five-run return problem remain
-open. Historical handoff notes retain their earlier status; the theorem
+context. The [saved mixed boundary](analysis/l17-mixed-proof/README.md)
+also has an exact Lean return: with M=`01·101·01·101`,
+`𝒞(a; (10)^c1101 M00R)` reaches
+`𝒞(0; 1^(2a−8)(01)^(c+12)11R)` for a≥5,c≥1. The full word,
+arbitrary right context and exact clock are retained. General mixed
+scanning and the five-run return problem remain open.
+Historical handoff notes retain their earlier status; the theorem
 files and this table give the current formal coverage.
 
 For Antihydra, A.4 and A.9, these machine-level equivalences are general theorems;
