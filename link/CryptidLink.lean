@@ -30,4 +30,6 @@ import CryptidLink.L17z
 import CryptidLink.L17aa
 import CryptidLink.L17ab
 import CryptidLink.L17ac
+import CryptidLink.L17ad
+import CryptidLink.L17ae
 import CryptidLink.L17MixedBoundary
