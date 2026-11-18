@@ -306,8 +306,10 @@ theorem c2_110100_after_sweep_exact (u v j : ℕ) (R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 0, 1] (base u v))
         (push [0, 1, 1, 1] (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))))
       (Cfg.headRight C default (b110100_result u v R j)) := by
-  exact (short_C2B_exact (base u v) (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))).trans
-    (b110100_after_sweep_exact u v 0 j R)
+  have hs := b110100_after_sweep_exact u v 0 j R
+  rw [Nat.zero_add j] at hs
+  exact (short_C2B_exact (base u v)
+    (push (Q ^ j) (push [1, 1, 0, 1, 0, 0] R))).trans hs
 
 /-- From the C5 entry (previous width 3), B starts with nine pairs.
 The theorem includes the 62-step entry, the full sweep and the return. -/
