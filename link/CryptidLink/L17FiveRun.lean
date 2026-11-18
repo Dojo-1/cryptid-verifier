@@ -1,6 +1,6 @@
 import CryptidLink.L17MixedBoundary
 
-/-! Exact return for the wide 110100 branch of the B dispatcher. -/
+/-! Exact returns for the 110100 branch of the B dispatcher. -/
 
 open BusyBeaver BusyBeaver.SixState Turing
 
@@ -89,7 +89,187 @@ theorem b110100_wide_exact (u v k : ℕ) (R : Bits) :
   convert h using 1
   omega
 
+
+/-- B source at an arbitrary width n (the five-run return requires n ≥ 5). -/
+def b110100_source (u v n : ℕ) (R : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headRight B (push (Q ^ n) (base u v)) (push [1, 1, 0, 1, 0, 0] R)
+
+/-- Complete outer K41 output, preserving the suffix from the middle run. -/
+def five_run_bottom_result (u : ℕ) (S : Bits) : Bits :=
+  push [1] (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail S))
+
+/-- Fixed prefix for width 5. Relative to B, all reads are in [-20,5].
+The exit head is one cell farther left, with arbitrary exterior tapes. -/
+private theorem b110100_prefix5 (L R : Bits) :
+    ReachesIn target 79
+      (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C L (push [1] (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))) := by
+  set_option maxRecDepth 8192 in
+    l17_exact_steps
+
+/-- Complete short width-5 return for every p=u+6 and c=v+7. -/
+theorem b110100_n5_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 128)
+      (b110100_source u v 5 R)
+      (Cfg.headRight C default
+        (five_run_bottom_result u
+          (push (I ^ (2 * v + 5)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R)))) := by
+  let Lp := push (P ^ (u + 6)) default
+  let L := push (P ^ (v + 3)) (push [0] Lp)
+  let S := push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R
+  have h1 := b110100_prefix5 L R
+  have hs : b110100_source u v 5 R =
+      Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R) := by
+    unfold b110100_source base
+    rw [show v + 7 = 4 + (v + 3) by omega,
+      ListBlank.append_pow_add P 4 (v + 3)]
+    rfl
+  rw [← hs] at h1
+  have h2 := c01_middle_headRight_exact (v + 3) Lp S
+  have h12 := h1.trans h2
+  have ho : push (([1, 1] : List (Fin 2)) ^ (v + 3 + 1)) S =
+      push [1, 1, 1] (push (I ^ (2 * v + 5)) S) := by
+    rw [one_pow_two_mul, show 2 * (v + 3 + 1) = 3 + (2 * v + 5) by omega,
+      ListBlank.append_pow_add I 3 (2 * v + 5)]
+    rfl
+  rw [ho] at h12
+  have h := h12.trans (k41_c01_last_exact u default (push (I ^ (2 * v + 5)) S))
+  have hframe : Cfg.headLeft C (push [1] default)
+      (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail (push (I ^ (2 * v + 5)) S))) =
+      Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * v + 5)) S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hframe] at h
+  convert h using 1
+  omega
+
+/-- Fixed prefix for width 6. Relative to B, all reads are in [-26,5].
+The exit head is one cell farther left, with arbitrary exterior tapes. -/
+private theorem b110100_prefix6 (L R : Bits) :
+    ReachesIn target 99
+      (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C L (push [1] (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))) := by
+  set_option maxRecDepth 8192 in
+    l17_exact_steps
+
+/-- Complete short width-6 return for every p=u+6 and c=v+7. -/
+theorem b110100_n6_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 144)
+      (b110100_source u v 6 R)
+      (Cfg.headRight C default
+        (five_run_bottom_result u
+          (push (I ^ (2 * v + 1)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R)))) := by
+  let Lp := push (P ^ (u + 6)) default
+  let L := push (P ^ (v + 1)) (push [0] Lp)
+  let S := push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R
+  have h1 := b110100_prefix6 L R
+  have hs : b110100_source u v 6 R =
+      Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R) := by
+    unfold b110100_source base
+    rw [show v + 7 = 6 + (v + 1) by omega,
+      ListBlank.append_pow_add P 6 (v + 1)]
+    rfl
+  rw [← hs] at h1
+  have h2 := c01_middle_headRight_exact (v + 1) Lp S
+  have h12 := h1.trans h2
+  have ho : push (([1, 1] : List (Fin 2)) ^ (v + 1 + 1)) S =
+      push [1, 1, 1] (push (I ^ (2 * v + 1)) S) := by
+    rw [one_pow_two_mul, show 2 * (v + 1 + 1) = 3 + (2 * v + 1) by omega,
+      ListBlank.append_pow_add I 3 (2 * v + 1)]
+    rfl
+  rw [ho] at h12
+  have h := h12.trans (k41_c01_last_exact u default (push (I ^ (2 * v + 1)) S))
+  have hframe : Cfg.headLeft C (push [1] default)
+      (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail (push (I ^ (2 * v + 1)) S))) =
+      Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * v + 1)) S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hframe] at h
+  convert h using 1
+  omega
+
+/-- Fixed prefix for width 7. Relative to B, all reads are in [-18,5].
+The exit head is one cell farther left, with arbitrary exterior tapes. -/
+private theorem b110100_prefix7 (L R : Bits) :
+    ReachesIn target 69
+      (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C L (push [1] (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))) := by
+  set_option maxRecDepth 8192 in
+    l17_exact_steps
+
+/-- Complete short width-7 return for every p=u+6 and c=v+7. -/
+theorem b110100_n7_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 124)
+      (b110100_source u v 7 R)
+      (Cfg.headRight C default
+        (five_run_bottom_result u
+          (push (I ^ (2 * v + 11)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R)))) := by
+  let Lp := push (P ^ (u + 6)) default
+  let L := push (P ^ (v + 6)) (push [0] Lp)
+  let S := push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R
+  have h1 := b110100_prefix7 L R
+  have hs : b110100_source u v 7 R =
+      Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1] L)
+        (push [1, 1, 0, 1, 0, 0] R) := by
+    unfold b110100_source base
+    rw [show v + 7 = 1 + (v + 6) by omega,
+      ListBlank.append_pow_add P 1 (v + 6)]
+    rfl
+  rw [← hs] at h1
+  have h2 := c01_middle_headRight_exact (v + 6) Lp S
+  have h12 := h1.trans h2
+  have ho : push (([1, 1] : List (Fin 2)) ^ (v + 6 + 1)) S =
+      push [1, 1, 1] (push (I ^ (2 * v + 11)) S) := by
+    rw [one_pow_two_mul, show 2 * (v + 6 + 1) = 3 + (2 * v + 11) by omega,
+      ListBlank.append_pow_add I 3 (2 * v + 11)]
+    rfl
+  rw [ho] at h12
+  have h := h12.trans (k41_c01_last_exact u default (push (I ^ (2 * v + 11)) S))
+  have hframe : Cfg.headLeft C (push [1] default)
+      (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail (push (I ^ (2 * v + 11)) S))) =
+      Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * v + 11)) S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hframe] at h
+  convert h using 1
+  omega
+/-- Exact transition count, indexed by k=n−5. -/
+def b110100_clock (u v : ℕ) : ℕ → ℕ
+  | 0 => 2 * u + 2 * v + 128
+  | 1 => 2 * u + 2 * v + 144
+  | 2 => 2 * u + 2 * v + 124
+  | k + 3 => 2 * u + 2 * v + 2 * k + 126
+
+/-- Complete right tape at the blank-left C return, indexed by k=n−5. -/
+def b110100_result (u v : ℕ) (R : Bits) : ℕ → Bits
+  | 0 => five_run_bottom_result u
+          (push (I ^ (2 * v + 5)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))
+  | 1 => five_run_bottom_result u
+          (push (I ^ (2 * v + 1)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))
+  | 2 => five_run_bottom_result u
+          (push (I ^ (2 * v + 11)) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1] R))
+  | k + 3 => cpop_bottom_result u v
+      (push (I ^ (2 * k + 2)) (push returnKtail (push (I ^ 6) R)))
+
+/-- Exhausts the guarded 110100 row: every n=k+5, p=u+6, c=v+7,
+with arbitrary right suffix R. This is a configuration theorem. -/
+theorem b110100_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (b110100_clock u v k)
+      (b110100_source u v (k + 5) R)
+      (Cfg.headRight C default (b110100_result u v R k)) := by
+  match k with
+  | 0 => exact b110100_n5_exact u v R
+  | 1 => exact b110100_n6_exact u v R
+  | 2 => exact b110100_n7_exact u v R
+  | j + 3 => exact b110100_wide_exact u v j R
+
 end CryptidLink.L17
 
 #print axioms CryptidLink.L17.five_run00_wide_exact
 #print axioms CryptidLink.L17.b110100_wide_exact
+#print axioms CryptidLink.L17.b110100_n5_exact
+#print axioms CryptidLink.L17.b110100_n6_exact
+#print axioms CryptidLink.L17.b110100_n7_exact
+#print axioms CryptidLink.L17.b110100_exact
