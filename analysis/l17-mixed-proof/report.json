@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "seed": 18112030,
+  "cases": 960,
+  "full_traces": 950,
+  "by_kind": {
+    "A": 176,
+    "A01": 72,
+    "A01101": 72,
+    "BtoD": 72,
+    "C2": 176,
+    "Dpair1": 72,
+    "entry1101": 72,
+    "original": 176,
+    "scanner": 72
+  },
+  "maximum_steps": 1360,
+  "mutations": [
+    {
+      "name": "original_clock_off_two",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "original_head_off_pair",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "A_clock_off_two",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "A_head_off_pair",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "C2_clock_off_two",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "C2_head_off_pair",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "C2_left_zero_trim",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "A_scanner_skips_01",
+      "caught": true,
+      "witness": {
+        "u": 0,
+        "v": 0,
+        "suffix": ""
+      }
+    },
+    {
+      "name": "B_wrong_exit_mode",
+      "caught": true,
+      "witness": {
+        "n": 0,
+        "v": 0,
+        "pad": "00110011110010001",
+        "suffix": "00000000011110001"
+      }
+    },
+    {
+      "name": "D_wrong_exit_mode",
+      "caught": true,
+      "witness": {
+        "n": 0,
+        "v": 0,
+        "pad": "01110111001100110",
+        "suffix": "10101001101000110"
+      }
+    },
+    {
+      "name": "entry_wrong_clock",
+      "caught": true,
+      "witness": {
+        "n": 0,
+        "v": 0,
+        "pad": "00000000000000000",
+        "suffix": "01111110011101100"
+      }
+    },
+    {
+      "name": "A01101_missing_gap",
+      "caught": true,
+      "witness": {
+        "n": 0,
+        "v": 0,
+        "pad": "10000100100010100",
+        "suffix": "00010111111110111"
+      }
+    }
+  ],
+  "raw": {
+    "requests": 960,
+    "defined_transitions": 147030,
+    "executed_defined_transitions": 147030,
+    "cache_reused": false,
+    "request_sha256": "fa5834dbc07d68f084c063e8b88d6b1596fabc4b01cd4978aeb015f5e9edb929",
+    "response_sha256": "ac2753e1a213a29d21f95ffffe25a79e963cf40d01118bf336ad11c62853503e",
+    "binary_sha256": "62f30bcf2bcccab081d5c77b80afe34d8a231ab14f65f8ea246cfdffbf1c9315",
+    "stderr": ""
+  },
+  "cases_sha256": "20bea8276f81bdf29c0e153f615a733fafe0d1c780d9cf45694422e758e0dac1",
+  "scope": "Bounded same-author checks; quantified validity is established by L17MixedBoundary.lean."
+}
