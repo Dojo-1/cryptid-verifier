@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620" role="img" aria-labelledby="art-title art-desc">
+<title id="art-title">cryptid-verifier — every machine leaves a trace</title>
+<desc id="art-desc">Original Wabi-Futurist artwork. Four schematic binary Turing-machine tapes, one each for Antihydra, A.4, A.9 and L17, sit against fine woven threads in warm ivory on obsidian. Three have a check-like mark for a proven conditional reduction, while L17 bears one vermilion open boundary. Tape digits are purely illustrative and do not encode real machine traces or halting proofs.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111713"/><stop offset=".7" stop-color="#1B221D"/><stop offset="1" stop-color="#111713"/></linearGradient>
+<linearGradient id="veil" x1="0" x2="1"><stop stop-color="#121814" stop-opacity="1"/><stop offset=".8" stop-color="#121814" stop-opacity=".97"/><stop offset="1" stop-color="#121814" stop-opacity="0"/></linearGradient>
+<clipPath id="inside"><rect x="29" y="29" width="1382" height="561" rx="2"/></clipPath>
+</defs>
+<rect width="1440" height="620" fill="#111713"/>
+<rect x="27" y="27" width="1386" height="565" fill="url(#bg)" stroke="#EEE7D9" stroke-opacity=".24"/>
+<g clip-path="url(#inside)">
+<g fill="none" stroke="#EEE7D9" stroke-width="1" stroke-opacity=".13"><path d="M62 101H1375 M62 537H1375 M753 62V566"/></g>
+<g><path d="M758 95 C910.0 152.0 1037.0 455.0 1343 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.026" stroke-width="1"/>
+<path d="M777 95 C921.0 157.0 1044.0 471.7 1334 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.038" stroke-width="1"/>
+<path d="M796 95 C932.0 161.1 1051.0 485.3 1325 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.050" stroke-width="1"/>
+<path d="M815 95 C943.0 163.5 1058.0 493.4 1316 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.062" stroke-width="1"/>
+<path d="M834 95 C954.0 163.9 1065.0 494.6 1307 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.026" stroke-width="1"/>
+<path d="M853 95 C965.0 162.0 1072.0 488.5 1298 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.038" stroke-width="1"/>
+<path d="M872 95 C976.0 158.4 1079.0 476.3 1289 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.050" stroke-width="1"/>
+<path d="M891 95 C987.0 153.6 1086.0 460.2 1280 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.062" stroke-width="1"/>
+<path d="M910 95 C998.0 148.5 1093.0 443.2 1271 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.026" stroke-width="1"/>
+<path d="M929 95 C1009.0 144.0 1100.0 428.4 1262 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.038" stroke-width="1"/>
+<path d="M948 95 C1020.0 141.0 1107.0 418.4 1253 524" fill="none" stroke="#E9E5DB" stroke-opacity="0.050" stroke-width="1"/></g>
+<g><path d="M804 223H1366" stroke="#EEE7D8" stroke-opacity=".10" stroke-width="1"/>
+<path d="M804 323H1366" stroke="#EEE7D8" stroke-opacity=".10" stroke-width="1"/>
+<path d="M804 423H1366" stroke="#EEE7D8" stroke-opacity=".10" stroke-width="1"/>
+<path d="M804 523H1366" stroke="#EEE7D8" stroke-opacity=".10" stroke-width="1"/></g>
+<g><g>
+ <text x="810" y="177" font-family="ui-monospace,monospace" font-size="17" fill="#EEE7D8" opacity=".94">ANTIHYDRA</text>
+ <text x="810" y="202" font-family="Georgia,serif" font-size="14" fill="#EEE7D8" opacity=".48">walk / threshold</text>
+ <g><g><rect x="918" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="933.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="954" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="969.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="990" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1005.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1026" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1041.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1062" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1077.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1098" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1113.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1134" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1149.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1170" y="158" width="31" height="39" rx="1" fill="#292722" stroke="#C65B44" stroke-opacity=".84" stroke-width="1.6"/>
+  <text x="1185.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#DC8067" opacity="1">0</text></g><g><rect x="1206" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1221.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1242" y="158" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1257.5" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g></g><path d="M1288 176l9 9 15 -19" stroke="#D4D8CE" stroke-opacity=".55" stroke-width="1.7" fill="none"/>
+ </g>
+<g>
+ <text x="810" y="277" font-family="ui-monospace,monospace" font-size="17" fill="#EEE7D8" opacity=".94">A.4</text>
+ <text x="810" y="302" font-family="Georgia,serif" font-size="14" fill="#EEE7D8" opacity=".48">cascade / power</text>
+ <g><g><rect x="918" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="933.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="954" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="969.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="990" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1005.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1026" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1041.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1062" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1077.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1098" y="258" width="31" height="39" rx="1" fill="#292722" stroke="#C65B44" stroke-opacity=".84" stroke-width="1.6"/>
+  <text x="1113.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#DC8067" opacity="1">1</text></g><g><rect x="1134" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1149.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1170" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1185.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1206" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1221.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1242" y="258" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1257.5" y="284" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g></g><path d="M1288 276l9 9 15 -19" stroke="#D4D8CE" stroke-opacity=".55" stroke-width="1.7" fill="none"/>
+ </g>
+<g>
+ <text x="810" y="377" font-family="ui-monospace,monospace" font-size="17" fill="#EEE7D8" opacity=".94">A.9</text>
+ <text x="810" y="402" font-family="Georgia,serif" font-size="14" fill="#EEE7D8" opacity=".48">sweep / race</text>
+ <g><g><rect x="918" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="933.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="954" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="969.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="990" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1005.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1026" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1041.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1062" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1077.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1098" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1113.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1134" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1149.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1170" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1185.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1206" y="358" width="31" height="39" rx="1" fill="#292722" stroke="#C65B44" stroke-opacity=".84" stroke-width="1.6"/>
+  <text x="1221.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#DC8067" opacity="1">0</text></g><g><rect x="1242" y="358" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1257.5" y="384" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g></g><path d="M1288 376l9 9 15 -19" stroke="#D4D8CE" stroke-opacity=".55" stroke-width="1.7" fill="none"/>
+ </g>
+<g>
+ <text x="810" y="477" font-family="ui-monospace,monospace" font-size="17" fill="#D97A60" opacity=".94">L17</text>
+ <text x="810" y="502" font-family="Georgia,serif" font-size="14" fill="#EEE7D8" opacity=".48">return / boundary</text>
+ <g><g><rect x="918" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="933.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="954" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="969.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="990" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1005.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1026" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1041.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1062" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1077.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1098" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1113.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1134" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1149.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1170" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1185.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">1</text></g><g><rect x="1206" y="458" width="31" height="39" rx="1" fill="#1C241F" stroke="#F0E7D9" stroke-opacity=".29" stroke-width=".9"/>
+  <text x="1221.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#F0E7D9" opacity=".82">0</text></g><g><rect x="1242" y="458" width="31" height="39" rx="1" fill="#292722" stroke="#C65B44" stroke-opacity=".84" stroke-width="1.6"/>
+  <text x="1257.5" y="484" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" fill="#DC8067" opacity="1">1</text></g></g><path d="M1283 476l21 -19 m-13 27l18 -14" stroke="#D35A43" stroke-opacity=".83" stroke-width="2" fill="none"/><circle cx="1324" cy="477" r="11" stroke="#D35A43" stroke-opacity=".65" stroke-dasharray="3 5" fill="none"/>
+ </g></g>
+<path d="M799 119V526 M904 117V526" stroke="#EEE7D9" stroke-opacity=".06" stroke-dasharray="2 9"/>
+<path d="M1342 133V530" stroke="#EEE7D9" stroke-opacity=".08" stroke-dasharray="4 11"/>
+<rect x="41" y="106" width="690" height="413" fill="url(#veil)"/>
+</g>
+<g fill="#F0E7D9">
+<text x="76" y="81" font-family="Arial,sans-serif" font-size="17" letter-spacing="4.5" opacity=".69">DOJO / AT THE LIMITS OF COMPUTABILITY</text>
+<text x="72" y="221" font-family="Georgia,'Times New Roman',serif" font-size="102" letter-spacing="-4">cryptid</text>
+<text x="72" y="321" font-family="Georgia,'Times New Roman',serif" font-size="102" letter-spacing="-4">verifier</text>
+<text x="80" y="392" font-family="Georgia,serif" font-size="29" font-style="italic">every machine leaves a trace.</text>
+<text x="80" y="433" font-family="Arial,sans-serif" font-size="18" letter-spacing=".65" opacity=".71">A TRACE IS NOT AN INFINITE PROOF.</text>
+<path d="M80 460H172" stroke="#D35A43" stroke-width="4"/>
+<text x="77" y="564" font-family="monospace" font-size="16" letter-spacing="2" opacity=".62">侘未来 / THE OPEN ORBIT REMAINS</text>
+<text x="1361" y="78" text-anchor="end" font-family="monospace" font-size="15" opacity=".58">LEAN × TAPES × OBSTRUCTIONS</text>
+<text x="1364" y="568" text-anchor="end" font-family="monospace" font-size="13" letter-spacing="1" opacity=".56">SCHEMATIC BITS / NO TRACE ENCODING</text>
+</g>
+</svg>
