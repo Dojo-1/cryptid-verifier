@@ -30,3 +30,4 @@ import CryptidLink.L17z
 import CryptidLink.L17aa
 import CryptidLink.L17ab
 import CryptidLink.L17ac
+import CryptidLink.L17ad
