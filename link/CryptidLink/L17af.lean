@@ -77,7 +77,6 @@ private theorem mixed_ten_prefix (c : ℕ) (R : ListBlank (Fin 2)) :
           (ListBlank.append [1, 0] Tail) := by
       rw [show c + 12 = (c + 11) + 1 by omega,
         ListBlank.append_pow_succ' ([1, 0] : List (Fin 2)) (c + 11) Tail]
-      rfl
     exact hpow.trans (rotLB (c + 11) (ListBlank.append [0] Tail)).symm
   exact hcombine.trans hrotate
 
