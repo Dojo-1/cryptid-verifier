@@ -80,6 +80,59 @@ def witness_cases(rng):
             yield f"first-return-{term}-{guard}", req, want, (start+1, offset+len(right)-1), True
 
 
+def transport_cases(rng):
+    """Predict both sides from the old two-block clock and compare frames."""
+    for n, m, r, term in product(range(6, 12), range(4), range(5), ("00", "100")):
+        u, v = rng.randrange(20), rng.randrange(20)
+        offset = rng.randrange(-800, 801)
+        tail = "".join(rng.choices("01", k=rng.randrange(25)))
+        rest = "01"*m + "101"*r + term
+        inner = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10"
+        left = inner + "01"*n
+        alt = inner + "01"*(n-1)
+        start = offset - len(left)
+        k = n-6
+        cut = 2*u + 2*v + {0: 104, 1: 120, 2: 100}.get(k, 2*k+96)
+        if term == "100":
+            base = 86 if r % 2 == 0 else 72
+            virtual_clock = cut + 4*m + 32*(r//2) + base
+        elif r == 0:
+            virtual_clock = cut + 4*m + 44
+        elif r % 2:
+            virtual_clock = cut + 4*m + 32*(r//2) + 90
+        else:
+            virtual_clock = cut + 4*m + 32*(r//2-1) + 76
+        right = MIXED + "100" + rest
+        virtual = "1101" + "01"*5 + rest
+        entries = (
+            ("mixed", offset, left, right, 136, virtual_clock+112),
+            ("virtual", offset-2, alt, virtual, 24, virtual_clock),
+        )
+        for name, head, prefix, word, ct, end in entries:
+            req = dict(q=1, head=head, ones=ones(prefix+word+tail, start))
+            boundary = {**req, "limit": ct}
+            yield (name+"-frame", boundary, dict(q=0, head=offset+12, steps=ct, halted=False),
+                   (start, offset+11), False)
+            finish = {**req, "limit": end}
+            yield (name+"-return", finish, dict(q=2, head=start, steps=end, halted=False),
+                   (start+1, offset+len(right)-1), False)
+
+
+def mixed_00_cases(rng):
+    for k, _ in product(range(12), range(12)):
+        u, v = rng.randrange(22), rng.randrange(22)
+        offset = rng.randrange(-800, 801)
+        tail = "".join(rng.choices("01", k=rng.randrange(24)))
+        left = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10" + "01"*(5+k)
+        right = MIXED + "00"
+        start = offset-len(left)
+        clock = 110+2*u+2*v+2*k
+        out = "1"*(2*u+1) + "10"*7 + "1"*(2*v+11) + "1010" + "1"*(2*k+6) + "1010" + "1"*11
+        req = dict(q=1, head=offset, limit=clock, ones=ones(left+right+tail, start))
+        want = dict(q=2, head=start, steps=clock, halted=False, ones=ones(out+tail, start))
+        yield "mixed-00-all-widths", req, want, (start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -93,7 +146,7 @@ def main():
     parser.add_argument("--cpp", required=True, type=Path)
     exe = parser.parse_args().cpp.resolve()
     rng = random.Random(19112049)
-    cases = [*scan_cases(rng), *witness_cases(rng)]
+    cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]
@@ -101,15 +154,21 @@ def main():
     output = subprocess.run([str(exe)], input="\n".join(lines)+"\n", text=True,
                             capture_output=True, check=True).stdout.splitlines()
     counts = Counter()
+    mixed_frames = {}
     for i, ((name, req, want, bounds, first), raw) in enumerate(zip(cases, output, strict=True)):
         cpp, py = json.loads(raw), replay(req)
         assert cpp.pop("id") == i
         assert cpp == py, (name, i, "literal trace disagreement")
         assert {k: py[k] for k in want} == want, (name, i, "endpoint disagreement")
         assert bounds[0] <= py["read_min"] <= py["read_max"] <= bounds[1]
+        if name in ("mixed-frame", "mixed-return"):
+            mixed_frames[name.removeprefix("mixed-")] = py["ones"]
+        elif name in ("virtual-frame", "virtual-return"):
+            assert py["ones"] == mixed_frames.pop(name.removeprefix("virtual-")), (name, i, "transport mismatch")
         if first:
             check_first_return(req, py["reads"])
         counts[name] += 1
+    assert not mixed_frames
     print(json.dumps(dict(cases=len(cases), full_traces=len(cases), by_kind=counts), sort_keys=True))
 
 

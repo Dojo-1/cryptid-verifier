@@ -1,4 +1,4 @@
-import CryptidLink.L17MixedBoundary
+import CryptidLink.L17Interleaved
 
 /-! Exact guarded returns for the B dispatcher at 0, 111, 1100, 110100 and homogeneous 1101 scanner continuations. -/
 
@@ -1191,6 +1191,92 @@ theorem b1101_prefixed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : B
   (b1101_prefixed_to_cut t u v k j R).trans
     (scanner_cut_return_exact u v k (t.cutSuffix j R))
 
+/-- Full return for the mixed 00 word at every width n=k+5. -/
+theorem mixed_101_01_00_return_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (110 + 2 * u + 2 * v + 2 * k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C default (cpop_bottom_result u v
+        (push (I ^ (2 * k + 6)) (push [1, 0, 1, 0] (push (I ^ 11) R))))) := by
+  let S := push [1, 0, 1, 0] (push (I ^ 11) R)
+  have h1 := mixed_101_01_00_frame_exact (push (Q ^ (k + 3)) (base u v)) R
+  have he : push [1, 0, 1, 0] (push (Q ^ (k + 3)) (base u v)) =
+      push (Q ^ (k + 5)) (base u v) := by
+    change push (Q ^ 2) (push (Q ^ (k + 3)) (base u v)) = _
+    rw [← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega]
+  rw [he] at h1
+  have h2 := b1101_cpop_sweep u v k S
+  have h3 := b1101100_finish u v (push (I ^ (2 * k + 6)) S)
+  convert (h1.trans h2).trans h3 using 1 <;> omega
+
+/-- The right word consumed after the mixed handoff, excluding the handoff
+itself and the five pairs already represented within the new A frame. -/
+def PrefixedScanner.resumeWord (t : PrefixedScanner) (j : ℕ) : List (Fin 2) :=
+  P ^ j ++ (scanner101 ^ t.repeatCount ++ t.terminator)
+
+/-- Index giving j+5 pairs in the equivalent two-block entry. -/
+def PrefixedScanner.resumeIndex : PrefixedScanner → ℕ → ℕ
+  | .wideEven100 _, j | .wideOdd00 _, j => j
+  | _, j => j + 5
+
+private theorem PrefixedScanner.resume_word_eq (t : PrefixedScanner) (j : ℕ) :
+    t.word (t.resumeIndex j) = [1, 1, 0, 1] ++ (P ^ 5 ++ t.resumeWord j) := by
+  have hn : t.prefixLen (t.resumeIndex j) = 5 + j := by
+    cases t <;> simp only [PrefixedScanner.prefixLen, PrefixedScanner.resumeIndex] <;> omega
+  rw [PrefixedScanner.word, hn, list_pow_add]
+  simp only [PrefixedScanner.resumeWord, List.append_assoc]
+
+/-- An exact full mixed return at width n=k+6. Rescanning the two-block
+continuation gives the same output tape as a width n−1 entry with five more
+01 pairs, and adds exactly 112 steps to that entry's clock. -/
+theorem mixed_resumed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (112 + (t.clockToCut (t.resumeIndex j) + scannerCutClock u v k))
+      (Cfg.headRight B (push (Q ^ (k + 6)) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] (push (t.resumeWord j) R)))
+      (Cfg.headRight C default (scannerCutResult u v (t.cutSuffix (t.resumeIndex j) R) k)) := by
+  let L := push (Q ^ (k + 3)) (base u v)
+  let W := push (t.resumeWord j) R
+  let Y := Cfg.headRight C default (scannerCutResult u v (t.cutSuffix (t.resumeIndex j) R) k)
+  let N := t.clockToCut (t.resumeIndex j) + scannerCutClock u v k
+  have hN : 24 ≤ N := by
+    dsimp only [N]
+    cases t <;> simp only [PrefixedScanner.resumeIndex, PrefixedScanner.clockToCut] <;> omega
+  have h := b1101_prefixed_return_exact t u v k (t.resumeIndex j) R
+  rw [PrefixedScanner.resume_word_eq, ← ListBlank.append_append, ← ListBlank.append_append] at h
+  have htime : 24 + (N - 24) = N := by omega
+  have hL2 : push [1, 0, 1, 0] L = push (Q ^ (k + 5)) (base u v) := by
+    change push (Q ^ 2) (push (Q ^ (k + 3)) (base u v)) = _
+    rw [← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega]
+  have hL3 : push [1, 0, 1, 0, 1, 0] L = push (Q ^ (k + 6)) (base u v) := by
+    change push (Q ^ 3) (push (Q ^ (k + 3)) (base u v)) = _
+    rw [← ListBlank.append_pow_add, show 3 + (k + 3) = k + 6 by omega]
+  have ht := mixed_suffix_transport L W Y (N - 24)
+  rw [hL2, hL3, htime] at ht
+  change ReachesIn target (112 + N)
+    (Cfg.headRight B (push (Q ^ (k + 6)) (base u v)) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] W)) Y
+  rw [show 112 + N = 136 + (N - 24) by omega]
+  exact ht.mpr h
+
+/-- The resumed family covers every two-block continuation, with either
+terminator and no guard on the number of new pairs or repeats. -/
+theorem mixed_resumed_scanner_complete (j r : ℕ) (terminates00 : Bool) :
+    ∃ t : PrefixedScanner, t.resumeWord j =
+      P ^ j ++ (scanner101 ^ r ++ if terminates00 then [0, 0] else [1, 0, 0]) := by
+  cases terminates00
+  · by_cases he : r % 2 = 0
+    · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h := ⟨r / 2, by omega⟩
+      exact ⟨.wideEven100 h, rfl⟩
+    · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 1 := ⟨r / 2, by omega⟩
+      exact ⟨.odd100 h, rfl⟩
+  · by_cases hz : r = 0
+    · subst r
+      exact ⟨.zero00, rfl⟩
+    · by_cases he : r % 2 = 0
+      · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 2 := ⟨(r - 2) / 2, by omega⟩
+        exact ⟨.positiveEven00 h, rfl⟩
+      · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 1 := ⟨r / 2, by omega⟩
+        exact ⟨.wideOdd00 h, rfl⟩
+
 /-- Short prefixes whose complementary-parity C6 frames have a full return. -/
 inductive ShortScannerPrefix where
   | two | three
@@ -2035,3 +2121,7 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.b1101_edge_prefixed_return_exact
 
 #print axioms CryptidLink.L17.scanner_dispatch_complete
+
+#print axioms CryptidLink.L17.mixed_101_01_00_return_exact
+#print axioms CryptidLink.L17.mixed_resumed_return_exact
+#print axioms CryptidLink.L17.mixed_resumed_scanner_complete
