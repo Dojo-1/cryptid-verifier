@@ -751,10 +751,234 @@ theorem b1101100_exact (u v k : ℕ) (R : Bits) :
     List.nil_append, b1101100_residue] at h ⊢
   exact h
 
+/-- Common return checkpoint. The three leading right ones belong to
+the return path; S begins beyond its local read window. -/
+def scannerCutSource (u v k : ℕ) (S : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headLeft C (push [0] (push (Q ^ (k + 3)) (base u v))) (push [1, 1, 1] S)
+
+/-- Defined steps from the common checkpoint, indexed by k=n−5. -/
+def scannerCutClock (u v : ℕ) : ℕ → ℕ
+  | 0 => 2 * u + 2 * v + 104
+  | 1 => 2 * u + 2 * v + 120
+  | 2 => 2 * u + 2 * v + 100
+  | j + 3 => 2 * u + 2 * v + 2 * j + 102
+
+private abbrev scannerWrite5 := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+private abbrev scannerWrite6 := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+private abbrev scannerWrite7 := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+/-- The complete return word as a function of the unread checkpoint suffix. -/
+def scannerCutResult (u v : ℕ) (S : Bits) : ℕ → Bits
+  | 0 => five_run_bottom_result u (push (I ^ (2 * v + 5)) (push scannerWrite5 S))
+  | 1 => five_run_bottom_result u (push (I ^ (2 * v + 1)) (push scannerWrite6 S))
+  | 2 => five_run_bottom_result u (push (I ^ (2 * v + 11)) (push scannerWrite7 S))
+  | j + 3 => cpop_bottom_result u v (push (I ^ (2 * j + 2)) (push returnKtail S))
+
+private theorem scanner_cut_short_finish (u z : ℕ) (S : Bits) :
+    ReachesIn target (2 * (z + 2) + (41 + 2 * u))
+      (Cfg.headRight C (push (P ^ (z + 1)) (push [0] (push (P ^ (u + 6)) default)))
+        (push [1] S))
+      (Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * z + 1)) S))) := by
+  let Lp := push (P ^ (u + 6)) default
+  let T := push (I ^ (2 * z + 1)) S
+  have h1 := c01_middle_headRight_exact (z + 1) Lp S
+  have hw : push (([1, 1] : List (Fin 2)) ^ (z + 1 + 1)) S = push [1, 1, 1] T := by
+    rw [one_pow_two_mul, show 2 * (z + 1 + 1) = 3 + (2 * z + 1) by omega,
+      ListBlank.append_pow_add I 3 (2 * z + 1)]
+    rfl
+  rw [hw] at h1
+  have h := h1.trans (k41_c01_last_exact u default T)
+  have he : Cfg.headLeft C (push [1] default)
+      (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail T)) =
+      Cfg.headRight C default (five_run_bottom_result u T) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [he] at h
+  exact h
+
+/-- Width 5: 55 steps reading [-16,3] relative to the checkpoint. -/
+private theorem scanner_cut_kernel5 (L S : Bits) :
+    ReachesIn target 55
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headRight C L (push [1] (push scannerWrite5 S))) := by
+  have h : ReachesIn target 55
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headLeft C (push [1] L) (push scannerWrite5 S)) := by
+    set_option maxRecDepth 8192 in
+      l17_exact_steps
+  rw [Cfg.headLeft_cons] at h
+  exact h
+
+private theorem scanner_cut_width5 (u v : ℕ) (S : Bits) :
+    ReachesIn target (scannerCutClock u v 0) (scannerCutSource u v 0 S)
+      (Cfg.headRight C default (scannerCutResult u v S 0)) := by
+  let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+  have hs : scannerCutSource u v 0 S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
+    unfold scannerCutSource
+    rw [Cfg.headLeft_cons]
+    unfold base L
+    rw [show v + 7 = 4 + (v + 3) by omega, ListBlank.append_pow_add P 4 (v + 3)]
+    rfl
+  have h := scanner_cut_kernel5 L S
+  rw [← hs] at h
+  have hh := scanner_cut_short_finish u (v + 2) (push scannerWrite5 S)
+  have ht : 2 * (v + 2) + 1 = 2 * v + 5 := by omega
+  rw [ht] at hh
+  have he : scannerCutClock u v 0 = 55 + (2 * (v + 2 + 2) + (41 + 2 * u)) := by
+    simp only [scannerCutClock]
+    omega
+  rw [he]
+  exact h.trans hh
+
+/-- Width 6: 75 steps reading [-22,3] relative to the checkpoint. -/
+private theorem scanner_cut_kernel6 (L S : Bits) :
+    ReachesIn target 75
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headRight C L (push [1] (push scannerWrite6 S))) := by
+  have h : ReachesIn target 75
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headLeft C (push [1] L) (push scannerWrite6 S)) := by
+    set_option maxRecDepth 8192 in
+      l17_exact_steps
+  rw [Cfg.headLeft_cons] at h
+  exact h
+
+private theorem scanner_cut_width6 (u v : ℕ) (S : Bits) :
+    ReachesIn target (scannerCutClock u v 1) (scannerCutSource u v 1 S)
+      (Cfg.headRight C default (scannerCutResult u v S 1)) := by
+  let L := push (P ^ (v + 1)) (push [0] (push (P ^ (u + 6)) default))
+  have hs : scannerCutSource u v 1 S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
+    unfold scannerCutSource
+    rw [Cfg.headLeft_cons]
+    unfold base L
+    rw [show v + 7 = 6 + (v + 1) by omega, ListBlank.append_pow_add P 6 (v + 1)]
+    rfl
+  have h := scanner_cut_kernel6 L S
+  rw [← hs] at h
+  have hh := scanner_cut_short_finish u (v + 0) (push scannerWrite6 S)
+  have ht : 2 * (v + 0) + 1 = 2 * v + 1 := by omega
+  rw [ht] at hh
+  have he : scannerCutClock u v 1 = 75 + (2 * (v + 0 + 2) + (41 + 2 * u)) := by
+    simp only [scannerCutClock]
+    omega
+  rw [he]
+  exact h.trans hh
+
+/-- Width 7: 45 steps reading [-14,3] relative to the checkpoint. -/
+private theorem scanner_cut_kernel7 (L S : Bits) :
+    ReachesIn target 45
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headRight C L (push [1] (push scannerWrite7 S))) := by
+  have h : ReachesIn target 45
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] (push [1] L)) (push [0, 1, 1, 1] S))
+      (Cfg.headLeft C (push [1] L) (push scannerWrite7 S)) := by
+    set_option maxRecDepth 8192 in
+      l17_exact_steps
+  rw [Cfg.headLeft_cons] at h
+  exact h
+
+private theorem scanner_cut_width7 (u v : ℕ) (S : Bits) :
+    ReachesIn target (scannerCutClock u v 2) (scannerCutSource u v 2 S)
+      (Cfg.headRight C default (scannerCutResult u v S 2)) := by
+  let L := push (P ^ (v + 6)) (push [0] (push (P ^ (u + 6)) default))
+  have hs : scannerCutSource u v 2 S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
+    unfold scannerCutSource
+    rw [Cfg.headLeft_cons]
+    unfold base L
+    rw [show v + 7 = 1 + (v + 6) by omega, ListBlank.append_pow_add P 1 (v + 6)]
+    rfl
+  have h := scanner_cut_kernel7 L S
+  rw [← hs] at h
+  have hh := scanner_cut_short_finish u (v + 5) (push scannerWrite7 S)
+  have ht : 2 * (v + 5) + 1 = 2 * v + 11 := by omega
+  rw [ht] at hh
+  have he : scannerCutClock u v 2 = 45 + (2 * (v + 5 + 2) + (41 + 2 * u)) := by
+    simp only [scannerCutClock]
+    omega
+  rw [he]
+  exact h.trans hh
+
+private theorem scanner_cut_wide (u v j : ℕ) (S : Bits) :
+    ReachesIn target (scannerCutClock u v (j + 3)) (scannerCutSource u v (j + 3) S)
+      (Cfg.headRight C default (scannerCutResult u v S (j + 3))) := by
+  have h1 := k41_c01_middle_exact j (base u v) S
+  rw [← rotLB0] at h1
+  have he : 2 * (j + 1) = 2 * j + 2 := by omega
+  rw [one_pow_two_mul, he] at h1
+  have h2 := b1101100_finish u v (push (I ^ (2 * j + 2)) (push returnKtail S))
+  have ht : scannerCutClock u v (j + 3) =
+      (41 + 2 * (j + 1)) + (4 + (2 * (v + 7) + 41 + 2 * u)) := by
+    simp only [scannerCutClock]
+    omega
+  rw [ht]
+  exact h1.trans h2
+
+/-- The complete checkpoint return for every guarded width n=k+5. -/
+theorem scanner_cut_return_exact (u v k : ℕ) (S : Bits) :
+    ReachesIn target (scannerCutClock u v k) (scannerCutSource u v k S)
+      (Cfg.headRight C default (scannerCutResult u v S k)) := by
+  match k with
+  | 0 => exact scanner_cut_width5 u v S
+  | 1 => exact scanner_cut_width6 u v S
+  | 2 => exact scanner_cut_width7 u v S
+  | j + 3 => exact scanner_cut_wide u v j S
+
+/-- The original 110100 route takes 24 steps to enter this checkpoint. -/
+theorem scanner_cut_clock_eq (u v k : ℕ) :
+    24 + scannerCutClock u v k = b110100_clock u v k := by
+  match k with
+  | 0 => simp only [scannerCutClock, b110100_clock]; omega
+  | 1 => simp only [scannerCutClock, b110100_clock]; omega
+  | 2 => simp only [scannerCutClock, b110100_clock]; omega
+  | j + 3 => simp only [scannerCutClock, b110100_clock]; omega
+
+/-- The old endpoint is recovered by feeding six extra ones into the cut suffix. -/
+theorem scanner_cut_result_eq (u v k : ℕ) (R : Bits) :
+    scannerCutResult u v (push (I ^ 6) R) k = b110100_result u v R k := by
+  match k with
+  | 0 => simp only [scannerCutResult, b110100_result, ListBlank.append_append] <;> rfl
+  | 1 => simp only [scannerCutResult, b110100_result, ListBlank.append_append] <;> rfl
+  | 2 => simp only [scannerCutResult, b110100_result, ListBlank.append_append] <;> rfl
+  | j + 3 => rfl
+
+private abbrev scannerCutSuffix (h e : ℕ) (R : Bits) : Bits :=
+  push [0, 1, 0] (push (scannerC6 ^ h) (push (I ^ e) R))
+
+/-- The odd100 scanner and the shared checkpoint give a complete return. -/
+theorem b1101_odd100_exact (u v k h : ℕ) (R : Bits) :
+    ReachesIn target ((14 + (32 * h + 38)) + scannerCutClock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1] (push (scanner101 ^ (2 * h + 1)) (push [1, 0, 0] R))))
+      (Cfg.headRight C default (scannerCutResult u v (scannerCutSuffix h 7 R) k)) := by
+  let L := push [0] (push (Q ^ (k + 3)) (base u v))
+  have h1 := b1101_to_a_exact u v k (push (scanner101 ^ (2 * h + 1)) (push [1, 0, 0] R))
+  rw [← rotLB0 (k + 3) (base u v)] at h1
+  have h2 := a101_100_odd_c6_exact h L R
+  rw [ListBlank.append_pow_succ] at h2
+  have h3 := scanner_cut_return_exact u v k (scannerCutSuffix h 7 R)
+  convert (h1.trans h2).trans h3 using 1 <;> (first | rfl | omega)
+
+/-- The positive even00 scanner and the shared checkpoint give a complete return. -/
+theorem b1101_positive_even00_exact (u v k h : ℕ) (R : Bits) :
+    ReachesIn target ((14 + (32 * h + 42)) + scannerCutClock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1] (push (scanner101 ^ (2 * h + 2)) (push [0, 0] R))))
+      (Cfg.headRight C default (scannerCutResult u v (scannerCutSuffix h 9 R) k)) := by
+  let L := push [0] (push (Q ^ (k + 3)) (base u v))
+  have h1 := b1101_to_a_exact u v k (push (scanner101 ^ (2 * h + 2)) (push [0, 0] R))
+  rw [← rotLB0 (k + 3) (base u v)] at h1
+  have h2 := a101_00_even_c6_exact h L R
+  rw [ListBlank.append_pow_succ] at h2
+  have h3 := scanner_cut_return_exact u v k (scannerCutSuffix h 9 R)
+  convert (h1.trans h2).trans h3 using 1 <;> (first | rfl | omega)
+
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
   | zero | tripleOne | oneOneZeroZero | oneOneZeroOneZeroZero | oneOneZeroOneOneZeroZero
   | scannerEven100 (h : ℕ) | scannerOdd00 (h : ℕ)
+  | scannerOdd100 (h : ℕ) | scannerPositiveEven00 (h : ℕ)
 
 def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .zero => [0]
@@ -765,6 +989,9 @@ def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .scannerEven100 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h) ++ [1, 0, 0])
   | .scannerOdd00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 1) ++ [0, 0])
 
+  | .scannerOdd100 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 1) ++ [1, 0, 0])
+  | .scannerPositiveEven00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 2) ++ [0, 0])
+
 def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   match t with
   | .zero => 2 * u + 2 * v + 2 * k + 70
@@ -774,6 +1001,9 @@ def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   | .oneOneZeroOneOneZeroZero => 2 * u + 2 * v + 2 * k + 102
   | .scannerEven100 h => 32 * h + 2 * u + 2 * v + 2 * k + 102
   | .scannerOdd00 h => 32 * h + 2 * u + 2 * v + 2 * k + 106
+
+  | .scannerOdd100 h => (14 + (32 * h + 38)) + scannerCutClock u v k
+  | .scannerPositiveEven00 h => (14 + (32 * h + 42)) + scannerCutClock u v k
 
 def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
   match t with
@@ -789,6 +1019,9 @@ def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits
   | .scannerOdd00 h => cpop_bottom_result u v
       (push (I ^ (2 * k + 6))
         (push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 9) R))))
+
+  | .scannerOdd100 h => scannerCutResult u v (scannerCutSuffix h 7 R) k
+  | .scannerPositiveEven00 h => scannerCutResult u v (scannerCutSuffix h 9 R) k
 
 /-- Exact return at any of the verified terminal families. -/
 theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
@@ -807,6 +1040,13 @@ theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
   · rename_i h
     simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
       ListBlank.append_append] using b1101_odd00_exact u v k h R
+
+  · rename_i h
+    simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
+      ListBlank.append_append] using b1101_odd100_exact u v k h R
+  · rename_i h
+    simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
+      ListBlank.append_append] using b1101_positive_even00_exact u v k h R
 
 /-- Scan j alternating pairs in B and dispatch at the resulting width. -/
 theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
@@ -870,3 +1110,10 @@ end CryptidLink.L17
 
 #print axioms CryptidLink.L17.b1101_even100_exact
 #print axioms CryptidLink.L17.b1101_odd00_exact
+
+#print axioms CryptidLink.L17.scanner_cut_return_exact
+#print axioms CryptidLink.L17.b1101_odd100_exact
+#print axioms CryptidLink.L17.b1101_positive_even00_exact
+
+#print axioms CryptidLink.L17.scanner_cut_clock_eq
+#print axioms CryptidLink.L17.scanner_cut_result_eq
