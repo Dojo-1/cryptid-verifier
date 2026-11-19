@@ -1211,8 +1211,8 @@ def ShortScannerPrefix.result (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) 
   | .two => b_triple_one_result u v (k + 2) S
   | .three => cpop_bottom_result u v (push (I ^ (2 * k + 6)) (push shortThreeWrite S))
 
-private def shortFrame (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) : Cfg (Fin 2) (Fin 6) :=
-  Cfg.headLeft C (push [0, 1, 0] (push (Q ^ m.pairs) (push [0] (push (Q ^ (k + 3)) (base u v)))))
+private def shortFrame (m : ℕ) (u v k : ℕ) (S : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headLeft C (push [0, 1, 0] (push (Q ^ m) (push [0] (push (Q ^ (k + 3)) (base u v)))))
     (push [1, 1, 1] S)
 
 /-- For two pairs, the local return reads [-6,3] and exits D at -7. -/
@@ -1231,15 +1231,15 @@ private theorem prefix_three_kernel (L S : Bits) :
 
 private theorem prefix_two_frame_return (u v k : ℕ) (S : Bits) :
     ReachesIn target (ShortScannerPrefix.two.returnClock u v k)
-      (shortFrame .two u v k S) (Cfg.headRight C default (ShortScannerPrefix.two.result u v k S)) := by
+      (shortFrame 2 u v k S) (Cfg.headRight C default (ShortScannerPrefix.two.result u v k S)) := by
   let L := push [0] (push (Q ^ (k + 3)) (base u v))
   let O := push [0] (push (P ^ (u + 6)) default)
   have h1 := prefix_two_kernel L S
-  have hf : shortFrame .two u v k S =
+  have hf : shortFrame 2 u v k S =
       Cfg.headRight C (push [1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1] S) :=
     Cfg.headLeft_cons C (0 : Fin 2) _ _
   rw [← hf] at h1
-  change ReachesIn target 29 (shortFrame .two u v k S)
+  change ReachesIn target 29 (shortFrame 2 u v k S)
     (Cfg.headLeft D L (push (Q ^ 5) S)) at h1
   have h2 := d10_sweep_exact (k + 3) (push [0] (base u v)) (push (Q ^ 5) S)
   rw [← rotLB0, ← ListBlank.append_pow_add] at h2
@@ -1260,10 +1260,10 @@ private theorem prefix_two_frame_return (u v k : ℕ) (S : Bits) :
 
 private theorem prefix_three_frame_return (u v k : ℕ) (S : Bits) :
     ReachesIn target (ShortScannerPrefix.three.returnClock u v k)
-      (shortFrame .three u v k S) (Cfg.headRight C default (ShortScannerPrefix.three.result u v k S)) := by
+      (shortFrame 3 u v k S) (Cfg.headRight C default (ShortScannerPrefix.three.result u v k S)) := by
   let L := push (Q ^ (k + 3)) (base u v)
   have h1 := prefix_three_kernel L S
-  have hf : shortFrame .three u v k S =
+  have hf : shortFrame 3 u v k S =
       Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0] L) (push [0, 1, 1, 1] S) :=
     Cfg.headLeft_cons C (0 : Fin 2) _ _
   rw [← hf] at h1
@@ -1276,7 +1276,7 @@ private theorem prefix_three_frame_return (u v k : ℕ) (S : Bits) :
   exact (h1.trans h2).trans h3
 
 private theorem short_frame_return (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) :
-    ReachesIn target (m.returnClock u v k) (shortFrame m u v k S)
+    ReachesIn target (m.returnClock u v k) (shortFrame m.pairs u v k S)
       (Cfg.headRight C default (m.result u v k S)) := by
   cases m
   · exact prefix_two_frame_return u v k S
@@ -1287,55 +1287,543 @@ private abbrev shortTerm (odd00 : Bool) : List (Fin 2) := if odd00 then [0, 0] e
 private abbrev shortTail (odd00 : Bool) (h : ℕ) (R : Bits) :=
   scannerGuardTail h (if odd00 then 6 else 4) R
 
-def ShortScannerPrefix.word (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : List (Fin 2) :=
-  [1, 1, 0, 1] ++ (P ^ m.pairs ++ (scanner101 ^ (shortRepeats odd00 h) ++ shortTerm odd00))
+private def shortScannerWord (j : ℕ) (odd00 : Bool) (h : ℕ) : List (Fin 2) :=
+  [1, 1, 0, 1] ++ (P ^ j ++ (scanner101 ^ (shortRepeats odd00 h) ++ shortTerm odd00))
 
-def ShortScannerPrefix.entryClock (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : ℕ :=
-  (14 + 2 * m.pairs) + (32 * h + if odd00 then 23 else 19)
+private def shortScannerEntryClock (j : ℕ) (odd00 : Bool) (h : ℕ) : ℕ :=
+  (14 + 2 * j) + (32 * h + if odd00 then 23 else 19)
 
-private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
-    ReachesIn target (m.entryClock odd00 h)
-      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (m.word odd00 h) R))
-      (shortFrame m u v k (shortTail odd00 h R)) := by
-  let L := push (Q ^ m.pairs) (push [0] (push (Q ^ (k + 3)) (base u v)))
+private theorem short_to_frame (j : ℕ) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (shortScannerEntryClock j odd00 h)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (shortScannerWord j odd00 h) R))
+      (shortFrame j u v k (shortTail odd00 h R)) := by
+  let L := push (Q ^ j) (push [0] (push (Q ^ (k + 3)) (base u v)))
   cases odd00
-  · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h)) (push [1, 0, 0] R))
+  · have h1 := b1101_prefix_to_a u v k j (push (scanner101 ^ (2 * h)) (push [1, 0, 0] R))
     have ht := a101_100_terminal_exact (2 * h) L R
     rw [c6_phase_even] at ht
     have hs := c6_sweep_exact h (push [0, 1, 0] L) (push (I ^ (4 + 3)) R)
     have hts := ht.trans hs
     rw [scanner_guard_split h 4 R] at hts
     have hh := h1.trans hts
-    have hc : m.entryClock false h = (14 + 2 * m.pairs) + (13 * (2 * h) + 19 + 6 * h) := by
-      change (14 + 2 * m.pairs) + (32 * h + 19) = _
+    have hc : shortScannerEntryClock j false h = (14 + 2 * j) + (13 * (2 * h) + 19 + 6 * h) := by
+      change (14 + 2 * j) + (32 * h + 19) = _
       omega
     rw [hc]
-    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+    simp (config := { failIfUnchanged := false }) only [shortScannerWord, shortRepeats,
       shortTerm, shortFrame, shortTail, L, Bool.false_eq_true, ite_false, Nat.add_zero,
       ListBlank.append_append, List.append_assoc] at hh ⊢
     exact hh
-  · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
+  · have h1 := b1101_prefix_to_a u v k j (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
     have ht := a101_00_positive_terminal_exact (2 * h) L R
     rw [c6_phase_even] at ht
     have hs := c6_sweep_exact h (push [0, 1, 0] L) (push (I ^ (6 + 3)) R)
     have hts := ht.trans hs
     rw [scanner_guard_split h 6 R] at hts
     have hh := h1.trans hts
-    have hc : m.entryClock true h = (14 + 2 * m.pairs) + (13 * (2 * h + 1) + 10 + 6 * h) := by
-      change (14 + 2 * m.pairs) + (32 * h + 23) = _
+    have hc : shortScannerEntryClock j true h = (14 + 2 * j) + (13 * (2 * h + 1) + 10 + 6 * h) := by
+      change (14 + 2 * j) + (32 * h + 23) = _
       omega
     rw [hc]
-    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+    simp (config := { failIfUnchanged := false }) only [shortScannerWord, shortRepeats,
       shortTerm, shortFrame, shortTail, L, ite_true, ListBlank.append_append, List.append_assoc] at hh ⊢
     exact hh
+
+def ShortScannerPrefix.word (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : List (Fin 2) :=
+  shortScannerWord m.pairs odd00 h
+
+def ShortScannerPrefix.entryClock (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : ℕ :=
+  shortScannerEntryClock m.pairs odd00 h
 
 /-- Exact return for the two missing parities at prefix lengths two and three. -/
 theorem b1101_short_prefixed_return_exact (m : ShortScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
     ReachesIn target (m.entryClock odd00 h + m.returnClock u v k)
       (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (m.word odd00 h) R))
       (Cfg.headRight C default (m.result u v k (shortTail odd00 h R))) :=
-  (short_to_frame m odd00 u v k h R).trans
+  (short_to_frame m.pairs odd00 u v k h R).trans
     (short_frame_return m u v k (shortTail odd00 h R))
+
+/-! The one- and four-pair returns need two right guards: six ones
+when the C6 run is empty, and three ones followed by zero otherwise. -/
+
+private def edgeFrame (m k u v : ℕ) (G : List (Fin 2)) (R : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headLeft C (push [0, 1, 0] (push (Q ^ m) (push [0] (push (Q ^ (k + 3)) (base u v)))))
+    (push G R)
+
+private abbrev edge_one_positive_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_one_positive_kernel (L R : Bits) :
+    ReachesIn target 194
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 0] R))
+      (Cfg.headLeft C L (push edge_one_positive_write R)) := by
+  l17_exact_steps
+
+theorem edge_one_positive_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 241) (edgeFrame 1 0 u v [1, 1, 1, 0] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 3)) (push edge_one_positive_write R)))) := by
+  let L := push (P ^ (v + 2)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_one_positive_kernel (push [1] L) R
+  have hs : edgeFrame 1 0 u v [1, 1, 1, 0] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 0] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 1) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+        (push [1, 1, 1, 0] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 1) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 0] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 5 + (v + 2) by omega, ListBlank.append_pow_add P 5 (v + 2)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_one_positive_write R) =
+      Cfg.headRight C L (push [1] (push edge_one_positive_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 1) (push edge_one_positive_write R)
+  have ht : 2 * (v + 1) + 1 = 2 * v + 3 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_one_empty_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_one_empty_kernel (L R : Bits) :
+    ReachesIn target 118
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headLeft C L (push edge_one_empty_write R)) := by
+  l17_exact_steps
+
+theorem edge_one_empty_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 163) (edgeFrame 1 0 u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 1)) (push edge_one_empty_write R)))) := by
+  let L := push (P ^ (v + 1)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_one_empty_kernel (push [1] L) R
+  have hs : edgeFrame 1 0 u v [1, 1, 1, 1, 1, 1] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 1, 1, 1] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 1) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+        (push [1, 1, 1, 1, 1, 1] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 1) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 1, 1, 1] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 6 + (v + 1) by omega, ListBlank.append_pow_add P 6 (v + 1)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_one_empty_write R) =
+      Cfg.headRight C L (push [1] (push edge_one_empty_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 0) (push edge_one_empty_write R)
+  have ht : 2 * (v + 0) + 1 = 2 * v + 1 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_four_positive0_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_four_positive0_kernel (L R : Bits) :
+    ReachesIn target 128
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 0] R))
+      (Cfg.headLeft C L (push edge_four_positive0_write R)) := by
+  l17_exact_steps
+
+theorem edge_four_positive0_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 173) (edgeFrame 4 0 u v [1, 1, 1, 0] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 1)) (push edge_four_positive0_write R)))) := by
+  let L := push (P ^ (v + 1)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_four_positive0_kernel (push [1] L) R
+  have hs : edgeFrame 4 0 u v [1, 1, 1, 0] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 0] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+        (push [1, 1, 1, 0] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 0] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 6 + (v + 1) by omega, ListBlank.append_pow_add P 6 (v + 1)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_four_positive0_write R) =
+      Cfg.headRight C L (push [1] (push edge_four_positive0_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 0) (push edge_four_positive0_write R)
+  have ht : 2 * (v + 0) + 1 = 2 * v + 1 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_four_positive1_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_four_positive1_kernel (L R : Bits) :
+    ReachesIn target 226
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 0] R))
+      (Cfg.headLeft C L (push edge_four_positive1_write R)) := by
+  l17_exact_steps
+
+theorem edge_four_positive1_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 273) (edgeFrame 4 1 u v [1, 1, 1, 0] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 3)) (push edge_four_positive1_write R)))) := by
+  let L := push (P ^ (v + 2)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_four_positive1_kernel (push [1] L) R
+  have hs : edgeFrame 4 1 u v [1, 1, 1, 0] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 0] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (1 + 3)) (base u v)))))
+        (push [1, 1, 1, 0] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (1 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 0] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 5 + (v + 2) by omega, ListBlank.append_pow_add P 5 (v + 2)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_four_positive1_write R) =
+      Cfg.headRight C L (push [1] (push edge_four_positive1_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 1) (push edge_four_positive1_write R)
+  have ht : 2 * (v + 1) + 1 = 2 * v + 3 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_four_empty0_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_four_empty0_kernel (L R : Bits) :
+    ReachesIn target 138
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headLeft C L (push edge_four_empty0_write R)) := by
+  l17_exact_steps
+
+theorem edge_four_empty0_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 187) (edgeFrame 4 0 u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 5)) (push edge_four_empty0_write R)))) := by
+  let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_four_empty0_kernel (push [1] L) R
+  have hs : edgeFrame 4 0 u v [1, 1, 1, 1, 1, 1] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 1, 1, 1] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+        (push [1, 1, 1, 1, 1, 1] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (0 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 1, 1, 1] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 4 + (v + 3) by omega, ListBlank.append_pow_add P 4 (v + 3)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_four_empty0_write R) =
+      Cfg.headRight C L (push [1] (push edge_four_empty0_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 2) (push edge_four_empty0_write R)
+  have ht : 2 * (v + 2) + 1 = 2 * v + 5 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_four_empty1_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_four_empty1_kernel (L R : Bits) :
+    ReachesIn target 158
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headLeft C L (push edge_four_empty1_write R)) := by
+  l17_exact_steps
+
+theorem edge_four_empty1_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 203) (edgeFrame 4 1 u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 1)) (push edge_four_empty1_write R)))) := by
+  let L := push (P ^ (v + 1)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_four_empty1_kernel (push [1] L) R
+  have hs : edgeFrame 4 1 u v [1, 1, 1, 1, 1, 1] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1, 1, 1, 1] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (1 + 3)) (base u v)))))
+        (push [1, 1, 1, 1, 1, 1] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (1 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 1, 1, 1] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 6 + (v + 1) by omega, ListBlank.append_pow_add P 6 (v + 1)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_four_empty1_write R) =
+      Cfg.headRight C L (push [1] (push edge_four_empty1_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 0) (push edge_four_empty1_write R)
+  have ht : 2 * (v + 0) + 1 = 2 * v + 1 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private abbrev edge_four_empty2_write := ([1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+set_option maxRecDepth 8192 in
+set_option maxHeartbeats 2000000 in
+private theorem edge_four_empty2_kernel (L R : Bits) :
+    ReachesIn target 128
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] L) (push [0, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headLeft C L (push edge_four_empty2_write R)) := by
+  l17_exact_steps
+
+theorem edge_four_empty2_exact (u v : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 183) (edgeFrame 4 2 u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (five_run_bottom_result u
+        (push (I ^ (2 * v + 11)) (push edge_four_empty2_write R)))) := by
+  let L := push (P ^ (v + 6)) (push [0] (push (P ^ (u + 6)) default))
+  have h1 := edge_four_empty2_kernel (push [1] L) R
+  have hs : edgeFrame 4 2 u v [1, 1, 1, 1, 1, 1] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] (push [1] L)) (push [0, 1, 1, 1, 1, 1, 1] R) := by
+    unfold edgeFrame
+    have hf : Cfg.headLeft C
+        (push [0, 1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (2 + 3)) (base u v)))))
+        (push [1, 1, 1, 1, 1, 1] R) =
+        Cfg.headRight C (push [1, 0] (push (Q ^ 4) (push [0] (push (Q ^ (2 + 3)) (base u v)))))
+          (push [0, 1, 1, 1, 1, 1, 1] R) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
+    unfold base L
+    rw [show v + 7 = 1 + (v + 6) by omega, ListBlank.append_pow_add P 1 (v + 6)]
+    rfl
+  rw [← hs] at h1
+  have hf : Cfg.headLeft C (push [1] L) (push edge_four_empty2_write R) =
+      Cfg.headRight C L (push [1] (push edge_four_empty2_write R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hf] at h1
+  have h2 := scanner_cut_short_finish u (v + 5) (push edge_four_empty2_write R)
+  have ht : 2 * (v + 5) + 1 = 2 * v + 11 := by omega
+  rw [ht] at h2
+  convert h1.trans h2 using 1 <;> omega
+
+private theorem edge_one_positive_wide_kernel (L R : Bits) :
+    ReachesIn target 45
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1] L) (push [0, 1, 1, 1, 0] R))
+      (Cfg.headRight C (push [0, 1, 0] L) (push (I ^ 8) R)) := by
+  change ReachesIn target 45 _ (Cfg.headRight C (push [0, 1, 0] L) (push [1, 1, 1, 1, 1, 1, 1, 1] R))
+  l17_exact_steps
+
+private theorem edge_one_empty_wide_kernel (L R : Bits) :
+    ReachesIn target 84
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] L)
+        (push [0, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headLeft C L (push (Q ^ 10) R)) := by
+  set_option maxRecDepth 8192 in
+    l17_exact_steps
+
+theorem edge_one_positive_wide_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (49 + scannerCutClock u v k) (edgeFrame 1 (k + 1) u v [1, 1, 1, 0] R)
+      (Cfg.headRight C default (scannerCutResult u v (push (I ^ 8) R) k)) := by
+  let L := push (P ^ (k + 3)) (push [0] (base u v))
+  have hf : edgeFrame 1 (k + 1) u v [1, 1, 1, 0] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 0, 1] L) (push [0, 1, 1, 1, 0] R) := by
+    unfold edgeFrame
+    have he : push [0] (push (Q ^ (k + 1 + 3)) (base u v)) = push [0, 1] L := by
+      rw [rotLB0, show k + 1 + 3 = 1 + (k + 3) by omega, ListBlank.append_pow_add]
+      rfl
+    rw [he]
+    exact Cfg.headLeft_cons C (0 : Fin 2) _ _
+  have h1 := edge_one_positive_wide_kernel L R
+  rw [← hf] at h1
+  have he : Cfg.headRight C (push [0, 1, 0] L) (push (I ^ 8) R) =
+      Cfg.headLeft C (push (Q ^ 2) L) (push (I ^ 7) R) :=
+    Cfg.headRight_cons C (1 : Fin 2) _ _
+  rw [he] at h1
+  have h2 := c01_sweep_exact 2 L (push (I ^ 7) R)
+  have hc : Cfg.headLeft C L (push (([1, 1] : List (Fin 2)) ^ 2) (push (I ^ 7) R)) =
+      scannerCutSource u v k (push (I ^ 8) R) := by
+    change Cfg.headLeft C (push (P ^ (k + 3)) (push [0] (base u v))) _ = _
+    rw [← rotLB0]
+    rfl
+  rw [hc] at h2
+  exact (h1.trans h2).trans (scanner_cut_return_exact u v k (push (I ^ 8) R))
+
+theorem edge_one_empty_wide_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (143 + 2 * u + 2 * v + 2 * k) (edgeFrame 1 (k + 1) u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (cpop_bottom_result u v (push (I ^ (2*k)) (push (Q ^ 10) R)))) := by
+  let L := push (Q ^ k) (base u v)
+  have h1 := edge_one_empty_wide_kernel L R
+  have hf : edgeFrame 1 (k + 1) u v [1, 1, 1, 1, 1, 1] R =
+      Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0] L)
+        (push [0, 1, 1, 1, 1, 1, 1] R) := by
+    unfold edgeFrame
+    rw [show k + 1 + 3 = 4 + k by omega, ListBlank.append_pow_add]
+    exact Cfg.headLeft_cons C (0 : Fin 2) _ _
+  rw [← hf] at h1
+  have h2 := c01_sweep_exact k (base u v) (push (Q ^ 10) R)
+  rw [one_pow_two_mul] at h2
+  have h3 := b1101100_finish u v (push (I ^ (2*k)) (push (Q ^ 10) R))
+  convert (h1.trans h2).trans h3 using 1 <;> omega
+
+private theorem edge_four_kernel (L R : Bits) :
+    ReachesIn target 44
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0] L) (push [0, 1, 1, 1] R))
+      (Cfg.headLeft B L (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  l17_exact_steps
+
+private theorem edge_four_to_b (u v k : ℕ) (S : Bits) :
+    ReachesIn target 62 (edgeFrame 4 k u v [1, 1, 1] S)
+      (Cfg.headRight B (push (Q ^ 9) (push (P ^ (k + 1)) (push [0] (base u v)))) S) := by
+  let L := push (P ^ (k + 1)) (push [0] (base u v))
+  have hf : edgeFrame 4 k u v [1, 1, 1] S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0] (push [1] L))
+        (push [0, 1, 1, 1] S) := by
+    unfold edgeFrame
+    rw [show k + 3 = 2 + (k + 1) by omega, ListBlank.append_pow_add]
+    have hr : push [0] (push (Q ^ 2) (push (Q ^ (k + 1)) (base u v))) =
+        push [0, 1, 0, 1] L := by
+      change push [0, 1, 0, 1] (push [0] (push (Q ^ (k + 1)) (base u v))) = _
+      rw [rotLB0 (k + 1)]
+    rw [hr]
+    exact Cfg.headLeft_cons C (0 : Fin 2) _ _
+  have h1 := edge_four_kernel (push [1] L) S
+  rw [← hf] at h1
+  have he : Cfg.headLeft B (push [1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] S) =
+      Cfg.headRight B L (push (Q ^ 9) S) :=
+    Cfg.headLeft_cons B (1 : Fin 2) _ _
+  rw [he] at h1
+  exact h1.trans (b10_sweep_exact 9 L S)
+
+theorem edge_four_positive_wide_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (81 + scannerCutClock u v k) (edgeFrame 4 (k + 2) u v [1, 1, 1, 0] R)
+      (Cfg.headRight C default (scannerCutResult u v (push (I ^ 16) R) k)) := by
+  let L := push (P ^ (k + 3)) (push [0] (base u v))
+  have h1 := edge_four_to_b u v (k + 2) (push [0] R)
+  have h0 : ReachesIn target 1 (Cfg.headRight B (push (Q ^ 9) L) (push [0] R))
+      (Cfg.headLeft C (push (Q ^ 9) L) (push [1] R)) := by
+    l17_exact_steps
+  have h2 := c01_sweep_exact 9 L (push [1] R)
+  have hc : Cfg.headLeft C L (push (([1, 1] : List (Fin 2)) ^ 9) (push [1] R)) =
+      scannerCutSource u v k (push (I ^ 16) R) := by
+    change Cfg.headLeft C (push (P ^ (k + 3)) (push [0] (base u v))) _ = _
+    rw [← rotLB0]
+    rfl
+  rw [hc] at h2
+  exact ((h1.trans h0).trans h2).trans (scanner_cut_return_exact u v k (push (I ^ 16) R))
+
+theorem edge_four_empty_wide_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (185 + 2 * u + 2 * v + 2 * k)
+      (edgeFrame 4 (k + 3) u v [1, 1, 1, 1, 1, 1] R)
+      (Cfg.headRight C default (cpop_bottom_result u v
+        (push (I ^ (2*k + 2)) (push (Q ^ 14) R)))) := by
+  let L := push (P ^ (k + 4)) (push [0] (base u v))
+  have h1 := edge_four_to_b u v (k + 3) (push [1, 1, 1] R)
+  have h2 := b_to_d_sweep_exact 8 L R
+  have h3 := k22_c01_last_exact k (push [0] (base u v)) (push (Q ^ 8) R)
+  have h123 := (h1.trans h2).trans h3
+  have h4 := c01_sweep_exact 1 (base u v) (push (([1, 1] : List (Fin 2)) ^ k) (push (Q ^ 14) R))
+  have h1234 := h123.trans h4
+  rw [one_pow_two_mul 1, one_pow_two_mul k] at h1234
+  have he : push (I ^ (2 * 1)) (push (I ^ (2*k)) (push (Q ^ 14) R)) =
+      push (I ^ (2*k + 2)) (push (Q ^ 14) R) := by
+    change push (I ^ 2) (push (I ^ (2*k)) (push (Q ^ 14) R)) = _
+    rw [← ListBlank.append_pow_add, Nat.add_comm 2 (2*k)]
+  rw [he] at h1234
+  have h5 := b1101100_finish u v (push (I ^ (2*k + 2)) (push (Q ^ 14) R))
+  convert h1234.trans h5 using 1 <;> (first | rfl | omega)
+
+/-- The two short prefixes that must inspect beyond the first three guard ones. -/
+inductive EdgeScannerPrefix where
+  | one | four
+
+def EdgeScannerPrefix.pairs : EdgeScannerPrefix → ℕ
+  | .one => 1
+  | .four => 4
+
+private def edgeGuard (h : ℕ) : List (Fin 2) :=
+  match h with
+  | 0 => [1, 1, 1, 1, 1, 1]
+  | _ + 1 => [1, 1, 1, 0]
+
+private def edgeTail (odd00 : Bool) (h : ℕ) (R : Bits) : Bits :=
+  match h with
+  | 0 => push (I ^ (if odd00 then 3 else 1)) R
+  | l + 1 => push [1, 0] (push (scannerC6 ^ l) (push (I ^ (if odd00 then 9 else 7)) R))
+
+def EdgeScannerPrefix.returnClock (u v : ℕ) : EdgeScannerPrefix → ℕ → ℕ → ℕ
+  | .one, 0, 0 => 2 * u + 2 * v + 163
+  | .one, 0, k + 1 => 143 + 2 * u + 2 * v + 2 * k
+  | .one, _ + 1, 0 => 2 * u + 2 * v + 241
+  | .one, _ + 1, k + 1 => 49 + scannerCutClock u v k
+  | .four, 0, 0 => 2 * u + 2 * v + 187
+  | .four, 0, 1 => 2 * u + 2 * v + 203
+  | .four, 0, 2 => 2 * u + 2 * v + 183
+  | .four, 0, k + 3 => 185 + 2 * u + 2 * v + 2 * k
+  | .four, _ + 1, 0 => 2 * u + 2 * v + 173
+  | .four, _ + 1, 1 => 2 * u + 2 * v + 273
+  | .four, _ + 1, k + 2 => 81 + scannerCutClock u v k
+
+def EdgeScannerPrefix.result (u v : ℕ) (R : Bits) : EdgeScannerPrefix → ℕ → ℕ → Bits
+  | .one, 0, 0 => five_run_bottom_result u (push (I ^ (2 * v + 1)) (push edge_one_empty_write R))
+  | .one, 0, k + 1 => cpop_bottom_result u v (push (I ^ (2*k)) (push (Q ^ 10) R))
+  | .one, _ + 1, 0 => five_run_bottom_result u (push (I ^ (2 * v + 3)) (push edge_one_positive_write R))
+  | .one, _ + 1, k + 1 => scannerCutResult u v (push (I ^ 8) R) k
+  | .four, 0, 0 => five_run_bottom_result u (push (I ^ (2 * v + 5)) (push edge_four_empty0_write R))
+  | .four, 0, 1 => five_run_bottom_result u (push (I ^ (2 * v + 1)) (push edge_four_empty1_write R))
+  | .four, 0, 2 => five_run_bottom_result u (push (I ^ (2 * v + 11)) (push edge_four_empty2_write R))
+  | .four, 0, k + 3 => cpop_bottom_result u v (push (I ^ (2*k + 2)) (push (Q ^ 14) R))
+  | .four, _ + 1, 0 => five_run_bottom_result u (push (I ^ (2 * v + 1)) (push edge_four_positive0_write R))
+  | .four, _ + 1, 1 => five_run_bottom_result u (push (I ^ (2 * v + 3)) (push edge_four_positive1_write R))
+  | .four, _ + 1, k + 2 => scannerCutResult u v (push (I ^ 16) R) k
+
+private theorem edge_frame_return (m : EdgeScannerPrefix) (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (EdgeScannerPrefix.returnClock u v m h k)
+      (edgeFrame m.pairs k u v (edgeGuard h) R)
+      (Cfg.headRight C default (EdgeScannerPrefix.result u v R m h k)) := by
+  match m, h, k with
+  | .one, 0, 0 => exact edge_one_empty_exact u v R
+  | .one, 0, k + 1 => exact edge_one_empty_wide_exact u v k R
+  | .one, _ + 1, 0 => exact edge_one_positive_exact u v R
+  | .one, _ + 1, k + 1 => exact edge_one_positive_wide_exact u v k R
+  | .four, 0, 0 => exact edge_four_empty0_exact u v R
+  | .four, 0, 1 => exact edge_four_empty1_exact u v R
+  | .four, 0, 2 => exact edge_four_empty2_exact u v R
+  | .four, 0, k + 3 => exact edge_four_empty_wide_exact u v k R
+  | .four, _ + 1, 0 => exact edge_four_positive0_exact u v R
+  | .four, _ + 1, 1 => exact edge_four_positive1_exact u v R
+  | .four, _ + 1, k + 2 => exact edge_four_positive_wide_exact u v k R
+
+private theorem shortFrame_to_edge (m k u v : ℕ) (odd00 : Bool) (h : ℕ) (R : Bits) :
+    shortFrame m u v k (shortTail odd00 h R) =
+      edgeFrame m k u v (edgeGuard h) (edgeTail odd00 h R) := by
+  cases h <;> cases odd00 <;> rfl
+
+/-- Exact scanner return for one or four prepended pairs, in both
+parities that needed additional short-prefix cases. -/
+theorem b1101_edge_prefixed_return_exact (m : EdgeScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (shortScannerEntryClock m.pairs odd00 h + EdgeScannerPrefix.returnClock u v m h k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (shortScannerWord m.pairs odd00 h) R))
+      (Cfg.headRight C default (EdgeScannerPrefix.result u v (edgeTail odd00 h R) m h k)) := by
+  have ht := short_to_frame m.pairs odd00 u v k h R
+  rw [shortFrame_to_edge] at ht
+  exact ht.trans (edge_frame_return m u v k h (edgeTail odd00 h R))
 
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
@@ -1344,6 +1832,7 @@ inductive BReturnTerminal where
   | scannerOdd100 (h : ℕ) | scannerPositiveEven00 (h : ℕ)
   | prefixedScanner (t : PrefixedScanner) (j : ℕ)
   | shortPrefixedScanner (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ)
+  | edgePrefixedScanner (m : EdgeScannerPrefix) (odd00 : Bool) (h : ℕ)
 
 def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .zero => [0]
@@ -1358,6 +1847,7 @@ def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .scannerPositiveEven00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 2) ++ [0, 0])
   | .prefixedScanner t j => t.word j
   | .shortPrefixedScanner m odd00 h => m.word odd00 h
+  | .edgePrefixedScanner m odd00 h => shortScannerWord m.pairs odd00 h
 
 def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   match t with
@@ -1373,6 +1863,7 @@ def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   | .scannerPositiveEven00 h => (14 + (32 * h + 42)) + scannerCutClock u v k
   | .prefixedScanner t j => t.clockToCut j + scannerCutClock u v k
   | .shortPrefixedScanner m odd00 h => m.entryClock odd00 h + m.returnClock u v k
+  | .edgePrefixedScanner m odd00 h => shortScannerEntryClock m.pairs odd00 h + EdgeScannerPrefix.returnClock u v m h k
 
 def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
   match t with
@@ -1393,6 +1884,7 @@ def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits
   | .scannerPositiveEven00 h => scannerCutResult u v (scannerCutSuffix h 9 R) k
   | .prefixedScanner t j => scannerCutResult u v (t.cutSuffix j R) k
   | .shortPrefixedScanner m odd00 h => m.result u v k (shortTail odd00 h R)
+  | .edgePrefixedScanner m odd00 h => EdgeScannerPrefix.result u v (edgeTail odd00 h R) m h k
 
 /-- Exact return at any of the verified terminal families. -/
 theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
@@ -1422,6 +1914,48 @@ theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
     exact b1101_prefixed_return_exact s u v k j R
   · rename_i m odd00 h
     exact b1101_short_prefixed_return_exact m odd00 u v k h R
+  · rename_i m odd00 h
+    exact b1101_edge_prefixed_return_exact m odd00 u v k h R
+
+private def complementaryScanner (odd00 : Bool) (h : ℕ) : ℕ → BReturnTerminal
+  | 0 => if odd00 then .scannerOdd00 h else .scannerEven100 h
+  | 1 => .edgePrefixedScanner .one odd00 h
+  | 2 => .shortPrefixedScanner .two odd00 h
+  | 3 => .shortPrefixedScanner .three odd00 h
+  | 4 => .edgePrefixedScanner .four odd00 h
+  | j + 5 => .prefixedScanner (if odd00 then .wideOdd00 h else .wideEven100 h) j
+
+private theorem complementaryScanner_word (odd00 : Bool) (h j : ℕ) :
+    (complementaryScanner odd00 h j).word = shortScannerWord j odd00 h := by
+  match j with
+  | 0 => cases odd00 <;> rfl
+  | 1 => rfl
+  | 2 => rfl
+  | 3 => rfl
+  | 4 => rfl
+  | j + 5 => cases odd00 <;> rfl
+
+/-- Every two-block scanner word is covered, for either terminator and
+arbitrary prefix and repeat counts. Its selected terminal has the exact
+return theorem `b_return_terminal_exact`. -/
+theorem scanner_dispatch_complete (j r : ℕ) (terminates00 : Bool) :
+    ∃ t : BReturnTerminal, t.word =
+      [1, 1, 0, 1] ++ (P ^ j ++ (scanner101 ^ r ++ shortTerm terminates00)) := by
+  cases terminates00
+  · by_cases he : r % 2 = 0
+    · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h := ⟨r / 2, by omega⟩
+      exact ⟨complementaryScanner false h j, complementaryScanner_word false h j⟩
+    · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 1 := ⟨r / 2, by omega⟩
+      exact ⟨.prefixedScanner (.odd100 h) j, rfl⟩
+  · by_cases hz : r = 0
+    · subst r
+      refine ⟨.prefixedScanner .zero00 j, ?_⟩
+      rfl
+    · by_cases he : r % 2 = 0
+      · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 2 := ⟨(r - 2) / 2, by omega⟩
+        exact ⟨.prefixedScanner (.positiveEven00 h) j, rfl⟩
+      · obtain ⟨h, rfl⟩ : ∃ h : ℕ, r = 2 * h + 1 := ⟨r / 2, by omega⟩
+        exact ⟨complementaryScanner true h j, complementaryScanner_word true h j⟩
 
 /-- Scan j alternating pairs in B and dispatch at the resulting width. -/
 theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
@@ -1497,3 +2031,7 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.b1101_prefixed_return_exact
 
 #print axioms CryptidLink.L17.b1101_short_prefixed_return_exact
+
+#print axioms CryptidLink.L17.b1101_edge_prefixed_return_exact
+
+#print axioms CryptidLink.L17.scanner_dispatch_complete
