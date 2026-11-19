@@ -1311,8 +1311,8 @@ private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h 
       omega
     rw [hc]
     simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
-      shortTerm, shortFrame, shortTail, Bool.false_eq_true, ite_false, Nat.add_zero,
-      ListBlank.append_append] at hh ⊢
+      shortTerm, shortFrame, shortTail, L, Bool.false_eq_true, ite_false, Nat.add_zero,
+      ListBlank.append_append, List.append_assoc] at hh ⊢
     exact hh
   · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
     have ht := a101_00_positive_terminal_exact (2 * h) L R
@@ -1326,7 +1326,7 @@ private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h 
       omega
     rw [hc]
     simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
-      shortTerm, shortFrame, shortTail, ite_true, ListBlank.append_append] at hh ⊢
+      shortTerm, shortFrame, shortTail, L, ite_true, ListBlank.append_append, List.append_assoc] at hh ⊢
     exact hh
 
 /-- Exact return for the two missing parities at prefix lengths two and three. -/
