@@ -26,7 +26,9 @@ def cases():
     groups = [*product(("B", "C2", "C5"), ("even-100", "odd-00")),
               *product(("B", "C2", "C5"), ("odd-100", "positive-even-00")),
               *product(("B", "C2", "C5"), ("prefixed-00", "prefixed-odd-100",
-                       "prefixed-positive-even-00", "wide-even-100", "wide-odd-00"))]
+                       "prefixed-positive-even-00", "wide-even-100", "wide-odd-00")),
+              *product(("B", "C2", "C5"), ("short2-even-100", "short2-odd-00",
+                       "short3-even-100", "short3-odd-00"))]
     for entry, kind in groups:
         small = product((6, 7, 13), (7, 8, 16), range(6), range(4))
         large = ((rng.randrange(6, 270), rng.randrange(7, 270),
@@ -37,7 +39,11 @@ def cases():
             tokens = index // 4 % 35 if kind.startswith(("prefixed-", "wide-")) else 0
             if kind.startswith("wide-"):
                 tokens += 5
+            short = kind.startswith("short")
             family = kind.removeprefix("prefixed-").removeprefix("wide-")
+            if short:
+                tokens = int(kind[5])
+                family = kind[7:]
             add, end = {
                 "00": (0, "00"),
                 "even-100": (0, "100"),
@@ -84,8 +90,20 @@ def cases():
                 clock += 32 if end == "00" else 28
             else:
                 suffix = c6
-            target = outer + phase + suffix + r
-            clock += overhead + 4*tokens + (0 if family == "00" else 32*h)
+            if short:
+                # After C6, the 2-pair kernel joins D; the 3-pair kernel sweeps C.
+                u, v, k = p-6, c-7, n-5
+                if tokens == 2:
+                    phase = "1"*(2*u+6) + "01"*(v+k+20) + "0"
+                    back = 105 + 4*k + 4*v + 2*u
+                else:
+                    phase = outer + "1"*(2*c-3) + "1010" + "1"*(2*k+6) + "1011010101010"
+                    back = 97 + 2*k + 2*v + 2*u
+                target = phase + c6[3:] + r
+                clock = overhead + 14 + 2*tokens + 32*h + (23 if end == "00" else 19) + back
+            else:
+                target = outer + phase + suffix + r
+                clock += overhead + 4*tokens + (0 if family == "00" else 32*h)
             req = dict(q=q, head=offset, limit=clock, ones=ones(left+prefix+t+r, start))
             want = dict(q=2, head=start, steps=clock, halted=False, ones=ones(target, start))
             yield (entry, kind), req, want, offset + len(prefix+t) - 1

@@ -1191,12 +1191,159 @@ theorem b1101_prefixed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : B
   (b1101_prefixed_to_cut t u v k j R).trans
     (scanner_cut_return_exact u v k (t.cutSuffix j R))
 
+/-- Short prefixes whose complementary-parity C6 frames have a full return. -/
+inductive ShortScannerPrefix where
+  | two | three
+
+def ShortScannerPrefix.pairs : ShortScannerPrefix → ℕ
+  | .two => 2
+  | .three => 3
+
+private abbrev shortThreeWrite := ([1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+def ShortScannerPrefix.returnClock (m : ShortScannerPrefix) (u v k : ℕ) : ℕ :=
+  match m with
+  | .two => 105 + 4 * k + 4 * v + 2 * u
+  | .three => 97 + 2 * k + 2 * v + 2 * u
+
+def ShortScannerPrefix.result (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) : Bits :=
+  match m with
+  | .two => b_triple_one_result u v (k + 2) S
+  | .three => cpop_bottom_result u v (push (I ^ (2 * k + 6)) (push shortThreeWrite S))
+
+private def shortFrame (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headLeft C (push [0, 1, 0] (push (Q ^ m.pairs) (push [0] (push (Q ^ (k + 3)) (base u v)))))
+    (push [1, 1, 1] S)
+
+/-- For two pairs, the local return reads [-6,3] and exits D at -7. -/
+private theorem prefix_two_kernel (L S : Bits) :
+    ReachesIn target 29
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1] S))
+      (Cfg.headLeft D L (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] S)) := by
+  l17_exact_steps
+
+/-- For three pairs, the local return reads [-9,3] and exits C at -10. -/
+private theorem prefix_three_kernel (L S : Bits) :
+    ReachesIn target 32
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0] L) (push [0, 1, 1, 1] S))
+      (Cfg.headLeft C L (push shortThreeWrite S)) := by
+  l17_exact_steps
+
+private theorem prefix_two_frame_return (u v k : ℕ) (S : Bits) :
+    ReachesIn target (ShortScannerPrefix.two.returnClock u v k)
+      (shortFrame .two u v k S) (Cfg.headRight C default (ShortScannerPrefix.two.result u v k S)) := by
+  let L := push [0] (push (Q ^ (k + 3)) (base u v))
+  let O := push [0] (push (P ^ (u + 6)) default)
+  have h1 := prefix_two_kernel L S
+  have hf : shortFrame .two u v k S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 1] S) :=
+    Cfg.headLeft_cons C (0 : Fin 2) _ _
+  rw [← hf] at h1
+  change ReachesIn target 29 (shortFrame .two u v k S)
+    (Cfg.headLeft D L (push (Q ^ 5) S)) at h1
+  have h2 := d10_sweep_exact (k + 3) (push [0] (base u v)) (push (Q ^ 5) S)
+  rw [← rotLB0, ← ListBlank.append_pow_add] at h2
+  have h3 := d_pair1_sweep_exact (v + 6) (k + 7) O S
+  have h12 := h1.trans h2
+  have h123 := h12.trans h3
+  have h4 := b111_outer u v (k + 2) S
+  have he : push (Q ^ (v + 6 + (k + 7) + 4)) S =
+      push [1, 0, 1, 0] (push (Q ^ (v + (k + 2) + 13)) S) := by
+    change _ = push (Q ^ 2) (push (Q ^ (v + (k + 2) + 13)) S)
+    rw [← ListBlank.append_pow_add, show v + 6 + (k + 7) + 4 = 2 + (v + (k + 2) + 13) by omega]
+  rw [he] at h123
+  have ht : ShortScannerPrefix.two.returnClock u v k =
+      29 + 4 * (k + 3) + (4 * (v + 6) + 14) + (22 + 2 * (u + 2)) := by
+    simp only [ShortScannerPrefix.returnClock]; omega
+  rw [ht]
+  exact h123.trans h4
+
+private theorem prefix_three_frame_return (u v k : ℕ) (S : Bits) :
+    ReachesIn target (ShortScannerPrefix.three.returnClock u v k)
+      (shortFrame .three u v k S) (Cfg.headRight C default (ShortScannerPrefix.three.result u v k S)) := by
+  let L := push (Q ^ (k + 3)) (base u v)
+  have h1 := prefix_three_kernel L S
+  have hf : shortFrame .three u v k S =
+      Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0] L) (push [0, 1, 1, 1] S) :=
+    Cfg.headLeft_cons C (0 : Fin 2) _ _
+  rw [← hf] at h1
+  have h2 := b1101_cpop_sweep u v k (push shortThreeWrite S)
+  have h3 := b1101100_finish u v (push (I ^ (2 * k + 6)) (push shortThreeWrite S))
+  have ht : ShortScannerPrefix.three.returnClock u v k =
+      32 + 2 * (k + 3) + (4 + (2 * (v + 7) + 41 + 2 * u)) := by
+    simp only [ShortScannerPrefix.returnClock]; omega
+  rw [ht]
+  exact (h1.trans h2).trans h3
+
+private theorem short_frame_return (m : ShortScannerPrefix) (u v k : ℕ) (S : Bits) :
+    ReachesIn target (m.returnClock u v k) (shortFrame m u v k S)
+      (Cfg.headRight C default (m.result u v k S)) := by
+  cases m
+  · exact prefix_two_frame_return u v k S
+  · exact prefix_three_frame_return u v k S
+
+private abbrev shortRepeats (odd00 : Bool) (h : ℕ) := 2 * h + if odd00 then 1 else 0
+private abbrev shortTerm (odd00 : Bool) : List (Fin 2) := if odd00 then [0, 0] else [1, 0, 0]
+private abbrev shortTail (odd00 : Bool) (h : ℕ) (R : Bits) :=
+  scannerGuardTail h (if odd00 then 6 else 4) R
+
+def ShortScannerPrefix.word (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : List (Fin 2) :=
+  [1, 1, 0, 1] ++ (P ^ m.pairs ++ (scanner101 ^ (shortRepeats odd00 h) ++ shortTerm odd00))
+
+def ShortScannerPrefix.entryClock (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ) : ℕ :=
+  (14 + 2 * m.pairs) + (32 * h + if odd00 then 23 else 19)
+
+private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (m.entryClock odd00 h)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (m.word odd00 h) R))
+      (shortFrame m u v k (shortTail odd00 h R)) := by
+  let L := push (Q ^ m.pairs) (push [0] (push (Q ^ (k + 3)) (base u v)))
+  cases odd00
+  · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h)) (push [1, 0, 0] R))
+    have ht := a101_100_terminal_exact (2 * h) L R
+    rw [c6_phase_even] at ht
+    have hs := c6_sweep_exact h (push [0, 1, 0] L) (push (I ^ (4 + 3)) R)
+    have hts := ht.trans hs
+    rw [scanner_guard_split h 4 R] at hts
+    have hh := h1.trans hts
+    have hc : m.entryClock false h = (14 + 2 * m.pairs) + (13 * (2 * h) + 19 + 6 * h) := by
+      change (14 + 2 * m.pairs) + (32 * h + 19) = _
+      omega
+    rw [hc]
+    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+      shortTerm, shortFrame, shortTail, L, Bool.false_eq_true, ite_false, Nat.add_zero,
+      ListBlank.append_append, List.append_assoc] at hh ⊢
+    exact hh
+  · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
+    have ht := a101_00_positive_terminal_exact (2 * h) L R
+    rw [c6_phase_even] at ht
+    have hs := c6_sweep_exact h (push [0, 1, 0] L) (push (I ^ (6 + 3)) R)
+    have hts := ht.trans hs
+    rw [scanner_guard_split h 6 R] at hts
+    have hh := h1.trans hts
+    have hc : m.entryClock true h = (14 + 2 * m.pairs) + (13 * (2 * h + 1) + 10 + 6 * h) := by
+      change (14 + 2 * m.pairs) + (32 * h + 23) = _
+      omega
+    rw [hc]
+    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+      shortTerm, shortFrame, shortTail, L, ite_true, ListBlank.append_append, List.append_assoc] at hh ⊢
+    exact hh
+
+/-- Exact return for the two missing parities at prefix lengths two and three. -/
+theorem b1101_short_prefixed_return_exact (m : ShortScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (m.entryClock odd00 h + m.returnClock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (m.word odd00 h) R))
+      (Cfg.headRight C default (m.result u v k (shortTail odd00 h R))) :=
+  (short_to_frame m odd00 u v k h R).trans
+    (short_frame_return m u v k (shortTail odd00 h R))
+
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
   | zero | tripleOne | oneOneZeroZero | oneOneZeroOneZeroZero | oneOneZeroOneOneZeroZero
   | scannerEven100 (h : ℕ) | scannerOdd00 (h : ℕ)
   | scannerOdd100 (h : ℕ) | scannerPositiveEven00 (h : ℕ)
   | prefixedScanner (t : PrefixedScanner) (j : ℕ)
+  | shortPrefixedScanner (m : ShortScannerPrefix) (odd00 : Bool) (h : ℕ)
 
 def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .zero => [0]
@@ -1210,6 +1357,7 @@ def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .scannerOdd100 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 1) ++ [1, 0, 0])
   | .scannerPositiveEven00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 2) ++ [0, 0])
   | .prefixedScanner t j => t.word j
+  | .shortPrefixedScanner m odd00 h => m.word odd00 h
 
 def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   match t with
@@ -1224,6 +1372,7 @@ def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   | .scannerOdd100 h => (14 + (32 * h + 38)) + scannerCutClock u v k
   | .scannerPositiveEven00 h => (14 + (32 * h + 42)) + scannerCutClock u v k
   | .prefixedScanner t j => t.clockToCut j + scannerCutClock u v k
+  | .shortPrefixedScanner m odd00 h => m.entryClock odd00 h + m.returnClock u v k
 
 def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
   match t with
@@ -1243,6 +1392,7 @@ def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits
   | .scannerOdd100 h => scannerCutResult u v (scannerCutSuffix h 7 R) k
   | .scannerPositiveEven00 h => scannerCutResult u v (scannerCutSuffix h 9 R) k
   | .prefixedScanner t j => scannerCutResult u v (t.cutSuffix j R) k
+  | .shortPrefixedScanner m odd00 h => m.result u v k (shortTail odd00 h R)
 
 /-- Exact return at any of the verified terminal families. -/
 theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
@@ -1270,6 +1420,8 @@ theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
       ListBlank.append_append] using b1101_positive_even00_exact u v k h R
   · rename_i s j
     exact b1101_prefixed_return_exact s u v k j R
+  · rename_i m odd00 h
+    exact b1101_short_prefixed_return_exact m odd00 u v k h R
 
 /-- Scan j alternating pairs in B and dispatch at the resulting width. -/
 theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
@@ -1343,3 +1495,5 @@ end CryptidLink.L17
 
 #print axioms CryptidLink.L17.b1101_prefixed_to_cut
 #print axioms CryptidLink.L17.b1101_prefixed_return_exact
+
+#print axioms CryptidLink.L17.b1101_short_prefixed_return_exact
