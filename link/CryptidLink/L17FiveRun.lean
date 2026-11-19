@@ -805,7 +805,10 @@ private theorem scanner_cut_kernel5 (L S : Bits) :
       (Cfg.headLeft C (push [1] L) (push scannerWrite5 S)) := by
     set_option maxRecDepth 8192 in
       l17_exact_steps
-  rw [Cfg.headLeft_cons] at h
+  have hf : Cfg.headLeft C (push [1] L) (push scannerWrite5 S) =
+      Cfg.headRight C L (push [1] (push scannerWrite5 S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) L (push scannerWrite5 S)
+  rw [hf] at h
   exact h
 
 private theorem scanner_cut_width5 (u v : ℕ) (S : Bits) :
@@ -815,7 +818,10 @@ private theorem scanner_cut_width5 (u v : ℕ) (S : Bits) :
   have hs : scannerCutSource u v 0 S =
       Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
     unfold scannerCutSource
-    rw [Cfg.headLeft_cons]
+    have hf : Cfg.headLeft C (push [0] (push (Q ^ (0 + 3)) (base u v))) (push [1, 1, 1] S) =
+        Cfg.headRight C (push (Q ^ (0 + 3)) (base u v)) (push [0, 1, 1, 1] S) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
     unfold base L
     rw [show v + 7 = 4 + (v + 3) by omega, ListBlank.append_pow_add P 4 (v + 3)]
     rfl
@@ -840,7 +846,10 @@ private theorem scanner_cut_kernel6 (L S : Bits) :
       (Cfg.headLeft C (push [1] L) (push scannerWrite6 S)) := by
     set_option maxRecDepth 8192 in
       l17_exact_steps
-  rw [Cfg.headLeft_cons] at h
+  have hf : Cfg.headLeft C (push [1] L) (push scannerWrite6 S) =
+      Cfg.headRight C L (push [1] (push scannerWrite6 S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) L (push scannerWrite6 S)
+  rw [hf] at h
   exact h
 
 private theorem scanner_cut_width6 (u v : ℕ) (S : Bits) :
@@ -850,7 +859,10 @@ private theorem scanner_cut_width6 (u v : ℕ) (S : Bits) :
   have hs : scannerCutSource u v 1 S =
       Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
     unfold scannerCutSource
-    rw [Cfg.headLeft_cons]
+    have hf : Cfg.headLeft C (push [0] (push (Q ^ (1 + 3)) (base u v))) (push [1, 1, 1] S) =
+        Cfg.headRight C (push (Q ^ (1 + 3)) (base u v)) (push [0, 1, 1, 1] S) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
     unfold base L
     rw [show v + 7 = 6 + (v + 1) by omega, ListBlank.append_pow_add P 6 (v + 1)]
     rfl
@@ -875,7 +887,10 @@ private theorem scanner_cut_kernel7 (L S : Bits) :
       (Cfg.headLeft C (push [1] L) (push scannerWrite7 S)) := by
     set_option maxRecDepth 8192 in
       l17_exact_steps
-  rw [Cfg.headLeft_cons] at h
+  have hf : Cfg.headLeft C (push [1] L) (push scannerWrite7 S) =
+      Cfg.headRight C L (push [1] (push scannerWrite7 S)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) L (push scannerWrite7 S)
+  rw [hf] at h
   exact h
 
 private theorem scanner_cut_width7 (u v : ℕ) (S : Bits) :
@@ -885,7 +900,10 @@ private theorem scanner_cut_width7 (u v : ℕ) (S : Bits) :
   have hs : scannerCutSource u v 2 S =
       Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0] (push [1] L)) (push [0, 1, 1, 1] S) := by
     unfold scannerCutSource
-    rw [Cfg.headLeft_cons]
+    have hf : Cfg.headLeft C (push [0] (push (Q ^ (2 + 3)) (base u v))) (push [1, 1, 1] S) =
+        Cfg.headRight C (push (Q ^ (2 + 3)) (base u v)) (push [0, 1, 1, 1] S) :=
+      Cfg.headLeft_cons C (0 : Fin 2) _ _
+    rw [hf]
     unfold base L
     rw [show v + 7 = 1 + (v + 6) by omega, ListBlank.append_pow_add P 1 (v + 6)]
     rfl
