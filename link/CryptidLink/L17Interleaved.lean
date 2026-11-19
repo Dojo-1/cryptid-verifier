@@ -154,6 +154,50 @@ theorem mixed_100_11_return (L R : Bits) :
       (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
   l17_exact_steps
 
+
+private def virtualPrefixStart (L R : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headRight B (push [1, 0, 1, 0] L)
+    (push [1, 1, 0, 1] (push (([0, 1] : List (Fin 2)) ^ 5) R))
+
+private theorem virtual_prefix_boundary (L R : Bits) :
+    ReachesIn target 24 (virtualPrefixStart L R)
+      (Cfg.headRight A (push mixedWrite (push [0] L)) R) := by
+  have h1 := short_B1101_exact L (push (([0, 1] : List (Fin 2)) ^ 5) R)
+  have h2 := a01_sweep_exact 5 (push [0, 1, 0, 1, 0, 1, 0, 0] L) R
+  have h := h1.trans h2
+  simp only [virtualPrefixStart, ListBlank.append_append] at h ⊢
+  exact h
+
+/-- Both prefixes reach the same A configuration, with an exact 112-step
+difference. This transports any timed continuation, for arbitrary suffixes. -/
+theorem mixed_suffix_transport (L R : Bits) (c : Cfg (Fin 2) (Fin 6)) (t : ℕ) :
+    ReachesIn target (136 + t)
+      (Cfg.headRight B (push [1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] R)) c ↔
+      ReachesIn target (24 + t)
+        (Cfg.headRight B (push [1, 0, 1, 0] L)
+          (push [1, 1, 0, 1] (push (([0, 1] : List (Fin 2)) ^ 5) R))) c := by
+  change ReachesIn target (136 + t) (mixedStart (push [0] L) R) c ↔
+    ReachesIn target (24 + t) (virtualPrefixStart L R) c
+  have ha := mixed_suffix_boundary (push [0] L) R
+  have hb := virtual_prefix_boundary L R
+  unfold ReachesIn at ha hb ⊢
+  rw [multiStep_add, ha, Option.bind_some, multiStep_add, hb, Option.bind_some]
+
+/-- The 00 counterpart of the same mixed scan restores the original left
+frame with Cpop, without going beyond the 00 terminator. -/
+theorem mixed_101_01_00_frame_exact (L R : Bits) :
+    ReachesIn target 45
+      (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0] R))
+      (Cfg.headLeft C L (push [1, 0, 1, 0] (push (([1] : List (Fin 2)) ^ 11) R))) := by
+  have h1 := b_mixed_scan_00_exact [.a101, .a01] L R
+  change ReachesIn target 39
+    (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0] R))
+    (Cfg.headLeft C (push (([1, 0] : List (Fin 2)) ^ 1) (push [0, 1, 0, 0] L))
+      (push [1, 1, 1, 1, 1, 1, 1, 1, 1] R)) at h1
+  have h2 := c01_sweep_exact 1 (push [0, 1, 0, 0] L) (push (([1] : List (Fin 2)) ^ 9) R)
+  have h3 := cpop_headLeft_exact L (push (([1] : List (Fin 2)) ^ 11) R)
+  exact (h1.trans h2).trans h3
+
 end CryptidLink.L17
 
 #print axioms CryptidLink.L17.scan_interleaved_exact
@@ -167,3 +211,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_00_return
 #print axioms CryptidLink.L17.mixed_100_00_return
 #print axioms CryptidLink.L17.mixed_100_11_return
+
+#print axioms CryptidLink.L17.mixed_suffix_transport
+#print axioms CryptidLink.L17.mixed_101_01_00_frame_exact
