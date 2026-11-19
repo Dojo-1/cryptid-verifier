@@ -102,6 +102,7 @@ theorem mixed_suffix_boundary (L R : Bits) :
   unfold mixedStart
   l17_exact_steps
 
+set_option maxRecDepth 8192 in
 /-- The following machine step branches to B when the suffix starts with zero. -/
 theorem mixed_suffix_next_zero (L R : Bits) :
     ReachesIn target 137 (mixedStart L (push [0] R))
@@ -112,6 +113,7 @@ theorem mixed_suffix_next_zero (L R : Bits) :
     l17_exact_steps
   exact (mixed_suffix_boundary L (push [0] R)).trans h
 
+set_option maxRecDepth 8192 in
 /-- The same step branches to E when the suffix starts with one. -/
 theorem mixed_suffix_next_one (L R : Bits) :
     ReachesIn target 137 (mixedStart L (push [1] R))
