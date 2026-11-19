@@ -1109,6 +1109,191 @@ private theorem prefix_wide_c_sweep (j : ℕ) (L S : Bits) :
   rw [hr] at h
   exact h
 
+/-- Blocks listed in C processing order, nearest the head first.
+The input scanner reads the blocks in the opposite order. -/
+inductive ReturnBlock where
+  | pair | double | bridge | wide (extra : ℕ)
+
+/-- Scanner tokens in forward (A scan) order for a single C block. -/
+def ReturnBlock.tokens : ReturnBlock → List ScannerToken
+  | .pair => [.a01]
+  | .double => [.a101, .a101]
+  | .bridge => [.a101, .a01, .a01, .a01, .a101]
+  | .wide j => List.replicate (j + 5) .a01 ++ [.a101]
+
+def ReturnBlock.clock : ReturnBlock → ℕ
+  | .pair => 2
+  | .double => 6
+  | .bridge => 34
+  | .wide j => 41 + 2 * (j + 1)
+
+/-- The output after the three leading ones needed by the next block. -/
+def ReturnBlock.output (R : Bits) : ReturnBlock → Bits
+  | .pair => push [1, 1] R
+  | .double => push [0, 1, 0] (push [1, 1, 1] R)
+  | .bridge => push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R
+  | .wide j => scannerWideSuffix j R
+
+def returnBlockTokens : List ReturnBlock → List ScannerToken
+  | [] => []
+  | b :: bs => returnBlockTokens bs ++ b.tokens
+
+def returnBlockClock : List ReturnBlock → ℕ
+  | [] => 0
+  | b :: bs => b.clock + returnBlockClock bs
+
+def returnBlockOutput (R : Bits) : List ReturnBlock → Bits
+  | [] => R
+  | b :: bs => returnBlockOutput (b.output R) bs
+
+private theorem scanner_deposit_append (L : Bits) (s t : List ScannerToken) :
+    scannerDeposit L (s ++ t) = scannerDeposit (scannerDeposit L s) t := by
+  induction s generalizing L with
+  | nil => rfl
+  | cons a s ih => exact ih (push a.deposit L)
+
+private theorem scanner_deposit_pairs (L : Bits) (n : ℕ) :
+    scannerDeposit L (List.replicate n .a01) = push (Q ^ n) L := by
+  induction n generalizing L with
+  | zero => rfl
+  | succ n ih =>
+    rw [List.replicate_succ]
+    change scannerDeposit (push Q L) (List.replicate n .a01) = _
+    rw [ih, ListBlank.append_pow_comm, ListBlank.append_pow_succ]
+
+/-- A genuinely interleaved block: no cells of L or R are read. -/
+private theorem return_bridge_exact (L R : Bits) :
+    ReachesIn target 34
+      (Cfg.headLeft C (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0] L) (push [1, 1, 1] R))
+      (Cfg.headLeft C L (push [1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  l17_exact_steps
+
+private theorem return_block_exact (b : ReturnBlock) (L R : Bits) :
+    ReachesIn target b.clock
+      (Cfg.headLeft C (scannerDeposit L b.tokens) (push [1, 1, 1] R))
+      (Cfg.headLeft C L (push [1, 1, 1] (b.output R))) := by
+  cases b with
+  | pair => exact prefix_c_sweep 1 L R
+  | double => exact c6_sweep_exact 1 L (push [1, 1, 1] R)
+  | bridge => exact return_bridge_exact L R
+  | wide j =>
+    simp only [ReturnBlock.tokens, scanner_deposit_append, scanner_deposit_pairs, scannerDeposit,
+      ScannerToken.deposit, ReturnBlock.clock, ReturnBlock.output]
+    exact prefix_wide_c_sweep j L R
+
+/-- Every finite concatenation of return blocks is consumed. Each block
+restores the very same three-one guard for the following block. -/
+theorem return_blocks_exact (bs : List ReturnBlock) (L R : Bits) :
+    ReachesIn target (returnBlockClock bs)
+      (Cfg.headLeft C (scannerDeposit L (returnBlockTokens bs)) (push [1, 1, 1] R))
+      (Cfg.headLeft C L (push [1, 1, 1] (returnBlockOutput R bs))) := by
+  induction bs generalizing R with
+  | nil => exact ReachesIn.zero _ _
+  | cons b bs ih =>
+    simp only [returnBlockTokens, scanner_deposit_append, returnBlockClock, returnBlockOutput]
+    exact (return_block_exact b (scannerDeposit L (returnBlockTokens bs)) R).trans (ih (b.output R))
+
+/-- Both scanner stops supply the three-one guard. The 100 stop also
+deposits one extra 101 token, which must participate in the block grammar. -/
+inductive ReturnTerm where
+  | zero | hundred
+
+def ReturnTerm.word : ReturnTerm → List (Fin 2)
+  | .zero => [0, 0]
+  | .hundred => [1, 0, 0]
+
+def ReturnTerm.extra : ReturnTerm → List ScannerToken
+  | .zero => []
+  | .hundred => [.a101]
+
+def ReturnTerm.clock : ReturnTerm → ℕ
+  | .zero => 10
+  | .hundred => 19
+
+def ReturnTerm.residue (R : Bits) : ReturnTerm → Bits
+  | .zero => push (I ^ 6) R
+  | .hundred => push (I ^ 4) R
+
+private theorem b_scanner_term_exact (term : ReturnTerm) (ts : List ScannerToken) (L R : Bits) :
+    ReachesIn target (14 + (scannerSteps ts + term.clock))
+      (Cfg.headRight B (push (Q ^ 2) L)
+        (push [1, 1, 0, 1] (push (scannerInput ts) (push term.word R))))
+      (Cfg.headLeft C (scannerDeposit (push [0] L) (ts ++ term.extra))
+        (push [1, 1, 1] (term.residue R))) := by
+  cases term with
+  | zero =>
+    rw [ReturnTerm.extra, List.append_nil]
+    exact b_mixed_scan_00_exact ts L R
+  | hundred =>
+    rw [ReturnTerm.extra, scanner_deposit_append]
+    exact b_mixed_scan_100_exact ts L R
+
+/-- Complete B-to-C return whenever the reversed scanner deposits admit
+the block grammar. The result retains the whole right tape and exact clock. -/
+theorem b_return_blocks_exact (term : ReturnTerm) (ts : List ScannerToken)
+    (bs : List ReturnBlock) (u v k : ℕ) (R : Bits)
+    (hg : ts ++ term.extra = returnBlockTokens bs) :
+    ReachesIn target
+      ((14 + (scannerSteps ts + term.clock)) + returnBlockClock bs + scannerCutClock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1] (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default
+        (scannerCutResult u v (returnBlockOutput (term.residue R) bs) k)) := by
+  let L := push (Q ^ (k + 3)) (base u v)
+  let S := returnBlockOutput (term.residue R) bs
+  have ha := b_scanner_term_exact term ts L R
+  rw [hg, ← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega] at ha
+  have hb := return_blocks_exact bs (push [0] L) (term.residue R)
+  exact (ha.trans hb).trans (scanner_cut_return_exact u v k S)
+
+private theorem scanner_input_append (s t : List ScannerToken) :
+    scannerInput (s ++ t) = scannerInput s ++ scannerInput t := by
+  induction s with
+  | nil => rfl
+  | cons a s ih => simp only [List.cons_append, scannerInput, ih, List.append_assoc]
+
+private theorem scanner_steps_append (s t : List ScannerToken) :
+    scannerSteps (s ++ t) = scannerSteps s + scannerSteps t := by
+  induction s with
+  | nil => simp only [List.nil_append, scannerSteps, Nat.zero_add]
+  | cons a s ih => simp only [List.cons_append, scannerSteps, ih, Nat.add_assoc]
+
+/-- The mixed handoff adds five virtual pairs at the start of the A scan.
+A block parse of those deposits gives a complete exact return at n=k+6. -/
+theorem mixed_return_blocks_exact (term : ReturnTerm) (ts : List ScannerToken)
+    (bs : List ReturnBlock) (u v k : ℕ) (R : Bits)
+    (hg : (List.replicate 5 .a01 ++ ts) ++ term.extra = returnBlockTokens bs) :
+    ReachesIn target
+      (136 + (scannerSteps ts + term.clock + returnBlockClock bs + scannerCutClock u v k))
+      (Cfg.headRight B (push (Q ^ (k + 6)) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default
+        (scannerCutResult u v (returnBlockOutput (term.residue R) bs) k)) := by
+  let five : List ScannerToken := List.replicate 5 .a01
+  let L := push (Q ^ (k + 3)) (base u v)
+  let W := push (scannerInput ts) (push term.word R)
+  let Y := Cfg.headRight C default (scannerCutResult u v (returnBlockOutput (term.residue R) bs) k)
+  let N := scannerSteps ts + term.clock + returnBlockClock bs + scannerCutClock u v k
+  have ha := b_return_blocks_exact term (five ++ ts) bs u v k R hg
+  rw [scanner_steps_append, scanner_input_append, ← ListBlank.append_append] at ha
+  have ht := mixed_suffix_transport L W Y N
+  have he2 : push [1, 0, 1, 0] L = push (Q ^ (k + 5)) (base u v) := by
+    change push (Q ^ 2) (push (Q ^ (k + 3)) (base u v)) = _
+    rw [← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega]
+  have he3 : push [1, 0, 1, 0, 1, 0] L = push (Q ^ (k + 6)) (base u v) := by
+    change push (Q ^ 3) (push (Q ^ (k + 3)) (base u v)) = _
+    rw [← ListBlank.append_pow_add, show 3 + (k + 3) = k + 6 by omega]
+  rw [he2, he3] at ht
+  apply ht.mpr
+  have htime : (14 + (scannerSteps five + scannerSteps ts + term.clock)) +
+      returnBlockClock bs + scannerCutClock u v k = 24 + N := by
+    change (14 + (10 + scannerSteps ts + term.clock)) +
+      returnBlockClock bs + scannerCutClock u v k = 24 + N
+    dsimp only [N]
+    omega
+  rw [htime] at ha
+  exact ha
+
 private theorem scanner_guard_split (h e : ℕ) (R : Bits) :
     push (scannerC6 ^ h) (push (I ^ (e + 3)) R) =
       push [1, 1, 1] (scannerGuardTail h e R) := by
@@ -2477,3 +2662,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.width_four_cut_return_exact
 #print axioms CryptidLink.L17.mixed_narrow_guard_complete
 #print axioms CryptidLink.L17.mixed_narrow_return_exact
+#print axioms CryptidLink.L17.return_blocks_exact
+#print axioms CryptidLink.L17.b_return_blocks_exact
+#print axioms CryptidLink.L17.mixed_return_blocks_exact
