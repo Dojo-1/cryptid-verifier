@@ -595,47 +595,66 @@ theorem b_zero_terminal_exact (u v k : ℕ) (R : Bits) :
 def b_triple_one_result (u v k : ℕ) (R : Bits) : Bits :=
   push (I ^ (2 * u + 6)) (push (P ^ (v + k + 18)) (push [0] R))
 
+private theorem b111_to_outer (u v k : ℕ) (R : Bits) :
+    ReachesIn target (4 * (k + 4) + 8 + (4 * (v + 6) + 14))
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 1] R))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default))
+        (push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R))) := by
+  let L := push [0] (push (P ^ (u + 6)) default)
+  have h1 := b_to_d_sweep_exact (k + 4) (base u v) R
+  have h2 := d_pair1_sweep_exact (v + 6) (k + 5) L R
+  have h := h1.trans h2
+  have hr : push (Q ^ (v + 6 + (k + 5) + 4)) R =
+      push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R) := by
+    change _ = push (Q ^ 2) (push (Q ^ (v + k + 13)) R)
+    rw [← ListBlank.append_pow_add,
+      show v + 6 + (k + 5) + 4 = 2 + (v + k + 13) by omega]
+  rw [hr] at h
+  exact h
+
+private theorem b111_normalize (u v k : ℕ) (R : Bits) :
+    push [1] (push (([1, 1] : List (Fin 2)) ^ (u + 2))
+      (push (Q ^ 6) (push (Q ^ (v + k + 13)) R))) =
+      b_triple_one_result u v k R := by
+  have hq : push (Q ^ 6) (push (Q ^ (v + k + 13)) R) =
+      push [1] (push (P ^ (v + k + 18)) (push [0] R)) := by
+    rw [← ListBlank.append_pow_add, show 6 + (v + k + 13) = v + k + 18 + 1 by omega,
+      rotLB (v + k + 18) (push [0] R)]
+    exact (ListBlank.append_pow_succ' Q (v + k + 18) R).symm
+  rw [hq, one_pow_two_mul]
+  unfold b_triple_one_result
+  rw [show 2 * u + 6 = 1 + (2 * (u + 2) + 1) by omega,
+    ListBlank.append_pow_add I 1 (2 * (u + 2) + 1),
+    ← ListBlank.append_pow_succ' I (2 * (u + 2))]
+  rfl
+
+private theorem b111_outer (u v k : ℕ) (R : Bits) :
+    ReachesIn target (22 + 2 * (u + 2))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default))
+        (push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R)))
+      (Cfg.headRight C default (b_triple_one_result u v k R)) := by
+  let T := push (Q ^ (v + k + 13)) R
+  let S := push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T)
+  have h : ReachesIn target (22 + 2 * (u + 2))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default)) (push [1, 0, 1, 0] T))
+      (Cfg.headLeft C (push [1] default) S) :=
+    k22_c01_last_exact (u + 2) default T
+  have he : Cfg.headLeft C (push [1] default) S =
+      Cfg.headRight C default (b_triple_one_result u v k R) :=
+    (Cfg.headLeft_cons C (1 : Fin 2) default S).trans
+      (congrArg (Cfg.headRight C default) (b111_normalize u v k R))
+  rw [he] at h
+  exact h
+
 /-- Exact B111 return from width n=k+5. -/
 theorem b_triple_one_terminal_exact (u v k : ℕ) (R : Bits) :
     ReachesIn target (2 * u + 4 * v + 4 * k + 88)
       (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 1] R))
       (Cfg.headRight C default (b_triple_one_result u v k R)) := by
-  let Lp := push (P ^ (u + 6)) default
-  let L := push [0] Lp
-  let T := push (Q ^ (v + k + 13)) R
-  have h1 := b_to_d_sweep_exact (k + 4) (base u v) R
-  have h2 := d_pair1_sweep_exact (v + 6) (k + 5) L R
-  have h := h1.trans h2
-  have hr : push (Q ^ (v + 6 + (k + 5) + 4)) R =
-      push [1, 0, 1, 0] T := by
-    change _ = push (Q ^ 2) (push (Q ^ (v + k + 13)) R)
-    rw [← ListBlank.append_pow_add,
-      show v + 6 + (k + 5) + 4 = 2 + (v + k + 13) by omega]
-  rw [hr] at h
-  have hh := h.trans (k22_c01_last_exact (u + 2) default T)
-  have hw : push [1] (push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T)) =
-      b_triple_one_result u v k R := by
-    have hq : push (Q ^ 6) T = push [1] (push (P ^ (v + k + 18)) (push [0] R)) := by
-      change push (Q ^ 6) (push (Q ^ (v + k + 13)) R) = _
-      rw [← ListBlank.append_pow_add, show 6 + (v + k + 13) = v + k + 18 + 1 by omega,
-        rotLB (v + k + 18) (push [0] R)]
-      exact (ListBlank.append_pow_succ' Q (v + k + 18) R).symm
-    rw [hq, one_pow_two_mul]
-    unfold b_triple_one_result
-    rw [show 2 * u + 6 = 1 + (2 * (u + 2) + 1) by omega,
-      ListBlank.append_pow_add I 1 (2 * (u + 2) + 1),
-      ← ListBlank.append_pow_succ' I (2 * (u + 2))]
-    rfl
-  have hf : Cfg.headLeft C (push [1] default)
-      (push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T)) =
-      Cfg.headRight C default (b_triple_one_result u v k R) :=
-    (Cfg.headLeft_cons C (1 : Fin 2) _ _).trans (congrArg (Cfg.headRight C default) hw)
-  change ReachesIn target _ _ (Cfg.headLeft C (push [1] default)
-    (push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T))) at hh
-  rw [hf] at hh
-  convert hh using 1
-  omega
-
+  have hc : 2 * u + 4 * v + 4 * k + 88 =
+      (4 * (k + 4) + 8 + (4 * (v + 6) + 14)) + (22 + 2 * (u + 2)) := by omega
+  rw [hc]
+  exact (b111_to_outer u v k R).trans (b111_outer u v k R)
 
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
