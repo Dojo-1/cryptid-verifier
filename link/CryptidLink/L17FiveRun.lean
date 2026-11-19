@@ -1,6 +1,6 @@
 import CryptidLink.L17MixedBoundary
 
-/-! Exact returns for the 1100 and 110100 branches of the B dispatcher. -/
+/-! Exact guarded returns for the B dispatcher at 0, 111, 1100 and 110100. -/
 
 open BusyBeaver BusyBeaver.SixState Turing
 
@@ -556,6 +556,170 @@ theorem b110100_result_eq_b1100_with_two (u v k : ℕ) (R : Bits) :
   | 2 => rfl
   | j + 3 => rfl
 
+
+/-- Exact B0 return from width n=k+5. -/
+theorem b_zero_terminal_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 2 * v + 2 * k + 70)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [0] R))
+      (Cfg.headRight C default
+        (cpop_bottom_result u v (push (I ^ (2 * k + 11)) R))) := by
+  let Lp := push (P ^ (u + 6)) default
+  let L := push (Q ^ (v + 7)) Lp
+  let S := push (I ^ (2 * k + 11)) R
+  have hb : base u v = push [0, 1, 0, 0] L := by
+    change push [0, 1, 0] (push (P ^ (v + 7)) (push [0] Lp)) = _
+    have hr : L = push [1] (push (P ^ (v + 6)) (push [0] Lp)) := by
+      change push (Q ^ (v + 7)) Lp = _
+      rw [← ListBlank.append_pow_succ' Q (v + 6) Lp]
+      exact (rotLB (v + 6) (push [0] Lp)).symm
+    rw [hr, ListBlank.append_pow_succ P (v + 6)]
+    rfl
+  have h0 (X : Bits) : ReachesIn target 1
+      (Cfg.headRight B X (push [0] R))
+      (Cfg.headLeft C X (push [1] R)) := by
+    l17_exact_steps
+  have h := (h0 (push (Q ^ (k + 5)) (base u v))).trans
+    (c01_sweep_exact (k + 5) (base u v) (push [1] R))
+  have ht : push (([1, 1] : List (Fin 2)) ^ (k + 5)) (push [1] R) = S := by
+    change _ = push (I ^ (2 * k + 11)) R
+    rw [one_pow_two_mul, ListBlank.append_pow_succ' I (2 * (k + 5)) R,
+      show 2 * (k + 5) + 1 = 2 * k + 11 by omega]
+  rw [ht] at h
+  have hpop := cpop_headLeft_exact L S
+  rw [← hb] at hpop
+  have hf := (h.trans hpop).trans (cpop_bottom_blankleft_exact u v S)
+  convert hf using 1
+  omega
+
+/-- Full right tape of the 111 return: a ones run, an alternating run and a final zero. -/
+def b_triple_one_result (u v k : ℕ) (R : Bits) : Bits :=
+  push (I ^ (2 * u + 6)) (push (P ^ (v + k + 18)) (push [0] R))
+
+private theorem b111_to_outer (u v k : ℕ) (R : Bits) :
+    ReachesIn target (4 * (k + 4) + 8 + (4 * (v + 6) + 14))
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 1] R))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default))
+        (push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R))) := by
+  let L := push [0] (push (P ^ (u + 6)) default)
+  have h1 := b_to_d_sweep_exact (k + 4) (base u v) R
+  have h2 := d_pair1_sweep_exact (v + 6) (k + 5) L R
+  have h := h1.trans h2
+  have hr : push (Q ^ (v + 6 + (k + 5) + 4)) R =
+      push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R) := by
+    change _ = push (Q ^ 2) (push (Q ^ (v + k + 13)) R)
+    rw [← ListBlank.append_pow_add,
+      show v + 6 + (k + 5) + 4 = 2 + (v + k + 13) by omega]
+  rw [hr] at h
+  exact h
+
+private theorem b111_normalize (u v k : ℕ) (R : Bits) :
+    push [1] (push (([1, 1] : List (Fin 2)) ^ (u + 2))
+      (push (Q ^ 6) (push (Q ^ (v + k + 13)) R))) =
+      b_triple_one_result u v k R := by
+  have hq : push (Q ^ 6) (push (Q ^ (v + k + 13)) R) =
+      push [1] (push (P ^ (v + k + 18)) (push [0] R)) := by
+    rw [← ListBlank.append_pow_add, show 6 + (v + k + 13) = v + k + 18 + 1 by omega,
+      rotLB (v + k + 18) (push [0] R)]
+    exact (ListBlank.append_pow_succ' Q (v + k + 18) R).symm
+  rw [hq, one_pow_two_mul]
+  unfold b_triple_one_result
+  rw [show 2 * u + 6 = 1 + (2 * (u + 2) + 1) by omega,
+    ListBlank.append_pow_add I 1 (2 * (u + 2) + 1),
+    ← ListBlank.append_pow_succ' I (2 * (u + 2))]
+  rfl
+
+private theorem b111_outer (u v k : ℕ) (R : Bits) :
+    ReachesIn target (22 + 2 * (u + 2))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default))
+        (push [1, 0, 1, 0] (push (Q ^ (v + k + 13)) R)))
+      (Cfg.headRight C default (b_triple_one_result u v k R)) := by
+  let T := push (Q ^ (v + k + 13)) R
+  let S := push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T)
+  have h : ReachesIn target (22 + 2 * (u + 2))
+      (Cfg.headLeft D (push [0] (push (P ^ (u + 6)) default)) (push [1, 0, 1, 0] T))
+      (Cfg.headLeft C (push [1] default) S) :=
+    k22_c01_last_exact (u + 2) default T
+  have he : Cfg.headLeft C (push [1] default) S =
+      Cfg.headRight C default (b_triple_one_result u v k R) :=
+    (Cfg.headLeft_cons C (1 : Fin 2) default S).trans
+      (congrArg (Cfg.headRight C default) (b111_normalize u v k R))
+  rw [he] at h
+  exact h
+
+/-- Exact B111 return from width n=k+5. -/
+theorem b_triple_one_terminal_exact (u v k : ℕ) (R : Bits) :
+    ReachesIn target (2 * u + 4 * v + 4 * k + 88)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 1] R))
+      (Cfg.headRight C default (b_triple_one_result u v k R)) := by
+  have hc : 2 * u + 4 * v + 4 * k + 88 =
+      (4 * (k + 4) + 8 + (4 * (v + 6) + 14)) + (22 + 2 * (u + 2)) := by omega
+  rw [hc]
+  exact (b111_to_outer u v k R).trans (b111_outer u v k R)
+
+/-- Terminal words for which this dispatcher proves a full C return. -/
+inductive BReturnTerminal where
+  | zero | tripleOne | oneOneZeroZero | oneOneZeroOneZeroZero
+
+def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
+  | .zero => [0]
+  | .tripleOne => [1, 1, 1]
+  | .oneOneZeroZero => [1, 1, 0, 0]
+  | .oneOneZeroOneZeroZero => [1, 1, 0, 1, 0, 0]
+
+def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
+  match t with
+  | .zero => 2 * u + 2 * v + 2 * k + 70
+  | .tripleOne => 2 * u + 4 * v + 4 * k + 88
+  | .oneOneZeroZero => b1100_clock u v k
+  | .oneOneZeroOneZeroZero => b110100_clock u v k
+
+def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
+  match t with
+  | .zero => cpop_bottom_result u v (push (I ^ (2 * k + 11)) R)
+  | .tripleOne => b_triple_one_result u v k R
+  | .oneOneZeroZero => b1100_result u v R k
+  | .oneOneZeroOneZeroZero => b110100_result u v R k
+
+/-- Exact return at any of the four verified terminal words. -/
+theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
+    ReachesIn target (t.clock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push t.word R))
+      (Cfg.headRight C default (t.result u v k R)) := by
+  cases t
+  · exact b_zero_terminal_exact u v k R
+  · exact b_triple_one_terminal_exact u v k R
+  · exact b1100_exact u v k R
+  · exact b110100_exact u v k R
+
+/-- Scan j alternating pairs in B and dispatch at the resulting width. -/
+theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (2 * j + t.clock u v (k + j))
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push (Q ^ j) (push t.word R)))
+      (Cfg.headRight C default (t.result u v (k + j) R)) := by
+  have hs := b10_sweep_exact j (push (Q ^ (k + 5)) (base u v)) (push t.word R)
+  rw [← ListBlank.append_pow_add, show j + (k + 5) = k + j + 5 by omega] at hs
+  exact hs.trans (b_return_terminal_exact t u v (k + j) R)
+
+/-- Any verified terminal return, including the 38-step C2 handoff. -/
+theorem c2_b_return_exact (t : BReturnTerminal) (u v j : ℕ) (R : Bits) :
+    ReachesIn target (38 + (2 * j + t.clock u v j))
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1] (base u v))
+        (push [0, 1, 1, 1] (push (Q ^ j) (push t.word R))))
+      (Cfg.headRight C default (t.result u v j R)) := by
+  have hs := b_return_after_sweep_exact t u v 0 j R
+  rw [Nat.zero_add j] at hs
+  exact (short_C2B_exact (base u v) (push (Q ^ j) (push t.word R))).trans hs
+
+/-- Any verified terminal return, including the 62-step C5 handoff. -/
+theorem c5_b_return_exact (t : BReturnTerminal) (u v j : ℕ) (R : Bits) :
+    ReachesIn target (62 + (2 * j + t.clock u v (4 + j)))
+      (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1] (base u v))
+        (push [0, 1, 1, 1] (push (Q ^ j) (push t.word R))))
+      (Cfg.headRight C default (t.result u v (4 + j) R)) := by
+  exact (short_C5B_exact (base u v) (push (Q ^ j) (push t.word R))).trans
+    (b_return_after_sweep_exact t u v 4 j R)
+
 end CryptidLink.L17
 
 #print axioms CryptidLink.L17.five_run00_wide_exact
@@ -578,3 +742,9 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.c5_1100_after_sweep_exact
 #print axioms CryptidLink.L17.b110100_clock_eq_b1100_add_four
 #print axioms CryptidLink.L17.b110100_result_eq_b1100_with_two
+#print axioms CryptidLink.L17.b_zero_terminal_exact
+#print axioms CryptidLink.L17.b_triple_one_terminal_exact
+#print axioms CryptidLink.L17.b_return_terminal_exact
+#print axioms CryptidLink.L17.b_return_after_sweep_exact
+#print axioms CryptidLink.L17.c2_b_return_exact
+#print axioms CryptidLink.L17.c5_b_return_exact
