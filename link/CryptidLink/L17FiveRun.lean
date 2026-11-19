@@ -1221,7 +1221,9 @@ private theorem b_scanner_term_exact (term : ReturnTerm) (ts : List ScannerToken
       (Cfg.headLeft C (scannerDeposit (push [0] L) (ts ++ term.extra))
         (push [1, 1, 1] (term.residue R))) := by
   cases term with
-  | zero => simpa only [ReturnTerm.extra, List.append_nil] using b_mixed_scan_00_exact ts L R
+  | zero =>
+    rw [ReturnTerm.extra, List.append_nil]
+    exact b_mixed_scan_00_exact ts L R
   | hundred =>
     rw [ReturnTerm.extra, scanner_deposit_append]
     exact b_mixed_scan_100_exact ts L R
