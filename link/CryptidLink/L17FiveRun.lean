@@ -1052,7 +1052,7 @@ private theorem prefix_a_transport (j : ℕ) (L : Bits) :
     push (P ^ 3) (push [0] (push (Q ^ j) L))
   rw [rotLB0 j L, ← ListBlank.append_pow_add, ← ListBlank.append_pow_add, Nat.add_comm j 3]
 
-private theorem b1101_prefix_to_a (L : Bits) (j : ℕ) (S : Bits) :
+private theorem b1101_prefix_to_a_context (L : Bits) (j : ℕ) (S : Bits) :
     ReachesIn target (14 + 2 * j)
       (Cfg.headRight B (push (Q ^ 2) L) (push [1, 1, 0, 1] (push (P ^ j) S)))
       (Cfg.headRight A (push prefixA (push (Q ^ j) (push [0] L))) S) := by
@@ -1060,6 +1060,14 @@ private theorem b1101_prefix_to_a (L : Bits) (j : ℕ) (S : Bits) :
   have h2 := a01_sweep_exact j (push prefixA (push [0] L)) S
   rw [prefix_a_transport] at h2
   exact h1.trans h2
+
+private theorem b1101_prefix_to_a (u v k j : ℕ) (S : Bits) :
+    ReachesIn target (14 + 2 * j)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 0, 1] (push (P ^ j) S)))
+      (Cfg.headRight A (push prefixA (push (Q ^ j) (push [0] (push (Q ^ (k + 3)) (base u v))))) S) := by
+  have h := b1101_prefix_to_a_context (push (Q ^ (k + 3)) (base u v)) j S
+  rw [← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega] at h
+  exact h
 
 private theorem prefix_c_sweep (j : ℕ) (L S : Bits) :
     ReachesIn target (2 * j)
@@ -1120,7 +1128,7 @@ private theorem b1101_prefixed_to_cut_context (t : PrefixedScanner) (X : Bits) (
       (Cfg.headRight B (push (Q ^ 2) X) (push (t.word j) R))
       (Cfg.headLeft C (push [0] X) (push [1, 1, 1] (t.cutSuffix j R))) := by
   let L := push [0] X
-  have h1 := b1101_prefix_to_a X (t.prefixLen j)
+  have h1 := b1101_prefix_to_a_context X (t.prefixLen j)
     (push (scanner101 ^ t.repeatCount) (push t.terminator R))
   cases t
   · simp only [PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
@@ -1364,7 +1372,11 @@ private theorem width4_c_finish (u p : ℕ) (R : Bits) :
     rfl
   rw [hs] at h
   have h2 := k41_c01_last_exact u default (push (I ^ (2 * p)) R)
-  rw [Cfg.headLeft_cons] at h2
+  have he : Cfg.headLeft C (push [1] default)
+      (push (([1, 1] : List (Fin 2)) ^ u) (push returnKtail (push (I ^ (2 * p)) R))) =
+      Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * p)) R)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [he] at h2
   exact h.trans h2
 
 private theorem width4_a_sweep (p : ℕ) (L R : Bits) :
@@ -1400,11 +1412,17 @@ private theorem width4_a_unwind (u p : ℕ) (R : Bits) :
   let T := push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] W)
   have he : Cfg.headRight C L (push [1] T) =
       Cfg.headLeft C (push (Q ^ (u + 2)) (push [1] default)) T := by
-    rw [Cfg.headRight_cons, rotLB]
+    calc
+      _ = Cfg.headLeft C (push [1] L) T := Cfg.headRight_cons C (1 : Fin 2) L T
+      _ = _ := by unfold L; rw [rotLB]
   change ReachesIn target 25 _ (Cfg.headRight C L (push [1] T)) at h2
   rw [he] at h2
   have h3 := c01_sweep_exact (u + 2) (push [1] default) T
-  rw [one_pow_two_mul, Cfg.headLeft_cons] at h3
+  rw [one_pow_two_mul] at h3
+  have hE : Cfg.headLeft C (push [1] default) (push (I ^ (2 * (u + 2))) T) =
+      Cfg.headRight C default (push [1] (push (I ^ (2 * (u + 2))) T)) :=
+    Cfg.headLeft_cons C (1 : Fin 2) _ _
+  rw [hE] at h3
   have hR : push [1] (push (I ^ (2 * (u + 2))) T) =
       push (I ^ (2 * u + 6)) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] W) := by
     change push (I ^ 1) (push (I ^ (2 * (u + 2))) (push (I ^ 1)
@@ -1572,8 +1590,11 @@ theorem mixed_narrow_return_exact (t : PrefixedScanner) (u v j : ℕ) (R : Bits)
     dsimp only [N]
     cases t <;> simp only [PrefixedScanner.resumeIndex, PrefixedScanner.clockToCut] <;> omega
   have h := b1101_prefixed_to_cut_context t X (t.resumeIndex j) R
+  have hC : Cfg.headLeft C (push [0] X) (push [1, 1, 1] (push g.word S)) =
+      widthFourCutSource u v (push g.word S) :=
+    Cfg.headLeft_cons C (0 : Fin 2) X _
   rw [PrefixedScanner.resume_word_eq, ← ListBlank.append_append, ← ListBlank.append_append,
-    hs, Cfg.headLeft_cons] at h
+    hs, hC] at h
   have hh := h.trans (width_four_cut_return_exact g u v S)
   have ht := mixed_suffix_transport X W Y (N - 24)
   have he : push [1, 0, 1, 0, 1, 0] X = push (Q ^ 5) (base u v) := by
