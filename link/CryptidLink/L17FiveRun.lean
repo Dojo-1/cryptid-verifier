@@ -584,9 +584,10 @@ theorem b_zero_terminal_exact (u v k : ℕ) (R : Bits) :
     change _ = push (I ^ (2 * k + 11)) R
     rw [one_pow_two_mul, ListBlank.append_pow_succ' I (2 * (k + 5)) R,
       show 2 * (k + 5) + 1 = 2 * k + 11 by omega]
-  rw [hb, ht] at h
-  have hf := (h.trans (cpop_headLeft_exact L S)).trans
-    (cpop_bottom_blankleft_exact u v S)
+  rw [ht] at h
+  have hpop := cpop_headLeft_exact L S
+  rw [← hb] at hpop
+  have hf := (h.trans hpop).trans (cpop_bottom_blankleft_exact u v S)
   convert hf using 1
   omega
 
@@ -617,7 +618,8 @@ theorem b_triple_one_terminal_exact (u v k : ℕ) (R : Bits) :
     have hq : push (Q ^ 6) T = push [1] (push (P ^ (v + k + 18)) (push [0] R)) := by
       change push (Q ^ 6) (push (Q ^ (v + k + 13)) R) = _
       rw [← ListBlank.append_pow_add, show 6 + (v + k + 13) = v + k + 18 + 1 by omega,
-        rotLB (v + k + 18) (push [0] R), ListBlank.append_pow_succ' Q (v + k + 18) R]
+        rotLB (v + k + 18) (push [0] R)]
+      exact (ListBlank.append_pow_succ' Q (v + k + 18) R).symm
     rw [hq, one_pow_two_mul]
     unfold b_triple_one_result
     rw [show 2 * u + 6 = 1 + (2 * (u + 2) + 1) by omega,
@@ -628,6 +630,8 @@ theorem b_triple_one_terminal_exact (u v k : ℕ) (R : Bits) :
       (push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T)) =
       Cfg.headRight C default (b_triple_one_result u v k R) :=
     (Cfg.headLeft_cons C (1 : Fin 2) _ _).trans (congrArg (Cfg.headRight C default) hw)
+  change ReachesIn target _ _ (Cfg.headLeft C (push [1] default)
+    (push (([1, 1] : List (Fin 2)) ^ (u + 2)) (push (Q ^ 6) T))) at hh
   rw [hf] at hh
   convert hh using 1
   omega
