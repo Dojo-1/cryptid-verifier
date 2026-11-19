@@ -163,6 +163,8 @@
         "CryptidLink.L17.scanner_cut_return_exact",
         "CryptidLink.L17.b1101_odd100_exact",
         "CryptidLink.L17.b1101_positive_even00_exact",
+        "CryptidLink.L17.b1101_prefixed_to_cut",
+        "CryptidLink.L17.b1101_prefixed_return_exact",
         "CryptidLink.L17.b1101_odd00_exact",
         "CryptidLink.L17.b1101_to_a_exact",
         "CryptidLink.L17.b111_exact",

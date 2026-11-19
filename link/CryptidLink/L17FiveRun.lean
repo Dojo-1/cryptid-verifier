@@ -992,11 +992,211 @@ theorem b1101_positive_even00_exact (u v k h : ℕ) (R : Bits) :
   have h3 := scanner_cut_return_exact u v k (scannerCutSuffix h 9 R)
   convert (h1.trans h2).trans h3 using 1 <;> (first | rfl | omega)
 
+/-- Scanner families for which an initial block of 01 pairs can be
+returned through the shared C checkpoint. -/
+inductive PrefixedScanner where
+  | zero00
+  | odd100 (h : ℕ)
+  | positiveEven00 (h : ℕ)
+  | wideEven100 (h : ℕ)
+  | wideOdd00 (h : ℕ)
+
+def PrefixedScanner.prefixLen : PrefixedScanner → ℕ → ℕ
+  | .wideEven100 _, j | .wideOdd00 _, j => j + 5
+  | _, j => j
+
+def PrefixedScanner.repeatCount : PrefixedScanner → ℕ
+  | .zero00 => 0
+  | .odd100 h | .wideOdd00 h => 2 * h + 1
+  | .positiveEven00 h => 2 * h + 2
+  | .wideEven100 h => 2 * h
+
+def PrefixedScanner.terminator : PrefixedScanner → List (Fin 2)
+  | .odd100 _ | .wideEven100 _ => [1, 0, 0]
+  | _ => [0, 0]
+
+def PrefixedScanner.word (t : PrefixedScanner) (j : ℕ) : List (Fin 2) :=
+  [1, 1, 0, 1] ++ (P ^ (t.prefixLen j) ++ (scanner101 ^ t.repeatCount ++ t.terminator))
+
+def PrefixedScanner.clockToCut (t : PrefixedScanner) (j : ℕ) : ℕ :=
+  4 * j + match t with
+    | .zero00 => 24
+    | .odd100 h => 32 * h + 52
+    | .positiveEven00 h => 32 * h + 56
+    | .wideEven100 h => 32 * h + 86
+    | .wideOdd00 h => 32 * h + 90
+
+private def scannerGuardTail (h e : ℕ) (R : Bits) : Bits :=
+  match h with
+  | 0 => push (I ^ e) R
+  | l + 1 => scannerCutSuffix l (e + 3) R
+
+private def scannerWideSuffix (j : ℕ) (S : Bits) : Bits :=
+  match j with
+  | 0 => push (0 :: Q ^ 6) S
+  | l + 1 => push (I ^ (2 * l + 1)) (push returnKtail S)
+
+def PrefixedScanner.cutSuffix (t : PrefixedScanner) (j : ℕ) (R : Bits) : Bits :=
+  match t with
+  | .zero00 => push (I ^ (2 * j)) (push (I ^ 6) R)
+  | .odd100 h => push (I ^ (2 * j)) (scannerCutSuffix h 7 R)
+  | .positiveEven00 h => push (I ^ (2 * j)) (scannerCutSuffix h 9 R)
+  | .wideEven100 h => scannerWideSuffix j (scannerGuardTail h 4 R)
+  | .wideOdd00 h => scannerWideSuffix j (scannerGuardTail h 6 R)
+
+private abbrev prefixA := ([0, 1, 0, 1, 0, 1, 0] : List (Fin 2))
+
+private theorem prefix_a_transport (j : ℕ) (L : Bits) :
+    push (P ^ j) (push prefixA L) = push prefixA (push (Q ^ j) L) := by
+  change push (P ^ j) (push (P ^ 3) (push [0] L)) =
+    push (P ^ 3) (push [0] (push (Q ^ j) L))
+  rw [rotLB0 j L, ← ListBlank.append_pow_add, ← ListBlank.append_pow_add, Nat.add_comm j 3]
+
+private theorem b1101_prefix_to_a (u v k j : ℕ) (S : Bits) :
+    ReachesIn target (14 + 2 * j)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 0, 1] (push (P ^ j) S)))
+      (Cfg.headRight A (push prefixA (push (Q ^ j) (push [0] (push (Q ^ (k + 3)) (base u v))))) S) := by
+  let L := push [0] (push (Q ^ (k + 3)) (base u v))
+  have h1 := b1101_to_a_exact u v k (push (P ^ j) S)
+  rw [← rotLB0 (k + 3) (base u v)] at h1
+  have h2 := a01_sweep_exact j (push prefixA L) S
+  rw [prefix_a_transport] at h2
+  exact h1.trans h2
+
+private theorem prefix_c_sweep (j : ℕ) (L S : Bits) :
+    ReachesIn target (2 * j)
+      (Cfg.headLeft C (push (Q ^ j) L) (push [1, 1, 1] S))
+      (Cfg.headLeft C L (push [1, 1, 1] (push (I ^ (2 * j)) S))) := by
+  have h := c01_sweep_exact j L (push [1, 1, 1] S)
+  rw [one_pow_two_mul] at h
+  have he : push (I ^ (2 * j)) (push [1, 1, 1] S) =
+      push [1, 1, 1] (push (I ^ (2 * j)) S) := by
+    change push (I ^ (2 * j)) (push (I ^ 3) S) = push (I ^ 3) (push (I ^ (2 * j)) S)
+    rw [← ListBlank.append_pow_add, ← ListBlank.append_pow_add, Nat.add_comm (2 * j) 3]
+  rw [he] at h
+  exact h
+
+private theorem prefix_wide_c_sweep (j : ℕ) (L S : Bits) :
+    ReachesIn target (41 + 2 * (j + 1))
+      (Cfg.headLeft C (push [0, 1, 0] (push (Q ^ (j + 5)) L)) (push [1, 1, 1] S))
+      (Cfg.headLeft C L (push [1, 1, 1] (scannerWideSuffix j S))) := by
+  have h := k41_c01_middle_exact j L S
+  have hl : push [0, 1, 0] (push (Q ^ (j + 5)) L) =
+      push (P ^ (j + 6)) (push [0] L) := by
+    change push P (push [0] (push (Q ^ (j + 5)) L)) = _
+    rw [rotLB0]
+    change push (P ^ 1) (push (P ^ (j + 5)) (push [0] L)) = _
+    rw [← ListBlank.append_pow_add, show 1 + (j + 5) = j + 6 by omega]
+  have hr : push (([1, 1] : List (Fin 2)) ^ (j + 1)) (push returnKtail S) =
+      push [1, 1, 1] (scannerWideSuffix j S) := by
+    rw [one_pow_two_mul]
+    cases j with
+    | zero =>
+      simp only [scannerWideSuffix, ListBlank.append_append]
+      rfl
+    | succ j =>
+      rw [show 2 * (j + 1 + 1) = 3 + (2 * j + 1) by omega, ListBlank.append_pow_add]
+      rfl
+  rw [← hl] at h
+  change ReachesIn target _ _ (Cfg.headLeft C L
+    (push (([1, 1] : List (Fin 2)) ^ (j + 1)) (push returnKtail S))) at h
+  rw [hr] at h
+  exact h
+
+private theorem scanner_guard_split (h e : ℕ) (R : Bits) :
+    push (scannerC6 ^ h) (push (I ^ (e + 3)) R) =
+      push [1, 1, 1] (scannerGuardTail h e R) := by
+  cases h with
+  | zero =>
+    rw [list_pow_zero, ListBlank.append_nil, show e + 3 = 3 + e by omega,
+      ListBlank.append_pow_add]
+    rfl
+  | succ h =>
+    rw [ListBlank.append_pow_succ]
+    simp only [scannerGuardTail, ListBlank.append_append]
+    rfl
+
+/-- The mixed prefix changes the exact clock and the tape suffix, but returns
+to the same C checkpoint. The wide families require at least five 01 pairs. -/
+theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (t.clockToCut j)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (t.word j) R))
+      (scannerCutSource u v k (t.cutSuffix j R)) := by
+  let L := push [0] (push (Q ^ (k + 3)) (base u v))
+  have h1 := b1101_prefix_to_a u v k (t.prefixLen j)
+    (push (scanner101 ^ t.repeatCount) (push t.terminator R))
+  cases t
+  · simp only [PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
+      PrefixedScanner.terminator, list_pow_zero, ListBlank.append_nil] at h1
+    have h2 := a00l_exact (push (Q ^ j) L) R
+    have h3 := prefix_c_sweep j L (push (I ^ 6) R)
+    have hc : PrefixedScanner.clockToCut .zero00 j = (14 + 2 * j + 10) + 2 * j := by
+      simp only [PrefixedScanner.clockToCut]; omega
+    rw [hc]
+    have hh := (h1.trans h2).trans h3
+    simp only [PrefixedScanner.word, PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
+      PrefixedScanner.terminator, list_pow_zero, List.nil_append, scannerCutSource,
+      PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
+    exact hh
+  · rename_i h
+    have h2 := a101_100_odd_c6_exact h (push (Q ^ j) L) R
+    rw [ListBlank.append_pow_succ] at h2
+    have h3 := prefix_c_sweep j L (scannerCutSuffix h 7 R)
+    have hh := (h1.trans h2).trans h3
+    simp (config := { failIfUnchanged := false }) only [PrefixedScanner.word,
+      PrefixedScanner.prefixLen, PrefixedScanner.repeatCount, PrefixedScanner.terminator,
+      scannerCutSource, PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
+    convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
+  · rename_i h
+    have h2 := a101_00_even_c6_exact h (push (Q ^ j) L) R
+    rw [ListBlank.append_pow_succ] at h2
+    have h3 := prefix_c_sweep j L (scannerCutSuffix h 9 R)
+    have hh := (h1.trans h2).trans h3
+    simp (config := { failIfUnchanged := false }) only [PrefixedScanner.word,
+      PrefixedScanner.prefixLen, PrefixedScanner.repeatCount, PrefixedScanner.terminator,
+      scannerCutSource, PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
+    convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
+  · rename_i h
+    let Lw := push (Q ^ (j + 5)) L
+    have ht := a101_100_terminal_exact (2 * h) Lw R
+    rw [c6_phase_even] at ht
+    have hc := c6_sweep_exact h (push [0, 1, 0] Lw) (push (I ^ (4 + 3)) R)
+    have htc := ht.trans hc
+    rw [scanner_guard_split h 4 R] at htc
+    have hw := prefix_wide_c_sweep j L (scannerGuardTail h 4 R)
+    have h12 := h1.trans htc
+    simp only [PrefixedScanner.word, PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
+      PrefixedScanner.terminator, ListBlank.append_append] at h12 ⊢
+    have hh := h12.trans hw
+    convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
+  · rename_i h
+    let Lw := push (Q ^ (j + 5)) L
+    have ht := a101_00_positive_terminal_exact (2 * h) Lw R
+    rw [c6_phase_even] at ht
+    have hc := c6_sweep_exact h (push [0, 1, 0] Lw) (push (I ^ (6 + 3)) R)
+    have htc := ht.trans hc
+    rw [scanner_guard_split h 6 R] at htc
+    have hw := prefix_wide_c_sweep j L (scannerGuardTail h 6 R)
+    have h12 := h1.trans htc
+    simp only [PrefixedScanner.word, PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
+      PrefixedScanner.terminator, ListBlank.append_append] at h12 ⊢
+    have hh := h12.trans hw
+    convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
+
+/-- Exact blank-left C return for the prefixed scanner dispatcher. -/
+theorem b1101_prefixed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (t.clockToCut j + scannerCutClock u v k)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (t.word j) R))
+      (Cfg.headRight C default (scannerCutResult u v (t.cutSuffix j R) k)) :=
+  (b1101_prefixed_to_cut t u v k j R).trans
+    (scanner_cut_return_exact u v k (t.cutSuffix j R))
+
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
   | zero | tripleOne | oneOneZeroZero | oneOneZeroOneZeroZero | oneOneZeroOneOneZeroZero
   | scannerEven100 (h : ℕ) | scannerOdd00 (h : ℕ)
   | scannerOdd100 (h : ℕ) | scannerPositiveEven00 (h : ℕ)
+  | prefixedScanner (t : PrefixedScanner) (j : ℕ)
 
 def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .zero => [0]
@@ -1009,6 +1209,7 @@ def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
 
   | .scannerOdd100 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 1) ++ [1, 0, 0])
   | .scannerPositiveEven00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 2) ++ [0, 0])
+  | .prefixedScanner t j => t.word j
 
 def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   match t with
@@ -1022,6 +1223,7 @@ def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
 
   | .scannerOdd100 h => (14 + (32 * h + 38)) + scannerCutClock u v k
   | .scannerPositiveEven00 h => (14 + (32 * h + 42)) + scannerCutClock u v k
+  | .prefixedScanner t j => t.clockToCut j + scannerCutClock u v k
 
 def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
   match t with
@@ -1040,6 +1242,7 @@ def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits
 
   | .scannerOdd100 h => scannerCutResult u v (scannerCutSuffix h 7 R) k
   | .scannerPositiveEven00 h => scannerCutResult u v (scannerCutSuffix h 9 R) k
+  | .prefixedScanner t j => scannerCutResult u v (t.cutSuffix j R) k
 
 /-- Exact return at any of the verified terminal families. -/
 theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
@@ -1065,6 +1268,8 @@ theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
   · rename_i h
     simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
       ListBlank.append_append] using b1101_positive_even00_exact u v k h R
+  · rename_i s j
+    exact b1101_prefixed_return_exact s u v k j R
 
 /-- Scan j alternating pairs in B and dispatch at the resulting width. -/
 theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
@@ -1135,3 +1340,6 @@ end CryptidLink.L17
 
 #print axioms CryptidLink.L17.scanner_cut_clock_eq
 #print axioms CryptidLink.L17.scanner_cut_result_eq
+
+#print axioms CryptidLink.L17.b1101_prefixed_to_cut
+#print axioms CryptidLink.L17.b1101_prefixed_return_exact
