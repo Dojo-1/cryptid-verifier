@@ -1306,10 +1306,14 @@ private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h 
     have hts := ht.trans hs
     rw [scanner_guard_split h 4 R] at hts
     have hh := h1.trans hts
-    simp only [ShortScannerPrefix.word, shortRepeats, shortTerm, shortFrame, shortTail,
-      Bool.false_eq_true, if_false, Nat.add_zero, ListBlank.append_append] at hh ⊢
-    convert hh using 1 <;> (first | rfl | (simp only [ShortScannerPrefix.entryClock,
-      Bool.false_eq_true, if_false]; omega))
+    have hc : m.entryClock false h = (14 + 2 * m.pairs) + (13 * (2 * h) + 19 + 6 * h) := by
+      change (14 + 2 * m.pairs) + (32 * h + 19) = _
+      omega
+    rw [hc]
+    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+      shortTerm, shortFrame, shortTail, Bool.false_eq_true, ite_false, Nat.add_zero,
+      ListBlank.append_append] at hh ⊢
+    exact hh
   · have h1 := b1101_prefix_to_a u v k m.pairs (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
     have ht := a101_00_positive_terminal_exact (2 * h) L R
     rw [c6_phase_even] at ht
@@ -1317,9 +1321,13 @@ private theorem short_to_frame (m : ShortScannerPrefix) (odd00 : Bool) (u v k h 
     have hts := ht.trans hs
     rw [scanner_guard_split h 6 R] at hts
     have hh := h1.trans hts
-    simp only [ShortScannerPrefix.word, shortRepeats, shortTerm, shortFrame, shortTail,
-      if_true, ListBlank.append_append] at hh ⊢
-    convert hh using 1 <;> (first | rfl | (simp only [ShortScannerPrefix.entryClock, if_true]; omega))
+    have hc : m.entryClock true h = (14 + 2 * m.pairs) + (13 * (2 * h + 1) + 10 + 6 * h) := by
+      change (14 + 2 * m.pairs) + (32 * h + 23) = _
+      omega
+    rw [hc]
+    simp (config := { failIfUnchanged := false }) only [ShortScannerPrefix.word, shortRepeats,
+      shortTerm, shortFrame, shortTail, ite_true, ListBlank.append_append] at hh ⊢
+    exact hh
 
 /-- Exact return for the two missing parities at prefix lengths two and three. -/
 theorem b1101_short_prefixed_return_exact (m : ShortScannerPrefix) (odd00 : Bool) (u v k h : ℕ) (R : Bits) :
