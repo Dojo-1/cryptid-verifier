@@ -21,6 +21,51 @@ def ones(word, start):
     return [start + i for i, b in enumerate(word) if b == "1"]
 
 
+# Frame kernels at the widths below the reusable sweep thresholds.
+# Each row gives the return clock at u=v=0, the free ones after K41
+# at v=0, and the exact word written by the fixed window.
+EDGE_NARROW = {
+    (1, True, 0): (241, 3, "1010101010101010101010101011"),
+    (1, False, 0): (163, 1, "10101010101010011010101010101010"),
+    (4, True, 0): (173, 1, "101010101010100101111111111111111111"),
+    (4, True, 1): (273, 3, "101010101010101010101010101111111111"),
+    (4, False, 0): (187, 5, "1010101010101010101010101010101010"),
+    (4, False, 1): (203, 1, "1010101010101001101010101010101010101010"),
+    (4, False, 2): (183, 11, "10101010101010101010101010101010"),
+}
+
+
+def cut_return(u, v, k):
+    outer = "1"*(2*u+1) + "10"*7
+    phase, clock = {
+        0: ("1"*(2*v+5) + "10"*10, 104),
+        1: ("1"*(2*v+1) + "10101010101010011010101010", 120),
+        2: ("1"*(2*v+11) + "10"*9, 100),
+    }.get(k, ("1"*(2*v+11) + "1010" + "1"*(2*k-4) + "10"*7, 2*k+96))
+    return outer + phase, 2*u + 2*v + clock
+
+
+def edge_return(m, u, v, k, h, post_c6):
+    if h:
+        assert post_c6.startswith("1110")
+        residual = post_c6[4:]
+    else:
+        assert post_c6.startswith("111111")
+        residual = post_c6[6:]
+    row = EDGE_NARROW.get((m, h > 0, k))
+    outer = "1"*(2*u+1) + "10"*7
+    if row:
+        clock, ones, word = row
+        return outer + "1"*(2*v+ones) + word + residual, 2*u + 2*v + clock
+    if h:
+        reduction, clock, ones = (1, 49, 8) if m == 1 else (2, 81, 16)
+        word, back = cut_return(u, v, k-reduction)
+        return word + "1"*ones + residual, clock + back
+    ones, pairs, clock = (2*k-2, 10, 2*k+141) if m == 1 else (2*k-4, 14, 2*k+179)
+    word = outer + "1"*(2*v+11) + "1010" + "1"*ones + "10"*pairs
+    return word + residual, 2*u + 2*v + clock
+
+
 def cases():
     rng = random.Random(SEED)
     groups = [*product(("B", "C2", "C5"), ("even-100", "odd-00")),
@@ -28,7 +73,8 @@ def cases():
               *product(("B", "C2", "C5"), ("prefixed-00", "prefixed-odd-100",
                        "prefixed-positive-even-00", "wide-even-100", "wide-odd-00")),
               *product(("B", "C2", "C5"), ("short2-even-100", "short2-odd-00",
-                       "short3-even-100", "short3-odd-00"))]
+                       "short3-even-100", "short3-odd-00",
+                       "short1-even-100", "short1-odd-00", "short4-even-100", "short4-odd-00"))]
     for entry, kind in groups:
         small = product((6, 7, 13), (7, 8, 16), range(6), range(4))
         large = ((rng.randrange(6, 270), rng.randrange(7, 270),
@@ -93,13 +139,15 @@ def cases():
             if short:
                 # After C6, the 2-pair kernel joins D; the 3-pair kernel sweeps C.
                 u, v, k = p-6, c-7, n-5
-                if tokens == 2:
+                if tokens in (1, 4):
+                    phase, back = edge_return(tokens, u, v, k, h, c6)
+                elif tokens == 2:
                     phase = "1"*(2*u+6) + "01"*(v+k+20) + "0"
                     back = 105 + 4*k + 4*v + 2*u
                 else:
                     phase = outer + "1"*(2*c-3) + "1010" + "1"*(2*k+6) + "1011010101010"
                     back = 97 + 2*k + 2*v + 2*u
-                target = phase + c6[3:] + r
+                target = phase + (c6[3:] if tokens in (2, 3) else "") + r
                 clock = overhead + 14 + 2*tokens + 32*h + (23 if end == "00" else 19) + back
             else:
                 target = outer + phase + suffix + r
