@@ -746,8 +746,8 @@ theorem b1101100_exact (u v k : ℕ) (R : Bits) :
     ReachesIn target (2 * u + 2 * v + 2 * k + 102)
       (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 0, 1, 1, 0, 0] R))
       (Cfg.headRight C default (cpop_bottom_result u v (b1101100_residue k R))) := by
-  simpa only [Nat.mul_zero, Nat.zero_add, pow_zero, ListBlank.append_nil,
-    ListBlank.append_append, b1101100_residue] using b1101_even100_exact u v k 0 R
+  simpa only [Nat.mul_zero, Nat.zero_add, list_pow_zero, ListBlank.append_nil,
+    ListBlank.append_append, List.nil_append, b1101100_residue] using b1101_even100_exact u v k 0 R
 
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
