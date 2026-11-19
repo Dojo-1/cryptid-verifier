@@ -111,3 +111,5 @@ jobs:
           python3 analysis/l17-mixed-proof/verify_integrity.py
           python3 -m unittest discover -s analysis/l17-mixed-proof -p 'test_*.py' -v
           python3 analysis/l17-mixed-proof/check_mixed.py --cpp analysis/l17-hardening/comparator-O2 --no-save
+      - name: L17 homogeneous scanner returns against fresh literal execution
+        run: python3 analysis/l17-scanner-returns/check.py

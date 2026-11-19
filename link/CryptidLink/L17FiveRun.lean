@@ -1,6 +1,6 @@
 import CryptidLink.L17MixedBoundary
 
-/-! Exact guarded returns for the B dispatcher at 0, 111, 1100, 110100 and 1101100. -/
+/-! Exact guarded returns for the B dispatcher at 0, 111, 1100, 110100 and homogeneous 1101 scanner continuations. -/
 
 open BusyBeaver BusyBeaver.SixState Turing
 
@@ -678,31 +678,14 @@ theorem b1101_to_a_exact (u v k : ℕ) (S : Bits) :
 private abbrev b1101100_residue (k : ℕ) (R : Bits) : Bits :=
   push (I ^ (2 * k + 6)) (push [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1] R)
 
-private theorem a100_five_run_to_cpop (u v k : ℕ) (R : Bits) :
-    ReachesIn target (19 + 4 + 2 * (k + 3))
-      (Cfg.headRight A
-        (push [0, 1, 0, 1, 0, 1, 0] (push (P ^ (k + 3)) (push [0] (base u v))))
-        (push [1, 0, 0] R))
-      (Cfg.headLeft C (base u v) (b1101100_residue k R)) := by
-  let L := push (Q ^ (k + 3)) (base u v)
-  have hm : push (P ^ (k + 3)) (push [0] (base u v)) = push [0] L :=
-    (rotLB0 (k + 3) (base u v)).symm
-  have h1 := a100_exact
-    (push [0, 1, 0] (push (P ^ (k + 3)) (push [0] (base u v)))) R
-  -- Put the next Cpop input in the head-left representation.
-  have h2 := cpop_headLeft_exact L (push [1, 1, 1, 1, 1, 1, 1] R)
-  have hh : push [0, 1, 0, 0] L =
-      push [0, 1, 0] (push (P ^ (k + 3)) (push [0] (base u v))) := by
-    rw [hm]
-    rfl
-  rw [hh] at h2
-  have h3 := c01_sweep_exact (k + 3) (base u v)
-    (push [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1] R)
-  have hn : push (([1, 1] : List (Fin 2)) ^ (k + 3))
-      (push [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1] R) = b1101100_residue k R := by
-    rw [one_pow_two_mul, show 2 * (k + 3) = 2 * k + 6 by omega]
-  rw [hn] at h3
-  exact (h1.trans h2).trans h3
+/-- The alternating sweep left after the local scanner's Cpop. -/
+private theorem b1101_cpop_sweep (u v k : ℕ) (S : Bits) :
+    ReachesIn target (2 * (k + 3))
+      (Cfg.headLeft C (push (Q ^ (k + 3)) (base u v)) S)
+      (Cfg.headLeft C (base u v) (push (I ^ (2 * k + 6)) S)) := by
+  have h := c01_sweep_exact (k + 3) (base u v) S
+  rw [one_pow_two_mul, show 2 * (k + 3) = 2 * k + 6 by omega] at h
+  exact h
 
 private theorem b1101100_finish (u v : ℕ) (S : Bits) :
     ReachesIn target (4 + (2 * (v + 7) + 41 + 2 * u))
@@ -721,21 +704,57 @@ private theorem b1101100_finish (u v : ℕ) (S : Bits) :
   rw [hb]
   exact (cpop_headLeft_exact L S).trans (cpop_bottom_blankleft_exact u v S)
 
-/-- The 100 continuation after 1101 returns to C for every n=k+5. -/
+private abbrev scanner101 := ([1, 0, 1] : List (Fin 2))
+private abbrev scannerC6 := ([1, 1, 1, 0, 1, 0] : List (Fin 2))
+
+/-- Any even number of 101 tokens followed by 100 returns via Cpop. -/
+theorem b1101_even100_exact (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (32 * h + 2 * u + 2 * v + 2 * k + 102)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1] (push (scanner101 ^ (2 * h)) (push [1, 0, 0] R))))
+      (Cfg.headRight C default (cpop_bottom_result u v
+        (push (I ^ (2 * k + 6))
+          (push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 7) R)))))) := by
+  let L := push (Q ^ (k + 3)) (base u v)
+  let S := push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 7) R))
+  have hh := b1101_to_a_exact u v k (push (scanner101 ^ (2 * h)) (push [1, 0, 0] R))
+  rw [← rotLB0 (k + 3) (base u v)] at hh
+  have h1 := a101_100_even_cpop_exact h L R
+  have h2 := b1101_cpop_sweep u v k S
+  have h3 := b1101100_finish u v (push (I ^ (2 * k + 6)) S)
+  convert ((hh.trans h1).trans h2).trans h3 using 1 <;> (first | rfl | omega)
+
+/-- Any odd number of 101 tokens followed by 00 returns via Cpop. -/
+theorem b1101_odd00_exact (u v k h : ℕ) (R : Bits) :
+    ReachesIn target (32 * h + 2 * u + 2 * v + 2 * k + 106)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v))
+        (push [1, 1, 0, 1] (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))))
+      (Cfg.headRight C default (cpop_bottom_result u v
+        (push (I ^ (2 * k + 6))
+          (push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 9) R)))))) := by
+  let L := push (Q ^ (k + 3)) (base u v)
+  let S := push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 9) R))
+  have hh := b1101_to_a_exact u v k (push (scanner101 ^ (2 * h + 1)) (push [0, 0] R))
+  rw [← rotLB0 (k + 3) (base u v)] at hh
+  have h1 := a101_00_odd_cpop_exact h L R
+  have h2 := b1101_cpop_sweep u v k S
+  have h3 := b1101100_finish u v (push (I ^ (2 * k + 6)) S)
+  convert ((hh.trans h1).trans h2).trans h3 using 1 <;> (first | rfl | omega)
+
+/-- Zero scanner tokens recovers the original 100 continuation. -/
 theorem b1101100_exact (u v k : ℕ) (R : Bits) :
     ReachesIn target (2 * u + 2 * v + 2 * k + 102)
       (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 0, 1, 1, 0, 0] R))
       (Cfg.headRight C default (cpop_bottom_result u v (b1101100_residue k R))) := by
-  have hc : 2 * u + 2 * v + 2 * k + 102 =
-      14 + (19 + 4 + 2 * (k + 3)) + (4 + (2 * (v + 7) + 41 + 2 * u)) := by omega
-  rw [hc]
-  exact ((b1101_to_a_exact u v k (push [1, 0, 0] R)).trans
-    (a100_five_run_to_cpop u v k R)).trans
-    (b1101100_finish u v (b1101100_residue k R))
+  have h := b1101_even100_exact u v k 0 R
+  simp only [Nat.mul_zero, Nat.zero_add, list_pow_zero, ListBlank.append_append,
+    List.nil_append, b1101100_residue] at h ⊢
+  exact h
 
 /-- Terminal words for which this dispatcher proves a full C return. -/
 inductive BReturnTerminal where
   | zero | tripleOne | oneOneZeroZero | oneOneZeroOneZeroZero | oneOneZeroOneOneZeroZero
+  | scannerEven100 (h : ℕ) | scannerOdd00 (h : ℕ)
 
 def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .zero => [0]
@@ -743,6 +762,8 @@ def BReturnTerminal.word : BReturnTerminal → List (Fin 2)
   | .oneOneZeroZero => [1, 1, 0, 0]
   | .oneOneZeroOneZeroZero => [1, 1, 0, 1, 0, 0]
   | .oneOneZeroOneOneZeroZero => [1, 1, 0, 1, 1, 0, 0]
+  | .scannerEven100 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h) ++ [1, 0, 0])
+  | .scannerOdd00 h => [1, 1, 0, 1] ++ (scanner101 ^ (2 * h + 1) ++ [0, 0])
 
 def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   match t with
@@ -751,6 +772,8 @@ def BReturnTerminal.clock (t : BReturnTerminal) (u v k : ℕ) : ℕ :=
   | .oneOneZeroZero => b1100_clock u v k
   | .oneOneZeroOneZeroZero => b110100_clock u v k
   | .oneOneZeroOneOneZeroZero => 2 * u + 2 * v + 2 * k + 102
+  | .scannerEven100 h => 32 * h + 2 * u + 2 * v + 2 * k + 102
+  | .scannerOdd00 h => 32 * h + 2 * u + 2 * v + 2 * k + 106
 
 def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits :=
   match t with
@@ -760,7 +783,14 @@ def BReturnTerminal.result (t : BReturnTerminal) (u v k : ℕ) (R : Bits) : Bits
   | .oneOneZeroOneZeroZero => b110100_result u v R k
   | .oneOneZeroOneOneZeroZero => cpop_bottom_result u v (b1101100_residue k R)
 
-/-- Exact return at any of the five verified terminal words. -/
+  | .scannerEven100 h => cpop_bottom_result u v
+      (push (I ^ (2 * k + 6))
+        (push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 7) R))))
+  | .scannerOdd00 h => cpop_bottom_result u v
+      (push (I ^ (2 * k + 6))
+        (push [1, 0, 1, 0] (push (scannerC6 ^ h) (push (I ^ 9) R))))
+
+/-- Exact return at any of the verified terminal families. -/
 theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
     ReachesIn target (t.clock u v k)
       (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push t.word R))
@@ -771,6 +801,12 @@ theorem b_return_terminal_exact (t : BReturnTerminal) (u v k : ℕ) (R : Bits) :
   · exact b1100_exact u v k R
   · exact b110100_exact u v k R
   · exact b1101100_exact u v k R
+  · rename_i h
+    simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
+      ListBlank.append_append] using b1101_even100_exact u v k h R
+  · rename_i h
+    simpa only [BReturnTerminal.word, BReturnTerminal.clock, BReturnTerminal.result,
+      ListBlank.append_append] using b1101_odd00_exact u v k h R
 
 /-- Scan j alternating pairs in B and dispatch at the resulting width. -/
 theorem b_return_after_sweep_exact (t : BReturnTerminal) (u v k j : ℕ) (R : Bits) :
@@ -831,3 +867,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.c5_b_return_exact
 #print axioms CryptidLink.L17.b1101_to_a_exact
 #print axioms CryptidLink.L17.b1101100_exact
+
+#print axioms CryptidLink.L17.b1101_even100_exact
+#print axioms CryptidLink.L17.b1101_odd00_exact

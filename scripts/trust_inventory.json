@@ -157,6 +157,8 @@
         "CryptidLink.L17.b110100_result_eq_b1100_with_two",
         "CryptidLink.L17.b110100_wide_exact",
         "CryptidLink.L17.b1101100_exact",
+        "CryptidLink.L17.b1101_even100_exact",
+        "CryptidLink.L17.b1101_odd00_exact",
         "CryptidLink.L17.b1101_to_a_exact",
         "CryptidLink.L17.b111_exact",
         "CryptidLink.L17.b_return_after_sweep_exact",
