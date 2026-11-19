@@ -133,6 +133,55 @@ def mixed_00_cases(rng):
         yield "mixed-00-all-widths", req, want, (start+1, offset+len(right)-1), True
 
 
+K41_STRIP = "10101010101010"
+NARROW_GUARDS = (
+    ('zero', '0', '01010011111111111', 3, 104, True),
+    ('ones', '111111', '0101010101010101010101010', 2, 192, False),
+    ('one-plain', '110101010101010111', '0101001010101010101010101010101010', 3, 180, True),
+    ('one-c6', '1101010101010100', '010101010101010101111111111111111', 3, 182, False),
+    ('three-plain', '11110101010101010111', '010101010101010101010101010101010101010', 2, 234, False),
+    ('three-c6', '111101010101010100', '01010101010101111111111111111111111111111', 0, 216, False),
+)
+
+
+def narrow_cases(rng):
+    # Cover every checkpoint guard, both terminations, positive C6 repeats,
+    # and the j=3 boundary where the sixth 1 comes from the K41 strip.
+    for m, r, term, trial in product(range(7), range(9), ("00", "100"), range(8)):
+        u, v = ((0, 0), (0, 1), (1, 0), (9, 6))[trial % 4]
+        if trial >= 4:
+            u, v = rng.randrange(22), rng.randrange(22)
+        tail = "".join(rng.choices("01", k=rng.randrange(32))) + "1"
+        h = r // 2
+        pairs = "1" * (2 * (m + 5))
+        if term == "00" and r == 0:
+            cut, scanner = pairs + "1"*6, 4*m + 44
+        elif term == "100" and r % 2:
+            cut, scanner = pairs + "010" + "111010"*h + "1"*7, 4*m + 32*h + 72
+        elif term == "00" and not r % 2:
+            cut, scanner = pairs + "010" + "111010"*(h-1) + "1"*9, 4*m + 32*(h-1) + 76
+        else:
+            e = 4 if term == "100" else 6
+            guard_tail = "1"*e if h == 0 else "010" + "111010"*(h-1) + "1"*(e+3)
+            cut = ("0" + "10"*6 if m == 0 else "1"*(2*m-1) + K41_STRIP) + guard_tail
+            scanner = 4*m + 32*h + (86 if term == "100" else 90)
+        name, guard, written, remaining, fixed, via_a = next(
+            row for row in NARROW_GUARDS if cut.startswith(row[1]))
+        suffix = cut[len(guard):] + tail
+        if via_a:
+            out = "1"*(2*u+6) + "01"*5 + "01"*(v+remaining) + written + suffix
+        else:
+            out = "1"*(2*u+1) + K41_STRIP + "1"*(2*(v+remaining)) + written + suffix
+        steps = 112 + scanner + fixed + 2*u + (4 if via_a else 2)*v
+        offset = rng.randrange(-800, 801)
+        left = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10" + "01"*5
+        right = MIXED + "100" + "01"*m + "101"*r + term
+        start = offset - len(left)
+        req = dict(q=1, head=offset, limit=steps, ones=ones(left+right+tail, start))
+        expected = dict(q=2, head=start, steps=steps, halted=False, ones=ones(out, start))
+        yield f"mixed-width-five-{name}", req, expected, (start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -146,7 +195,8 @@ def main():
     parser.add_argument("--cpp", required=True, type=Path)
     exe = parser.parse_args().cpp.resolve()
     rng = random.Random(19112049)
-    cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng)]
+    cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
+             *narrow_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]

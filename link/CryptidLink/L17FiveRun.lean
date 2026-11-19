@@ -1052,14 +1052,12 @@ private theorem prefix_a_transport (j : ℕ) (L : Bits) :
     push (P ^ 3) (push [0] (push (Q ^ j) L))
   rw [rotLB0 j L, ← ListBlank.append_pow_add, ← ListBlank.append_pow_add, Nat.add_comm j 3]
 
-private theorem b1101_prefix_to_a (u v k j : ℕ) (S : Bits) :
+private theorem b1101_prefix_to_a (L : Bits) (j : ℕ) (S : Bits) :
     ReachesIn target (14 + 2 * j)
-      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push [1, 1, 0, 1] (push (P ^ j) S)))
-      (Cfg.headRight A (push prefixA (push (Q ^ j) (push [0] (push (Q ^ (k + 3)) (base u v))))) S) := by
-  let L := push [0] (push (Q ^ (k + 3)) (base u v))
-  have h1 := b1101_to_a_exact u v k (push (P ^ j) S)
-  rw [← rotLB0 (k + 3) (base u v)] at h1
-  have h2 := a01_sweep_exact j (push prefixA L) S
+      (Cfg.headRight B (push (Q ^ 2) L) (push [1, 1, 0, 1] (push (P ^ j) S)))
+      (Cfg.headRight A (push prefixA (push (Q ^ j) (push [0] L))) S) := by
+  have h1 := short_B1101_exact L (push (P ^ j) S)
+  have h2 := a01_sweep_exact j (push prefixA (push [0] L)) S
   rw [prefix_a_transport] at h2
   exact h1.trans h2
 
@@ -1116,14 +1114,13 @@ private theorem scanner_guard_split (h e : ℕ) (R : Bits) :
     simp only [scannerGuardTail, ListBlank.append_append]
     rfl
 
-/-- The mixed prefix changes the exact clock and the tape suffix, but returns
-to the same C checkpoint. The wide families require at least five 01 pairs. -/
-theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
+/-- The scanner checkpoint and clock do not depend on the exterior left tape. -/
+private theorem b1101_prefixed_to_cut_context (t : PrefixedScanner) (X : Bits) (j : ℕ) (R : Bits) :
     ReachesIn target (t.clockToCut j)
-      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (t.word j) R))
-      (scannerCutSource u v k (t.cutSuffix j R)) := by
-  let L := push [0] (push (Q ^ (k + 3)) (base u v))
-  have h1 := b1101_prefix_to_a u v k (t.prefixLen j)
+      (Cfg.headRight B (push (Q ^ 2) X) (push (t.word j) R))
+      (Cfg.headLeft C (push [0] X) (push [1, 1, 1] (t.cutSuffix j R))) := by
+  let L := push [0] X
+  have h1 := b1101_prefix_to_a X (t.prefixLen j)
     (push (scanner101 ^ t.repeatCount) (push t.terminator R))
   cases t
   · simp only [PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
@@ -1135,7 +1132,7 @@ theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
     rw [hc]
     have hh := (h1.trans h2).trans h3
     simp only [PrefixedScanner.word, PrefixedScanner.prefixLen, PrefixedScanner.repeatCount,
-      PrefixedScanner.terminator, list_pow_zero, List.nil_append, scannerCutSource,
+      PrefixedScanner.terminator, list_pow_zero, List.nil_append,
       PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
     exact hh
   · rename_i h
@@ -1145,7 +1142,7 @@ theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
     have hh := (h1.trans h2).trans h3
     simp (config := { failIfUnchanged := false }) only [PrefixedScanner.word,
       PrefixedScanner.prefixLen, PrefixedScanner.repeatCount, PrefixedScanner.terminator,
-      scannerCutSource, PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
+      PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
     convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
   · rename_i h
     have h2 := a101_00_even_c6_exact h (push (Q ^ j) L) R
@@ -1154,7 +1151,7 @@ theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
     have hh := (h1.trans h2).trans h3
     simp (config := { failIfUnchanged := false }) only [PrefixedScanner.word,
       PrefixedScanner.prefixLen, PrefixedScanner.repeatCount, PrefixedScanner.terminator,
-      scannerCutSource, PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
+      PrefixedScanner.cutSuffix, ListBlank.append_append] at hh ⊢
     convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
   · rename_i h
     let Lw := push (Q ^ (j + 5)) L
@@ -1182,6 +1179,15 @@ theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
       PrefixedScanner.terminator, ListBlank.append_append] at h12 ⊢
     have hh := h12.trans hw
     convert hh using 1 <;> (first | rfl | (simp only [PrefixedScanner.clockToCut]; omega))
+
+/-- The contextual checkpoint lemma at every guarded width n=k+5. -/
+theorem b1101_prefixed_to_cut (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
+    ReachesIn target (t.clockToCut j)
+      (Cfg.headRight B (push (Q ^ (k + 5)) (base u v)) (push (t.word j) R))
+      (scannerCutSource u v k (t.cutSuffix j R)) := by
+  have h := b1101_prefixed_to_cut_context t (push (Q ^ (k + 3)) (base u v)) j R
+  rw [← ListBlank.append_pow_add, show 2 + (k + 3) = k + 5 by omega] at h
+  exact h
 
 /-- Exact blank-left C return for the prefixed scanner dispatcher. -/
 theorem b1101_prefixed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : Bits) :
@@ -1256,6 +1262,328 @@ theorem mixed_resumed_return_exact (t : PrefixedScanner) (u v k j : ℕ) (R : Bi
     (Cfg.headRight B (push (Q ^ (k + 6)) (base u v)) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] W)) Y
   rw [show 112 + N = 136 + (N - 24) by omega]
   exact ht.mpr h
+
+/-- Fixed width-four checkpoint kernel. Read window [-14,4]. -/
+private theorem width4_zero (L R : Bits) :
+    ReachesIn target 63
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 0] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-16,9]. -/
+private theorem width4_ones (L R : Bits) :
+    ReachesIn target 145
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 1, 1] R))
+      (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-14,21]. -/
+private theorem width4_onep (L R : Bits) :
+    ReachesIn target 139
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-14,19]. -/
+private theorem width4_onec (L R : Bits) :
+    ReachesIn target 133
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-16,23]. -/
+private theorem width4_threep (L R : Bits) :
+    ReachesIn target 187
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1] R))
+      (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-20,21]. -/
+private theorem width4_threec (L R : Bits) :
+    ReachesIn target 173
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0] R))
+      (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-1,1]. -/
+private theorem width4_a_transfer (L R : Bits) :
+    ReachesIn target 4
+      (Cfg.headRight A (push [0, 1] L) (push [1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0, 1] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- Fixed width-four checkpoint kernel. Read window [-8,1]. -/
+private theorem width4_a_finish (L R : Bits) :
+    ReachesIn target 25
+      (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [1, 1] R))
+      (Cfg.headRight C L (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+/-- The reduced width-four C checkpoint. Unlike the wide checkpoint, it
+reads a finite prefix of the scanner's output suffix. -/
+def widthFourCutSource (u v : ℕ) (S : Bits) : Cfg (Fin 2) (Fin 6) :=
+  Cfg.headRight C (push (Q ^ 2) (base u v)) (push [0, 1, 1, 1] S)
+
+private theorem width4_left_frame (u v d p : ℕ) (h : v + 7 = d + p) :
+    push (Q ^ 2) (base u v) =
+      push ([1, 0, 1, 0, 0, 1, 0] ++ P ^ d)
+        (push (P ^ p) (push [0] (push (P ^ (u + 6)) default))) := by
+  unfold base
+  rw [h, ListBlank.append_pow_add P d p]
+  simp only [ListBlank.append_append, List.append_assoc]
+  rfl
+
+private theorem width4_c_finish (u p : ℕ) (R : Bits) :
+    ReachesIn target (2 * (p + 1) + (41 + 2 * u))
+      (Cfg.headRight C (push (P ^ p) (push [0] (push (P ^ (u + 6)) default)))
+        (push [1, 1] R))
+      (Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * p)) R))) := by
+  have h := c01_middle_headRight_exact p (push (P ^ (u + 6)) default) (push [1] R)
+  have hs : push (([1, 1] : List (Fin 2)) ^ (p + 1)) (push [1] R) =
+      push [1, 1, 1] (push (I ^ (2 * p)) R) := by
+    rw [one_pow_two_mul, show 2 * (p + 1) = 3 + 2 * p - 1 by omega]
+    change push (I ^ (3 + 2 * p - 1)) (push (I ^ 1) R) = _
+    rw [← ListBlank.append_pow_add, show 3 + 2 * p - 1 + 1 = 3 + 2 * p by omega,
+      ListBlank.append_pow_add I 3 (2 * p)]
+    rfl
+  rw [hs] at h
+  have h2 := k41_c01_last_exact u default (push (I ^ (2 * p)) R)
+  rw [Cfg.headLeft_cons] at h2
+  exact h.trans h2
+
+private theorem width4_a_sweep (p : ℕ) (L R : Bits) :
+    ReachesIn target (4 * p)
+      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1] (push (P ^ p) R))) := by
+  induction p generalizing R with
+  | zero => simpa only [Nat.mul_zero, list_pow_zero, ListBlank.append_nil] using
+      ReachesIn.zero target (Cfg.headRight A L (push [1, 1, 1] R))
+  | succ p ih =>
+    have h := width4_a_transfer (push (P ^ p) L) R
+    change ReachesIn target 4 (Cfg.headRight A (push P (push (P ^ p) L)) (push [1, 1, 1] R))
+      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] (push P R))) at h
+    have hh := h.trans (ih (push P R))
+    rw [← ListBlank.append_pow_succ P p L, ListBlank.append_pow_comm P p R,
+      ← ListBlank.append_pow_succ P p R, show 4 + 4 * p = 4 * (p + 1) by omega] at hh
+    exact hh
+
+private theorem width4_a_unwind (u p : ℕ) (R : Bits) :
+    ReachesIn target (4 * p + 29 + 2 * u)
+      (Cfg.headRight A (push (P ^ p) (push [0] (push (P ^ (u + 6)) default)))
+        (push [1, 1, 1] R))
+      (Cfg.headRight C default
+        (push (I ^ (2 * u + 6)) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] (push (P ^ p) R)))) := by
+  let W := push (P ^ p) R
+  let L : Bits := push (P ^ (u + 2)) default
+  have h1 := width4_a_sweep p (push [0] (push (P ^ (u + 6)) default)) R
+  have h2 := width4_a_finish L (push [1] W)
+  have hL : push [0, 0, 1, 0, 1, 0, 1, 0, 1] L = push [0] (push (P ^ (u + 6)) default) := by
+    change push [0] (push (P ^ 4) (push (P ^ (u + 2)) default)) = _
+    rw [← ListBlank.append_pow_add, show 4 + (u + 2) = u + 6 by omega]
+  rw [hL] at h2
+  let T := push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] W)
+  have he : Cfg.headRight C L (push [1] T) =
+      Cfg.headLeft C (push (Q ^ (u + 2)) (push [1] default)) T := by
+    rw [Cfg.headRight_cons, rotLB]
+  change ReachesIn target 25 _ (Cfg.headRight C L (push [1] T)) at h2
+  rw [he] at h2
+  have h3 := c01_sweep_exact (u + 2) (push [1] default) T
+  rw [one_pow_two_mul, Cfg.headLeft_cons] at h3
+  have hR : push [1] (push (I ^ (2 * (u + 2))) T) =
+      push (I ^ (2 * u + 6)) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] W) := by
+    change push (I ^ 1) (push (I ^ (2 * (u + 2))) (push (I ^ 1)
+      (push [0, 1, 0, 1, 0, 1, 0, 1, 0] (push [1] W)))) = _
+    rw [← ListBlank.append_pow_add, ← ListBlank.append_pow_add,
+      show 1 + 2 * (u + 2) + 1 = 2 * u + 6 by omega]
+    rfl
+  rw [hR] at h3
+  convert (h1.trans h2).trans h3 using 1 <;> omega
+
+/-- Six guards needed by the two-block scanner at reduced width four. -/
+inductive WidthFourGuard where
+  | zero | ones | onePlain | oneC6 | threePlain | threeC6
+  deriving DecidableEq
+
+def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
+  | .zero => [0]
+  | .ones => [1, 1, 1, 1, 1, 1]
+  | .onePlain => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
+  | .oneC6 => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
+  | .threePlain => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
+  | .threeC6 => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
+
+def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
+  | .zero => 104 + 2 * u + 4 * v
+  | .ones => 192 + 2 * u + 2 * v
+  | .onePlain => 180 + 2 * u + 4 * v
+  | .oneC6 => 182 + 2 * u + 2 * v
+  | .threePlain => 234 + 2 * u + 2 * v
+  | .threeC6 => 216 + 2 * u + 2 * v
+
+def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
+  | .zero => [0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  | .ones => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .onePlain => [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .oneC6 => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  | .threePlain => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .threeC6 => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+/-- Exact right half tape after the reduced-width return. -/
+def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
+  match g with
+  | .zero | .onePlain => push (I ^ (2 * u + 6))
+      (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] (push (P ^ (v + 3)) (push g.written R)))
+  | .ones | .threePlain => five_run_bottom_result u (push (I ^ (2 * (v + 2))) (push g.written R))
+  | .oneC6 => five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
+  | .threeC6 => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
+
+/-- Reduced width-four exact C return for each of the required guards. -/
+theorem width_four_cut_return_exact (g : WidthFourGuard) (u v : ℕ) (R : Bits) :
+    ReachesIn target (WidthFourGuard.clock u v g)
+      (widthFourCutSource u v (push g.word R))
+      (Cfg.headRight C default (WidthFourGuard.result u v R g)) := by
+  cases g
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_zero L R).trans (width4_a_unwind u (v + 3) (push (WidthFourGuard.written .zero) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 5 (v + 2) (by omega)]
+    let L := push (P ^ (v + 2)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_ones L R).trans (width4_c_finish u (v + 2) (push (WidthFourGuard.written .ones) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_onep L R).trans (width4_a_unwind u (v + 3) (push (WidthFourGuard.written .onePlain) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_onec L R).trans (width4_c_finish u (v + 3) (push (WidthFourGuard.written .oneC6) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 5 (v + 2) (by omega)]
+    let L := push (P ^ (v + 2)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_threep L R).trans (width4_c_finish u (v + 2) (push (WidthFourGuard.written .threePlain) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 7 v (by omega)]
+    let L := push (P ^ v) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_threec L R).trans (width4_c_finish u v (push (WidthFourGuard.written .threeC6) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+
+/-- Only the first three pair counts need special treatment in the wide scanner families. -/
+private def wideWidthFourGuard : ℕ → ℕ → WidthFourGuard
+  | 0, _ => .zero
+  | 1, 0 => .onePlain
+  | 1, _ + 1 => .oneC6
+  | 2, 0 => .threePlain
+  | 2, _ + 1 => .threeC6
+  | _ + 3, _ => .ones
+
+/-- Guard selected by the resumed scanner at width five. -/
+def PrefixedScanner.narrowGuard : PrefixedScanner → ℕ → WidthFourGuard
+  | .wideEven100 h, j | .wideOdd00 h, j => wideWidthFourGuard j h
+  | _, _ => .ones
+
+private theorem width4_wide_guard (j h e : ℕ) (R : Bits) :
+    ∃ S : Bits, scannerWideSuffix j (scannerGuardTail h (3 + e) R) =
+      push (wideWidthFourGuard j h).word S := by
+  match j with
+  | 0 =>
+    exact ⟨push (Q ^ 6) (scannerGuardTail h (3 + e) R), rfl⟩
+  | 1 =>
+    cases h with
+    | zero =>
+      refine ⟨push (I ^ e) R, ?_⟩
+      simp only [scannerWideSuffix, scannerGuardTail, ListBlank.append_pow_add I 3 e]
+      rfl
+    | succ h =>
+      exact ⟨push [1, 0] (push (scannerC6 ^ h) (push (I ^ ((3 + e) + 3)) R)), rfl⟩
+  | 2 =>
+    cases h with
+    | zero =>
+      refine ⟨push (I ^ e) R, ?_⟩
+      simp only [scannerWideSuffix, scannerGuardTail, ListBlank.append_pow_add I 3 e]
+      rfl
+    | succ h =>
+      exact ⟨push [1, 0] (push (scannerC6 ^ h) (push (I ^ ((3 + e) + 3)) R)), rfl⟩
+  | 3 =>
+    exact ⟨push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+      (scannerGuardTail h (3 + e) R), rfl⟩
+  | j + 4 =>
+    let W := push returnKtail (scannerGuardTail h (3 + e) R)
+    refine ⟨push (I ^ (2 * j + 1)) W, ?_⟩
+    change push (I ^ (2 * (j + 3) + 1)) W = push (I ^ 6) (push (I ^ (2 * j + 1)) W)
+    rw [← ListBlank.append_pow_add, show 2 * (j + 3) + 1 = 6 + (2 * j + 1) by omega]
+
+private theorem width4_ordinary_guard (j : ℕ) (R : Bits) :
+    ∃ S : Bits, push (I ^ (2 * (j + 5))) R = push WidthFourGuard.ones.word S := by
+  refine ⟨push (I ^ (2 * j + 4)) R, ?_⟩
+  change push (I ^ (2 * (j + 5))) R = push (I ^ 6) (push (I ^ (2 * j + 4)) R)
+  rw [← ListBlank.append_pow_add, show 2 * (j + 5) = 6 + (2 * j + 4) by omega]
+
+/-- Every output of the reduced-width scanner has the selected guard. The
+rest of the tape begins immediately after the corresponding read window. -/
+theorem mixed_narrow_guard_complete (t : PrefixedScanner) (j : ℕ) (R : Bits) :
+    ∃ S : Bits, t.cutSuffix (t.resumeIndex j) R = push (t.narrowGuard j).word S := by
+  cases t with
+  | zero00 => exact width4_ordinary_guard j (push (I ^ 6) R)
+  | odd100 h => exact width4_ordinary_guard j (scannerCutSuffix h 7 R)
+  | positiveEven00 h => exact width4_ordinary_guard j (scannerCutSuffix h 9 R)
+  | wideEven100 h => exact width4_wide_guard j h 1 R
+  | wideOdd00 h => exact width4_wide_guard j h 3 R
+
+/-- Exact width-five mixed return. The scanner can read either terminator;
+the selected reduced-width path accounts for the extra suffix reads. -/
+theorem mixed_narrow_return_exact (t : PrefixedScanner) (u v j : ℕ) (R : Bits) :
+    ∃ S : Bits, t.cutSuffix (t.resumeIndex j) R = push (t.narrowGuard j).word S ∧
+      ReachesIn target
+        (112 + (t.clockToCut (t.resumeIndex j) + WidthFourGuard.clock u v (t.narrowGuard j)))
+        (Cfg.headRight B (push (Q ^ 5) (base u v))
+          (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] (push (t.resumeWord j) R)))
+        (Cfg.headRight C default (WidthFourGuard.result u v S (t.narrowGuard j))) := by
+  obtain ⟨S, hs⟩ := mixed_narrow_guard_complete t j R
+  refine ⟨S, hs, ?_⟩
+  let X := push (Q ^ 2) (base u v)
+  let W := push (t.resumeWord j) R
+  let g := t.narrowGuard j
+  let Y := Cfg.headRight C default (WidthFourGuard.result u v S g)
+  let N := t.clockToCut (t.resumeIndex j) + WidthFourGuard.clock u v g
+  have hN : 24 ≤ N := by
+    dsimp only [N]
+    cases t <;> simp only [PrefixedScanner.resumeIndex, PrefixedScanner.clockToCut] <;> omega
+  have h := b1101_prefixed_to_cut_context t X (t.resumeIndex j) R
+  rw [PrefixedScanner.resume_word_eq, ← ListBlank.append_append, ← ListBlank.append_append,
+    hs, Cfg.headLeft_cons] at h
+  have hh := h.trans (width_four_cut_return_exact g u v S)
+  have ht := mixed_suffix_transport X W Y (N - 24)
+  have he : push [1, 0, 1, 0, 1, 0] X = push (Q ^ 5) (base u v) := by
+    change push (Q ^ 3) (push (Q ^ 2) (base u v)) = _
+    rw [← ListBlank.append_pow_add]
+  rw [he, show 24 + (N - 24) = N by omega] at ht
+  change ReachesIn target (112 + N)
+    (Cfg.headRight B (push (Q ^ 5) (base u v)) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] W)) Y
+  rw [show 112 + N = 136 + (N - 24) by omega]
+  exact ht.mpr hh
 
 /-- The resumed family covers every two-block continuation, with either
 terminator and no guard on the number of new pairs or repeats. -/
@@ -2125,3 +2453,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_101_01_00_return_exact
 #print axioms CryptidLink.L17.mixed_resumed_return_exact
 #print axioms CryptidLink.L17.mixed_resumed_scanner_complete
+#print axioms CryptidLink.L17.width_four_cut_return_exact
+#print axioms CryptidLink.L17.mixed_narrow_guard_complete
+#print axioms CryptidLink.L17.mixed_narrow_return_exact
