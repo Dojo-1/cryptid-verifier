@@ -341,6 +341,45 @@ def one_pair_double_mixed_cases(rng):
         yield "mixed-one-pair-double-" + term, req, want, (start+1, offset+len(right)-1), True
 
 
+
+def extra_widewide_cases(rng):
+    """Full mixed returns for the two zero-headed inner wide-wide guards."""
+    families = (
+        (1, "1101010101010101101010101010100", "010101010101010101101010101010101111111111111111", 252, 3),
+        (2, "111101010101010101101010101010100", "01010101010101111111111111101010101010101111111111111111", 286, 0),
+    )
+    for outer, guard, written, cut_clock, middle in families:
+        for first_kind, j in (("double", 0), ("bridge", 0), ("wide", 0),
+                              *(("short-two", k) for k in range(4))):
+            first = return_block(first_kind, j)
+            blocks = [first, return_block("wide", 1), return_block("wide", outer)]
+            for term in ("00", "100"):
+                tokens = [t for b in reversed(blocks) for t in b[0]]
+                assert tokens[:5] == ["01"] * 5
+                del tokens[:5]
+                if term == "100":
+                    assert tokens.pop() == "101"
+                for trial in range(5):
+                    u, v = ((0, 0), (1, 0), (0, 1), (5, 9), (11, 4))[trial]
+                    tail = "".join(rng.choices("01", k=rng.randrange(0, 40))) + "1"
+                    residue = "".join(b[2] for b in reversed(blocks)) + "1" * (6 if term == "00" else 4)
+                    assert residue.startswith(guard), (outer, first_kind, j, term)
+                    rest = residue[len(guard):]
+                    left = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10" + "01"*5
+                    right = MIXED + "100" + "".join(tokens) + term
+                    offset = rng.randrange(-800, 801)
+                    start = offset-len(left)
+                    clock = (136 + sum(CLOCK[t] for t in tokens)
+                             + (10 if term == "00" else 19)
+                             + sum(b[1] for b in blocks) + cut_clock + 2*u + 2*v)
+                    out = ("1"*(2*u+1) + K41_STRIP + "1"*(2*(v+middle))
+                           + written + rest + tail)
+                    req = dict(q=1, head=offset, limit=clock, ones=ones(left+right+tail, start))
+                    want = dict(q=2, head=start, steps=clock, halted=False, ones=ones(out, start))
+                    yield f"mixed-widewide-{outer}-{first_kind}{j}-{term}", req, want, (
+                        start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -356,7 +395,7 @@ def main():
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
              *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng),
-             *one_pair_double_mixed_cases(rng)]
+             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]
