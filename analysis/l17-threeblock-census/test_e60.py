@@ -77,6 +77,31 @@ class MovingWindowTests(unittest.TestCase):
                                      cut_clock(family, m, u, v), 6)
                     self.assertEqual(len(guard(family, m+1))-len(guard(family, m)), 2)
 
+    def test_six_step_A_detour_preserves_arbitrary_exteriors(self):
+        rng = Random(60317)
+        for trial in range(160):
+            L = "".join(rng.choices("01", k=rng.randrange(31)))
+            R = "".join(rng.choices("01", k=rng.randrange(31)))
+            before = L + "0111" + R
+            after = L + "1110" + R
+            cells = {i for i, bit in enumerate(before) if bit == "1"}
+            head = len(L)
+            state = 0
+            reads = []
+            for _ in range(6):
+                reads.append(head - len(L))
+                step = base.OPS[state][int(head in cells)]
+                self.assertIsNotNone(step)
+                bit, direction, state = step
+                if bit:
+                    cells.add(head)
+                else:
+                    cells.discard(head)
+                head += direction
+            self.assertEqual((state, head), (0, len(L)))
+            self.assertEqual(reads, [0, 1, 2, 3, 2, 1])
+            self.assertEqual(cells, {i for i, bit in enumerate(after) if bit == "1"})
+
     def test_zero_boundary_is_not_an_inductive_base(self):
         for family, actual_clock, bad_extension in ((1, 222, 214), (3, 256, 268)):
             for R in ("1", "1111", "1010010110101"):
