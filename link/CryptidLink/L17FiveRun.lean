@@ -1669,10 +1669,9 @@ private theorem width4_one_two_wide (L R : Bits) :
     set_option maxHeartbeats 5000000 in
       l17_exact_steps
 
+-- A tactic-local budget does not cover declaration elaboration of the 249-step proof.
+set_option maxHeartbeats 8000000
 /-- Two wide strips at the width-four checkpoint. Read window [-20,38]. -/
--- The large closed 249-step certificate needs a declaration-level elaboration budget:
--- a tactic-local heartbeat limit does not cover elaboration of the full theorem term.
-set_option maxHeartbeats 8000000 in
 private theorem width4_three_two_wide (L R : Bits) :
     ReachesIn target 249
       (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
@@ -1681,6 +1680,8 @@ private theorem width4_three_two_wide (L R : Bits) :
   set_option maxRecDepth 16384 in
     set_option maxHeartbeats 5000000 in
       l17_exact_steps
+
+set_option maxHeartbeats 200000
 
 /-- Reduced-width guards for the scanner and composed return blocks. -/
 inductive WidthFourGuard where
