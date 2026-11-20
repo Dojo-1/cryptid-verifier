@@ -279,6 +279,33 @@ def short_two_cases(rng):
         yield "short-two-window", req, want, (head+1-len(deposited), head+3), False
 
 
+def two_wide_cases(rng):
+    for outer, term, trial in product((1, 2), ("00", "100"), range(24)):
+        u, v = (0, 0) if trial == 0 else (rng.randrange(24), rng.randrange(24))
+        tail = "".join(rng.choices("01", k=rng.randrange(24))) + "1"
+        first = "01"*outer + "101"
+        second = "01"*6 + ("101" if term == "00" else "")
+        right = MIXED + "100" + first + second + term
+        seed_left = 3 if term == "00" else 1
+        scanner = 2*(outer+6) + (26 if term == "00" else 13)
+        block_clock = 45 + (43+2*outer)
+        term_clock = 10 if term == "00" else 19
+        if outer == 1:
+            cut_clock, middle = 258, v+3
+            strip = "01010101010101010111111010101010101010101010101010"
+        else:
+            cut_clock, middle = 292, v
+            strip = "0101010101010111111111111111111010101010101010101010101010"
+        out = "1"*(2*u+1) + K41_STRIP + "1"*(2*middle) + strip + "1"*seed_left + tail
+        steps = 136 + scanner + term_clock + block_clock + cut_clock + 2*u + 2*v
+        left = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10" + "01"*5
+        offset = rng.randrange(-800, 801)
+        start = offset-len(left)
+        req = dict(q=1, head=offset, limit=steps, ones=ones(left+right+tail, start))
+        want = dict(q=2, head=start, steps=steps, halted=False, ones=ones(out, start))
+        yield f"blocks-width-five-two-wide-{outer}-{term}", req, want, (start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -293,7 +320,7 @@ def main():
     exe = parser.parse_args().cpp.resolve()
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
-             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng)]
+             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]

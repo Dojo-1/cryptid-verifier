@@ -181,6 +181,8 @@
         "CryptidLink.L17.b_return_blocks_exact",
         "CryptidLink.L17.mixed_return_blocks_exact",
         "CryptidLink.L17.mixed_narrow_return_blocks_exact",
+        "CryptidLink.L17.mixed_narrow_guarded_blocks_exact",
+        "CryptidLink.L17.mixed_two_wide_return_exact",
         "CryptidLink.L17.mixed_resumed_scanner_complete",
         "CryptidLink.L17.mixed_suffix_boundary",
         "CryptidLink.L17.mixed_suffix_next_zero",
