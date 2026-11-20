@@ -1167,6 +1167,17 @@ private theorem short_two_exact (j : ℕ) (L R : Bits) :
   have h3 := short_two_exit L (push [1] (push (P ^ j) W))
   convert (h1.trans h2).trans h3 using 1 <;> (first | rfl | omega)
 
+/-- The six-step local detour observed at E60's moving read frontier.
+From state A at the same head, a right-hand 0111 window is rewritten
+to 1110 in six *defined* raw transitions, preserving both arbitrary
+exterior tapes and restoring state A. Read window [0,3]. This alone
+does not prove the parameterized E60 recurrence. -/
+theorem e60_A_detour_exact (L R : Bits) :
+    ReachesIn target 6
+      (Cfg.headRight A L (push [0, 1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0] R)) := by
+  l17_exact_steps
+
 /-- Blocks listed in C processing order, nearest the head first.
 The input scanner reads the blocks in the opposite order. -/
 inductive ReturnBlock where
@@ -2986,3 +2997,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_two_wide_return_exact
 #print axioms CryptidLink.L17.mixed_pair_double_three_block_exact
 #print axioms CryptidLink.L17.mixed_zero_head_widewide_exact
+#print axioms CryptidLink.L17.e60_A_detour_exact
