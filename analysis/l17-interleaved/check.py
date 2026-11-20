@@ -134,6 +134,8 @@ def mixed_00_cases(rng):
 
 
 K41_STRIP = "10101010101010"
+ONE_PAIR_DOUBLE_GUARD = "1" + K41_STRIP + "11" + "010111"
+ONE_PAIR_DOUBLE_WRITTEN = "0101010101010101011111101010101010101010"
 NARROW_GUARDS = (
     ('zero', '0', '01010011111111111', 3, 104, True),
     ('ones', '111111', '0101010101010101010101010', 2, 192, False),
@@ -306,6 +308,39 @@ def two_wide_cases(rng):
         yield f"blocks-width-five-two-wide-{outer}-{term}", req, want, (start+1, offset+len(right)-1), True
 
 
+def one_pair_double_mixed_cases(rng):
+    """The formerly uncovered three-block residue, both scanner stops.
+
+    Check exact first blank-left C return, full tape, clock, read bounds,
+    translated heads and variable exterior suffixes against raw Python/C++.
+    """
+    blocks = [return_block("double"), return_block("pair"), return_block("wide", 1)]
+    all_tokens = [t for spec in reversed(blocks) for t in spec[0]]
+    assert all_tokens[:5] == ["01"] * 5
+    for term, trial in product(("00", "100"), range(80)):
+        tokens = all_tokens[5:].copy()
+        if term == "100":
+            assert tokens.pop() == "101"
+        u, v = ((0, 0), (1, 0), (0, 1), (7, 11))[trial % 4]
+        if trial >= 4:
+            u, v = rng.randrange(22), rng.randrange(22)
+        tail = "".join(rng.choices("01", k=rng.randrange(0, 40))) + "1"
+        residue = "".join(b[2] for b in reversed(blocks)) + "1" * (6 if term == "00" else 4)
+        assert residue.startswith(ONE_PAIR_DOUBLE_GUARD)
+        rest = residue[len(ONE_PAIR_DOUBLE_GUARD):]
+        left = "10"*(u+6) + "0" + "10"*(v+7) + "0" + "10" + "01"*5
+        right = MIXED + "100" + "".join(tokens) + term
+        offset = rng.randrange(-800, 801)
+        start = offset - len(left)
+        steps = (136 + sum(CLOCK[t] for t in tokens) + (10 if term == "00" else 19)
+                 + sum(b[1] for b in blocks) + 228 + 2*u + 2*v)
+        out = ("1" + "11"*u + K41_STRIP + "1"*(2*(v+3)) +
+               ONE_PAIR_DOUBLE_WRITTEN + rest + tail)
+        req = dict(q=1, head=offset, limit=steps, ones=ones(left+right+tail, start))
+        want = dict(q=2, head=start, steps=steps, halted=False, ones=ones(out, start))
+        yield "mixed-one-pair-double-" + term, req, want, (start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -320,7 +355,8 @@ def main():
     exe = parser.parse_args().cpp.resolve()
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
-             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng)]
+             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng),
+             *one_pair_double_mixed_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]

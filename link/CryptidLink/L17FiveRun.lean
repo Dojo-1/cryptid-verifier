@@ -1683,9 +1683,22 @@ private theorem width4_three_two_wide (L R : Bits) :
 
 set_option maxHeartbeats 200000
 
+/-- One wide strip followed by a pair and double block produces
+   1 K 11 010111 with K=(10)^7. Its 179-step contextual kernel
+   reads only [-14,26] relative to the checkpoint and preserves L and R. -/
+private theorem width4_one_pair_double (L R : Bits) :
+    ReachesIn target 179
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [0, 1, 1, 1] (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1] R)))
+      (Cfg.headRight C L (push [1, 1] (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R))) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 8000000 in
+      l17_exact_steps
+
 /-- Reduced-width guards for the scanner and composed return blocks. -/
 inductive WidthFourGuard where
   | zero | ones | onePlain | oneC6 | threePlain | threeC6 | oneTwoWide | threeTwoWide
+  | onePairDouble
   deriving DecidableEq
 
 def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
@@ -1697,6 +1710,7 @@ def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
   | .threeC6 => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
   | .oneTwoWide => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
   | .threeTwoWide => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
+  | .onePairDouble => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1]
 
 def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .zero => 104 + 2 * u + 4 * v
@@ -1707,6 +1721,7 @@ def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .threeC6 => 216 + 2 * u + 2 * v
   | .oneTwoWide => 258 + 2 * u + 2 * v
   | .threeTwoWide => 292 + 2 * u + 2 * v
+  | .onePairDouble => 228 + 2 * u + 2 * v
 
 def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .zero => [0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -1717,6 +1732,7 @@ def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .threeC6 => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   | .oneTwoWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
   | .threeTwoWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .onePairDouble => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
 
 /-- Exact right half tape after the reduced-width return. -/
 def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
@@ -1726,7 +1742,8 @@ def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
   | .ones | .threePlain => five_run_bottom_result u (push (I ^ (2 * (v + 2))) (push g.written R))
   | .oneC6 => five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
   | .threeC6 => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
-  | .oneTwoWide => five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
+  | .oneTwoWide | .onePairDouble =>
+      five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
   | .threeTwoWide => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
 
 /-- Reduced width-four exact C return for each of the required guards. -/
@@ -1776,6 +1793,12 @@ theorem width_four_cut_return_exact (g : WidthFourGuard) (u v : ℕ) (R : Bits) 
     let L := push (P ^ v) (push [0] (push (P ^ (u + 6)) default))
     have h := (width4_three_two_wide L R).trans
       (width4_c_finish u v (push (WidthFourGuard.written .threeTwoWide) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_one_pair_double L R).trans
+      (width4_c_finish u (v + 3) (push (WidthFourGuard.written .onePairDouble) R))
     convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
 
 /-- Only the first three pair counts need special treatment in the wide scanner families. -/
@@ -1980,6 +2003,28 @@ theorem mixed_two_wide_return_exact (outerThree : Bool) (term : ReturnTerm)
   · exact mixed_narrow_guarded_blocks_exact .hundred ts [.wide 1, .wide 1] .oneTwoWide u v R _ hg rfl
   · exact mixed_narrow_guarded_blocks_exact .zero ts [.wide 1, .wide 2] .threeTwoWide u v R _ hg rfl
   · exact mixed_narrow_guarded_blocks_exact .hundred ts [.wide 1, .wide 2] .threeTwoWide u v R _ hg rfl
+
+/-- Three-block exact return, including both scanner terminators.
+The source is conditional on the displayed parse; this is not a universal
+mixed-return or blank-orbit statement. -/
+theorem mixed_pair_double_three_block_exact (term : ReturnTerm)
+    (ts : List ScannerToken) (u v : ℕ) (R : Bits)
+    (hg : (List.replicate 5 .a01 ++ ts) ++ term.extra =
+      returnBlockTokens [.double, .pair, .wide 1]) :
+    ReachesIn target
+      (136 + (scannerSteps ts + term.clock +
+        returnBlockClock [.double, .pair, .wide 1] +
+        WidthFourGuard.clock u v .onePairDouble))
+      (Cfg.headRight B (push (Q ^ 5) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0]
+          (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default
+        (WidthFourGuard.result u v (term.residue R) .onePairDouble)) := by
+  have hs : returnBlockOutput (term.residue R) [.double, .pair, .wide 1] =
+      push WidthFourGuard.onePairDouble.word (term.residue R) := by
+    rfl
+  exact mixed_narrow_guarded_blocks_exact term ts
+    [.double, .pair, .wide 1] .onePairDouble u v R (term.residue R) hg hs
 
 /-- The resumed family covers every two-block continuation, with either
 terminator and no guard on the number of new pairs or repeats. -/
@@ -2858,3 +2903,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_narrow_return_blocks_exact
 #print axioms CryptidLink.L17.mixed_narrow_guarded_blocks_exact
 #print axioms CryptidLink.L17.mixed_two_wide_return_exact
+#print axioms CryptidLink.L17.mixed_pair_double_three_block_exact
