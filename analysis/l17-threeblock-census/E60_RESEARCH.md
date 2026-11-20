@@ -42,6 +42,25 @@ The two formulas handle 20 of the 26 still-unmatched **bounded parses**
 `[first, pair, wide(1|2)]` families). Six other parse cases are not
 claimed to follow these expressions.
 
+## Proven local detour (P) versus unproved global recurrence (H)
+
+The exact six-step microkernel is now a separately formalized target in
+`CryptidLink.L17.e60_A_detour_exact`:
+
+```text
+state A at head h, right window 0111 R
+  -- six defined L17 steps -->
+state A at the SAME h, right window 1110 R
+```
+
+Both arbitrary exteriors are preserved; the exact visited read offsets are
+`[0,1,2,3,2,1]`. A raw-machine regression tests 160 arbitrary contexts.
+Only once the Lean link build and axiom inventory pass should this local
+statement be labeled **P**. It is a *component*, not a proof of either
+`T1(m)` or `T3(m)` for all m. The missing theorem is a framed simulation
+relation explaining how the detour connects the m+1 checkpoint to the
+m checkpoint and transports the changed right-tape remainder.
+
 ## Counterexample / boundary
 
 The hypothesis is **m>=1**, not m>=0:
