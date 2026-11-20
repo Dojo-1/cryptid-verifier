@@ -380,6 +380,59 @@ def extra_widewide_cases(rng):
                         start+1, offset+len(right)-1), True
 
 
+
+def e60_moving_window_cases(rng):
+    """Finite H-stage E60 checkpoints, both C and mixed B entry, complete tape.
+
+    These cases are computational observations, not a Lean theorem.
+    """
+    K = "10" * 7
+    for fam, m, trial in product((1, 3), (1, 2, 3, 5, 8, 20, 50, 100), range(4)):
+        u, v = ((0, 0), (1, 0), (0, 1), (3, 7))[trial]
+        tail = "".join(rng.choices("01", k=rng.randrange(0, 45))) + "1"
+        guard = ("1" if fam == 1 else "111") + K + "11" + "01" + "10"*m + "111"
+        left = "10"*(u+6) + "0" + "10"*(v+7) + "0" + "10" + "01"*2
+        right = "0111" + guard
+        offset = rng.randrange(-800, 801)
+        start = offset-len(left)
+        clock = (214 if fam == 1 else 268) + 6*m + 2*u + (4 if fam == 1 else 2)*v
+        out = (("1"*(2*u+6) + "01"*(v+8) + "010100" + "10"*(16+m))
+               if fam == 1 else
+               ("1"*(2*u+1) + K + "1"*(2*v+4) + "01"*(21+m) + "0"))
+        req = dict(q=2, head=offset, limit=clock, ones=ones(left+right+tail, start))
+        want = dict(q=2, head=start, steps=clock, halted=False, ones=ones(out+tail, start))
+        yield f"e60-C-{fam}", req, want, (start+1, offset+(25 if fam==1 else 27)+2*m), True
+
+    for outer in (1, 2):
+        fam = 1 if outer == 1 else 3
+        for first_kind, j in (("bridge", 0), ("short-two", 0),
+                              ("short-two", 2), ("short-two", 20)):
+            m = 5 if first_kind == "bridge" else 8 + j
+            specs = [return_block(first_kind, j), return_block("pair"),
+                     return_block("wide", outer)]
+            all_tokens = [token for spec in reversed(specs) for token in spec[0]]
+            assert all_tokens[:5] == ["01"]*5
+            for term in ("00", "100"):
+                tokens = all_tokens[5:].copy()
+                if term == "100":
+                    assert tokens.pop() == "101"
+                for u,v in ((0,0),(1,0),(2,4)):
+                    tail = "".join(rng.choices("01", k=rng.randrange(0, 36))) + "1"
+                    left = "10"*(u+6) + "0" + "10"*(v+7) + "0" + "10" + "01"*5
+                    right = MIXED + "100" + "".join(tokens) + term
+                    offset = rng.randrange(-800, 801)
+                    start = offset-len(left)
+                    clock_cut = (214 if fam == 1 else 268) + 6*m + 2*u + (4 if fam==1 else 2)*v
+                    clock = 136 + sum(CLOCK[t] for t in tokens) + (10 if term=="00" else 19) + sum(s[1] for s in specs) + clock_cut
+                    residue = "1"*(3 if term == "00" else 1)
+                    out = (("1"*(2*u+6) + "01"*(v+8) + "010100" + "10"*(16+m))
+                           if fam == 1 else
+                           ("1"*(2*u+1) + K + "1"*(2*v+4) + "01"*(21+m) + "0"))
+                    req = dict(q=1, head=offset, limit=clock, ones=ones(left+right+tail, start))
+                    want = dict(q=2, head=start, steps=clock, halted=False, ones=ones(out+residue+tail,start))
+                    yield f"e60-B-{fam}-{term}", req, want, (start+1, offset+len(right)-1), True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -395,7 +448,7 @@ def main():
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
              *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng),
-             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng)]
+             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng), *e60_moving_window_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]
