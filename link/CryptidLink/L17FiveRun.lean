@@ -1770,10 +1770,92 @@ private theorem width4_three_pair_double (L R : Bits) :
 
 set_option maxHeartbeats 200000
 
+-- E63 split certificates use declaration-level elaboration budget only locally.
+set_option maxHeartbeats 10000000
+
+/-- E63 one part 0: 90 exact raw steps with untouched exterior tapes. -/
+private theorem e63_one_part0 (L R : Bits) :
+    ReachesIn target 90
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R))
+      (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 one part 1: 90 exact raw steps with untouched exterior tapes. -/
+private theorem e63_one_part1 (L R : Bits) :
+    ReachesIn target 90
+      (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R))
+      (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 one part 2: 99 exact raw steps with untouched exterior tapes. -/
+private theorem e63_one_part2 (L R : Bits) :
+    ReachesIn target 99
+      (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R))
+      (Cfg.headRight C (push [] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 one full 279-step contextual checkpoint kernel, split into thirds. -/
+private theorem width4_one_triple_wide (L R : Bits) :
+    ReachesIn target 279
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [0, 1, 1, 1] (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R)))
+      (Cfg.headRight C L (push [1, 1] (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R))) := by
+  have h0 := e63_one_part0 L R
+  have h1 := e63_one_part1 L R
+  have h2 := e63_one_part2 L R
+  convert (h0.trans h1).trans h2 using 1 <;> (first | rfl | omega)
+
+/-- E63 three part 0: 110 exact raw steps with untouched exterior tapes. -/
+private theorem e63_three_part0 (L R : Bits) :
+    ReachesIn target 110
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R))
+      (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 three part 1: 110 exact raw steps with untouched exterior tapes. -/
+private theorem e63_three_part1 (L R : Bits) :
+    ReachesIn target 110
+      (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R))
+      (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 three part 2: 99 exact raw steps with untouched exterior tapes. -/
+private theorem e63_three_part2 (L R : Bits) :
+    ReachesIn target 99
+      (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L) (push [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R))
+      (Cfg.headRight C (push [] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R)) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      l17_exact_steps
+
+/-- E63 three full 319-step contextual checkpoint kernel, split into thirds. -/
+private theorem width4_three_triple_wide (L R : Bits) :
+    ReachesIn target 319
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [0, 1, 1, 1] (push [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1] R)))
+      (Cfg.headRight C L (push [1, 1] (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] R))) := by
+  have h0 := e63_three_part0 L R
+  have h1 := e63_three_part1 L R
+  have h2 := e63_three_part2 L R
+  convert (h0.trans h1).trans h2 using 1 <;> (first | rfl | omega)
+
+set_option maxHeartbeats 200000
+
 /-- Reduced-width guards for the scanner and composed return blocks. -/
 inductive WidthFourGuard where
   | zero | ones | onePlain | oneC6 | threePlain | threeC6 | oneTwoWide | threeTwoWide
   | onePairDouble | oneWideWide | threeWideWide | threePairDouble
+  | oneTripleWide | threeTripleWide
   deriving DecidableEq
 
 def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
@@ -1789,6 +1871,8 @@ def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
   | .oneWideWide => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
   | .threeWideWide => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
   | .threePairDouble => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1]
+  | .oneTripleWide => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1]
+  | .threeTripleWide => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1]
 
 def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .zero => 104 + 2 * u + 4 * v
@@ -1803,6 +1887,8 @@ def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .oneWideWide => 252 + 2 * u + 2 * v
   | .threeWideWide => 286 + 2 * u + 2 * v
   | .threePairDouble => 262 + 2 * u + 2 * v
+  | .oneTripleWide => 328 + 2 * u + 2 * v
+  | .threeTripleWide => 362 + 2 * u + 2 * v
 
 def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .zero => [0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -1817,6 +1903,8 @@ def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .oneWideWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   | .threeWideWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   | .threePairDouble => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .oneTripleWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+  | .threeTripleWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
 
 /-- Exact right half tape after the reduced-width return. -/
 def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
@@ -1826,9 +1914,9 @@ def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
   | .ones | .threePlain => five_run_bottom_result u (push (I ^ (2 * (v + 2))) (push g.written R))
   | .oneC6 => five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
   | .threeC6 => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
-  | .oneTwoWide | .onePairDouble | .oneWideWide =>
+  | .oneTwoWide | .onePairDouble | .oneWideWide | .oneTripleWide =>
       five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
-  | .threeTwoWide | .threeWideWide | .threePairDouble =>
+  | .threeTwoWide | .threeWideWide | .threePairDouble | .threeTripleWide =>
       five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
 
 /-- Reduced width-four exact C return for each of the required guards. -/
@@ -1904,6 +1992,19 @@ theorem width_four_cut_return_exact (g : WidthFourGuard) (u v : ℕ) (R : Bits) 
     let L := push (P ^ v) (push [0] (push (P ^ (u + 6)) default))
     have h := (width4_three_pair_double L R).trans
       (width4_c_finish u v (push (WidthFourGuard.written .threePairDouble) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_one_triple_wide L R).trans
+      (width4_c_finish u (v + 3) (push (WidthFourGuard.written .oneTripleWide) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 7 v (by omega)]
+    let L := push (P ^ v) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_three_triple_wide L R).trans
+      (width4_c_finish u v (push (WidthFourGuard.written .threeTripleWide) R))
     convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
 
 /-- Only the first three pair counts need special treatment in the wide scanner families. -/
@@ -2187,6 +2288,32 @@ theorem mixed_zero_head_widewide_exact (outerThree : Bool)
       rfl
     exact mixed_narrow_guarded_blocks_exact term ts
       [b, .wide 1, .wide 2] .threeWideWide u v R S hg hs
+
+/-- E63: the two remaining triple-wide parses, conditional on the actual scanner
+token equality and one of the two terminal words.  The guard consumes exactly
+four of the terminal's leading ones; zero has two additional ones in S. -/
+theorem mixed_triple_wide_exact (outerThree : Bool) (term : ReturnTerm)
+    (ts : List ScannerToken) (u v : ℕ) (R : Bits)
+    (hg : (List.replicate 5 .a01 ++ ts) ++ term.extra =
+      returnBlockTokens [.wide 1, .wide 1, .wide (if outerThree then 2 else 1)]) :
+    let g := if outerThree then WidthFourGuard.threeTripleWide else WidthFourGuard.oneTripleWide
+    let bs := [ReturnBlock.wide 1, .wide 1, .wide (if outerThree then 2 else 1)]
+    let S := match term with | .zero => push (I ^ 2) R | .hundred => R
+    ReachesIn target
+      (136 + (scannerSteps ts + term.clock + returnBlockClock bs + WidthFourGuard.clock u v g))
+      (Cfg.headRight B (push (Q ^ 5) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0]
+          (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default (WidthFourGuard.result u v S g)) := by
+  cases outerThree <;> cases term
+  · exact mixed_narrow_guarded_blocks_exact .zero ts
+      [.wide 1, .wide 1, .wide 1] .oneTripleWide u v R (push (I ^ 2) R) hg (by rfl)
+  · exact mixed_narrow_guarded_blocks_exact .hundred ts
+      [.wide 1, .wide 1, .wide 1] .oneTripleWide u v R R hg (by rfl)
+  · exact mixed_narrow_guarded_blocks_exact .zero ts
+      [.wide 1, .wide 1, .wide 2] .threeTripleWide u v R (push (I ^ 2) R) hg (by rfl)
+  · exact mixed_narrow_guarded_blocks_exact .hundred ts
+      [.wide 1, .wide 1, .wide 2] .threeTripleWide u v R R hg (by rfl)
 
 /-- The resumed family covers every two-block continuation, with either
 terminator and no guard on the number of new pairs or repeats. -/
@@ -3070,3 +3197,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.e60_A_detour_exact
 #print axioms CryptidLink.L17.e61_A_window_insertion_diamond_exact
 #print axioms CryptidLink.L17.mixed_three_pair_double_exact
+#print axioms CryptidLink.L17.mixed_triple_wide_exact
