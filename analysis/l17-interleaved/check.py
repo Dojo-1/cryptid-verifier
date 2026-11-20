@@ -433,6 +433,38 @@ def e60_moving_window_cases(rng):
                     yield f"e60-B-{fam}-{term}", req, want, (start+1, offset+len(right)-1), True
 
 
+
+E62_GUARD = "1111010101010101011010111"
+E62_WRITTEN = "010101010101011111111111111111101010101010101010"
+
+
+def e62_three_pair_double_cases(rng):
+    """Literal mixed-entry replay for both terminals of the 25-bit E62 guard."""
+    blocks = [return_block("double"), return_block("pair"), return_block("wide", 2)]
+    total_tokens = [t for spec in reversed(blocks) for t in spec[0]]
+    assert total_tokens[:5] == ["01"]*5
+    assert "".join(spec[2] for spec in reversed(blocks)) == E62_GUARD
+    for term, trial in product(("00","100"), range(40)):
+        tokens = total_tokens[5:].copy()
+        if term == "100":
+            assert tokens.pop() == "101"
+        u,v = ((0,0),(1,0),(0,1),(1,1))[trial] if trial < 4 else (
+            rng.randrange(18),rng.randrange(18))
+        tail = "".join(rng.choices("01", k=rng.randrange(1,41))) + "1"
+        residue = "1"*(6 if term=="00" else 4)
+        left = "10"*(6+u) + "0" + "10"*(7+v) + "0" + "10" + "01"*5
+        right = MIXED + "100" + "".join(tokens) + term
+        offset = rng.randrange(-800,801)
+        start = offset - len(left)
+        clock = (136 + sum(CLOCK[t] for t in tokens) +
+                 (10 if term=="00" else 19) +
+                 sum(spec[1] for spec in blocks) + 262 + 2*u + 2*v)
+        out = "1"*(2*u+1)+K41_STRIP+"1"*(2*v)+E62_WRITTEN+residue+tail
+        req = dict(q=1,head=offset,limit=clock,ones=ones(left+right+tail,start))
+        want = dict(q=2,head=start,steps=clock,halted=False,ones=ones(out,start))
+        yield f"e62-three-pair-double-{term}",req,want,(start+1,offset+len(right)-1),True
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -448,7 +480,7 @@ def main():
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
              *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng),
-             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng), *e60_moving_window_cases(rng)]
+             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng), *e60_moving_window_cases(rng), *e62_three_pair_double_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]

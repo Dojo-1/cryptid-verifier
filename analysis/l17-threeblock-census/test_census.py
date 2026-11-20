@@ -21,12 +21,13 @@ OPS = l17.OPS
 KINDS = (("pair", 0), ("double", 0), ("bridge", 0),
          *(("wide", j) for j in range(4)),
          *(("short-two", j) for j in range(4)))
-NEW = {"oneWideWide", "threeWideWide"}
+NEW = {"oneWideWide", "threeWideWide"}  # E59 introduced these
+E62 = {"threePairDouble"}             # later guard, excluded from historical E59 counts
 CLOCK = {
     "zero": 104, "ones": 192, "onePlain": 180, "oneC6": 182,
     "threePlain": 234, "threeC6": 216, "oneTwoWide": 258,
     "threeTwoWide": 292, "onePairDouble": 228,
-    "oneWideWide": 252, "threeWideWide": 286,
+    "oneWideWide": 252, "threeWideWide": 286, "threePairDouble": 262,
 }
 KERNELS = {
     "oneWideWide": {
@@ -155,14 +156,17 @@ class ThreeBlockCensusTests(unittest.TestCase):
         self.assertEqual(self.words["oneWideWide"], KERNELS["oneWideWide"]["word"])
         self.assertEqual(self.words["threeWideWide"], KERNELS["threeWideWide"]["word"])
         self.assertEqual(len(self.cases), 1016)
-        base = {name:w for name,w in self.words.items() if name not in NEW}
+        base = {name:w for name,w in self.words.items() if name not in NEW | E62}
+        e59 = {name:w for name,w in self.words.items() if name not in E62}
         before = [classify(c[4], base) for c in self.cases]
+        e59_after = [classify(c[4], e59) for c in self.cases]
         after = [classify(c[4], self.words) for c in self.cases]
         self.assertEqual(Counter(before)[None], 54)
-        self.assertEqual(Counter(after)[None], 26)
+        self.assertEqual(Counter(e59_after)[None], 26)  # preserve E59 baseline
+        self.assertEqual(Counter(after)[None], 24)     # E62 closes two
         self.assertEqual(Counter(after)["oneWideWide"], 14)
         self.assertEqual(Counter(after)["threeWideWide"], 14)
-        # Historical singleton stays exactly one parse per terminal.
+        self.assertEqual(Counter(after)["threePairDouble"], 2)
         self.assertEqual(Counter(after)["onePairDouble"], 2)
 
     def test_all_baseline_guards_against_literal_clock(self):
@@ -174,7 +178,7 @@ class ThreeBlockCensusTests(unittest.TestCase):
                 self.assertEqual(actual["steps"], CLOCK[g], (blocks,term,g))
 
     def test_54_previous_gaps_paired_b_and_c_with_context(self):
-        base = {name:w for name,w in self.words.items() if name not in NEW}
+        base = {name:w for name,w in self.words.items() if name not in NEW | E62}
         slope_counts = Counter()
         checked = 0
         for blocks, specs, term, tokens, fixed in self.cases:
