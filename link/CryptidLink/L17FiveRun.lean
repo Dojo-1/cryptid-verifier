@@ -1695,10 +1695,37 @@ private theorem width4_one_pair_double (L R : Bits) :
     set_option maxHeartbeats 8000000 in
       l17_exact_steps
 
+-- These finite contextual kernels are long enough to need a declaration-level
+-- elaboration budget as well as an internal tactic budget.
+set_option maxHeartbeats 12000000
+
+/-- A second wide-1 return block with a zero-headed inner block.
+Read window [-14,34]; completely independent of both exterior tapes. -/
+private theorem width4_one_widewide (L R : Bits) :
+    ReachesIn target 203
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [0, 1, 1, 1] (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0] R)))
+      (Cfg.headRight C L (push [1, 1] (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] R))) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 9000000 in
+      l17_exact_steps
+
+/-- The three-leading-one sibling. Read window [-20,36]. -/
+private theorem width4_three_widewide (L R : Bits) :
+    ReachesIn target 243
+      (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
+        (push [0, 1, 1, 1] (push [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0] R)))
+      (Cfg.headRight C L (push [1, 1] (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] R))) := by
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 9000000 in
+      l17_exact_steps
+
+set_option maxHeartbeats 200000
+
 /-- Reduced-width guards for the scanner and composed return blocks. -/
 inductive WidthFourGuard where
   | zero | ones | onePlain | oneC6 | threePlain | threeC6 | oneTwoWide | threeTwoWide
-  | onePairDouble
+  | onePairDouble | oneWideWide | threeWideWide
   deriving DecidableEq
 
 def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
@@ -1711,6 +1738,8 @@ def WidthFourGuard.word : WidthFourGuard → List (Fin 2)
   | .oneTwoWide => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
   | .threeTwoWide => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1]
   | .onePairDouble => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1]
+  | .oneWideWide => [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
+  | .threeWideWide => [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0]
 
 def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .zero => 104 + 2 * u + 4 * v
@@ -1722,6 +1751,8 @@ def WidthFourGuard.clock (u v : ℕ) : WidthFourGuard → ℕ
   | .oneTwoWide => 258 + 2 * u + 2 * v
   | .threeTwoWide => 292 + 2 * u + 2 * v
   | .onePairDouble => 228 + 2 * u + 2 * v
+  | .oneWideWide => 252 + 2 * u + 2 * v
+  | .threeWideWide => 286 + 2 * u + 2 * v
 
 def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .zero => [0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -1733,6 +1764,8 @@ def WidthFourGuard.written : WidthFourGuard → List (Fin 2)
   | .oneTwoWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
   | .threeTwoWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
   | .onePairDouble => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  | .oneWideWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  | .threeWideWide => [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 /-- Exact right half tape after the reduced-width return. -/
 def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
@@ -1742,9 +1775,9 @@ def WidthFourGuard.result (u v : ℕ) (R : Bits) (g : WidthFourGuard) : Bits :=
   | .ones | .threePlain => five_run_bottom_result u (push (I ^ (2 * (v + 2))) (push g.written R))
   | .oneC6 => five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
   | .threeC6 => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
-  | .oneTwoWide | .onePairDouble =>
+  | .oneTwoWide | .onePairDouble | .oneWideWide =>
       five_run_bottom_result u (push (I ^ (2 * (v + 3))) (push g.written R))
-  | .threeTwoWide => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
+  | .threeTwoWide | .threeWideWide => five_run_bottom_result u (push (I ^ (2 * v)) (push g.written R))
 
 /-- Reduced width-four exact C return for each of the required guards. -/
 theorem width_four_cut_return_exact (g : WidthFourGuard) (u v : ℕ) (R : Bits) :
@@ -1799,6 +1832,19 @@ theorem width_four_cut_return_exact (g : WidthFourGuard) (u v : ℕ) (R : Bits) 
     let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
     have h := (width4_one_pair_double L R).trans
       (width4_c_finish u (v + 3) (push (WidthFourGuard.written .onePairDouble) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 4 (v + 3) (by omega)]
+    let L := push (P ^ (v + 3)) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_one_widewide L R).trans
+      (width4_c_finish u (v + 3) (push (WidthFourGuard.written .oneWideWide) R))
+    convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
+  · unfold widthFourCutSource
+    rw [width4_left_frame u v 7 v (by omega)]
+    let L := push (P ^ v) (push [0] (push (P ^ (u + 6)) default))
+    have h := (width4_three_widewide L R).trans
+      (width4_c_finish u v (push (WidthFourGuard.written .threeWideWide) R))
     convert h using 1 <;> (first | rfl | (simp only [WidthFourGuard.clock]; omega))
 
 /-- Only the first three pair counts need special treatment in the wide scanner families. -/
@@ -2025,6 +2071,41 @@ theorem mixed_pair_double_three_block_exact (term : ReturnTerm)
     rfl
   exact mixed_narrow_guarded_blocks_exact term ts
     [.double, .pair, .wide 1] .onePairDouble u v R (term.residue R) hg hs
+
+/-- A typed three-block return family for any first block whose output starts
+with zero. This includes double, bridge, wide 0 and shortTwo j (all j),
+provided the *actual* scanner tokens have the displayed parse. -/
+theorem mixed_zero_head_widewide_exact (outerThree : Bool)
+    (term : ReturnTerm) (ts : List ScannerToken) (b : ReturnBlock)
+    (u v : ℕ) (R S : Bits)
+    (hb : b.output (term.residue R) = push [0] S)
+    (hg : (List.replicate 5 .a01 ++ ts) ++ term.extra =
+      returnBlockTokens [b, .wide 1, .wide (if outerThree then 2 else 1)]) :
+    let g := if outerThree then WidthFourGuard.threeWideWide else WidthFourGuard.oneWideWide
+    let bs := [b, .wide 1, .wide (if outerThree then 2 else 1)]
+    ReachesIn target
+      (136 + (scannerSteps ts + term.clock + returnBlockClock bs + WidthFourGuard.clock u v g))
+      (Cfg.headRight B (push (Q ^ 5) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0]
+          (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default (WidthFourGuard.result u v S g)) := by
+  cases outerThree
+  · have hs : returnBlockOutput (term.residue R) [b, .wide 1, .wide 1] =
+        push WidthFourGuard.oneWideWide.word S := by
+      change (ReturnBlock.wide 1).output
+        ((ReturnBlock.wide 1).output (b.output (term.residue R))) = _
+      rw [hb]
+      rfl
+    exact mixed_narrow_guarded_blocks_exact term ts
+      [b, .wide 1, .wide 1] .oneWideWide u v R S hg hs
+  · have hs : returnBlockOutput (term.residue R) [b, .wide 1, .wide 2] =
+        push WidthFourGuard.threeWideWide.word S := by
+      change (ReturnBlock.wide 2).output
+        ((ReturnBlock.wide 1).output (b.output (term.residue R))) = _
+      rw [hb]
+      rfl
+    exact mixed_narrow_guarded_blocks_exact term ts
+      [b, .wide 1, .wide 2] .threeWideWide u v R S hg hs
 
 /-- The resumed family covers every two-block continuation, with either
 terminator and no guard on the number of new pairs or repeats. -/
@@ -2904,3 +2985,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_narrow_guarded_blocks_exact
 #print axioms CryptidLink.L17.mixed_two_wide_return_exact
 #print axioms CryptidLink.L17.mixed_pair_double_three_block_exact
+#print axioms CryptidLink.L17.mixed_zero_head_widewide_exact
