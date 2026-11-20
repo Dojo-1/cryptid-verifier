@@ -1178,6 +1178,26 @@ theorem e60_A_detour_exact (L R : Bits) :
       (Cfg.headRight A L (push [1, 1, 1, 0] R)) := by
   l17_exact_steps
 
+/-- The E61 local insertion diamond.  Both starting configurations have the
+same arbitrary exterior tapes.  Two steps consume 0111; eight steps consume
+010111.  The six extra steps are precisely e60_A_detour_exact and migrate
+the additional pair to after the two leading ones at the shared A-head.
+This proves only the local square, not the all-m checkpoint recurrence. -/
+theorem e61_A_window_insertion_diamond_exact (L R : Bits) :
+    ReachesIn target 2
+      (Cfg.headRight A L (push [0, 1, 1, 1] R))
+      (Cfg.headRight A (push [0, 1] L) (push [1, 1] R)) ∧
+    ReachesIn target 8
+      (Cfg.headRight A L (push [0, 1, 0, 1, 1, 1] R))
+      (Cfg.headRight A (push [0, 1] L) (push [1, 1, 1, 0] R)) := by
+  constructor
+  · l17_exact_steps
+  · have hprefix : ReachesIn target 2
+        (Cfg.headRight A L (push [0, 1, 0, 1, 1, 1] R))
+        (Cfg.headRight A (push [0, 1] L) (push [0, 1, 1, 1] R)) := by
+      l17_exact_steps
+    exact hprefix.trans (e60_A_detour_exact (push [0, 1] L) R)
+
 /-- Blocks listed in C processing order, nearest the head first.
 The input scanner reads the blocks in the opposite order. -/
 inductive ReturnBlock where
@@ -2998,3 +3018,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.mixed_pair_double_three_block_exact
 #print axioms CryptidLink.L17.mixed_zero_head_widewide_exact
 #print axioms CryptidLink.L17.e60_A_detour_exact
+#print axioms CryptidLink.L17.e61_A_window_insertion_diamond_exact
