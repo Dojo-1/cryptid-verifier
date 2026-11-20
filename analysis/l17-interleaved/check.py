@@ -1,7 +1,7 @@
 """Literal differential replay of L17's interleaved scanner and suffix witnesses."""
 import argparse
 from collections import Counter
-from itertools import product
+from itertools import chain, product
 import json
 from pathlib import Path
 import random
@@ -190,6 +190,9 @@ def return_block(kind, j=0):
         return ("101", "101"), 6, "010111"
     if kind == "bridge":
         return ("101", "01", "01", "01", "101"), 34, "011010101010"
+    if kind == "short-two":
+        return (("101", "01", "101") + ("01",)*j + ("101", "01", "01", "101"),
+                48+4*j, "01"+"10"*(j+8))
     return ("01",)*(j+5) + ("101",), 41+2*(j+1), (
         "0"+"10"*6 if j == 0 else "1"*(2*j-1) + K41_STRIP)
 
@@ -200,7 +203,15 @@ def block_cases(rng):
     # All short lists of blocks with an obligatory bridge, plus long seeded chains.
     chains = [[bridge, *bs] for length in range(3) for bs in product(kinds[:5], repeat=length)]
     chains += [[bridge, *rng.choices(kinds, k=rng.randrange(3, 8))] for _ in range(49)]
-    for blocks0, term, mixed in product(chains, ("00", "100"), (False, True)):
+    # Retain the original campaign, then add chains anchored by the new bridge.
+    original = product(chains, ("00", "100"), ("B", "mixed"))
+    new_kinds = (*kinds, *(return_block("short-two", j) for j in (0, 1, 3, 7)))
+    new_chains = [[return_block("short-two", j), *rng.choices(new_kinds, k=i % 4)]
+                  for j, i in product((0, 1, 2, 7, 17), range(8))]
+    additional = product(new_chains, ("00", "100"), ("short-two-B", "short-two-mixed", "width-five"))
+    for blocks0, term, mode in chain(original, additional):
+        mixed = mode not in ("B", "short-two-B")
+        narrow = mode == "width-five"
         # The first bridge can absorb the 100 stop's implicit 101 deposit.
         blocks = blocks0 + ([pair]*5 if mixed else [])
         tokens = [t for spec in reversed(blocks) for t in spec[0]]
@@ -210,14 +221,18 @@ def block_cases(rng):
             assert tokens[:5] == ["01"]*5
             del tokens[:5]
         u, v = rng.randrange(19), rng.randrange(19)
-        k = rng.randrange(7)
+        k = -1 if narrow else rng.randrange(7)
         tail = "".join(rng.choices("01", k=rng.randrange(1, 32))) + "1"
         residue = "".join(b[2] for b in reversed(blocks)) + "1"*(6 if term == "00" else 4)
         clock_to_cut = (136 if mixed else 14) + sum(CLOCK[t] for t in tokens) + (
             10 if term == "00" else 19) + sum(b[1] for b in blocks)
-        middle_clock = {0: 104, 1: 120, 2: 100}.get(k, 2*k+96)
+        middle_clock = {-1: 192, 0: 104, 1: 120, 2: 100}.get(k, 2*k+96)
         steps = clock_to_cut + middle_clock + 2*u + 2*v
-        if k == 0:
+        if narrow:
+            assert residue.startswith("1"*10)
+            out = "1"*(2*u+1) + K41_STRIP + "1"*(2*(v+2)) + "01"*12 + "0"
+            residue = residue[6:]
+        elif k == 0:
             out = "1"*(2*u+1) + K41_STRIP + "1"*(2*v+5) + "10"*10
         elif k == 1:
             out = "1"*(2*u+1) + K41_STRIP + "1"*(2*v+1) + "10101010101010011010101010"
@@ -231,7 +246,7 @@ def block_cases(rng):
         start = offset-len(left)
         req = dict(q=1, head=offset, limit=steps, ones=ones(left+right+tail, start))
         want = dict(q=2, head=start, steps=steps, halted=False, ones=ones(out+residue+tail, start))
-        yield f"blocks-{'mixed' if mixed else 'B'}-{term}", req, want, (start+1, offset+len(right)-1), True
+        yield f"blocks-{mode}-{term}", req, want, (start+1, offset+len(right)-1), True
 
 
 def bridge_cases(rng):
@@ -249,6 +264,21 @@ def bridge_cases(rng):
         yield "bridge-window", req, want, (head+1-len(deposited), head+3), False
 
 
+def short_two_cases(rng):
+    for j, _ in product((0, 1, 2, 3, 8, 16, 60, 200), range(10)):
+        left = "".join(rng.choices("01", k=rng.randrange(0, 40)))
+        right = "".join(rng.choices("01", k=rng.randrange(0, 40)))
+        deposited = "010" + "10"*2 + "010" + "10"*j + "010" + "10" + "010"
+        written = "11101" + "10"*(j+8)
+        head = rng.randrange(-800, 801)
+        start = head+1-len(deposited)-len(left)
+        req = dict(q=2, head=head, limit=48+4*j,
+                   ones=ones(left+deposited[::-1]+"111"+right, start))
+        want = dict(q=2, head=head-len(deposited), steps=48+4*j, halted=False,
+                    ones=ones(left+written+right, start))
+        yield "short-two-window", req, want, (head+1-len(deposited), head+3), False
+
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -263,7 +293,7 @@ def main():
     exe = parser.parse_args().cpp.resolve()
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
-             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng)]
+             *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]

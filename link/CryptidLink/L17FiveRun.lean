@@ -1109,10 +1109,68 @@ private theorem prefix_wide_c_sweep (j : ℕ) (L S : Bits) :
   rw [hr] at h
   exact h
 
+/-- Transfer one pair left of A into its right guard. Read window [-1,1]. -/
+private theorem pair_a_transfer (L R : Bits) :
+    ReachesIn target 4
+      (Cfg.headRight A (push [0, 1] L) (push [1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0, 1] R)) := by
+  set_option maxRecDepth 8192 in
+    set_option maxHeartbeats 3000000 in
+      l17_exact_steps
+
+private theorem pair_a_sweep (p : ℕ) (L R : Bits) :
+    ReachesIn target (4 * p)
+      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1] (push (P ^ p) R))) := by
+  induction p generalizing R with
+  | zero => simpa only [Nat.mul_zero, list_pow_zero, ListBlank.append_nil] using
+      ReachesIn.zero target (Cfg.headRight A L (push [1, 1, 1] R))
+  | succ p ih =>
+    have h := pair_a_transfer (push (P ^ p) L) R
+    change ReachesIn target 4 (Cfg.headRight A (push P (push (P ^ p) L)) (push [1, 1, 1] R))
+      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] (push P R))) at h
+    have hh := h.trans (ih (push P R))
+    rw [← ListBlank.append_pow_succ P p L, ListBlank.append_pow_comm P p R,
+      ← ListBlank.append_pow_succ P p R, show 4 + 4 * p = 4 * (p + 1) by omega] at hh
+    exact hh
+
+/-- Expose the middle pair run. Read window [-7,3]. -/
+private theorem short_two_entry (L R : Bits) :
+    ReachesIn target 30
+      (Cfg.headLeft C (push [0, 1, 0, 1, 0, 1, 0, 0, 1] L) (push [1, 1, 1] R))
+      (Cfg.headRight A L (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R)) := by
+  l17_exact_steps
+
+/-- Restore C after the middle sweep. Read window [-9,1]. -/
+private theorem short_two_exit (L R : Bits) :
+    ReachesIn target 18
+      (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 0, 1, 0] L) (push [1, 1] R))
+      (Cfg.headLeft C L (push [1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0] R)) := by
+  l17_exact_steps
+
+private def shortTwoResidue (j : ℕ) (R : Bits) : Bits :=
+  push [0, 1, 1, 0, 1, 0, 1, 0, 1]
+    (push (P ^ j) (push [0, 1, 0, 1, 0, 1, 0, 1, 0] R))
+
+/-- An interleaving with a variable middle run, in head-nearest-first order
+X Q² X Q^j X Q X, restoring the same 111 guard. -/
+private theorem short_two_exact (j : ℕ) (L R : Bits) :
+    ReachesIn target (48 + 4 * j)
+      (Cfg.headLeft C (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0]
+        (push (Q ^ j) (push [0, 1, 0, 1, 0, 0, 1, 0] L))) (push [1, 1, 1] R))
+      (Cfg.headLeft C L (push [1, 1, 1] (shortTwoResidue j R))) := by
+  let X := push [0, 1, 0, 1, 0, 0, 1, 0] L
+  let W := push [0, 1, 0, 1, 0, 1, 0, 1, 0] R
+  have h1 := short_two_entry (push [0] (push (Q ^ j) X)) R
+  have h2 := pair_a_sweep j (push [0] X) W
+  rw [← rotLB0 j X] at h2
+  have h3 := short_two_exit L (push [1] (push (P ^ j) W))
+  convert (h1.trans h2).trans h3 using 1 <;> (first | rfl | omega)
+
 /-- Blocks listed in C processing order, nearest the head first.
 The input scanner reads the blocks in the opposite order. -/
 inductive ReturnBlock where
-  | pair | double | bridge | wide (extra : ℕ)
+  | pair | double | bridge | wide (extra : ℕ) | shortTwo (middle : ℕ)
 
 /-- Scanner tokens in forward (A scan) order for a single C block. -/
 def ReturnBlock.tokens : ReturnBlock → List ScannerToken
@@ -1120,12 +1178,15 @@ def ReturnBlock.tokens : ReturnBlock → List ScannerToken
   | .double => [.a101, .a101]
   | .bridge => [.a101, .a01, .a01, .a01, .a101]
   | .wide j => List.replicate (j + 5) .a01 ++ [.a101]
+  | .shortTwo j => [.a101, .a01, .a101] ++
+      (List.replicate j .a01 ++ [.a101, .a01, .a01, .a101])
 
 def ReturnBlock.clock : ReturnBlock → ℕ
   | .pair => 2
   | .double => 6
   | .bridge => 34
   | .wide j => 41 + 2 * (j + 1)
+  | .shortTwo j => 48 + 4 * j
 
 /-- The output after the three leading ones needed by the next block. -/
 def ReturnBlock.output (R : Bits) : ReturnBlock → Bits
@@ -1133,6 +1194,7 @@ def ReturnBlock.output (R : Bits) : ReturnBlock → Bits
   | .double => push [0, 1, 0] (push [1, 1, 1] R)
   | .bridge => push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] R
   | .wide j => scannerWideSuffix j R
+  | .shortTwo j => shortTwoResidue j R
 
 def returnBlockTokens : List ReturnBlock → List ScannerToken
   | [] => []
@@ -1180,6 +1242,10 @@ private theorem return_block_exact (b : ReturnBlock) (L R : Bits) :
     simp only [ReturnBlock.tokens, scanner_deposit_append, scanner_deposit_pairs, scannerDeposit,
       ScannerToken.deposit, ReturnBlock.clock, ReturnBlock.output]
     exact prefix_wide_c_sweep j L R
+  | shortTwo j =>
+    simp only [ReturnBlock.tokens, scanner_deposit_append, scanner_deposit_pairs, scannerDeposit,
+      ScannerToken.deposit, ReturnBlock.clock, ReturnBlock.output]
+    exact short_two_exact j L R
 
 /-- Every finite concatenation of return blocks is consumed. Each block
 restores the very same three-one guard for the following block. -/
@@ -1510,15 +1576,6 @@ private theorem width4_threec (L R : Bits) :
     set_option maxHeartbeats 3000000 in
       l17_exact_steps
 
-/-- Fixed width-four checkpoint kernel. Read window [-1,1]. -/
-private theorem width4_a_transfer (L R : Bits) :
-    ReachesIn target 4
-      (Cfg.headRight A (push [0, 1] L) (push [1, 1, 1] R))
-      (Cfg.headRight A L (push [1, 1, 1, 0, 1] R)) := by
-  set_option maxRecDepth 8192 in
-    set_option maxHeartbeats 3000000 in
-      l17_exact_steps
-
 /-- Fixed width-four checkpoint kernel. Read window [-8,1]. -/
 private theorem width4_a_finish (L R : Bits) :
     ReachesIn target 25
@@ -1564,22 +1621,6 @@ private theorem width4_c_finish (u p : ℕ) (R : Bits) :
   rw [he] at h2
   exact h.trans h2
 
-private theorem width4_a_sweep (p : ℕ) (L R : Bits) :
-    ReachesIn target (4 * p)
-      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] R))
-      (Cfg.headRight A L (push [1, 1, 1] (push (P ^ p) R))) := by
-  induction p generalizing R with
-  | zero => simpa only [Nat.mul_zero, list_pow_zero, ListBlank.append_nil] using
-      ReachesIn.zero target (Cfg.headRight A L (push [1, 1, 1] R))
-  | succ p ih =>
-    have h := width4_a_transfer (push (P ^ p) L) R
-    change ReachesIn target 4 (Cfg.headRight A (push P (push (P ^ p) L)) (push [1, 1, 1] R))
-      (Cfg.headRight A (push (P ^ p) L) (push [1, 1, 1] (push P R))) at h
-    have hh := h.trans (ih (push P R))
-    rw [← ListBlank.append_pow_succ P p L, ListBlank.append_pow_comm P p R,
-      ← ListBlank.append_pow_succ P p R, show 4 + 4 * p = 4 * (p + 1) by omega] at hh
-    exact hh
-
 private theorem width4_a_unwind (u p : ℕ) (R : Bits) :
     ReachesIn target (4 * p + 29 + 2 * u)
       (Cfg.headRight A (push (P ^ p) (push [0] (push (P ^ (u + 6)) default)))
@@ -1588,7 +1629,7 @@ private theorem width4_a_unwind (u p : ℕ) (R : Bits) :
         (push (I ^ (2 * u + 6)) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] (push (P ^ p) R)))) := by
   let W := push (P ^ p) R
   let L : Bits := push (P ^ (u + 2)) default
-  have h1 := width4_a_sweep p (push [0] (push (P ^ (u + 6)) default)) R
+  have h1 := pair_a_sweep p (push [0] (push (P ^ (u + 6)) default)) R
   have h2 := width4_a_finish L (push [1] W)
   have hL : push [0, 0, 1, 0, 1, 0, 1, 0, 1] L = push [0] (push (P ^ (u + 6)) default) := by
     change push [0] (push (P ^ 4) (push (P ^ (u + 2)) default)) = _
@@ -1790,6 +1831,51 @@ theorem mixed_narrow_return_exact (t : PrefixedScanner) (u v j : ℕ) (R : Bits)
     (Cfg.headRight B (push (Q ^ 5) (base u v)) (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] W)) Y
   rw [show 112 + N = 136 + (N - 24) by omega]
   exact ht.mpr hh
+
+/-- At mixed width five, a parse of the actual scan leaves the five virtual
+pairs to be swept last. They supply ten ones and force the existing six-one
+checkpoint, without assuming any prefix on the output of the parsed blocks. -/
+theorem mixed_narrow_return_blocks_exact (term : ReturnTerm) (ts : List ScannerToken)
+    (bs : List ReturnBlock) (u v : ℕ) (R : Bits)
+    (hg : ts ++ term.extra = returnBlockTokens bs) :
+    ReachesIn target
+      (136 + (scannerSteps ts + term.clock + returnBlockClock bs + 10 +
+        WidthFourGuard.clock u v .ones))
+      (Cfg.headRight B (push (Q ^ 5) (base u v))
+        (push [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0] (push (scannerInput ts) (push term.word R))))
+      (Cfg.headRight C default
+        (WidthFourGuard.result u v (push (I ^ 4) (returnBlockOutput (term.residue R) bs)) .ones)) := by
+  let five : List ScannerToken := List.replicate 5 .a01
+  let X := push (Q ^ 2) (base u v)
+  let W := push (scannerInput ts) (push term.word R)
+  let S := returnBlockOutput (term.residue R) bs
+  let Y := Cfg.headRight C default (WidthFourGuard.result u v (push (I ^ 4) S) .ones)
+  let N := scannerSteps ts + term.clock + returnBlockClock bs + 10 + WidthFourGuard.clock u v .ones
+  have ha := b_scanner_term_exact term (five ++ ts) X R
+  rw [List.append_assoc, hg, scanner_deposit_append, scanner_deposit_pairs,
+    scanner_steps_append, scanner_input_append, ← ListBlank.append_append] at ha
+  have hb := return_blocks_exact bs (push (Q ^ 5) (push [0] X)) (term.residue R)
+  have hc := prefix_c_sweep 5 (push [0] X) S
+  have he : Cfg.headLeft C (push [0] X) (push [1, 1, 1] (push (I ^ (2 * 5)) S)) =
+      widthFourCutSource u v (push WidthFourGuard.ones.word (push (I ^ 4) S)) :=
+    Cfg.headLeft_cons C (0 : Fin 2) X _
+  rw [he] at hc
+  have hd := width_four_cut_return_exact .ones u v (push (I ^ 4) S)
+  have hh := ((ha.trans hb).trans hc).trans hd
+  have ht := mixed_suffix_transport X W Y N
+  have he3 : push [1, 0, 1, 0, 1, 0] X = push (Q ^ 5) (base u v) := by
+    change push (Q ^ 3) (push (Q ^ 2) (base u v)) = _
+    rw [← ListBlank.append_pow_add]
+  rw [he3] at ht
+  apply ht.mpr
+  have htime : (14 + (scannerSteps five + scannerSteps ts + term.clock)) +
+      returnBlockClock bs + 2 * 5 + WidthFourGuard.clock u v .ones = 24 + N := by
+    change (14 + (10 + scannerSteps ts + term.clock)) +
+      returnBlockClock bs + 2 * 5 + WidthFourGuard.clock u v .ones = 24 + N
+    dsimp only [N]
+    omega
+  rw [htime] at hh
+  exact hh
 
 /-- The resumed family covers every two-block continuation, with either
 terminator and no guard on the number of new pairs or repeats. -/
@@ -2665,3 +2751,4 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.return_blocks_exact
 #print axioms CryptidLink.L17.b_return_blocks_exact
 #print axioms CryptidLink.L17.mixed_return_blocks_exact
+#print axioms CryptidLink.L17.mixed_narrow_return_blocks_exact
