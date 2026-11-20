@@ -26,9 +26,9 @@ def exact(start,n):
         h+=d
     return q,h,frozenset(T), (min(visited),max(visited))
 
-def scan(first,n):
+def scan(first,limit=2000):
     q,h,T=first;T=set(T);visited=[]
-    for i in range(2000):
+    for i in range(limit):
         if q==2 and not any(p<h for p in T):
             return q,h,i,frozenset(T),(min(visited),max(visited))
         visited.append(h)
