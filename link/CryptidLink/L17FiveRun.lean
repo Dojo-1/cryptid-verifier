@@ -1670,6 +1670,9 @@ private theorem width4_one_two_wide (L R : Bits) :
       l17_exact_steps
 
 /-- Two wide strips at the width-four checkpoint. Read window [-20,38]. -/
+-- The large closed 249-step certificate needs a declaration-level elaboration budget:
+-- a tactic-local heartbeat limit does not cover elaboration of the full theorem term.
+set_option maxHeartbeats 8000000 in
 private theorem width4_three_two_wide (L R : Bits) :
     ReachesIn target 249
       (Cfg.headRight C (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1] L)
