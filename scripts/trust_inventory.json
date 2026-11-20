@@ -188,6 +188,7 @@
         "CryptidLink.L17.e60_A_detour_exact",
         "CryptidLink.L17.e61_A_window_insertion_diamond_exact",
         "CryptidLink.L17.mixed_three_pair_double_exact",
+        "CryptidLink.L17.mixed_triple_wide_exact",
         "CryptidLink.L17.mixed_resumed_scanner_complete",
         "CryptidLink.L17.mixed_suffix_boundary",
         "CryptidLink.L17.mixed_suffix_next_zero",

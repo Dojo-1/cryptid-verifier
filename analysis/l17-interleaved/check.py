@@ -465,6 +465,38 @@ def e62_three_pair_double_cases(rng):
         yield f"e62-three-pair-double-{term}",req,want,(start+1,offset+len(right)-1),True
 
 
+
+E63_FAMILIES = (
+    (1, "1101010101010101101010101010101101010101010101111", "010101010101010101101010101010101111110101010101010101010101010101", 328, 3),
+    (2, "111101010101010101101010101010101101010101010101111", "01010101010101111111111111101010101010101111110101010101010101010101010101", 362, 0),
+)
+
+def e63_triple_wide_cases(rng):
+    """Actual mixed B inputs for both triple-wide guards and both scanner stops."""
+    for outer, guard, written, cut_clock, middle in E63_FAMILIES:
+        blocks = [return_block("wide", 1), return_block("wide", 1), return_block("wide", outer)]
+        for term in ("00", "100"):
+            tokens = [t for spec in reversed(blocks) for t in spec[0]]
+            assert tokens[:5] == ["01"] * 5
+            del tokens[:5]
+            if term == "100":
+                assert tokens.pop() == "101"
+            for trial in range(30):
+                u,v = ((0,0),(1,0),(0,1),(2,4))[trial] if trial < 4 else (rng.randrange(18),rng.randrange(18))
+                tail = "".join(rng.choices("01",k=rng.randrange(1,50)))+"1"
+                left = "10"*(6+u)+"0"+"10"*(7+v)+"0"+"10"+"01"*5
+                right = MIXED+"100"+"".join(tokens)+term
+                offset = rng.randrange(-800,801); start=offset-len(left)
+                clock = (136 + sum(CLOCK[t] for t in tokens) +
+                         (10 if term == "00" else 19) +
+                         sum(spec[1] for spec in blocks) + cut_clock + 2*u + 2*v)
+                residue = "11" if term == "00" else ""
+                out = ("1"*(2*u+1)+K41_STRIP+"1"*(2*(v+middle))+
+                       written+residue+tail)
+                req = dict(q=1,head=offset,limit=clock,ones=ones(left+right+tail,start))
+                want = dict(q=2,head=start,steps=clock,halted=False,ones=ones(out,start))
+                yield f"e63-triple-wide-{outer}-{term}",req,want,(start+1,offset+len(right)-1),True
+
 def check_first_return(req, trace):
     tape = set(req["ones"])
     for q, head, bit in trace:
@@ -480,7 +512,7 @@ def main():
     rng = random.Random(19112049)
     cases = [*scan_cases(rng), *witness_cases(rng), *mixed_00_cases(rng), *transport_cases(rng),
              *narrow_cases(rng), *block_cases(rng), *bridge_cases(rng), *short_two_cases(rng), *two_wide_cases(rng),
-             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng), *e60_moving_window_cases(rng), *e62_three_pair_double_cases(rng)]
+             *one_pair_double_mixed_cases(rng), *extra_widewide_cases(rng), *e60_moving_window_cases(rng), *e62_three_pair_double_cases(rng), *e63_triple_wide_cases(rng)]
     lines = []
     for i, (_, req, _, _, _) in enumerate(cases):
         bits = req["ones"]
