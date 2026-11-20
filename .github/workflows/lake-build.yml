@@ -113,5 +113,7 @@ jobs:
           python3 analysis/l17-mixed-proof/check_mixed.py --cpp analysis/l17-hardening/comparator-O2 --no-save
       - name: L17 homogeneous scanner returns against fresh literal execution
         run: python3 analysis/l17-scanner-returns/check.py
+      - name: L17 finite three-block census and adversarial context checks
+        run: python3 -m unittest discover -s analysis/l17-threeblock-census -p 'test_*.py' -v
       - name: L17 interleaved scanner and suffix replay
         run: python3 analysis/l17-interleaved/check.py --cpp analysis/l17-hardening/comparator-O2
