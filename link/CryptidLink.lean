@@ -35,3 +35,4 @@ import CryptidLink.L17ad
 import CryptidLink.L17ae
 import CryptidLink.L17MixedBoundary
 import CryptidLink.L17Interleaved
+import CryptidLink.L17Window
