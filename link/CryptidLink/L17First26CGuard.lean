@@ -248,7 +248,7 @@ theorem e76_one_first26_noBlankLeftC (L R : Bits) :
   rcases hcases with h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h
   · subst t
     exact e76_transfer_nonblank (e76_one_at_0 L R)
-      (e76_nonblank_of_one (by rfl)) hc
+      (e76_nonblank_of_one (by simp only [Cfg.headRight, ListBlank.append, ListBlank.head_cons])) hc
   · subst t
     exact e76_transfer_nonblank (e76_one_at_1 L R)
       (e76_nonblank_of_nonC (by change (some D : Option (Fin 6)) ≠ some C; decide)) hc
@@ -323,7 +323,7 @@ theorem e76_one_first26_noBlankLeftC (L R : Bits) :
       (e76_nonblank_of_nonC (by change (some B : Option (Fin 6)) ≠ some C; decide)) hc
   · subst t
     exact e76_transfer_nonblank (e76_one_at_25 L R)
-      (e76_nonblank_of_one (by rfl)) hc
+      (e76_nonblank_of_one (by simp only [Cfg.headRight, ListBlank.append, ListBlank.head_cons])) hc
 
 /-- Exact three prelude trace at raw t=0; all exterior bits remain symbolic. -/
 private theorem e76_three_at_0 (L R : Bits) :
@@ -519,7 +519,7 @@ theorem e76_three_first26_noBlankLeftC (L R : Bits) :
   rcases hcases with h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h
   · subst t
     exact e76_transfer_nonblank (e76_three_at_0 L R)
-      (e76_nonblank_of_one (by rfl)) hc
+      (e76_nonblank_of_one (by simp only [Cfg.headRight, ListBlank.append, ListBlank.head_cons])) hc
   · subst t
     exact e76_transfer_nonblank (e76_three_at_1 L R)
       (e76_nonblank_of_nonC (by change (some D : Option (Fin 6)) ≠ some C; decide)) hc
@@ -594,7 +594,7 @@ theorem e76_three_first26_noBlankLeftC (L R : Bits) :
       (e76_nonblank_of_nonC (by change (some B : Option (Fin 6)) ≠ some C; decide)) hc
   · subst t
     exact e76_transfer_nonblank (e76_three_at_25 L R)
-      (e76_nonblank_of_one (by rfl)) hc
+      (e76_nonblank_of_one (by simp only [Cfg.headRight, ListBlank.append, ListBlank.head_cons])) hc
 
 end CryptidLink.L17
 
