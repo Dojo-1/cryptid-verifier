@@ -32,7 +32,7 @@ private theorem one_source_frame (m u v : ℕ) (R : Bits) :
           (push [0] (push (P ^ (v + 7)) (push [0] (push (P ^ (u + 6)) default)))))
         (push [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0]
           (push (Q ^ m) (push [1, 1, 1] R))) := by
-  unfold widthFourCutSource
+  unfold widthFourCutSource G1
   rw [ListBlank.append_pow_succ Q m (push [1, 1, 1] R)]
   rfl
 
@@ -43,7 +43,7 @@ private theorem three_source_frame (m u v : ℕ) (R : Bits) :
           (push (P ^ (v + 6)) (push [0] (push (P ^ (u + 6)) default))))
         (push [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0]
           (push (Q ^ m) (push [1, 1, 1] R))) := by
-  unfold widthFourCutSource
+  unfold widthFourCutSource G3
   rw [ListBlank.append_pow_succ Q m (push [1, 1, 1] R),
       ListBlank.append_pow_succ P (v + 6)
         (push [0] (push (P ^ (u + 6)) default))]
