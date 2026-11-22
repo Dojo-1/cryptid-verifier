@@ -2078,11 +2078,11 @@ theorem e77_three_full_prelude_noBlankLeftC (L R : Bits) :
   · exact e76_three_first26_noBlankLeftC L R t hfirst c hc
   · by_cases h0 : t < 56
     · exact e77_three_noBL_26_56 L R t (by omega) h0 c hc
-  · by_cases h1 : t < 86
-    · exact e77_three_noBL_56_86 L R t (by omega) h1 c hc
-    · by_cases h2 : t < 116
-    · exact e77_three_noBL_86_116 L R t (by omega) h2 c hc
-            · exact e77_three_noBL_116_126 L R t (by omega) ht c hc
+    · by_cases h1 : t < 86
+      · exact e77_three_noBL_56_86 L R t (by omega) h1 c hc
+      · by_cases h2 : t < 116
+        · exact e77_three_noBL_86_116 L R t (by omega) h2 c hc
+        · exact e77_three_noBL_116_126 L R t (by omega) ht c hc
 
 end CryptidLink.L17
 
