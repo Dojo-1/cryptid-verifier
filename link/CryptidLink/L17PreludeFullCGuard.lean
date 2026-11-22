@@ -66,7 +66,9 @@ private theorem e77_one_at_27 (L R : Bits) :
       (Cfg.headRight D (push [0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_26 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_26 L R).trans hstep
 
 /-- one C prelude at exact raw time 28 (symbolic exterior tapes). -/
 private theorem e77_one_at_28 (L R : Bits) :
@@ -77,7 +79,9 @@ private theorem e77_one_at_28 (L R : Bits) :
       (Cfg.headRight E (push [1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_27 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_27 L R).trans hstep
 
 /-- one C prelude at exact raw time 29 (symbolic exterior tapes). -/
 private theorem e77_one_at_29 (L R : Bits) :
@@ -88,7 +92,9 @@ private theorem e77_one_at_29 (L R : Bits) :
       (Cfg.headRight B (push [] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_28 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_28 L R).trans hstep
 
 /-- one C prelude at exact raw time 30 (symbolic exterior tapes). -/
 private theorem e77_one_at_30 (L R : Bits) :
@@ -99,7 +105,9 @@ private theorem e77_one_at_30 (L R : Bits) :
       (Cfg.headRight A (push [0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_29 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_29 L R).trans hstep
 
 /-- one C prelude at exact raw time 31 (symbolic exterior tapes). -/
 private theorem e77_one_at_31 (L R : Bits) :
@@ -110,7 +118,9 @@ private theorem e77_one_at_31 (L R : Bits) :
       (Cfg.headRight B (push [1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_30 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_30 L R).trans hstep
 
 /-- one C prelude at exact raw time 32 (symbolic exterior tapes). -/
 private theorem e77_one_at_32 (L R : Bits) :
@@ -121,7 +131,9 @@ private theorem e77_one_at_32 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_31 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_31 L R).trans hstep
 
 /-- one C prelude at exact raw time 33 (symbolic exterior tapes). -/
 private theorem e77_one_at_33 (L R : Bits) :
@@ -132,7 +144,9 @@ private theorem e77_one_at_33 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_32 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_32 L R).trans hstep
 
 /-- one C prelude at exact raw time 34 (symbolic exterior tapes). -/
 private theorem e77_one_at_34 (L R : Bits) :
@@ -143,7 +157,9 @@ private theorem e77_one_at_34 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_33 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_33 L R).trans hstep
 
 /-- one C prelude at exact raw time 35 (symbolic exterior tapes). -/
 private theorem e77_one_at_35 (L R : Bits) :
@@ -154,7 +170,9 @@ private theorem e77_one_at_35 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_34 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_34 L R).trans hstep
 
 /-- one C prelude at exact raw time 36 (symbolic exterior tapes). -/
 private theorem e77_one_at_36 (L R : Bits) :
@@ -165,7 +183,9 @@ private theorem e77_one_at_36 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_35 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_35 L R).trans hstep
 
 /-- one C prelude at exact raw time 37 (symbolic exterior tapes). -/
 private theorem e77_one_at_37 (L R : Bits) :
@@ -176,7 +196,9 @@ private theorem e77_one_at_37 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_36 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_36 L R).trans hstep
 
 /-- one C prelude at exact raw time 38 (symbolic exterior tapes). -/
 private theorem e77_one_at_38 (L R : Bits) :
@@ -187,7 +209,9 @@ private theorem e77_one_at_38 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_37 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_37 L R).trans hstep
 
 /-- one C prelude at exact raw time 39 (symbolic exterior tapes). -/
 private theorem e77_one_at_39 (L R : Bits) :
@@ -198,7 +222,9 @@ private theorem e77_one_at_39 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_38 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_38 L R).trans hstep
 
 /-- one C prelude at exact raw time 40 (symbolic exterior tapes). -/
 private theorem e77_one_at_40 (L R : Bits) :
@@ -209,7 +235,9 @@ private theorem e77_one_at_40 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_39 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_39 L R).trans hstep
 
 /-- one C prelude at exact raw time 41 (symbolic exterior tapes). -/
 private theorem e77_one_at_41 (L R : Bits) :
@@ -220,7 +248,9 @@ private theorem e77_one_at_41 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_40 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_40 L R).trans hstep
 
 /-- one C prelude at exact raw time 42 (symbolic exterior tapes). -/
 private theorem e77_one_at_42 (L R : Bits) :
@@ -231,7 +261,9 @@ private theorem e77_one_at_42 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_41 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_41 L R).trans hstep
 
 /-- one C prelude at exact raw time 43 (symbolic exterior tapes). -/
 private theorem e77_one_at_43 (L R : Bits) :
@@ -242,7 +274,9 @@ private theorem e77_one_at_43 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_42 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_42 L R).trans hstep
 
 /-- one C prelude at exact raw time 44 (symbolic exterior tapes). -/
 private theorem e77_one_at_44 (L R : Bits) :
@@ -253,7 +287,9 @@ private theorem e77_one_at_44 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_43 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_43 L R).trans hstep
 
 /-- one C prelude at exact raw time 45 (symbolic exterior tapes). -/
 private theorem e77_one_at_45 (L R : Bits) :
@@ -264,7 +300,9 @@ private theorem e77_one_at_45 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_44 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_44 L R).trans hstep
 
 /-- one C prelude at exact raw time 46 (symbolic exterior tapes). -/
 private theorem e77_one_at_46 (L R : Bits) :
@@ -275,7 +313,9 @@ private theorem e77_one_at_46 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_45 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_45 L R).trans hstep
 
 /-- one C prelude at exact raw time 47 (symbolic exterior tapes). -/
 private theorem e77_one_at_47 (L R : Bits) :
@@ -286,7 +326,9 @@ private theorem e77_one_at_47 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_46 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_46 L R).trans hstep
 
 /-- one C prelude at exact raw time 48 (symbolic exterior tapes). -/
 private theorem e77_one_at_48 (L R : Bits) :
@@ -297,7 +339,9 @@ private theorem e77_one_at_48 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_47 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_47 L R).trans hstep
 
 /-- one C prelude at exact raw time 49 (symbolic exterior tapes). -/
 private theorem e77_one_at_49 (L R : Bits) :
@@ -308,7 +352,9 @@ private theorem e77_one_at_49 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_48 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_48 L R).trans hstep
 
 /-- one C prelude at exact raw time 50 (symbolic exterior tapes). -/
 private theorem e77_one_at_50 (L R : Bits) :
@@ -319,7 +365,9 @@ private theorem e77_one_at_50 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_49 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_49 L R).trans hstep
 
 /-- one C prelude at exact raw time 51 (symbolic exterior tapes). -/
 private theorem e77_one_at_51 (L R : Bits) :
@@ -330,7 +378,9 @@ private theorem e77_one_at_51 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_50 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_50 L R).trans hstep
 
 /-- one C prelude at exact raw time 52 (symbolic exterior tapes). -/
 private theorem e77_one_at_52 (L R : Bits) :
@@ -341,7 +391,9 @@ private theorem e77_one_at_52 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_51 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_51 L R).trans hstep
 
 /-- one C prelude at exact raw time 53 (symbolic exterior tapes). -/
 private theorem e77_one_at_53 (L R : Bits) :
@@ -352,7 +404,9 @@ private theorem e77_one_at_53 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_52 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_52 L R).trans hstep
 
 /-- one C prelude at exact raw time 54 (symbolic exterior tapes). -/
 private theorem e77_one_at_54 (L R : Bits) :
@@ -363,7 +417,9 @@ private theorem e77_one_at_54 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_53 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_53 L R).trans hstep
 
 /-- one C prelude at exact raw time 55 (symbolic exterior tapes). -/
 private theorem e77_one_at_55 (L R : Bits) :
@@ -374,7 +430,9 @@ private theorem e77_one_at_55 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_54 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_54 L R).trans hstep
 
 /-- one C prelude at exact raw time 56 (symbolic exterior tapes). -/
 private theorem e77_one_at_56 (L R : Bits) :
@@ -385,7 +443,9 @@ private theorem e77_one_at_56 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_55 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_55 L R).trans hstep
 
 /-- one C prelude at exact raw time 57 (symbolic exterior tapes). -/
 private theorem e77_one_at_57 (L R : Bits) :
@@ -396,7 +456,9 @@ private theorem e77_one_at_57 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_56 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_56 L R).trans hstep
 
 /-- one C prelude at exact raw time 58 (symbolic exterior tapes). -/
 private theorem e77_one_at_58 (L R : Bits) :
@@ -407,7 +469,9 @@ private theorem e77_one_at_58 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_57 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_57 L R).trans hstep
 
 /-- one C prelude at exact raw time 59 (symbolic exterior tapes). -/
 private theorem e77_one_at_59 (L R : Bits) :
@@ -418,7 +482,9 @@ private theorem e77_one_at_59 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_58 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_58 L R).trans hstep
 
 /-- one C prelude at exact raw time 60 (symbolic exterior tapes). -/
 private theorem e77_one_at_60 (L R : Bits) :
@@ -429,7 +495,9 @@ private theorem e77_one_at_60 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_59 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_59 L R).trans hstep
 
 /-- one C prelude at exact raw time 61 (symbolic exterior tapes). -/
 private theorem e77_one_at_61 (L R : Bits) :
@@ -440,7 +508,9 @@ private theorem e77_one_at_61 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_60 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_60 L R).trans hstep
 
 /-- one C prelude at exact raw time 62 (symbolic exterior tapes). -/
 private theorem e77_one_at_62 (L R : Bits) :
@@ -451,7 +521,9 @@ private theorem e77_one_at_62 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_61 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_61 L R).trans hstep
 
 /-- one C prelude at exact raw time 63 (symbolic exterior tapes). -/
 private theorem e77_one_at_63 (L R : Bits) :
@@ -462,7 +534,9 @@ private theorem e77_one_at_63 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_62 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_62 L R).trans hstep
 
 /-- one C prelude at exact raw time 64 (symbolic exterior tapes). -/
 private theorem e77_one_at_64 (L R : Bits) :
@@ -473,7 +547,9 @@ private theorem e77_one_at_64 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_63 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_63 L R).trans hstep
 
 /-- one C prelude at exact raw time 65 (symbolic exterior tapes). -/
 private theorem e77_one_at_65 (L R : Bits) :
@@ -484,7 +560,9 @@ private theorem e77_one_at_65 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_64 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_64 L R).trans hstep
 
 /-- one C prelude at exact raw time 66 (symbolic exterior tapes). -/
 private theorem e77_one_at_66 (L R : Bits) :
@@ -495,7 +573,9 @@ private theorem e77_one_at_66 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_65 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_65 L R).trans hstep
 
 /-- one C prelude at exact raw time 67 (symbolic exterior tapes). -/
 private theorem e77_one_at_67 (L R : Bits) :
@@ -506,7 +586,9 @@ private theorem e77_one_at_67 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 1, 0] R))
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_66 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_66 L R).trans hstep
 
 /-- one C prelude at exact raw time 68 (symbolic exterior tapes). -/
 private theorem e77_one_at_68 (L R : Bits) :
@@ -517,7 +599,9 @@ private theorem e77_one_at_68 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_67 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_67 L R).trans hstep
 
 /-- one C prelude at exact raw time 69 (symbolic exterior tapes). -/
 private theorem e77_one_at_69 (L R : Bits) :
@@ -528,7 +612,9 @@ private theorem e77_one_at_69 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_68 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_68 L R).trans hstep
 
 /-- one C prelude at exact raw time 70 (symbolic exterior tapes). -/
 private theorem e77_one_at_70 (L R : Bits) :
@@ -539,7 +625,9 @@ private theorem e77_one_at_70 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_69 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_69 L R).trans hstep
 
 /-- one C prelude at exact raw time 71 (symbolic exterior tapes). -/
 private theorem e77_one_at_71 (L R : Bits) :
@@ -550,7 +638,9 @@ private theorem e77_one_at_71 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_70 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_70 L R).trans hstep
 
 /-- one C prelude at exact raw time 72 (symbolic exterior tapes). -/
 private theorem e77_one_at_72 (L R : Bits) :
@@ -561,7 +651,9 @@ private theorem e77_one_at_72 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_71 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_71 L R).trans hstep
 
 /-- one C prelude at exact raw time 73 (symbolic exterior tapes). -/
 private theorem e77_one_at_73 (L R : Bits) :
@@ -572,7 +664,9 @@ private theorem e77_one_at_73 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_72 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_72 L R).trans hstep
 
 /-- one C prelude at exact raw time 74 (symbolic exterior tapes). -/
 private theorem e77_one_at_74 (L R : Bits) :
@@ -583,7 +677,9 @@ private theorem e77_one_at_74 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_73 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_73 L R).trans hstep
 
 /-- one C prelude at exact raw time 75 (symbolic exterior tapes). -/
 private theorem e77_one_at_75 (L R : Bits) :
@@ -594,7 +690,9 @@ private theorem e77_one_at_75 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_74 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_74 L R).trans hstep
 
 /-- one C prelude at exact raw time 76 (symbolic exterior tapes). -/
 private theorem e77_one_at_76 (L R : Bits) :
@@ -605,7 +703,9 @@ private theorem e77_one_at_76 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_75 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_75 L R).trans hstep
 
 /-- one C prelude at exact raw time 77 (symbolic exterior tapes). -/
 private theorem e77_one_at_77 (L R : Bits) :
@@ -616,7 +716,9 @@ private theorem e77_one_at_77 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_76 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_76 L R).trans hstep
 
 /-- one C prelude at exact raw time 78 (symbolic exterior tapes). -/
 private theorem e77_one_at_78 (L R : Bits) :
@@ -627,7 +729,9 @@ private theorem e77_one_at_78 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_77 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_77 L R).trans hstep
 
 /-- one C prelude at exact raw time 79 (symbolic exterior tapes). -/
 private theorem e77_one_at_79 (L R : Bits) :
@@ -638,7 +742,9 @@ private theorem e77_one_at_79 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_78 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_78 L R).trans hstep
 
 /-- one C prelude at exact raw time 80 (symbolic exterior tapes). -/
 private theorem e77_one_at_80 (L R : Bits) :
@@ -649,7 +755,9 @@ private theorem e77_one_at_80 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0] R))
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_79 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_79 L R).trans hstep
 
 /-- one C prelude at exact raw time 81 (symbolic exterior tapes). -/
 private theorem e77_one_at_81 (L R : Bits) :
@@ -660,7 +768,9 @@ private theorem e77_one_at_81 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R))
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_80 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_80 L R).trans hstep
 
 /-- one C prelude at exact raw time 82 (symbolic exterior tapes). -/
 private theorem e77_one_at_82 (L R : Bits) :
@@ -671,7 +781,9 @@ private theorem e77_one_at_82 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_81 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_81 L R).trans hstep
 
 /-- one C prelude at exact raw time 83 (symbolic exterior tapes). -/
 private theorem e77_one_at_83 (L R : Bits) :
@@ -682,7 +794,9 @@ private theorem e77_one_at_83 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_82 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_82 L R).trans hstep
 
 /-- one C prelude at exact raw time 84 (symbolic exterior tapes). -/
 private theorem e77_one_at_84 (L R : Bits) :
@@ -693,7 +807,9 @@ private theorem e77_one_at_84 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_83 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_83 L R).trans hstep
 
 /-- one C prelude at exact raw time 85 (symbolic exterior tapes). -/
 private theorem e77_one_at_85 (L R : Bits) :
@@ -704,7 +820,9 @@ private theorem e77_one_at_85 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_84 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_84 L R).trans hstep
 
 /-- one C prelude at exact raw time 86 (symbolic exterior tapes). -/
 private theorem e77_one_at_86 (L R : Bits) :
@@ -715,7 +833,9 @@ private theorem e77_one_at_86 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_85 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_85 L R).trans hstep
 
 /-- one C prelude at exact raw time 87 (symbolic exterior tapes). -/
 private theorem e77_one_at_87 (L R : Bits) :
@@ -726,7 +846,9 @@ private theorem e77_one_at_87 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R)) := by
     l17_exact_steps
-  exact (e77_one_at_86 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_one_at_86 L R).trans hstep
 
 /-- No blank-left C at any timestep in [26,56) of the one prelude. -/
 private theorem e77_one_noBL_26_56 (L R : Bits) :
@@ -966,7 +1088,9 @@ private theorem e77_three_at_27 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_26 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_26 L R).trans hstep
 
 /-- three C prelude at exact raw time 28 (symbolic exterior tapes). -/
 private theorem e77_three_at_28 (L R : Bits) :
@@ -977,7 +1101,9 @@ private theorem e77_three_at_28 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_27 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_27 L R).trans hstep
 
 /-- three C prelude at exact raw time 29 (symbolic exterior tapes). -/
 private theorem e77_three_at_29 (L R : Bits) :
@@ -988,7 +1114,9 @@ private theorem e77_three_at_29 (L R : Bits) :
       (Cfg.headRight B (push [0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_28 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_28 L R).trans hstep
 
 /-- three C prelude at exact raw time 30 (symbolic exterior tapes). -/
 private theorem e77_three_at_30 (L R : Bits) :
@@ -999,7 +1127,9 @@ private theorem e77_three_at_30 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_29 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_29 L R).trans hstep
 
 /-- three C prelude at exact raw time 31 (symbolic exterior tapes). -/
 private theorem e77_three_at_31 (L R : Bits) :
@@ -1010,7 +1140,9 @@ private theorem e77_three_at_31 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_30 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_30 L R).trans hstep
 
 /-- three C prelude at exact raw time 32 (symbolic exterior tapes). -/
 private theorem e77_three_at_32 (L R : Bits) :
@@ -1021,7 +1153,9 @@ private theorem e77_three_at_32 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_31 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_31 L R).trans hstep
 
 /-- three C prelude at exact raw time 33 (symbolic exterior tapes). -/
 private theorem e77_three_at_33 (L R : Bits) :
@@ -1032,7 +1166,9 @@ private theorem e77_three_at_33 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_32 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_32 L R).trans hstep
 
 /-- three C prelude at exact raw time 34 (symbolic exterior tapes). -/
 private theorem e77_three_at_34 (L R : Bits) :
@@ -1043,7 +1179,9 @@ private theorem e77_three_at_34 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_33 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_33 L R).trans hstep
 
 /-- three C prelude at exact raw time 35 (symbolic exterior tapes). -/
 private theorem e77_three_at_35 (L R : Bits) :
@@ -1054,7 +1192,9 @@ private theorem e77_three_at_35 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_34 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_34 L R).trans hstep
 
 /-- three C prelude at exact raw time 36 (symbolic exterior tapes). -/
 private theorem e77_three_at_36 (L R : Bits) :
@@ -1065,7 +1205,9 @@ private theorem e77_three_at_36 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_35 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_35 L R).trans hstep
 
 /-- three C prelude at exact raw time 37 (symbolic exterior tapes). -/
 private theorem e77_three_at_37 (L R : Bits) :
@@ -1076,7 +1218,9 @@ private theorem e77_three_at_37 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_36 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_36 L R).trans hstep
 
 /-- three C prelude at exact raw time 38 (symbolic exterior tapes). -/
 private theorem e77_three_at_38 (L R : Bits) :
@@ -1087,7 +1231,9 @@ private theorem e77_three_at_38 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_37 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_37 L R).trans hstep
 
 /-- three C prelude at exact raw time 39 (symbolic exterior tapes). -/
 private theorem e77_three_at_39 (L R : Bits) :
@@ -1098,7 +1244,9 @@ private theorem e77_three_at_39 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_38 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_38 L R).trans hstep
 
 /-- three C prelude at exact raw time 40 (symbolic exterior tapes). -/
 private theorem e77_three_at_40 (L R : Bits) :
@@ -1109,7 +1257,9 @@ private theorem e77_three_at_40 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_39 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_39 L R).trans hstep
 
 /-- three C prelude at exact raw time 41 (symbolic exterior tapes). -/
 private theorem e77_three_at_41 (L R : Bits) :
@@ -1120,7 +1270,9 @@ private theorem e77_three_at_41 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_40 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_40 L R).trans hstep
 
 /-- three C prelude at exact raw time 42 (symbolic exterior tapes). -/
 private theorem e77_three_at_42 (L R : Bits) :
@@ -1131,7 +1283,9 @@ private theorem e77_three_at_42 (L R : Bits) :
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_41 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_41 L R).trans hstep
 
 /-- three C prelude at exact raw time 43 (symbolic exterior tapes). -/
 private theorem e77_three_at_43 (L R : Bits) :
@@ -1142,7 +1296,9 @@ private theorem e77_three_at_43 (L R : Bits) :
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_42 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_42 L R).trans hstep
 
 /-- three C prelude at exact raw time 44 (symbolic exterior tapes). -/
 private theorem e77_three_at_44 (L R : Bits) :
@@ -1153,7 +1309,9 @@ private theorem e77_three_at_44 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_43 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_43 L R).trans hstep
 
 /-- three C prelude at exact raw time 45 (symbolic exterior tapes). -/
 private theorem e77_three_at_45 (L R : Bits) :
@@ -1164,7 +1322,9 @@ private theorem e77_three_at_45 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_44 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_44 L R).trans hstep
 
 /-- three C prelude at exact raw time 46 (symbolic exterior tapes). -/
 private theorem e77_three_at_46 (L R : Bits) :
@@ -1175,7 +1335,9 @@ private theorem e77_three_at_46 (L R : Bits) :
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_45 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_45 L R).trans hstep
 
 /-- three C prelude at exact raw time 47 (symbolic exterior tapes). -/
 private theorem e77_three_at_47 (L R : Bits) :
@@ -1186,7 +1348,9 @@ private theorem e77_three_at_47 (L R : Bits) :
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_46 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_46 L R).trans hstep
 
 /-- three C prelude at exact raw time 48 (symbolic exterior tapes). -/
 private theorem e77_three_at_48 (L R : Bits) :
@@ -1197,7 +1361,9 @@ private theorem e77_three_at_48 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_47 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_47 L R).trans hstep
 
 /-- three C prelude at exact raw time 49 (symbolic exterior tapes). -/
 private theorem e77_three_at_49 (L R : Bits) :
@@ -1208,7 +1374,9 @@ private theorem e77_three_at_49 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_48 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_48 L R).trans hstep
 
 /-- three C prelude at exact raw time 50 (symbolic exterior tapes). -/
 private theorem e77_three_at_50 (L R : Bits) :
@@ -1219,7 +1387,9 @@ private theorem e77_three_at_50 (L R : Bits) :
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_49 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_49 L R).trans hstep
 
 /-- three C prelude at exact raw time 51 (symbolic exterior tapes). -/
 private theorem e77_three_at_51 (L R : Bits) :
@@ -1230,7 +1400,9 @@ private theorem e77_three_at_51 (L R : Bits) :
       (Cfg.headRight D (push [1, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_50 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_50 L R).trans hstep
 
 /-- three C prelude at exact raw time 52 (symbolic exterior tapes). -/
 private theorem e77_three_at_52 (L R : Bits) :
@@ -1241,7 +1413,9 @@ private theorem e77_three_at_52 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_51 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_51 L R).trans hstep
 
 /-- three C prelude at exact raw time 53 (symbolic exterior tapes). -/
 private theorem e77_three_at_53 (L R : Bits) :
@@ -1252,7 +1426,9 @@ private theorem e77_three_at_53 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_52 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_52 L R).trans hstep
 
 /-- three C prelude at exact raw time 54 (symbolic exterior tapes). -/
 private theorem e77_three_at_54 (L R : Bits) :
@@ -1263,7 +1439,9 @@ private theorem e77_three_at_54 (L R : Bits) :
       (Cfg.headRight F (push [0, 1, 0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_53 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_53 L R).trans hstep
 
 /-- three C prelude at exact raw time 55 (symbolic exterior tapes). -/
 private theorem e77_three_at_55 (L R : Bits) :
@@ -1274,7 +1452,9 @@ private theorem e77_three_at_55 (L R : Bits) :
       (Cfg.headRight D (push [1, 0, 1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_54 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_54 L R).trans hstep
 
 /-- three C prelude at exact raw time 56 (symbolic exterior tapes). -/
 private theorem e77_three_at_56 (L R : Bits) :
@@ -1285,7 +1465,9 @@ private theorem e77_three_at_56 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_55 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_55 L R).trans hstep
 
 /-- three C prelude at exact raw time 57 (symbolic exterior tapes). -/
 private theorem e77_three_at_57 (L R : Bits) :
@@ -1296,7 +1478,9 @@ private theorem e77_three_at_57 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_56 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_56 L R).trans hstep
 
 /-- three C prelude at exact raw time 58 (symbolic exterior tapes). -/
 private theorem e77_three_at_58 (L R : Bits) :
@@ -1307,7 +1491,9 @@ private theorem e77_three_at_58 (L R : Bits) :
       (Cfg.headRight F (push [0, 1, 0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_57 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_57 L R).trans hstep
 
 /-- three C prelude at exact raw time 59 (symbolic exterior tapes). -/
 private theorem e77_three_at_59 (L R : Bits) :
@@ -1318,7 +1504,9 @@ private theorem e77_three_at_59 (L R : Bits) :
       (Cfg.headRight D (push [1, 0, 0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_58 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_58 L R).trans hstep
 
 /-- three C prelude at exact raw time 60 (symbolic exterior tapes). -/
 private theorem e77_three_at_60 (L R : Bits) :
@@ -1329,7 +1517,9 @@ private theorem e77_three_at_60 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 0, 1] L) (push [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_59 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_59 L R).trans hstep
 
 /-- three C prelude at exact raw time 61 (symbolic exterior tapes). -/
 private theorem e77_three_at_61 (L R : Bits) :
@@ -1340,7 +1530,9 @@ private theorem e77_three_at_61 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 0, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight F (push [0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_60 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_60 L R).trans hstep
 
 /-- three C prelude at exact raw time 62 (symbolic exterior tapes). -/
 private theorem e77_three_at_62 (L R : Bits) :
@@ -1351,7 +1543,9 @@ private theorem e77_three_at_62 (L R : Bits) :
       (Cfg.headRight F (push [0, 0, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_61 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_61 L R).trans hstep
 
 /-- three C prelude at exact raw time 63 (symbolic exterior tapes). -/
 private theorem e77_three_at_63 (L R : Bits) :
@@ -1362,7 +1556,9 @@ private theorem e77_three_at_63 (L R : Bits) :
       (Cfg.headRight D (push [0, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1] L) (push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_62 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_62 L R).trans hstep
 
 /-- three C prelude at exact raw time 64 (symbolic exterior tapes). -/
 private theorem e77_three_at_64 (L R : Bits) :
@@ -1373,7 +1569,9 @@ private theorem e77_three_at_64 (L R : Bits) :
       (Cfg.headRight A (push [0, 1] L) (push [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_63 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_63 L R).trans hstep
 
 /-- three C prelude at exact raw time 65 (symbolic exterior tapes). -/
 private theorem e77_three_at_65 (L R : Bits) :
@@ -1384,7 +1582,9 @@ private theorem e77_three_at_65 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1] L) (push [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_64 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_64 L R).trans hstep
 
 /-- three C prelude at exact raw time 66 (symbolic exterior tapes). -/
 private theorem e77_three_at_66 (L R : Bits) :
@@ -1395,7 +1595,9 @@ private theorem e77_three_at_66 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_65 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_65 L R).trans hstep
 
 /-- three C prelude at exact raw time 67 (symbolic exterior tapes). -/
 private theorem e77_three_at_67 (L R : Bits) :
@@ -1406,7 +1608,9 @@ private theorem e77_three_at_67 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_66 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_66 L R).trans hstep
 
 /-- three C prelude at exact raw time 68 (symbolic exterior tapes). -/
 private theorem e77_three_at_68 (L R : Bits) :
@@ -1417,7 +1621,9 @@ private theorem e77_three_at_68 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1] L) (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight C (push [1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_67 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_67 L R).trans hstep
 
 /-- three C prelude at exact raw time 69 (symbolic exterior tapes). -/
 private theorem e77_three_at_69 (L R : Bits) :
@@ -1428,7 +1634,9 @@ private theorem e77_three_at_69 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_68 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_68 L R).trans hstep
 
 /-- three C prelude at exact raw time 70 (symbolic exterior tapes). -/
 private theorem e77_three_at_70 (L R : Bits) :
@@ -1439,7 +1647,9 @@ private theorem e77_three_at_70 (L R : Bits) :
       (Cfg.headRight D (push [0, 1] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_69 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_69 L R).trans hstep
 
 /-- three C prelude at exact raw time 71 (symbolic exterior tapes). -/
 private theorem e77_three_at_71 (L R : Bits) :
@@ -1450,7 +1660,9 @@ private theorem e77_three_at_71 (L R : Bits) :
       (Cfg.headRight E (push [1] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_70 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_70 L R).trans hstep
 
 /-- three C prelude at exact raw time 72 (symbolic exterior tapes). -/
 private theorem e77_three_at_72 (L R : Bits) :
@@ -1461,7 +1673,9 @@ private theorem e77_three_at_72 (L R : Bits) :
       (Cfg.headRight B (push [] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_71 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_71 L R).trans hstep
 
 /-- three C prelude at exact raw time 73 (symbolic exterior tapes). -/
 private theorem e77_three_at_73 (L R : Bits) :
@@ -1472,7 +1686,9 @@ private theorem e77_three_at_73 (L R : Bits) :
       (Cfg.headRight A (push [0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_72 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_72 L R).trans hstep
 
 /-- three C prelude at exact raw time 74 (symbolic exterior tapes). -/
 private theorem e77_three_at_74 (L R : Bits) :
@@ -1483,7 +1699,9 @@ private theorem e77_three_at_74 (L R : Bits) :
       (Cfg.headRight B (push [1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_73 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_73 L R).trans hstep
 
 /-- three C prelude at exact raw time 75 (symbolic exterior tapes). -/
 private theorem e77_three_at_75 (L R : Bits) :
@@ -1494,7 +1712,9 @@ private theorem e77_three_at_75 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_74 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_74 L R).trans hstep
 
 /-- three C prelude at exact raw time 76 (symbolic exterior tapes). -/
 private theorem e77_three_at_76 (L R : Bits) :
@@ -1505,7 +1725,9 @@ private theorem e77_three_at_76 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_75 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_75 L R).trans hstep
 
 /-- three C prelude at exact raw time 77 (symbolic exterior tapes). -/
 private theorem e77_three_at_77 (L R : Bits) :
@@ -1516,7 +1738,9 @@ private theorem e77_three_at_77 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_76 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_76 L R).trans hstep
 
 /-- three C prelude at exact raw time 78 (symbolic exterior tapes). -/
 private theorem e77_three_at_78 (L R : Bits) :
@@ -1527,7 +1751,9 @@ private theorem e77_three_at_78 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_77 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_77 L R).trans hstep
 
 /-- three C prelude at exact raw time 79 (symbolic exterior tapes). -/
 private theorem e77_three_at_79 (L R : Bits) :
@@ -1538,7 +1764,9 @@ private theorem e77_three_at_79 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_78 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_78 L R).trans hstep
 
 /-- three C prelude at exact raw time 80 (symbolic exterior tapes). -/
 private theorem e77_three_at_80 (L R : Bits) :
@@ -1549,7 +1777,9 @@ private theorem e77_three_at_80 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_79 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_79 L R).trans hstep
 
 /-- three C prelude at exact raw time 81 (symbolic exterior tapes). -/
 private theorem e77_three_at_81 (L R : Bits) :
@@ -1560,7 +1790,9 @@ private theorem e77_three_at_81 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_80 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_80 L R).trans hstep
 
 /-- three C prelude at exact raw time 82 (symbolic exterior tapes). -/
 private theorem e77_three_at_82 (L R : Bits) :
@@ -1571,7 +1803,9 @@ private theorem e77_three_at_82 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_81 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_81 L R).trans hstep
 
 /-- three C prelude at exact raw time 83 (symbolic exterior tapes). -/
 private theorem e77_three_at_83 (L R : Bits) :
@@ -1582,7 +1816,9 @@ private theorem e77_three_at_83 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_82 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_82 L R).trans hstep
 
 /-- three C prelude at exact raw time 84 (symbolic exterior tapes). -/
 private theorem e77_three_at_84 (L R : Bits) :
@@ -1593,7 +1829,9 @@ private theorem e77_three_at_84 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_83 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_83 L R).trans hstep
 
 /-- three C prelude at exact raw time 85 (symbolic exterior tapes). -/
 private theorem e77_three_at_85 (L R : Bits) :
@@ -1604,7 +1842,9 @@ private theorem e77_three_at_85 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_84 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_84 L R).trans hstep
 
 /-- three C prelude at exact raw time 86 (symbolic exterior tapes). -/
 private theorem e77_three_at_86 (L R : Bits) :
@@ -1615,7 +1855,9 @@ private theorem e77_three_at_86 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_85 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_85 L R).trans hstep
 
 /-- three C prelude at exact raw time 87 (symbolic exterior tapes). -/
 private theorem e77_three_at_87 (L R : Bits) :
@@ -1626,7 +1868,9 @@ private theorem e77_three_at_87 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_86 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_86 L R).trans hstep
 
 /-- three C prelude at exact raw time 88 (symbolic exterior tapes). -/
 private theorem e77_three_at_88 (L R : Bits) :
@@ -1637,7 +1881,9 @@ private theorem e77_three_at_88 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_87 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_87 L R).trans hstep
 
 /-- three C prelude at exact raw time 89 (symbolic exterior tapes). -/
 private theorem e77_three_at_89 (L R : Bits) :
@@ -1648,7 +1894,9 @@ private theorem e77_three_at_89 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_88 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_88 L R).trans hstep
 
 /-- three C prelude at exact raw time 90 (symbolic exterior tapes). -/
 private theorem e77_three_at_90 (L R : Bits) :
@@ -1659,7 +1907,9 @@ private theorem e77_three_at_90 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_89 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_89 L R).trans hstep
 
 /-- three C prelude at exact raw time 91 (symbolic exterior tapes). -/
 private theorem e77_three_at_91 (L R : Bits) :
@@ -1670,7 +1920,9 @@ private theorem e77_three_at_91 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_90 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_90 L R).trans hstep
 
 /-- three C prelude at exact raw time 92 (symbolic exterior tapes). -/
 private theorem e77_three_at_92 (L R : Bits) :
@@ -1681,7 +1933,9 @@ private theorem e77_three_at_92 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_91 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_91 L R).trans hstep
 
 /-- three C prelude at exact raw time 93 (symbolic exterior tapes). -/
 private theorem e77_three_at_93 (L R : Bits) :
@@ -1692,7 +1946,9 @@ private theorem e77_three_at_93 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_92 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_92 L R).trans hstep
 
 /-- three C prelude at exact raw time 94 (symbolic exterior tapes). -/
 private theorem e77_three_at_94 (L R : Bits) :
@@ -1703,7 +1959,9 @@ private theorem e77_three_at_94 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_93 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_93 L R).trans hstep
 
 /-- three C prelude at exact raw time 95 (symbolic exterior tapes). -/
 private theorem e77_three_at_95 (L R : Bits) :
@@ -1714,7 +1972,9 @@ private theorem e77_three_at_95 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_94 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_94 L R).trans hstep
 
 /-- three C prelude at exact raw time 96 (symbolic exterior tapes). -/
 private theorem e77_three_at_96 (L R : Bits) :
@@ -1725,7 +1985,9 @@ private theorem e77_three_at_96 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_95 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_95 L R).trans hstep
 
 /-- three C prelude at exact raw time 97 (symbolic exterior tapes). -/
 private theorem e77_three_at_97 (L R : Bits) :
@@ -1736,7 +1998,9 @@ private theorem e77_three_at_97 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_96 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_96 L R).trans hstep
 
 /-- three C prelude at exact raw time 98 (symbolic exterior tapes). -/
 private theorem e77_three_at_98 (L R : Bits) :
@@ -1747,7 +2011,9 @@ private theorem e77_three_at_98 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_97 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_97 L R).trans hstep
 
 /-- three C prelude at exact raw time 99 (symbolic exterior tapes). -/
 private theorem e77_three_at_99 (L R : Bits) :
@@ -1758,7 +2024,9 @@ private theorem e77_three_at_99 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_98 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_98 L R).trans hstep
 
 /-- three C prelude at exact raw time 100 (symbolic exterior tapes). -/
 private theorem e77_three_at_100 (L R : Bits) :
@@ -1769,7 +2037,9 @@ private theorem e77_three_at_100 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_99 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_99 L R).trans hstep
 
 /-- three C prelude at exact raw time 101 (symbolic exterior tapes). -/
 private theorem e77_three_at_101 (L R : Bits) :
@@ -1780,7 +2050,9 @@ private theorem e77_three_at_101 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_100 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_100 L R).trans hstep
 
 /-- three C prelude at exact raw time 102 (symbolic exterior tapes). -/
 private theorem e77_three_at_102 (L R : Bits) :
@@ -1791,7 +2063,9 @@ private theorem e77_three_at_102 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_101 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_101 L R).trans hstep
 
 /-- three C prelude at exact raw time 103 (symbolic exterior tapes). -/
 private theorem e77_three_at_103 (L R : Bits) :
@@ -1802,7 +2076,9 @@ private theorem e77_three_at_103 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_102 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_102 L R).trans hstep
 
 /-- three C prelude at exact raw time 104 (symbolic exterior tapes). -/
 private theorem e77_three_at_104 (L R : Bits) :
@@ -1813,7 +2089,9 @@ private theorem e77_three_at_104 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_103 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_103 L R).trans hstep
 
 /-- three C prelude at exact raw time 105 (symbolic exterior tapes). -/
 private theorem e77_three_at_105 (L R : Bits) :
@@ -1824,7 +2102,9 @@ private theorem e77_three_at_105 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0, 1, 1, 0] R))
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_104 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_104 L R).trans hstep
 
 /-- three C prelude at exact raw time 106 (symbolic exterior tapes). -/
 private theorem e77_three_at_106 (L R : Bits) :
@@ -1835,7 +2115,9 @@ private theorem e77_three_at_106 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_105 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_105 L R).trans hstep
 
 /-- three C prelude at exact raw time 107 (symbolic exterior tapes). -/
 private theorem e77_three_at_107 (L R : Bits) :
@@ -1846,7 +2128,9 @@ private theorem e77_three_at_107 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_106 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_106 L R).trans hstep
 
 /-- three C prelude at exact raw time 108 (symbolic exterior tapes). -/
 private theorem e77_three_at_108 (L R : Bits) :
@@ -1857,7 +2141,9 @@ private theorem e77_three_at_108 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_107 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_107 L R).trans hstep
 
 /-- three C prelude at exact raw time 109 (symbolic exterior tapes). -/
 private theorem e77_three_at_109 (L R : Bits) :
@@ -1868,7 +2154,9 @@ private theorem e77_three_at_109 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_108 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_108 L R).trans hstep
 
 /-- three C prelude at exact raw time 110 (symbolic exterior tapes). -/
 private theorem e77_three_at_110 (L R : Bits) :
@@ -1879,7 +2167,9 @@ private theorem e77_three_at_110 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_109 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_109 L R).trans hstep
 
 /-- three C prelude at exact raw time 111 (symbolic exterior tapes). -/
 private theorem e77_three_at_111 (L R : Bits) :
@@ -1890,7 +2180,9 @@ private theorem e77_three_at_111 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_110 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_110 L R).trans hstep
 
 /-- three C prelude at exact raw time 112 (symbolic exterior tapes). -/
 private theorem e77_three_at_112 (L R : Bits) :
@@ -1901,7 +2193,9 @@ private theorem e77_three_at_112 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_111 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_111 L R).trans hstep
 
 /-- three C prelude at exact raw time 113 (symbolic exterior tapes). -/
 private theorem e77_three_at_113 (L R : Bits) :
@@ -1912,7 +2206,9 @@ private theorem e77_three_at_113 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_112 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_112 L R).trans hstep
 
 /-- three C prelude at exact raw time 114 (symbolic exterior tapes). -/
 private theorem e77_three_at_114 (L R : Bits) :
@@ -1923,7 +2219,9 @@ private theorem e77_three_at_114 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_113 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_113 L R).trans hstep
 
 /-- three C prelude at exact raw time 115 (symbolic exterior tapes). -/
 private theorem e77_three_at_115 (L R : Bits) :
@@ -1934,7 +2232,9 @@ private theorem e77_three_at_115 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_114 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_114 L R).trans hstep
 
 /-- three C prelude at exact raw time 116 (symbolic exterior tapes). -/
 private theorem e77_three_at_116 (L R : Bits) :
@@ -1945,7 +2245,9 @@ private theorem e77_three_at_116 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R))
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_115 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_115 L R).trans hstep
 
 /-- three C prelude at exact raw time 117 (symbolic exterior tapes). -/
 private theorem e77_three_at_117 (L R : Bits) :
@@ -1956,7 +2258,9 @@ private theorem e77_three_at_117 (L R : Bits) :
       (Cfg.headRight E (push [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0] R))
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_116 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_116 L R).trans hstep
 
 /-- three C prelude at exact raw time 118 (symbolic exterior tapes). -/
 private theorem e77_three_at_118 (L R : Bits) :
@@ -1967,7 +2271,9 @@ private theorem e77_three_at_118 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 0] R))
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_117 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_117 L R).trans hstep
 
 /-- three C prelude at exact raw time 119 (symbolic exterior tapes). -/
 private theorem e77_three_at_119 (L R : Bits) :
@@ -1978,7 +2284,9 @@ private theorem e77_three_at_119 (L R : Bits) :
       (Cfg.headRight C (push [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R))
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_118 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_118 L R).trans hstep
 
 /-- three C prelude at exact raw time 120 (symbolic exterior tapes). -/
 private theorem e77_three_at_120 (L R : Bits) :
@@ -1989,7 +2297,9 @@ private theorem e77_three_at_120 (L R : Bits) :
       (Cfg.headRight D (push [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R))
       (Cfg.headRight E (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_119 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_119 L R).trans hstep
 
 /-- three C prelude at exact raw time 121 (symbolic exterior tapes). -/
 private theorem e77_three_at_121 (L R : Bits) :
@@ -2000,7 +2310,9 @@ private theorem e77_three_at_121 (L R : Bits) :
       (Cfg.headRight E (push [1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R))
       (Cfg.headRight B (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_120 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_120 L R).trans hstep
 
 /-- three C prelude at exact raw time 122 (symbolic exterior tapes). -/
 private theorem e77_three_at_122 (L R : Bits) :
@@ -2011,7 +2323,9 @@ private theorem e77_three_at_122 (L R : Bits) :
       (Cfg.headRight B (push [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0, 1, 0] R))
       (Cfg.headRight A (push [0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_121 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_121 L R).trans hstep
 
 /-- three C prelude at exact raw time 123 (symbolic exterior tapes). -/
 private theorem e77_three_at_123 (L R : Bits) :
@@ -2022,7 +2336,9 @@ private theorem e77_three_at_123 (L R : Bits) :
       (Cfg.headRight A (push [0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_122 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_122 L R).trans hstep
 
 /-- three C prelude at exact raw time 124 (symbolic exterior tapes). -/
 private theorem e77_three_at_124 (L R : Bits) :
@@ -2033,7 +2349,9 @@ private theorem e77_three_at_124 (L R : Bits) :
       (Cfg.headRight B (push [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0, 1, 0] R))
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_123 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_123 L R).trans hstep
 
 /-- three C prelude at exact raw time 125 (symbolic exterior tapes). -/
 private theorem e77_three_at_125 (L R : Bits) :
@@ -2044,7 +2362,9 @@ private theorem e77_three_at_125 (L R : Bits) :
       (Cfg.headRight A (push [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [0, 1, 0] R))
       (Cfg.headRight B (push [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] L) (push [1, 0] R)) := by
     l17_exact_steps
-  exact (e77_three_at_124 L R).trans hstep
+  set_option maxRecDepth 16384 in
+    set_option maxHeartbeats 6000000 in
+      exact (e77_three_at_124 L R).trans hstep
 
 /-- No blank-left C at any timestep in [26,56) of the three prelude. -/
 private theorem e77_three_noBL_26_56 (L R : Bits) :
