@@ -16,6 +16,20 @@ private abbrev P := ([0, 1] : List (Fin 2))
 private abbrev Q := ([1, 0] : List (Fin 2))
 private abbrev I := ([1] : List (Fin 2))
 
+/-- Pure tape algebra: move five fixed 01 pairs through the variable
+    block and expose the exact six-bit E60 suffix. This is independent
+    of the outer ones prefix and the variable right exterior. -/
+private theorem one_pair_word (v : ℕ) (X : Bits) :
+    push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+      (push (P ^ (v + 5)) (push [0, 0] X)) =
+    push (P ^ (v + 8)) (push [0, 1, 0, 1, 0, 0] X) := by
+  let T : Bits := push [0, 0] X
+  change push (P ^ 5) (push (P ^ (v + 5)) T) =
+    push (P ^ (v + 8)) (push (P ^ 2) T)
+  rw [← ListBlank.append_pow_add P 5 (v + 5) T,
+      ← ListBlank.append_pow_add P (v + 8) 2 T,
+      show 5 + (v + 5) = (v + 8) + 2 by omega]
+
 private theorem one_normalize (m u v : ℕ) (R : Bits) :
     push (I ^ (2 * u + 6))
       (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
@@ -28,15 +42,7 @@ private theorem one_normalize (m u v : ℕ) (R : Bits) :
   have hQ : push (Q ^ 16) (push (Q ^ (m + 1)) R) =
       push (Q ^ (16 + (m + 1))) R :=
     (ListBlank.append_pow_add Q 16 (m + 1) R).symm
-  rw [hQ]
-  let T : Bits := push [0, 0] (push (Q ^ (16 + (m + 1))) R)
-  change push (I ^ (2 * u + 6))
-      (push (P ^ 5) (push (P ^ (v + 5)) T)) =
-    push (I ^ (2 * u + 6))
-      (push (P ^ (v + 8)) (push (P ^ 2) T))
-  rw [← ListBlank.append_pow_add P 5 (v + 5) T,
-      ← ListBlank.append_pow_add P (v + 8) 2 T,
-      show 5 + (v + 5) = (v + 8) + 2 by omega]
+  rw [hQ, one_pair_word v (push (Q ^ (16 + (m + 1))) R)]
 
 private theorem three_normalize (m u v : ℕ) (R : Bits) :
     five_run_bottom_result u
@@ -62,8 +68,9 @@ private theorem three_normalize (m u v : ℕ) (R : Bits) :
         (push (I ^ (2 * v + 4))
           (push (P ^ (21 + (m + 1))) T)))
   rw [← ListBlank.append_pow_add I 1 (2 * u) S,
-      show 1 + 2 * u = 2 * u + 1 by omega,
-      show 2 * (v + 2) = 2 * v + 4 by omega]
+      show 1 + 2 * u = 2 * u + 1 by omega]
+  dsimp only [S]
+  rw [show 2 * (v + 2) = 2 * v + 4 by omega]
 
 /-- Canonical E60 G1(M), every M=m+1 >= 1, with exact full F1 output. -/
 theorem e71_one_full_E60_exact (m u v : ℕ) (R : Bits) :
