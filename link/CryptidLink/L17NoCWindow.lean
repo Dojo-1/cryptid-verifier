@@ -57,13 +57,13 @@ theorem e73_one_pair_C_free (L R : Bits) :
   change ReachesIn target t s c at hc
   rcases (show t = 0 ∨ t = 1 ∨ t = 2 ∨ t = 3 by omega) with h | h | h | h
   · subst t
-    exact e73_noC_of_exact h0 (by decide) hc
+    exact e73_noC_of_exact h0 (by change (some A : Option (Fin 6)) ≠ some C; decide) hc
   · subst t
-    exact e73_noC_of_exact h1 (by decide) hc
+    exact e73_noC_of_exact h1 (by change (some E : Option (Fin 6)) ≠ some C; decide) hc
   · subst t
-    exact e73_noC_of_exact h2 (by decide) hc
+    exact e73_noC_of_exact h2 (by change (some F : Option (Fin 6)) ≠ some C; decide) hc
   · subst t
-    exact e73_noC_of_exact h3 (by decide) hc
+    exact e73_noC_of_exact h3 (by change (some D : Option (Fin 6)) ≠ some C; decide) hc
 
 /-- All 4*n intermediate raw-machine steps of the E66 guarded A sweep
 have control state different from C; the arbitrary exterior tapes are
