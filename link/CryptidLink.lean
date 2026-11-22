@@ -48,3 +48,4 @@ import CryptidLink.L17NoCMiddle
 import CryptidLink.L17First26CGuard
 import CryptidLink.L17BridgeDeepWitness
 import CryptidLink.L17BridgeBoundary
+import CryptidLink.L17G3BridgeSafe
