@@ -95,6 +95,22 @@ class E72FirstReturnCensus(unittest.TestCase):
                         checked += 1
         self.assertEqual(checked,440)
 
+    def test_490_adversarial_empty_zero_one_and_periodic_exteriors(self):
+        count = 0
+        for family in (1,3):
+            for M in (1,2,3,10,30,100,300):
+                for u,v in ((0,0),(2,1),(0,9),(9,0),(8,8)):
+                    for R in ("","0"*47,"1"*47,"0101010",
+                              "1010101","0010100000000","111111110"):
+                        seen,actual,expected = simulate(family,M,u,v,R,0)
+                        self.assertEqual([t for t,_ in seen],
+                                         c_schedule(family,M,u,v))
+                        self.assertTrue(all(w for _,w in seen[:-1]))
+                        self.assertEqual(seen[-1],(clock(family,M,u,v),False))
+                        self.assertEqual(actual,expected)
+                        count += 1
+        self.assertEqual(count,490)
+
     def test_control_state_C_alone_is_not_a_return(self):
         for family in (1,3):
             seen,actual,expected = simulate(family,1,0,0,"101110101011",0)
