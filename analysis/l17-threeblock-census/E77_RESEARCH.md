@@ -33,9 +33,13 @@ the arbitrary external tapes.
 - Reuse the E76 0..25 universal safety theorem.
 - New E77 source file contains **62 G1 + 100 G3** exact symbolic
   `ReachesIn` paths for times 26..87 / 26..125, respectively.
-- Each complete machine path is checked by `l17_exact_steps`
-  against the frozen six-state transition table. Raw traces are only
-  candidate endpoints, never an axiom.
+- At t=26 for each family, check a complete 26-step machine path with `l17_exact_steps`.
+- At each later timestamp, check one exact symbolic machine transition from
+  the preceding certified configuration, then compose with `ReachesIn.trans`.
+  This keeps the same full-tape semantics while avoiding 160 redundant
+  long-from-origin normalizations. Each local step is checked against the
+  frozen six-state transition table; raw traces only supply candidate
+  endpoints, never axioms.
 - Divide the remaining times into bounded, disjoint windows
   (G1: 26–55, 56–87; G3: 26–55, 56–85, 86–115, 116–125)
   and discharge all cases with exact determinism.
