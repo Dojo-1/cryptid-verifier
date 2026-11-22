@@ -44,8 +44,17 @@ private theorem three_source_frame (m u v : ℕ) (R : Bits) :
         (push [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0]
           (push (Q ^ m) (push [1, 1, 1] R))) := by
   unfold widthFourCutSource G3
-  rw [ListBlank.append_pow_succ Q m (push [1, 1, 1] R),
-      ListBlank.append_pow_succ P (v + 6)
+  rw [ListBlank.append_pow_succ Q m (push [1, 1, 1] R)]
+  -- The left base frame is private to L17FiveRun, so expose only its
+  -- definitionally equal left tape before splitting its pair power.
+  change Cfg.headRight C
+      (push (Q ^ 2)
+        (push [0, 1, 0]
+          (push (P ^ (v + 7))
+            (push [0] (push (P ^ (u + 6)) default)))))
+      _ = _
+  rw [show v + 7 = 1 + (v + 6) by omega,
+      ListBlank.append_pow_add P 1 (v + 6)
         (push [0] (push (P ^ (u + 6)) default))]
   rfl
 
