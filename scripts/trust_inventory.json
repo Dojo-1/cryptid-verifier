@@ -207,6 +207,8 @@
         "CryptidLink.L17.e60_A_detour_exact",
         "CryptidLink.L17.e61_A_window_insertion_diamond_exact",
         "CryptidLink.L17.e64_A_scan_window_diamond_exact",
+        "CryptidLink.L17.e66_A_two_ones_sweep_exact",
+        "CryptidLink.L17.e66_A_two_ones_transfer_exact",
         "CryptidLink.L17.e67_one_contextual_bridge_exact",
         "CryptidLink.L17.e67_three_contextual_bridge_exact",
         "CryptidLink.L17.entry1101_exact",
