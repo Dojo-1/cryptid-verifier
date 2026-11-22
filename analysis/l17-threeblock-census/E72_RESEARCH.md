@@ -49,7 +49,7 @@ left tape.
 ## Evidence and checks
 
 - **P:** E71's two exact-return theorems (earlier merge, standard axioms).
-- **M:** 440 complete raw trajectories, varying M=1..200 (selected
+- **M:** 440 randomized + 490 adversarial-exterior complete raw trajectories, varying M=1..300 (selected
   positive widths), u/v, exterior suffix and origin translations;
   every C time, left witness, endpoint state, head, sparse tape and
   predicted visit count matched. `python3 -m unittest discover -s
@@ -121,7 +121,7 @@ partition is:
   `[2j | 0<=j<=v+3] ++ [31+2v,43+2v] ++ [47+2v+2j | 0<=j<=u]`
   (u+v+7 visits).
 
-This partition was checked against the complete 440-case trace census
+This partition was checked against the randomized 440-case census; the additional 490 exterior attacks also matched the complete schedules
 and makes the next **smallest formal lemma** the C-free A-scan/pair-sweep,
 whose two-step and four-step state cycles can be inspected directly.
 The C-witness proof then concentrates on the fixed preludes, fixed bridges,
