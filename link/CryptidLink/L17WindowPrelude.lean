@@ -51,13 +51,13 @@ theorem e65_three_prelude_exact (L R : Bits) :
 private theorem e65_rotate_short (m : ℕ) (R : Bits) :
     push [0] (push (Q ^ m) (push [1, 1, 1] R)) =
       push (P ^ m) (push [0, 1, 1, 1] R) := by
-  simpa only [ListBlank.append_append] using
+  simpa only [P, Q, ListBlank.append_append] using
     (rotLB0 m (push [1, 1, 1] R))
 
 private theorem e65_rotate_long (m : ℕ) (R : Bits) :
     push [0] (push (Q ^ m) (push [1, 0, 1, 1, 1] R)) =
       push (P ^ m) (push [0, 1, 0, 1, 1, 1] R) := by
-  simpa only [ListBlank.append_append] using
+  simpa only [P, Q, ListBlank.append_append] using
     (rotLB0 m (push [1, 0, 1, 1, 1] R))
 
 /-- Exact C-to-A pair of moving-window branches for all m and arbitrary
