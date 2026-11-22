@@ -82,6 +82,16 @@ class E72FirstReturnCensus(unittest.TestCase):
                         self.assertEqual(seen[-1],(clock(family,M,u,v),False))
                         self.assertEqual(actual,expected)
                         self.assertEqual(len(seen),(14+u) if family==1 else (15+u+v))
+                        prelude = 88 if family==1 else 126
+                        post_sweep = prelude+6*M
+                        post_bridge = post_sweep+(77 if family==1 else 95)
+                        pre = [t for t,_ in seen if t < prelude]
+                        scanner_sweep = [t for t,_ in seen if prelude <= t < post_sweep]
+                        bridge = [t for t,_ in seen if post_sweep <= t < post_bridge]
+                        final = [t for t,_ in seen if t >= post_bridge]
+                        self.assertEqual(
+                            (len(pre),len(scanner_sweep),len(bridge),len(final)),
+                            (5,0,4,u+5) if family==1 else (5,0,3,u+v+7))
                         checked += 1
         self.assertEqual(checked,440)
 
