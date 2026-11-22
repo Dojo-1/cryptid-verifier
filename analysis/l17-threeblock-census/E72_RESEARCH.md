@@ -93,3 +93,37 @@ Lean proof of the event schedule without the left-witness condition
 cannot promote first-return minimality. Neither result implies
 blank-orbit reachability, an unrestricted scanner grammar, or
 universal L17 nonhalting.
+
+
+## Phase-local decomposition (candidate — stronger than the aggregate count)
+
+The existing **P** exact steps give meaningful phase boundaries:
+
+| Phase | G1 | G3 |
+| --- | --- | --- |
+| Fixed C-to-A prelude | [0,88) | [0,126) |
+| A scanner plus 4M pair sweep | [88,88+6M) | [126,126+6M) |
+| Fixed contextual bridge | [88+6M,165+6M) | [126+6M,221+6M) |
+| Final unwind (includes endpoint) | [165+6M,T1] | [221+6M,T3] |
+
+The independent raw transitions suggest the *entire* per-phase C-time
+partition is:
+
+- G1 prelude: `[0,25,42,67,80]` (5 visits).
+- G1 A scanner/sweep: no C visits, for every tested positive M.
+- G1 bridge (relative to `88+6M`): `[17,55,67,71]` (4 visits).
+- G1 unwind (relative to `165+6M`):
+  `[29+4v,41+4v] ++ [45+4v+2j | 0<=j<=u+2]` (u+5 visits).
+- G3 prelude: `[0,25,68,105,118]` (5 visits).
+- G3 A scanner/sweep: no C visits.
+- G3 bridge (relative to `126+6M`): `[17,79,91]` (3 visits).
+- G3 unwind (relative to `221+6M`):
+  `[2j | 0<=j<=v+3] ++ [31+2v,43+2v] ++ [47+2v+2j | 0<=j<=u]`
+  (u+v+7 visits).
+
+This partition was checked against the complete 440-case trace census
+and makes the next **smallest formal lemma** the C-free A-scan/pair-sweep,
+whose two-step and four-step state cycles can be inspected directly.
+The C-witness proof then concentrates on the fixed preludes, fixed bridges,
+and parameterized final unwind. No claim is promoted to P without a
+machine-level Lean proof.
