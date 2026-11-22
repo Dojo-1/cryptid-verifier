@@ -1690,6 +1690,28 @@ private theorem width4_a_unwind (u p : ℕ) (R : Bits) :
   rw [hR] at h3
   convert (h1.trans h2).trans h3 using 1 <;> omega
 
+
+/-- Public statement of the previously private exact C-mode finishing sweep.
+    This is a narrow interface, not a new simulation assumption. -/
+theorem e68_c_finish_exact (u p : ℕ) (R : Bits) :
+    ReachesIn target (2 * (p + 1) + (41 + 2 * u))
+      (Cfg.headRight C (push (P ^ p) (push [0] (push (P ^ (u + 6)) default)))
+        (push [1, 1] R))
+      (Cfg.headRight C default (five_run_bottom_result u (push (I ^ (2 * p)) R))) :=
+  width4_c_finish u p R
+
+/-- Public statement of the previously private exact A-mode finishing sweep.
+    It retains both the full left input and arbitrary right exterior. -/
+theorem e68_a_unwind_exact (u p : ℕ) (R : Bits) :
+    ReachesIn target (4 * p + 29 + 2 * u)
+      (Cfg.headRight A (push (P ^ p) (push [0] (push (P ^ (u + 6)) default)))
+        (push [1, 1, 1] R))
+      (Cfg.headRight C default
+        (push (I ^ (2 * u + 6))
+          (push [0, 1, 0, 1, 0, 1, 0, 1, 0, 1] (push (P ^ p) R)))) :=
+  width4_a_unwind u p R
+
+
 /-- Two wide strips at the width-four checkpoint. Read window [-14,36]. -/
 private theorem width4_one_two_wide (L R : Bits) :
     ReachesIn target 209
@@ -3198,3 +3220,6 @@ end CryptidLink.L17
 #print axioms CryptidLink.L17.e61_A_window_insertion_diamond_exact
 #print axioms CryptidLink.L17.mixed_three_pair_double_exact
 #print axioms CryptidLink.L17.mixed_triple_wide_exact
+
+#print axioms CryptidLink.L17.e68_c_finish_exact
+#print axioms CryptidLink.L17.e68_a_unwind_exact
