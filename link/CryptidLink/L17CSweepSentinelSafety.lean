@@ -30,7 +30,7 @@ private theorem e85_power_head_one (n : ℕ) (L : Bits)
       simpa only [list_pow_zero, ListBlank.append_nil] using hL
   | succ n =>
       rw [ListBlank.append_pow_succ Q n L]
-      rfl
+      simp only [Q, ListBlank.append, ListBlank.head_cons]
 
 /-- A two-step C/B/C transfer cannot visit blank-left C before its end
 when the untouched farther-left suffix begins in 1. The C state at
@@ -57,8 +57,8 @@ private theorem e85_pair_noBlankLeftC_before2 (L R : Bits)
       exact Cfg.headLeft_cons C (1 : Fin 2) (push [0] L) R
     have hw : s.tape.left.tail.head = (1 : Fin 2) := by
       rw [hframe]
-      change L.head = (1 : Fin 2)
-      exact hL
+      simpa only [Cfg.headRight, ListBlank.append,
+        ListBlank.tail_cons, ListBlank.head_cons] using hL
     have hz0 :
         (Cfg.headRight C (default : Bits) Z).tape.left.tail.head =
         (0 : Fin 2) := by rfl
