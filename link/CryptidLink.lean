@@ -59,3 +59,4 @@ import CryptidLink.L17PreludeFullCGuard
 import CryptidLink.L17G1AUnwindFirstReturn
 import CryptidLink.L17G1E60FirstReturn
 import CryptidLink.L17G3StructuredBridgeSafety
+import CryptidLink.L17G3C01MiddleSafety
