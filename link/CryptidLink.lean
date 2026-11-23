@@ -62,3 +62,4 @@ import CryptidLink.L17G3StructuredBridgeSafety
 import CryptidLink.L17G3C01MiddleSafety
 import CryptidLink.L17K41shortSafety
 import CryptidLink.L17G3K41TailFirstReturn
+import CryptidLink.L17G3CFinishFirstReturn
