@@ -57,3 +57,4 @@ import CryptidLink.L17CSweepSentinelSafety
 import CryptidLink.L17AFinishSafety
 import CryptidLink.L17PreludeFullCGuard
 import CryptidLink.L17G1AUnwindFirstReturn
+import CryptidLink.L17G1E60FirstReturn
