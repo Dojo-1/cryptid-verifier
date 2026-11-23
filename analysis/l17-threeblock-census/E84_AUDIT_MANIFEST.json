@@ -1,0 +1,177 @@
+{
+  "task_id": "l17-e84-integrated-first-return-safety",
+  "claim": {
+    "text": "Exact blank-left-C reachability together with no earlier blank-left-C states implies the specified clock is the first return; E80-E83 supply only component safety results.",
+    "scope": "L17 six-state full configurations, strictly earlier integer times, guarded positive-width E60 G1/G3 contexts",
+    "status_before": "H",
+    "assumptions": [
+      "Turing ReachesIn uses pinned deterministic target",
+      "The strict temporal boundary is t < clock",
+      "Full left and right half-tapes are preserved"
+    ],
+    "forbidden_promotions": [
+      "Global L17 nonhalting",
+      "Unrestricted mixed scanner grammar",
+      "Blank-tape orbit reachability",
+      "First-return of G1/G3 before all component premises are proved"
+    ]
+  },
+  "specification": {
+    "intended_object": "Exact ReachesIn endpoint plus E80NoBlankLeftCBefore safety predicate",
+    "invariants": [
+      "Full Cfg equality, not just control state",
+      "Strictly earlier time quantification",
+      "Arbitrary exterior tapes retained when claimed"
+    ],
+    "known_answer_cases": [
+      "G3 bridge with blank left exterior at t=95 is unsafe (E78)",
+      "G1 bridge t=71 uses second-left nonzero witness (E78)"
+    ]
+  },
+  "implementation": {
+    "artifact": "link/CryptidLink/L17FirstReturnCriterion.lean and integrated E80-E83 modules",
+    "commit": "integration PR head pending creation",
+    "environment": "pinned Lean Lake workflow (core, mathlib, link) and Python evidence",
+    "live_entrypoint": "link/CryptidLink.lean imports the five integration modules",
+    "representation": "ListBlank (Fin 2) full Turing configurations, ReachesIn target"
+  },
+  "metric": {
+    "name": "formal exactness and safety coverage",
+    "type": "typed_tuple",
+    "units": "proof obligations and integer machine steps",
+    "direction": "partial_order",
+    "raw_before_clipping": true,
+    "semantic_invariance_claimed": true,
+    "equivalence_attacks": [
+      "G3 arbitrary blank exterior at step 95",
+      "G1 deep left witness at step 71",
+      "G1 111 right prefix represented as 11 plus 1::R"
+    ]
+  },
+  "tests": {
+    "black_box": [
+      "GitHub Actions literal machine versus contextual stepper"
+    ],
+    "structural": [
+      "Pinned Lean build and #print axioms inventory"
+    ],
+    "property_based": [
+      "Existing finite interleaved scanner and suffix replay"
+    ],
+    "metamorphic": [
+      "Different equivalent tape prefix decompositions"
+    ],
+    "fuzzing": [
+      "Existing contextual replay corpus"
+    ],
+    "historical": [
+      "E78 blank-exterior boundary counterexample",
+      "Retired M=0 affine extension"
+    ]
+  },
+  "controls": {
+    "matched_baselines": [
+      "Merged E79 main tree, unchanged four source modules"
+    ],
+    "negative_controls": [
+      "t=95 G3 arbitrary blank exterior is unsafe",
+      "M=0 E60 affine extension is false"
+    ],
+    "compute_parity": "Same six CI jobs as individual predecessor PRs",
+    "parameter_parity": "not applicable: exact symbolic proofs",
+    "sampling_parity": "not applicable: theorem claims are universal, numerical samples are nonproof checks",
+    "data_access_parity": "Exact repository source and pinned dependency versions"
+  },
+  "preregistration": {
+    "prediction": "Integration compiles with standard axioms and proves only the conditional criterion",
+    "primary_metric": "All six integration CI jobs green and trust inventory agrees with printed axioms",
+    "uncertainty_method": "Formal kernel check for stated theorems; external first-return obligation remains open",
+    "kill_condition": "Any sorryAx, mismatched import, theorem-type mismatch, unsound extrapolation or failing Lean job",
+    "stop_condition": "Stop after certifying this integration; do not claim G1/G3 first-return without final-phase safety",
+    "promotion_rule": "H to P for E80–E84 exact statements only after combined six-job CI, trust and manual review"
+  },
+  "evidence": {
+    "primary_sources": [
+      "https://github.com/Dojo-1/cryptid-verifier/issues/67",
+      "https://github.com/Dojo-1/cryptid-verifier/pull/74",
+      "https://github.com/Dojo-1/cryptid-verifier/pull/75",
+      "https://github.com/Dojo-1/cryptid-verifier/pull/76",
+      "https://github.com/Dojo-1/cryptid-verifier/pull/77"
+    ],
+    "execution_records": [
+      "Six success jobs individually for PR 74, 75, 76 and 77; combined pending"
+    ],
+    "independent_witnesses": [
+      {
+        "name": "literal six-state stepper",
+        "origin": "separately implemented comparator versus contextual stepper",
+        "artifact": "GitHub Actions evidence job; historical baseline"
+      }
+    ],
+    "claim_to_artifact_map": [
+      "E80 safety composition -> L17FirstReturnSafety.lean",
+      "G1 preterminal fixed bridge -> L17G1BridgeSafe.lean",
+      "G3 preterminal fixed bridge -> L17G3BridgeSafe.lean",
+      "G1 A-prefix C-free -> L17UnwindPrefixSafe.lean",
+      "conditional first-return criterion -> L17FirstReturnCriterion.lean"
+    ]
+  },
+  "round_trip": {
+    "edges": [
+      {
+        "from": "requirement",
+        "to": "formal specification",
+        "preserved": [
+          "strict first-return minimality"
+        ],
+        "transformed": [
+          "absence of earlier visits into typed safety predicate"
+        ],
+        "lost": [],
+        "remainder": [
+          "full-phase premise not yet certified"
+        ]
+      },
+      {
+        "from": "formal specification",
+        "to": "Lean implementation",
+        "preserved": [
+          "universal time and full-tape witnesses"
+        ],
+        "transformed": [],
+        "lost": [],
+        "remainder": [
+          "CI execution pending"
+        ]
+      },
+      {
+        "from": "tested theorem",
+        "to": "interpretation",
+        "preserved": [
+          "conditional scope"
+        ],
+        "transformed": [],
+        "lost": [],
+        "remainder": [
+          "no first-return conclusion yet for G1/G3"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "observed": "Four separately CI-green modules integrated; aggregate build pending",
+    "effect_size": "not applicable: symbolic proof checks",
+    "uncertainty": "H until the combined CI and manual review run",
+    "status_after": "H",
+    "retired_claims": [
+      "Unconditional safety at G3 t=95 with arbitrary exterior",
+      "M=0 E60 affine extrapolation"
+    ],
+    "active_remainder": [
+      "G1 fixed A finish and C sweep",
+      "G3 final C-mode finish",
+      "complete first-return composition",
+      "mixed grammar and blank-orbit reachability"
+    ]
+  }
+}
